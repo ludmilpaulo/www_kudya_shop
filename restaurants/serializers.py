@@ -7,16 +7,26 @@ User = get_user_model()
 
 
 
+class OpeningHourSerializer(serializers.ModelSerializer):
+    day = serializers.SerializerMethodField()
+
+    def get_day(self, obj):
+        return obj.get_day_display()
+
+    class Meta:
+        model = OpeningHour
+        fields = ('day', 'from_hour', 'to_hour', 'is_closed')
 
 class RestaurantSerializer(serializers.ModelSerializer):
     category = serializers.SerializerMethodField()
     logo = serializers.SerializerMethodField()
+    opening_hours = OpeningHourSerializer(many=True, source='openinghour_set')
 
     def get_category(self, restaurant):
         category = restaurant.category
         if category:
             return {
-                'id':category.id,
+                'id': category.id,
                 'name': category.name,
                 'image': self.get_category_image_url(category),
             }
@@ -24,8 +34,10 @@ class RestaurantSerializer(serializers.ModelSerializer):
 
     def get_category_image_url(self, category):
         request = self.context.get('request')
-        image_url = category.image.url
-        return request.build_absolute_uri(image_url)
+        if category.image:
+            image_url = category.image.url
+            return request.build_absolute_uri(image_url)
+        return None
 
     def get_logo(self, restaurant):
         request = self.context.get('request')
@@ -34,10 +46,7 @@ class RestaurantSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Restaurant
-        #fields = '__all__'
-        fields = ("id", "name", "phone", "address", "logo", "category", "barnner", "is_approved")
-
-
+        fields = ("id", "name", "phone", "address", "logo", "category", "barnner", "is_approved", "opening_hours")
 
 
 
