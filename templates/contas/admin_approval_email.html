@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprovação de Restaurante</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .header {
+            background-color: #0171CE;
+            padding: 10px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+        }
+        .header h1 {
+            color: #fff;
+            margin: 0;
+        }
+        .content {
+            padding: 20px;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Parabéns!</h1>
+        </div>
+        <div class="content">
+            <p>Olá, {{ user.username }}!</p>
+            <p>Estamos felizes em informar que o seu restaurante <strong>{{ user.restaurant.name }}</strong> foi aprovado para utilizar a nossa plataforma.</p>
+            <p>Agora você pode começar a publicar seus cardápios, receber pedidos e alcançar mais clientes através do nosso marketplace.</p>
+            <p>Se precisar de ajuda para configurar seu restaurante na plataforma, não hesite em nos contatar.</p>
+            <p>Bem-vindo(a) e sucesso nos negócios!</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 Sua Empresa. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</body>
+</html>
