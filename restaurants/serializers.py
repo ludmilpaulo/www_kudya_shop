@@ -51,7 +51,6 @@ class RestaurantSerializer(serializers.ModelSerializer):
 
 
 class MealSerializer(serializers.ModelSerializer):
-    category = serializers.SerializerMethodField()
     image_url = serializers.SerializerMethodField()
 
     class Meta:
