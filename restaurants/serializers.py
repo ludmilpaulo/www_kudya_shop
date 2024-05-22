@@ -51,6 +51,7 @@ class RestaurantSerializer(serializers.ModelSerializer):
 
 
 class MealSerializer(serializers.ModelSerializer):
+    category = serializers.SerializerMethodField()
     image_url = serializers.SerializerMethodField()
 
     class Meta:
@@ -71,6 +72,7 @@ class RestaurantCategorySerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'image', 'slug']
 
 class MealCategorySerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = MealCategory
         fields = ['id', 'name', 'image', 'slug']
