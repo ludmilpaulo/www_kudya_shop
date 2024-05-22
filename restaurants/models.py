@@ -19,18 +19,6 @@ class RestaurantCategory(models.Model):
     def __str__(self):
         return self.name
 
-class MealCategory(models.Model):
-    name = models.CharField(max_length=200, db_index=True)
-    image = models.ImageField(upload_to='category/', blank=True)
-    slug = models.SlugField(max_length=200, unique=True)
-
-    class Meta:
-        ordering = ('name',)
-        verbose_name = 'category'
-        verbose_name_plural = 'categories'
-
-    def __str__(self):
-        return self.name
 
 class Restaurant(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='usuário', blank=True)
@@ -87,7 +75,7 @@ class Restaurant(models.Model):
                         <p>Agora você pode começar a publicar seus cardápios, receber pedidos e alcançar mais clientes através do nosso marketplace.</p>
                         <p>Se precisar de ajuda para configurar seu restaurante na plataforma, não hesite em nos contatar.</p>
                         <p>Bem-vindo(a) e sucesso nos negócios!</p>
-                        <p>&copy; 2024 Sua Empresa. Todos os direitos reservados.</p>
+                        <p>&copy; 2024 Kudya. Todos os direitos reservados.</p>
                     </body>
                     </html>
                     """
@@ -101,7 +89,7 @@ class Restaurant(models.Model):
                         <p>Olá, {context['user'].username}!</p>
                         <p>Lamentamos informar que o seu restaurante <strong>{context['restaurant'].name}</strong> não está qualificado para publicar seu cardápio de comida em nosso mercado.</p>
                         <p>Se precisar de mais informações, não hesite em nos contatar.</p>
-                        <p>&copy; 2024 Sua Empresa. Todos os direitos reservados.</p>
+                        <p>&copy; 2024 SD Kudya. Todos os direitos reservados.</p>
                     </body>
                     </html>
                     """
@@ -117,22 +105,30 @@ class Restaurant(models.Model):
         message = 'Obrigado por se inscrever. Estamos revisando sua inscrição e entraremos em contato em breve!'
         email_from = settings.EMAIL_HOST_USER
         send_mail(subject, message, email_from, [self.user.email])
+from django.db import models
 
-class Meal(models.Model):
-    category = models.ForeignKey(MealCategory, related_name='meal', on_delete=models.CASCADE, null=True)
-    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, verbose_name='restaurante')
-    name = models.CharField(max_length=500, verbose_name='Nome')
-    short_description = models.CharField(max_length=500, verbose_name='Pequena descrição')
-    image = models.ImageField(upload_to='meal_images/', blank=False)
-    price = models.IntegerField(default=0, verbose_name='preço')
-    quantity = models.IntegerField(default=1, blank=True)
+class MealCategory(models.Model):
+    name = models.CharField(max_length=200, db_index=True)
+    image = models.ImageField(upload_to='category/', blank=True)
+    slug = models.SlugField(max_length=200, unique=True)
 
     class Meta:
-        verbose_name ='Refeição'
-        verbose_name_plural ='Refeições'
+        ordering = ('name',)
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
 
     def __str__(self):
         return self.name
+
+class Meal(models.Model):
+    name = models.CharField(max_length=255)
+    short_description = models.TextField()
+    image = models.ImageField(upload_to='meal_images/')
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    quantity = models.IntegerField()
+    category = models.ForeignKey(MealCategory, on_delete=models.CASCADE, related_name='meals')
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='meals')
+
 
 DAYS = [
     (1, "Segunda-feira"),

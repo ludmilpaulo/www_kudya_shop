@@ -50,6 +50,7 @@ class RestaurantSerializer(serializers.ModelSerializer):
 
 
 
+
 class MealSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
     category = serializers.SerializerMethodField()
@@ -66,6 +67,7 @@ class MealSerializer(serializers.ModelSerializer):
 
     def get_category(self, obj):
         return obj.category.name if obj.category else None
+
 
 class RestaurantCategorySerializer(serializers.ModelSerializer):
     class Meta:
