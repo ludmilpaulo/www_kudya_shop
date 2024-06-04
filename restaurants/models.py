@@ -128,6 +128,9 @@ class Meal(models.Model):
     quantity = models.IntegerField()
     category = models.ForeignKey(MealCategory, on_delete=models.CASCADE, related_name='meals')
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='meals')
+    
+    def __str__(self):
+        return self.name
 
 
 DAYS = [

@@ -160,13 +160,14 @@ CORS_ALLOWED_ORIGINS = [
 
 
 
-SERVER_EMAIL = 'support@ludmilpaulo.co.za' # this is for to send 500 mail to admins
+
+SERVER_EMAIL = 'support@maindodigital.com' # this is for to send 500 mail to admins
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtpout.secureserver.net'
-EMAIL_HOST_USER='support@ludmilpaulo.co.za'
+EMAIL_HOST_USER='support@maindodigital.com'
 EMAIL_HOST_PASSWORD='Maitland@2024'
-DEFAULT_FROM_EMAIL = 'support@ludmilpaulo.co.za'
+DEFAULT_FROM_EMAIL = 'support@maindodigital.com'
 EMAIL_PORT=465
 EMAIL_USE_SSL=True
 EMAIL_USE_TLS=False

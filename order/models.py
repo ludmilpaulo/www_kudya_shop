@@ -8,7 +8,7 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 
 from www_kudya_shop import settings
-from .utils import generate_pdf
+from .utils import generate_invoice
 import os
 import random
 import string
@@ -69,15 +69,13 @@ class Order(models.Model):
         }
         subject = 'Atualização de Status do Pedido'
         message = render_to_string('email_templates/order_status_update.html', context)
-        pdf = generate_pdf('email_templates/order_invoice.html', context)
-        pdf_path = os.path.join('invoices', f'order_{self.id}.pdf')
-        with open(pdf_path, 'wb') as f:
-            f.write(pdf.read())
+        pdf_path = generate_invoice(self)
         self.invoice_pdf = pdf_path
         self.save()
 
-        email = EmailMessage(subject, '', settings.DEFAULT_FROM_EMAIL, [customer_email, restaurant_email])
-        email.attach('invoice.pdf', open(pdf_path, 'rb').read(), 'application/pdf')
+        email = EmailMessage(subject, message, settings.DEFAULT_FROM_EMAIL, [customer_email, restaurant_email])
+        email.attach_file(pdf_path)
+        email.content_subtype = "html"
         email.send()
 
 def send_order_email(email, order, is_restaurant=False):
@@ -92,19 +90,14 @@ def send_order_email(email, order, is_restaurant=False):
     }
     subject = 'Nova Pedido' if is_restaurant else 'Pedido Recebido'
     message = render_to_string('email_templates/order_confirmation.html', context)
-    pdf = generate_pdf('email_templates/order_invoice.html', context)
-    pdf_path = os.path.join('invoices', f'order_{order.id}.pdf')
-    with open(pdf_path, 'wb') as f:
-        f.write(pdf.read())
+    pdf_path = generate_invoice(order)
     order.invoice_pdf = pdf_path
     order.save()
 
-    email = EmailMessage(subject, '', 'your-email@gmail.com', [email])
-    email.attach('invoice.pdf', open(pdf_path, 'rb').read(), 'application/pdf')
+    email = EmailMessage(subject, message, settings.DEFAULT_FROM_EMAIL, [email])
+    email.attach_file(pdf_path)
+    email.content_subtype = "html"
     email.send()
-
-
-
 
 class OrderDetails(models.Model):
     order = models.ForeignKey(Order, related_name='order_details', on_delete=models.CASCADE, verbose_name='Pedido')
@@ -116,10 +109,5 @@ class OrderDetails(models.Model):
         verbose_name ='Detalhe do pedido'
         verbose_name_plural ='Detalhes dos pedidos'
 
-
-
     def __str__(self):
         return str(self.id)
-
-
-

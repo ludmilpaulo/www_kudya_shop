@@ -15,6 +15,19 @@ from order.utils import generate_pdf
 from django.shortcuts import get_object_or_404
 from restaurants.models import Meal, Restaurant
 from restaurants.serializers import RestaurantSerializer
+####################################################################################################
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.authtoken.models import Token
+from django.conf import settings
+from django.core.mail import EmailMessage
+from django.utils import timezone
+from .models import Customer, Order, Meal, OrderDetails
+from django.template.loader import render_to_string
+
+from .utils import generate_invoice
+import os
+import urllib
 
 @csrf_exempt
 @api_view(['POST'])
@@ -25,8 +38,9 @@ def customer_add_order(request):
     # Get profile
     customer = Customer.objects.get(user=access)
 
-    if Order.objects.filter(customer=customer).exclude(
-            status=Order.DELIVERED):
+    # Check for existing orders to the same restaurant that are not delivered
+    existing_orders = Order.objects.filter(customer=customer, restaurant_id=data["restaurant_id"]).exclude(status=Order.DELIVERED)
+    if existing_orders.exists():
         return Response({
             "error": "failed",
             "status": "Seu último pedido deve ser entregue para Pedir Outro."
@@ -43,8 +57,7 @@ def customer_add_order(request):
     order_details = data["order_details"]
     order_total = 0
     for meal in order_details:
-        order_total += Meal.objects.get(
-            id=meal["meal_id"]).price * meal["quantity"]
+        order_total += Meal.objects.get(id=meal["meal_id"]).price * meal["quantity"]
 
     if len(order_details) > 0:
         # Step 2 - Create an Order
@@ -63,13 +76,16 @@ def customer_add_order(request):
                 order=order,
                 meal_id=meal["meal_id"],
                 quantity=meal["quantity"],
-                sub_total=Meal.objects.get(id=meal["meal_id"]).price *
-                meal["quantity"])
+                sub_total=Meal.objects.get(id=meal["meal_id"]).price * meal["quantity"]
+            )
+
+        # Generate invoice
+        pdf_path = generate_invoice(order)
 
         # Send email notifications
-        send_order_email(customer.user.email, order)
+        send_order_email(customer.user.email, order, pdf_path)
         restaurant_email = order.restaurant.user.email
-        send_order_email(restaurant_email, order, is_restaurant=True)
+        send_order_email(restaurant_email, order, pdf_path, is_restaurant=True)
 
         # Generate WhatsApp URL
         phone_number = "customer_phone_number"  # Replace with the actual phone number
@@ -80,12 +96,26 @@ def customer_add_order(request):
     else:
         return Response({
             "status": "failed",
-            "error": "Failed connect to Stripe."
+            "error": "Failed to connect to Stripe."
         })
 
+def send_order_email(to_email, order, pdf_path, is_restaurant=False):
+    mail_subject = "Seu pedido foi recebido!" if not is_restaurant else "Novo pedido recebido!"
+    message = render_to_string('email_templates/order_email.html', {
+        'order': order,
+        'customer': order.customer,
+    })
+    email = EmailMessage(
+        mail_subject, message, settings.DEFAULT_FROM_EMAIL, [to_email]
+    )
+    email.attach_file(pdf_path)
+    email.content_subtype = "html"
+    email.send()
 
+    
+    
 @api_view(['GET'])
-def generate_invoices(request):
+def generate_restaurant_invoices(request):
     if 'restaurant_id' not in request.GET:
         return Response({"error": "Restaurant ID is required."})
 
