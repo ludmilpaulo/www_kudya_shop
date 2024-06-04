@@ -8,81 +8,49 @@ from rest_framework import status
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.urls import reverse
+from django.contrib.auth.tokens import default_token_generator
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
-
+from django.template.loader import render_to_string
 from www_kudya_shop import settings
 User = get_user_model()
-# Reset Password View
-class ResetPasswordView(APIView):
+# Reset Password Viewfrom django.template.loader import render_to_string
+class PasswordResetView(APIView):
+ 
+
     def post(self, request):
         email = request.data.get('email')
-        if not email:
-            return Response({'message': 'Email é necessário.'}, status=status.HTTP_400_BAD_REQUEST)
-        
         try:
             user = User.objects.get(email=email)
-            token_generator = PasswordResetTokenGenerator()
-            token = token_generator.make_token(user)
+            token = default_token_generator.make_token(user)
             uid = urlsafe_base64_encode(force_bytes(user.pk))
-            
-            reset_url = request.build_absolute_uri(
-                reverse('password_reset_confirm', kwargs={'uidb64': uid, 'token': token})
-            )
-            
-            send_mail(
-                'Redefinição de Senha',
-                f'Clique no link para redefinir sua senha: {reset_url}',
-                settings.DEFAULT_FROM_EMAIL,
-                [email],
-                fail_silently=False,
-            )
-            return Response({'message': 'Email de redefinição de senha enviado com sucesso.'})
+            reset_url = f'{settings.FRONTEND_URL}/ResetPassword?uid={uid}&token={token}'
+            subject = 'Solicitação de Redefinição de Senha'
+            message = render_to_string('password_reset_email.html', {
+                'username': user.username,
+                'reset_url': reset_url,
+            })
+            send_mail(subject, '', settings.DEFAULT_FROM_EMAIL, [user.email], html_message=message)
+            return Response({'detail': 'E-mail de redefinição de senha enviado.'}, status=status.HTTP_200_OK)
         except User.DoesNotExist:
-            return Response({'message': 'Email não encontrado. Por favor, cadastre-se.'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'Usuário com este e-mail não existe.'}, status=status.HTTP_400_BAD_REQUEST)
 
-# Password Reset Confirm View
 class PasswordResetConfirmView(APIView):
-    def post(self, request, uidb64, token):
+    def post(self, request):
+        uid = request.data.get('uid')
+        token = request.data.get('token')
+        new_password = request.data.get('newPassword')
         try:
-            uid = force_str(urlsafe_base64_decode(uidb64))
+            uid = force_str(urlsafe_base64_decode(uid))
             user = User.objects.get(pk=uid)
-            token_generator = PasswordResetTokenGenerator()
-
-            if not token_generator.check_token(user, token):
-                return Response({'message': 'Token inválido ou expirado.'}, status=status.HTTP_400_BAD_REQUEST)
-
-            new_password = request.data.get('password')
-            if not new_password:
-                return Response({'message': 'Nova senha é necessária.'}, status=status.HTTP_400_BAD_REQUEST)
-
-            user.set_password(new_password)
-            user.is_active = False  # Deactivate the user account
-            user.save()
-
-            # Generate activation token
-            activation_token = token_generator.make_token(user)
-            activation_uid = urlsafe_base64_encode(force_bytes(user.pk))
-
-            activation_url = request.build_absolute_uri(
-                reverse('activate_account', kwargs={'uidb64': activation_uid, 'token': activation_token})
-            )
-
-            send_mail(
-                'Ativar Conta',
-                f'Sua senha foi redefinida com sucesso. Clique no link para ativar sua conta: {activation_url}',
-                settings.DEFAULT_FROM_EMAIL,
-                [user.email],
-                fail_silently=False,
-            )
-
-            return Response({'message': 'Senha redefinida com sucesso. Verifique seu email para ativar sua conta.'})
-        except User.DoesNotExist:
-            return Response({'message': 'Usuário não encontrado.'}, status=status.HTTP_404_NOT_FOUND)
-        except Exception as e:
-            return Response({'message': 'Erro ao redefinir a senha.'}, status=status.HTTP_400_BAD_REQUEST)
-
+            if default_token_generator.check_token(user, token):
+                user.set_password(new_password)
+                user.save()
+                return Response({'detail': 'Senha foi redefinida.'}, status=status.HTTP_200_OK)
+            return Response({'error': 'Token inválido.'}, status=status.HTTP_400_BAD_REQUEST)
+        except (User.DoesNotExist, ValueError):
+            return Response({'error': 'Usuário inválido.'}, status=status.HTTP_400_BAD_REQUEST)
 # Activate Account View
 class ActivateAccountView(APIView):
     def get(self, request, uidb64, token):

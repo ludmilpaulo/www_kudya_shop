@@ -85,15 +85,18 @@ def customer_get_meals(request, restaurant_id):
 
 #######################################################################################3
 
-@api_view(['POST'])
+@api_view(['GET'])
 def customer_get_detais(request):
-    data = request.data
+    user_id = request.query_params.get('user_id')
+    if not user_id:
+        return JsonResponse({"error": "user_id is required"}, status=400)
 
-    customer_detais = CustomerSerializer(
-         Customer.objects.get(user_id=data['user_id'])).data
-     
-
-    return JsonResponse({"customer_detais": customer_detais})
+    try:
+        customer = Customer.objects.get(user_id=user_id)
+        customer_details = CustomerSerializer(customer).data
+        return JsonResponse({"customer_details": customer_details})
+    except Customer.DoesNotExist:
+        return JsonResponse({"error": "Customer not found"}, status=404)
 
 ##################################################################
 #@csrf_exempt

@@ -16,7 +16,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+FRONTEND_URL = 'https://www.sdkudya.com'
 
 # Application definition
 

@@ -4,6 +4,7 @@ from django.db.models import Sum
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework import status
 import urllib.parse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
@@ -11,7 +12,9 @@ from rest_framework.authtoken.models import Token
 from curtomers.models import Customer
 from order.models import Order, OrderDetails, send_order_email
 from order.utils import generate_pdf
+from django.shortcuts import get_object_or_404
 from restaurants.models import Meal, Restaurant
+from restaurants.serializers import RestaurantSerializer
 
 @csrf_exempt
 @api_view(['POST'])
@@ -113,3 +116,10 @@ def generate_invoices(request):
     response = HttpResponse(pdf, content_type='application/pdf')
     response['Content-Disposition'] = f'attachment; filename="invoice_{period}.pdf"'
     return response
+
+
+@api_view(['GET'])
+def restaurant_details(request, restaurant_id):
+    restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
+    serializer = RestaurantSerializer(restaurant, context={'request': request})
+    return Response(serializer.data, status=status.HTTP_200_OK)
