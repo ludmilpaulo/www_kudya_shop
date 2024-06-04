@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fatura</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      padding: 20px;
+    }
+    .container {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      text-align: center;
+      background: linear-gradient(to right, #facc15, #2563eb);
+      padding: 10px 0;
+      border-radius: 8px 8px 0 0;
+    }
+    .header img {
+      max-width: 150px;
+    }
+    .content {
+      margin-top: 20px;
+    }
+    .content h2 {
+      color: #2563eb;
+    }
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    .table th, .table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    .table th {
+      background-color: #2563eb;
+      color: #fff;
+    }
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="https://ludmil.pythonanywhere.com/media/logo/azul.png" alt="Kudya Logo">
+    </div>
+    <div class="content">
+      <h2>Fatura da {{ period }}</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID do Pedido</th>
+            <th>Data</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for order in orders %}
+          <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.created_at }}</td>
+            <td>{{ order.order_total }} Kz</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="footer">
+      <p>&copy; 2024 Kudya. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</body>
+</html>
