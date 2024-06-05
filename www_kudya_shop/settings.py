@@ -110,7 +110,7 @@ DATABASES = {
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'maindoagency',
+            'NAME': 'kudya',
             'USER': 'super',
             'PASSWORD': 'Maitland@2024',  # Replace with your actual password
             'HOST': 'maindoagency-3864.postgres.pythonanywhere-services.com',
