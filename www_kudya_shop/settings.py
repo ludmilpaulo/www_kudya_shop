@@ -107,8 +107,7 @@ DATABASES = {
 }
 
 
-if ENV == 'production':
-    DATABASES = {
+DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'maindoagency',
@@ -118,13 +117,7 @@ if ENV == 'production':
             'PORT': '13864',
         }
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+
 
 
 # Password validation
