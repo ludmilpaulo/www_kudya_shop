@@ -143,7 +143,16 @@ DAYS = [
     (7, "Domingo"),
 ]
 
-HOUR_OF_DAY_24 = [(time(h, m).strftime('%I:%M %p'), time(h, m).strftime('%I:%M %p')) for h in range(0, 24) for m in (0, 30)]
+
+def send_notification(mail_subject, message, to_email):
+    from_email = settings.DEFAULT_FROM_EMAIL
+    mail = EmailMessage(mail_subject, message, from_email, to=[to_email])
+    mail.content_subtype = "html"
+    mail.send()
+    
+from datetime import time
+
+HOUR_OF_DAY_24 = [(time(h, m).strftime('%I:%M %p'), time(h, m).strftime('%I:%M %p')) for h in range(24) for m in (0, 30)]
 
 class OpeningHour(models.Model):
     restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
@@ -158,9 +167,3 @@ class OpeningHour(models.Model):
 
     def __str__(self):
         return f"{self.get_day_display()} {self.from_hour} - {self.to_hour}"
-
-def send_notification(mail_subject, message, to_email):
-    from_email = settings.DEFAULT_FROM_EMAIL
-    mail = EmailMessage(mail_subject, message, from_email, to=[to_email])
-    mail.content_subtype = "html"
-    mail.send()

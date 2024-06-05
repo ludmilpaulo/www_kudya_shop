@@ -283,28 +283,44 @@ def update_product(request, pk):
 
 
 
+# views.py
+from django.http import StreamingHttpResponse
+from django.shortcuts import get_object_or_404
+
+import json
+import time
+
+def sse(request):
+    user_id = request.GET.get('user_id')
+    user = get_object_or_404(User, id=user_id)
+
+    def event_stream():
+        while True:
+            orders = Order.objects.filter(restaurant=user.restaurant).order_by("-id")
+            data = json.dumps(list(orders.values()))
+            yield f"data: {data}\n\n"
+            time.sleep(5)  # Adjust the interval as needed
+
+    return StreamingHttpResponse(event_stream(), content_type='text/event-stream')
+
+
 @api_view(['POST'])
 def restaurant_order(request, format=None):
-     # Print the user to verify if it's retrieved correctly
     data = request.data
     user = get_object_or_404(User, id=data['user_id'])
-    print(data)
-
     try:
-        order = Order.objects.get(id=data["id"],
-                                restaurant=user.restaurant)
+        order = Order.objects.get(id=data["id"], restaurant=user.restaurant)
 
         if order.status == Order.COOKING:
             order.status = Order.READY
             order.save()
 
-        orders = Order.objects.filter(
-        restaurant=user.restaurant).order_by("-id")
-
+        orders = Order.objects.filter(restaurant=user.restaurant).order_by("-id")
         return Response({'message': 'Order status updated to READY'}, status=status.HTTP_200_OK)
 
     except Order.DoesNotExist:
         return Response({'error': 'Order not found'}, status=status.HTTP_404_NOT_FOUND)
+
 
 
 class OrderListView(ListAPIView):
@@ -346,6 +362,15 @@ def restaurant_detail(request, user_id):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     except Restaurant.DoesNotExist:
         return Response({'error': 'Restaurant not found'}, status=status.HTTP_404_NOT_FOUND)
+    
+    
+    
+from rest_framework.decorators import api_view, parser_classes
+from rest_framework.parsers import JSONParser, MultiPartParser, FormParser
+from rest_framework.response import Response
+from rest_framework import status
+from .models import OpeningHour
+from .serializers import OpeningHourSerializer
 
 @api_view(['GET', 'POST'])
 @parser_classes([JSONParser, MultiPartParser, FormParser])

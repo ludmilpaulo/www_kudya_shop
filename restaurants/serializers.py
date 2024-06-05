@@ -79,9 +79,46 @@ class MealCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = MealCategory
         fields = ['id', 'name', 'image', 'slug']
-        
-        
+
+
+
+from rest_framework import serializers
+from datetime import datetime, time
+from .models import OpeningHour
+
 class OpeningHourSerializer(serializers.ModelSerializer):
     class Meta:
         model = OpeningHour
         fields = '__all__'
+
+    HOUR_OF_DAY_24 = [(time(h, m).strftime('%I:%M %p'), time(h, m).strftime('%I:%M %p')) for h in range(24) for m in (0, 30)]
+    
+    def validate_from_hour(self, value):
+        return self.convert_and_validate_time(value, 'from_hour')
+
+    def validate_to_hour(self, value):
+        return self.convert_and_validate_time(value, 'to_hour')
+
+    def convert_and_validate_time(self, time_str, field_name):
+        # Define the expected time format
+        time_format = '%I:%M %p'
+        try:
+            # Convert the time string to the correct format with leading zeros
+            valid_time = datetime.strptime(time_str, time_format).strftime(time_format)
+            # Log the conversion for debugging
+            print(f"Converting {field_name}: {time_str} -> {valid_time}")
+            # Check if the time is in HOUR_OF_DAY_24 choices
+            if valid_time not in dict(self.HOUR_OF_DAY_24):
+                print(f"{valid_time} is not a valid choice in HOUR_OF_DAY_24")
+                raise serializers.ValidationError(f'"{valid_time}" não é um escolha válido.')
+            return valid_time
+        except ValueError:
+            raise serializers.ValidationError(f'"{time_str}" não é um escolha válido.')
+
+    def validate(self, data):
+        print(f"Validating data: {data}")
+        data['from_hour'] = self.convert_and_validate_time(data.get('from_hour', ''), 'from_hour')
+        data['to_hour'] = self.convert_and_validate_time(data.get('to_hour', ''), 'to_hour')
+        print(f"Post-validation data: {data}")
+        return data
+

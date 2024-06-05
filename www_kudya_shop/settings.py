@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'report',
     'info',
     'careers',
+    'channels',
     'django_ckeditor_5',
 
     'rest_framework',
@@ -101,6 +102,14 @@ DATABASES = {
     }
 }
 
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('*', 6379)],
+        },
+    },
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
