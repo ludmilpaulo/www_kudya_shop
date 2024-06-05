@@ -25,7 +25,7 @@ django-taggit
 django-widget-tweaks
 djangorestframework
 djangorestframework-simplejwt
-email-smtp
+#email-smtp
 fonttools
 frozenlist
 html5lib
