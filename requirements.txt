@@ -11,7 +11,6 @@ channels==4.1.0
 channels-redis==4.2.0
 chardet==5.2.0
 charset-normalizer==3.3.2
-config-oc==1.0.4
 cssselect2==0.7.0
 Django==5.0.3
 django-ckeditor==6.7.1
