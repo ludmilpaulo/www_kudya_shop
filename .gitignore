@@ -1,4 +1,4 @@
 db.sqlite3
 static_cdn/
 **/migrations/
-settings.py
+
