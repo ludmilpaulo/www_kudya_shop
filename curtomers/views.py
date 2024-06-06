@@ -244,3 +244,21 @@ class CustomerSignupView(generics.GenericAPIView):
             "status": "201",
             "is_customer": user.is_customer
         }, status=status.HTTP_201_CREATED)
+
+
+from rest_framework import status
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def update_profile(request):
+    user = request.user
+    customer, created = Customer.objects.get_or_create(user=user)
+    serializer = CustomerSerializer(customer, data=request.data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
+    return Response({'status': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
