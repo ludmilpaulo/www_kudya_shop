@@ -6,12 +6,11 @@ from info.models import Chat
 from restaurants.models import Meal, Restaurant
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
-
-from www_kudya_shop import settings
-from .utils import generate_invoice
-import os
+from django.core.files.base import ContentFile
 import random
 import string
+from .utils import generate_invoice
+from django.conf import settings
 
 class Order(models.Model):
     COOKING = 1
@@ -40,8 +39,8 @@ class Order(models.Model):
     secret_pin = models.CharField(max_length=6, verbose_name='PIN Secreto', blank=True, null=True)  # New field
 
     class Meta:
-        verbose_name ='Pedido'
-        verbose_name_plural ='Pedidos'
+        verbose_name = 'Pedido'
+        verbose_name_plural = 'Pedidos'
 
     def __str__(self):
         return str(self.id)
@@ -69,35 +68,14 @@ class Order(models.Model):
         }
         subject = 'Atualização de Status do Pedido'
         message = render_to_string('email_templates/order_status_update.html', context)
-        pdf_path = generate_invoice(self)
-        self.invoice_pdf = pdf_path
+        pdf_path, pdf_content = generate_invoice(self)
+        self.invoice_pdf.save(f"order_{self.id}.pdf", ContentFile(pdf_content), save=False)
         self.save()
 
         email = EmailMessage(subject, message, settings.DEFAULT_FROM_EMAIL, [customer_email, restaurant_email])
-        email.attach_file(pdf_path)
+        email.attach(f"order_{self.id}.pdf", pdf_content, 'application/pdf')
         email.content_subtype = "html"
         email.send()
-
-def send_order_email(email, order, is_restaurant=False):
-    context = {
-        'customer_name': order.customer.user.get_full_name(),
-        'order_status': order.get_status_display(),
-        'order_id': order.id,
-        'order_total': order.total,
-        'address': order.address,
-        'order_details': order.order_details.all(),
-        'secret_pin': order.secret_pin,
-    }
-    subject = 'Nova Pedido' if is_restaurant else 'Pedido Recebido'
-    message = render_to_string('email_templates/order_confirmation.html', context)
-    pdf_path = generate_invoice(order)
-    order.invoice_pdf = pdf_path
-    order.save()
-
-    email = EmailMessage(subject, message, settings.DEFAULT_FROM_EMAIL, [email])
-    email.attach_file(pdf_path)
-    email.content_subtype = "html"
-    email.send()
 
 class OrderDetails(models.Model):
     order = models.ForeignKey(Order, related_name='order_details', on_delete=models.CASCADE, verbose_name='Pedido')

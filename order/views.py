@@ -2,39 +2,28 @@ from datetime import timedelta
 from django.utils import timezone
 from django.db.models import Sum
 from django.http import HttpResponse
+from order.email_utils import send_order_email
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 import urllib.parse
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 from curtomers.models import Customer
-from order.models import Order, OrderDetails, send_order_email
-from order.utils import generate_pdf
-from django.shortcuts import get_object_or_404
+from order.models import Order, OrderDetails
 from restaurants.models import Meal, Restaurant
 from restaurants.serializers import RestaurantSerializer
-####################################################################################################
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework.authtoken.models import Token
-from django.conf import settings
-from django.core.mail import EmailMessage
-from django.utils import timezone
-from .models import Customer, Order, Meal, OrderDetails
 from django.template.loader import render_to_string
-
-from .utils import generate_invoice
-import os
-import urllib
+from django.core.files.base import ContentFile
+from django.shortcuts import get_object_or_404
+from .utils import generate_invoice, generate_pdf
 
 @csrf_exempt
 @api_view(['POST'])
 def customer_add_order(request):
     data = request.data
     access = Token.objects.get(key=data['access_token']).user
-
+    print(data)
     # Get profile
     customer = Customer.objects.get(user=access)
 
@@ -67,7 +56,7 @@ def customer_add_order(request):
             total=order_total,
             status=Order.COOKING,
             address=data["address"],
-            payment_method=data.get("payment_method", "not specified")  # Store payment method
+            payment_method=data["payment_method"]  # Store payment method
         )
 
         # Step 3 - Create Order details
@@ -80,12 +69,14 @@ def customer_add_order(request):
             )
 
         # Generate invoice
-        pdf_path = generate_invoice(order)
+        pdf_path, pdf_content = generate_invoice(order)
+        order.invoice_pdf.save(f"order_{order.id}.pdf", ContentFile(pdf_content), save=False)
+        order.save()
 
         # Send email notifications
-        send_order_email(customer.user.email, order, pdf_path)
+        send_order_email(to_email=customer.user.email, order=order, pdf_path=pdf_path, pdf_content=pdf_content)
         restaurant_email = order.restaurant.user.email
-        send_order_email(restaurant_email, order, pdf_path, is_restaurant=True)
+        send_order_email(to_email=restaurant_email, order=order, pdf_path=pdf_path, pdf_content=pdf_content, is_restaurant=True)
 
         # Generate WhatsApp URL
         phone_number = "customer_phone_number"  # Replace with the actual phone number
@@ -99,21 +90,6 @@ def customer_add_order(request):
             "error": "Failed to connect to Stripe."
         })
 
-def send_order_email(to_email, order, pdf_path, is_restaurant=False):
-    mail_subject = "Seu pedido foi recebido!" if not is_restaurant else "Novo pedido recebido!"
-    message = render_to_string('email_templates/order_email.html', {
-        'order': order,
-        'customer': order.customer,
-    })
-    email = EmailMessage(
-        mail_subject, message, settings.DEFAULT_FROM_EMAIL, [to_email]
-    )
-    email.attach_file(pdf_path)
-    email.content_subtype = "html"
-    email.send()
-
-    
-    
 @api_view(['GET'])
 def generate_restaurant_invoices(request):
     if 'restaurant_id' not in request.GET:
@@ -146,7 +122,6 @@ def generate_restaurant_invoices(request):
     response = HttpResponse(pdf, content_type='application/pdf')
     response['Content-Disposition'] = f'attachment; filename="invoice_{period}.pdf"'
     return response
-
 
 @api_view(['GET'])
 def restaurant_details(request, restaurant_id):

@@ -3,34 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Confirmação de Pedido</title>
+  <title>Seu Pedido na Kudya</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
-      color: #333;
-      padding: 20px;
+      margin: 0;
+      padding: 0;
     }
     .container {
       background-color: #fff;
+      max-width: 600px;
+      margin: 20px auto;
       border-radius: 8px;
-      padding: 20px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
     }
     .header {
-      text-align: center;
       background: linear-gradient(to right, #facc15, #2563eb);
-      padding: 10px 0;
-      border-radius: 8px 8px 0 0;
+      padding: 20px;
+      text-align: center;
     }
     .header img {
       max-width: 150px;
     }
+    .header h1 {
+      color: #fff;
+      margin: 10px 0 0;
+    }
     .content {
-      margin-top: 20px;
+      padding: 20px;
     }
     .content h2 {
       color: #2563eb;
+      margin-top: 0;
+    }
+    .content p {
+      color: #333;
     }
     .table {
       width: 100%;
@@ -47,7 +56,8 @@
       color: #fff;
     }
     .footer {
-      margin-top: 20px;
+      background-color: #f4f4f4;
+      padding: 10px;
       text-align: center;
       font-size: 12px;
       color: #777;
@@ -58,11 +68,13 @@
   <div class="container">
     <div class="header">
       <img src="https://ludmil.pythonanywhere.com/media/logo/azul.png" alt="Kudya Logo">
+      <h1>Seu Pedido na Kudya</h1>
     </div>
     <div class="content">
-      <h2>Confirmação de Pedido</h2>
-      <p>Olá {{ customer_name }},</p>
-      <p>Obrigado por fazer o pedido. Aqui estão os detalhes do seu pedido:</p>
+      <h2>Detalhes do Pedido</h2>
+      <p>ID do Pedido: {{ order_id }}</p>
+      <p>Cliente: {{ customer_name }}</p>
+      <p>Endereço: {{ address }}</p>
       <table class="table">
         <thead>
           <tr>
@@ -72,11 +84,11 @@
           </tr>
         </thead>
         <tbody>
-          {% for item in order_details %}
+          {% for detail in order_details %}
           <tr>
-            <td>{{ item.meal.name }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>{{ item.sub_total }} Kz</td>
+            <td>{{ detail.meal.name }}</td>
+            <td>{{ detail.quantity }}</td>
+            <td>{{ detail.sub_total }} Kz</td>
           </tr>
           {% endfor %}
         </tbody>
@@ -87,10 +99,6 @@
           </tr>
         </tfoot>
       </table>
-      <p>Endereço de Entrega: {{ address }}</p>
-      <p>Status do Pedido: {{ order_status }}</p>
-      <p>PIN Secreto: <strong>{{ secret_pin }}</strong></p>
-      <p>Atenciosamente,<br>Equipe Kudya</p>
     </div>
     <div class="footer">
       <p>&copy; 2024 Kudya. Todos os direitos reservados.</p>

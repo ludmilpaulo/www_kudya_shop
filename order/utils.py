@@ -1,20 +1,8 @@
-from io import BytesIO
-from django.template.loader import get_template
+from django.template.loader import render_to_string, get_template
 from weasyprint import HTML
+import tempfile
 from django.core.files.base import ContentFile
-
-def generate_pdf(template_src, context_dict):
-    template = get_template(template_src)
-    html = template.render(context_dict)
-    result = BytesIO()
-    pdf = HTML(string=html).write_pdf(result)
-    return ContentFile(result.getvalue(), 'invoice.pdf')
-
-
-
-from django.template.loader import render_to_string
-from django.conf import settings
-import os
+from io import BytesIO
 
 def generate_invoice(order):
     context = {
@@ -31,9 +19,15 @@ def generate_invoice(order):
         'order_total': order.total,
     }
     html_string = render_to_string('email_templates/order_invoice.html', context)
-    invoice_dir = os.path.join(settings.MEDIA_ROOT, 'invoices')
-    os.makedirs(invoice_dir, exist_ok=True)
-    pdf_file_path = os.path.join(invoice_dir, f'order_{order.id}.pdf')
+    with tempfile.NamedTemporaryFile(delete=False, suffix='.pdf') as temp_pdf:
+        HTML(string=html_string).write_pdf(temp_pdf.name)
+        temp_pdf.seek(0)
+        pdf_content = temp_pdf.read()
+    return temp_pdf.name, pdf_content
 
-    HTML(string=html_string).write_pdf(pdf_file_path)
-    return pdf_file_path
+def generate_pdf(template_src, context_dict):
+    template = get_template(template_src)
+    html = template.render(context_dict)
+    result = BytesIO()
+    pdf = HTML(string=html).write_pdf(result)
+    return ContentFile(result.getvalue(), 'invoice.pdf')
