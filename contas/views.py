@@ -12,13 +12,15 @@ from django.contrib.auth.tokens import default_token_generator
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny
 from django.template.loader import render_to_string
+from rest_framework.decorators import api_view, permission_classes
 from www_kudya_shop import settings
 User = get_user_model()
 # Reset Password Viewfrom django.template.loader import render_to_string
-class PasswordResetView(APIView):
- 
 
+@permission_classes([AllowAny])
+class PasswordResetView(APIView):
     def post(self, request):
         email = request.data.get('email')
         try:
@@ -35,7 +37,7 @@ class PasswordResetView(APIView):
             return Response({'detail': 'E-mail de redefinição de senha enviado.'}, status=status.HTTP_200_OK)
         except User.DoesNotExist:
             return Response({'error': 'Usuário com este e-mail não existe.'}, status=status.HTTP_400_BAD_REQUEST)
-
+@permission_classes([AllowAny])
 class PasswordResetConfirmView(APIView):
     def post(self, request):
         uid = request.data.get('uid')
@@ -52,6 +54,8 @@ class PasswordResetConfirmView(APIView):
         except (User.DoesNotExist, ValueError):
             return Response({'error': 'Usuário inválido.'}, status=status.HTTP_400_BAD_REQUEST)
 # Activate Account View
+
+@permission_classes([AllowAny])
 class ActivateAccountView(APIView):
     def get(self, request, uidb64, token):
         try:
@@ -69,8 +73,7 @@ class ActivateAccountView(APIView):
             return Response({'message': 'Usuário não encontrado.'}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             return Response({'message': 'Erro ao ativar a conta.'}, status=status.HTTP_400_BAD_REQUEST)
-
-
+@permission_classes([AllowAny])
 class LogoutView(APIView):
     permission_classes = (IsAuthenticated,)
 
@@ -80,7 +83,7 @@ class LogoutView(APIView):
 
 
 
-
+@permission_classes([AllowAny])
 class CustomAuthToken(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data, context={'request': request})

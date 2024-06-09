@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.db import IntegrityError
-
+from rest_framework.renderers import JSONRenderer
 
 
 from rest_framework import status, generics
@@ -297,29 +297,12 @@ def sse(request):
     def event_stream():
         while True:
             orders = Order.objects.filter(restaurant=user.restaurant).order_by("-id")
-            data = json.dumps(list(orders.values()))
-            yield f"data: {data}\n\n"
+            serializer = OrderSerializer(orders, many=True)
+            data = JSONRenderer().render(serializer.data)
+            yield f"data: {data.decode('utf-8')}\n\n"
             time.sleep(5)  # Adjust the interval as needed
 
     return StreamingHttpResponse(event_stream(), content_type='text/event-stream')
-
-
-@api_view(['POST'])
-def restaurant_order(request, format=None):
-    data = request.data
-    user = get_object_or_404(User, id=data['user_id'])
-    try:
-        order = Order.objects.get(id=data["id"], restaurant=user.restaurant)
-
-        if order.status == Order.COOKING:
-            order.status = Order.READY
-            order.save()
-
-        orders = Order.objects.filter(restaurant=user.restaurant).order_by("-id")
-        return Response({'message': 'Order status updated to READY'}, status=status.HTTP_200_OK)
-
-    except Order.DoesNotExist:
-        return Response({'error': 'Order not found'}, status=status.HTTP_404_NOT_FOUND)
 
 
 
@@ -390,3 +373,32 @@ def opening_hour_list(request, restaurant_pk):
         else:
             print("Serializer errors:", serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+    
+    
+from django.shortcuts import get_object_or_404
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+
+
+@api_view(['PUT'])
+def restaurant_order(request, format=None):
+    print("Received PUT request")
+    data = request.data
+    user = get_object_or_404(User, id=data['user_id'])
+    try:
+        order = Order.objects.get(id=data["id"], restaurant=user.restaurant)
+        print(f"Order {order.id} found")
+
+        if order.status == Order.COOKING:
+            order.status = Order.READY
+            order.save()
+
+        orders = Order.objects.filter(restaurant=user.restaurant).order_by("-id")
+        serializer = OrderSerializer(orders, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    except Order.DoesNotExist:
+        return Response({'error': 'Pedido não encontrado'}, status=status.HTTP_404_NOT_FOUND)
