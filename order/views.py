@@ -17,30 +17,31 @@ from django.template.loader import render_to_string
 from django.core.files.base import ContentFile
 from django.shortcuts import get_object_or_404
 from .utils import generate_invoice, generate_pdf
+import logging
+
+logger = logging.getLogger(__name__)
 
 @csrf_exempt
 @api_view(['POST'])
 def customer_add_order(request):
     data = request.data
-    access = Token.objects.get(key=data['access_token']).user
-    print(data)
+    try:
+        access = Token.objects.get(key=data['access_token']).user
+    except Token.DoesNotExist:
+        return Response({"status": "failed", "error": "Invalid access token."})
+    logger.info(f"Received order data: {data}")
+
     # Get profile
     customer = Customer.objects.get(user=access)
 
     # Check for existing orders to the same restaurant that are not delivered
     existing_orders = Order.objects.filter(customer=customer, restaurant_id=data["restaurant_id"]).exclude(status=Order.DELIVERED)
     if existing_orders.exists():
-        return Response({
-            "error": "failed",
-            "status": "Seu último pedido deve ser entregue para Pedir Outro."
-        })
+        return Response({"error": "failed", "status": "Seu último pedido deve ser entregue para Pedir Outro."})
 
     # Check Address
     if not data['address']:
-        return Response({
-            "status": "failed",
-            "error": "Address is required."
-        })
+        return Response({"status": "failed", "error": "Address is required."})
 
     # Get Order Details
     order_details = data["order_details"]
@@ -56,7 +57,7 @@ def customer_add_order(request):
             total=order_total,
             status=Order.COOKING,
             address=data["address"],
-            payment_method=data["payment_method"]  # Store payment method
+            payment_method=data["payment_method"]
         )
 
         # Step 3 - Create Order details
@@ -73,10 +74,14 @@ def customer_add_order(request):
         order.invoice_pdf.save(f"order_{order.id}.pdf", ContentFile(pdf_content), save=False)
         order.save()
 
-        # Send email notifications
-        send_order_email(to_email=customer.user.email, order=order, pdf_path=pdf_path, pdf_content=pdf_content)
-        restaurant_email = order.restaurant.user.email
-        send_order_email(to_email=restaurant_email, order=order, pdf_path=pdf_path, pdf_content=pdf_content, is_restaurant=True)
+        try:
+            # Send email notifications
+            send_order_email(to_email=customer.user.email, order=order, pdf_path=pdf_path, pdf_content=pdf_content)
+            restaurant_email = order.restaurant.user.email
+            send_order_email(to_email=restaurant_email, order=order, pdf_path=pdf_path, pdf_content=pdf_content, is_restaurant=True)
+        except Exception as e:
+            logger.error(f"Error sending email: {e}")
+            return Response({"status": "failed", "error": "Erro ao enviar email. Por favor, tente novamente."})
 
         # Generate WhatsApp URL
         phone_number = "customer_phone_number"  # Replace with the actual phone number
@@ -85,10 +90,7 @@ def customer_add_order(request):
 
         return Response({"status": "success", "secret_pin": order.secret_pin, "whatsapp_url": whatsapp_url})
     else:
-        return Response({
-            "status": "failed",
-            "error": "Failed to connect to Stripe."
-        })
+        return Response({"status": "failed", "error": "Failed to connect to Stripe."})
 
 @api_view(['GET'])
 def generate_restaurant_invoices(request):
