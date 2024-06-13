@@ -93,18 +93,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'www_kudya_shop.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'maindoagency',
-        'USER': 'super',
-        'PASSWORD': 'Maitland@2024',  # Replace with your actual password
-        'HOST': 'maindoagency-3864.postgres.pythonanywhere-services.com',
-        'PORT': '13864',
-    }
-}
 
 
 DATABASES = {
@@ -172,6 +160,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOWED_ORIGINS = [
     'http://*',
     'https://*',
+    FRONTEND_URL,
 ]
 
 
