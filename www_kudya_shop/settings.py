@@ -15,7 +15,7 @@ ENV = os.getenv('DJANGO_ENV', 'development')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['www.kudya.shop']
 
 FRONTEND_URL = 'https://www.sdkudya.com'
 
