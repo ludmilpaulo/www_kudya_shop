@@ -30,6 +30,7 @@ class AboutUs(models.Model):
     logo = models.ImageField(upload_to="logo/", blank=True, null=True)
     backgroundImage = models.ImageField(upload_to="Back_logo/", blank=True, null=True)
     backgroundApp = models.ImageField(upload_to="Back_logo/", blank=True, null=True)
+    bottomImage = models.ImageField(upload_to="Back_logo/", blank=True, null=True)
     about = CKEditor5Field('Text', config_name='extends')
     born_date = models.DateField(blank=True, null=True)
     address = models.CharField(max_length=100, blank=True, null=True)

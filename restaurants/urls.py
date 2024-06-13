@@ -3,7 +3,7 @@
 
 from django.urls import path
 
-from restaurants.views import MealCategoryList, OrderListView, ProdutoListView, RestaurantCategoryList, delete_product, fornecedor_add_product, fornecedor_sign_up, get_fornecedor, opening_hour_list, restaurant_detail, restaurant_get_meals, restaurant_order, sse, update_product
+from restaurants.views import MealCategoryList, OrderListView, ProdutoListView, RestaurantCategoryList, delete_product, fornecedor_add_product, fornecedor_sign_up, get_fornecedor, opening_hour_list, restaurant_detail, restaurant_get_meals, restaurant_order, sse, update_location, update_product
 
 
 urlpatterns = [
@@ -16,6 +16,7 @@ urlpatterns = [
     path('delete-product/<int:pk>/', delete_product, name='fornecedor-delete-product'),
     path('restaurant/status/', restaurant_order, name='restaurant_order_api'),
     path('sse/', sse, name='sse'),
+    path('update-location/<int:user_id>/', update_location, name='update-location'),
     path('orders/', OrderListView.as_view(), name='order_list'),
     path('restaurant/orders/',OrderListView.as_view()),
     path('restaurant-categories/', RestaurantCategoryList.as_view(), name='restaurant-category-list'),

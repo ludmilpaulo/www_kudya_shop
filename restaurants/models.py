@@ -27,6 +27,7 @@ class Restaurant(models.Model):
     phone = models.CharField(max_length=500, verbose_name='Telefone do restaurante')
     address = models.CharField(max_length=500, verbose_name='Endereço do restaurante')
     logo = models.ImageField(upload_to='restaurant_logo/', blank=False, verbose_name='Logotipo do restaurante')
+    location = models.CharField(max_length=500, blank=True, verbose_name='localização')
     restaurant_license = models.FileField(upload_to='vendor/license', blank=True, verbose_name='Licenca do restaurante')
     barnner = models.BooleanField(default=False)
     is_approved = models.BooleanField(default=False)

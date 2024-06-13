@@ -2,8 +2,8 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.db import IntegrityError
 from rest_framework.renderers import JSONRenderer
-
-
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.decorators import *
@@ -402,3 +402,38 @@ def restaurant_order(request, format=None):
 
     except Order.DoesNotExist:
         return Response({'error': 'Pedido não encontrado'}, status=status.HTTP_404_NOT_FOUND)
+    
+    
+from django.http import JsonResponse
+from django.views.decorators.http import require_http_methods
+from django.shortcuts import get_object_or_404
+
+import logging
+
+logger = logging.getLogger(__name__)
+
+@require_http_methods(["PUT"])
+@permission_classes([AllowAny])
+def update_location(request, user_id):
+    try:
+        logger.info(f"Request data: {request.body}")
+        logger.info(f"User ID: {user_id}")
+        
+        restaurant = get_object_or_404(Restaurant, user__id=user_id)
+        location = request.PUT.get('location')
+        
+        logger.info(f"Found restaurant: {restaurant}")
+        logger.info(f"New location: {location}")
+        
+        if location:
+            restaurant.location = location
+            restaurant.save()
+            logger.info(f"Location updated successfully for user ID: {user_id}")
+            return JsonResponse({'message': 'Location updated successfully'}, status=200)
+        else:
+            logger.error(f"Location is missing in the request for user ID: {user_id}")
+            return JsonResponse({'error': 'Location is required'}, status=400)
+    except Exception as e:
+        logger.error(f"Error updating location for user ID: {user_id} - {str(e)}")
+        return JsonResponse({'error': str(e)}, status=500)
+
