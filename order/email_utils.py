@@ -1,12 +1,21 @@
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
-from django.core.files.base import ContentFile
 from django.conf import settings
 import logging
 
-# Configure logging
-logger = logging.getLogger(__name__)
+import logging
 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+# Add handler to output logs to console or file
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+console_handler.setFormatter(formatter)
+logger.addHandler(console_handler)
+
+# In your email sending function
 def send_order_email(to_email, order, pdf_path, pdf_content, is_restaurant=False):
     context = {
         'customer_name': order.customer.user.get_full_name(),
@@ -19,8 +28,6 @@ def send_order_email(to_email, order, pdf_path, pdf_content, is_restaurant=False
     }
     subject = 'Novo Pedido' if is_restaurant else 'Pedido Recebido'
     message = render_to_string('email_templates/order_confirmation.html', context)
-    order.invoice_pdf.save(f"order_{order.id}.pdf", ContentFile(pdf_content), save=False)
-    order.save()
 
     email_message = EmailMessage(subject, message, settings.DEFAULT_FROM_EMAIL, [to_email])
     email_message.attach(f"order_{order.id}.pdf", pdf_content, 'application/pdf')
@@ -30,4 +37,5 @@ def send_order_email(to_email, order, pdf_path, pdf_content, is_restaurant=False
         email_message.send()
         logger.info(f"Email sent successfully to {to_email}")
     except Exception as e:
-        logger.error(f"Failed to send email to {to_email}: {e}")
+        logger.error(f"Failed to send email to {to_email}: {e}", exc_info=True)
+        raise e
