@@ -18,12 +18,6 @@ from rest_framework.authtoken.models import Token
 from rest_framework.parsers import *
 
 
-
-
-
-
-
-
 from django.contrib.auth import get_user_model
 User = get_user_model()
 

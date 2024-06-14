@@ -49,9 +49,10 @@ class OrderSerializer(serializers.ModelSerializer):
     order_details = OrderDetailsSerializer(many=True)
     status = serializers.ReadOnlyField(source="get_status_display")
     created_at = serializers.DateTimeField(format="%Y-%m-%dT%H:%M:%S.%fZ", read_only=True)
+    picked_at = serializers.DateTimeField(format="%Y-%m-%dT%H:%M:%S.%fZ", read_only=True)
     updated_at = serializers.DateTimeField(format="%Y-%m-%dT%H:%M:%S.%fZ", read_only=True)
 
     class Meta:
         model = Order
         fields = ("id", "customer", "restaurant", "driver", "order_details",
-                  "total", "status", "address", "created_at", "updated_at")
+                  "total", "status", "address", "invoice_pdf", "created_at", "secret_pin", "picked_at", "updated_at")

@@ -1,3 +1,4 @@
+import threading
 from django.db import models
 from django.utils import timezone
 from curtomers.models import Customer
@@ -11,6 +12,10 @@ import random
 import string
 from .utils import generate_invoice
 from django.conf import settings
+import logging
+
+
+logger = logging.getLogger(__name__)
 
 class Order(models.Model):
     COOKING = 1
@@ -36,7 +41,7 @@ class Order(models.Model):
     created_at = models.DateTimeField(default=timezone.now, verbose_name='criado em')
     picked_at = models.DateTimeField(blank=True, null=True, verbose_name='pegar em')
     invoice_pdf = models.FileField(upload_to='invoices/', null=True, blank=True, verbose_name='Fatura PDF')
-    secret_pin = models.CharField(max_length=6, verbose_name='PIN Secreto', blank=True, null=True)  # New field
+    secret_pin = models.CharField(max_length=6, verbose_name='PIN Secreto', blank=True, null=True)
 
     class Meta:
         verbose_name = 'Pedido'
@@ -47,14 +52,16 @@ class Order(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.secret_pin:
-            self.secret_pin = ''.join(random.choices(string.digits, k=6))  # Generate a 6-digit PIN
+            self.secret_pin = ''.join(random.choices(string.digits, k=6))
         if self.pk:
             old_status = Order.objects.get(pk=self.pk).status
             if old_status != self.status:
-                self.send_status_update_email()
+                logger.info(f"Order status changed from {old_status} to {self.status}")
+                threading.Thread(target=self.send_status_update_email).start()
         super().save(*args, **kwargs)
 
     def send_status_update_email(self):
+        logger.info(f"Sending status update email for order {self.id}")
         customer_email = self.customer.user.email
         restaurant_email = self.restaurant.user.email
         context = {
@@ -76,6 +83,9 @@ class Order(models.Model):
         email.attach(f"order_{self.id}.pdf", pdf_content, 'application/pdf')
         email.content_subtype = "html"
         email.send()
+        logger.info(f"Status update email sent for order {self.id}")
+
+
 
 class OrderDetails(models.Model):
     order = models.ForeignKey(Order, related_name='order_details', on_delete=models.CASCADE, verbose_name='Pedido')
