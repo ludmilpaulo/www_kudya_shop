@@ -109,7 +109,7 @@ def restaurant_customers(request, user_id):
 @api_view(['GET'])
 def restaurant_drivers(request, user_id):
     user = User.objects.get(id=user_id)
-    restaurant = user.restaurant 
+    restaurant = user.restaurant
     drivers = Driver.objects.annotate(
         total_order=Count(
             Case(When(order__restaurant=restaurant, then=1))
