@@ -1,10 +1,12 @@
 from django.utils import timezone
 from django.contrib.auth import get_user_model
-from curtomers.models import Customer
-from drivers.models import Driver
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from curtomers.models import Customer
+from curtomers.serializers import CustomerSerializer
+from drivers.models import Driver
+from drivers.serializers import DriverSerializer
 from order.models import Order
 from django.db.models import Count, Sum, Case, When
 
@@ -12,17 +14,14 @@ from restaurants.models import Meal
 
 
 
-
-
-
 User = get_user_model()
 
 @api_view(['GET'])
-def shop_report(request, user_id):
+def restaurant_report(request, user_id):
     try:
         # Get the user object
         user = User.objects.get(id=user_id)
-        restaurant = user.restaurant  # Assuming user has a shop attribute
+        restaurant = user.restaurant  # Assuming user has a restaurant attribute
 
         # Calculate revenue and number of orders for the current week
         from datetime import datetime, timedelta
@@ -47,12 +46,12 @@ def shop_report(request, user_id):
             revenue.append(sum(order.total for order in delivered_orders))
             orders.append(delivered_orders.count())
 
-        # Top 3 Products
+        # Top 3 Meals
         top3_meals = Meal.objects.filter(restaurant=restaurant)\
             .annotate(total_order=Sum('orderdetails__quantity'))\
             .order_by("-total_order")[:3]
 
-        meal_data = {
+        meals_data = {
             "labels": [meal.title for meal in top3_meals],
             "data": [meal.total_order or 0 for meal in top3_meals]
         }
@@ -79,7 +78,7 @@ def shop_report(request, user_id):
         return Response({
             "revenue": revenue,
             "orders": orders,
-            "meals": meal_data,
+            "meals": meals_data,
             "drivers": drivers_data,
             "customers": customers_data
         })
@@ -90,17 +89,13 @@ def shop_report(request, user_id):
         # Handle exceptions and return appropriate response
         return Response({"error": str(e)}, status=500)
     
-    
-    
-
-
 @api_view(['GET'])
-def shop_customers(request, user_id):
+def restaurant_customers(request, user_id):
     user = User.objects.get(id=user_id)
-    shop = user.shop  # Assuming user has a foreign key relationship with Shop model
+    restaurant = user.restaurant  # Assuming user has a foreign key relationship with Restaurant model
     customers = Customer.objects.annotate(
         total_order=Count(
-            Case(When(order__shop=shop, then=1))
+            Case(When(order__restaurant=restaurant, then=1))
         )
     ).order_by("-total_order")
 
@@ -111,14 +106,13 @@ def shop_customers(request, user_id):
     serializer = CustomerSerializer(all_customers, many=True)
     return Response(serializer.data)
 
-
 @api_view(['GET'])
-def shop_drivers(request, user_id):
+def restaurant_drivers(request, user_id):
     user = User.objects.get(id=user_id)
-    shop = user.shop 
+    restaurant = user.restaurant 
     drivers = Driver.objects.annotate(
         total_order=Count(
-            Case(When(order__shop=shop, then=1))
+            Case(When(order__restaurant=restaurant, then=1))
         )
     ).order_by("-total_order")
 
@@ -126,5 +120,3 @@ def shop_drivers(request, user_id):
 
     serializer = DriverSerializer(all_drivers, many=True)
     return Response(serializer.data)
-
-
