@@ -7,7 +7,7 @@ from contas.serializers import DriverSignupSerializer, UserSerializer
 from drivers.models import Driver
 from drivers.serializers import DriverSerializer
 from order.models import Order
-from order.serializers import OrderSerializer
+from order.serializers import OrderDriverSerializer, OrderSerializer
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.decorators import *

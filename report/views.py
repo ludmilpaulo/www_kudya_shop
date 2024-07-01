@@ -52,7 +52,7 @@ def restaurant_report(request, user_id):
             .order_by("-total_order")[:3]
 
         meals_data = {
-            "labels": [meal.title for meal in top3_meals],
+            "labels": [meal.name for meal in top3_meals],
             "data": [meal.total_order or 0 for meal in top3_meals]
         }
 

@@ -23,6 +23,7 @@ class Order(models.Model):
     ONTHEWAY = 3
     DELIVERED = 4
 
+
     STATUS_CHOICES = (
         (COOKING, "Cozinhando"),
         (READY, "Pedido Pronto"),
@@ -42,6 +43,19 @@ class Order(models.Model):
     picked_at = models.DateTimeField(blank=True, null=True, verbose_name='pegar em')
     invoice_pdf = models.FileField(upload_to='invoices/', null=True, blank=True, verbose_name='Fatura PDF')
     secret_pin = models.CharField(max_length=6, verbose_name='PIN Secreto', blank=True, null=True)
+    driver_commission_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=1)
+
+
+    def calculate_driver_commission(self):
+        if self.driver:
+            total_commission = (self.total * self.driver_commission_percentage / 100)
+            return total_commission
+        return 0
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.driver_commission_percentage = self.DRIVER_COMMISSION_PERCENTAGE_DEFAULT
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Pedido'
