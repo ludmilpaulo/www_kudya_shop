@@ -130,11 +130,11 @@ class Meal(models.Model):
     category = models.ForeignKey(MealCategory, on_delete=models.CASCADE, related_name='meals')
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='meals')
     percentage_markup = models.DecimalField(max_digits=5, decimal_places=2, default=0)
-    
+
     @property
     def price_with_markup(self):
         return self.price * (1 + self.percentage_markup / 100)
-    
+
     def __str__(self):
         return self.name
 
