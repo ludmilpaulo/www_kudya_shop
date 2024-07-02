@@ -96,11 +96,16 @@ WSGI_APPLICATION = 'www_kudya_shop.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'kudya',
+            'USER': 'super',
+            'PASSWORD': 'Maitland@2024',  # Replace with your actual password
+            'HOST': 'maindoagency-3864.postgres.pythonanywhere-services.com',
+            'PORT': '13864',
+        }
     }
-}
+
 
 
 # Password validation
