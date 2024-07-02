@@ -1,4 +1,5 @@
 db.sqlite3
 static_cdn/
+# Ignore the settings.py file
 /settings.py
 settings.py
