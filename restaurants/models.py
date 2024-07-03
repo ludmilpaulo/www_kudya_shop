@@ -158,7 +158,7 @@ class Meal(models.Model):
 
     @property
     def price_with_markup(self):
-        return self.price * (1 + self.percentage_markup / 100)
+        return self.price * (1 + self.percentage / 100)
 
     def __str__(self):
         return self.name
