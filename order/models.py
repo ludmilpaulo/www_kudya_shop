@@ -44,6 +44,12 @@ class Order(models.Model):
     invoice_pdf = models.FileField(upload_to='invoices/', null=True, blank=True, verbose_name='Fatura PDF')
     secret_pin = models.CharField(max_length=6, verbose_name='PIN Secreto', blank=True, null=True)
     driver_commission_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=1)
+    
+    @property
+    def loyalty_discount(self):
+        order_count = Order.objects.filter(customer=self.customer).count()
+        discount = min(order_count, 10)  # Maximum discount is 10%
+        return discount
 
 
     def calculate_driver_commission(self):

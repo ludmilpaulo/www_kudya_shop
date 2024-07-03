@@ -1,62 +1,49 @@
-from rest_framework import viewsets
-from rest_framework.decorators import action
+from django.shortcuts import get_object_or_404
+from rest_framework import viewsets, permissions
 from rest_framework.response import Response
-from django.http import HttpResponse
+from rest_framework.decorators import action
 
+from drivers.models import Driver
+from drivers.serializers import DriverSerializer
+from management.models import Partner
+from management.serializers import PartnerSerializer
 from order.models import Order
 from order.serializers import OrderSerializer
-
-from .serializers import RestaurantUserSerializer
-from datetime import timedelta
-from django.utils import timezone
+from restaurants.models import Restaurant
+from restaurants.serializers import RestaurantSerializer
 
 
-class OrderViewSet(viewsets.ModelViewSet):
-    queryset = Order.objects.all()
-    serializer_class = OrderSerializer
+class RestaurantViewSet(viewsets.ModelViewSet):
+    queryset = Restaurant.objects.all()
+    serializer_class = RestaurantSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
-    @action(detail=False, methods=['get'], url_path='weekly-orders/(?P<restaurant_id>[^/.]+)')
-    def filter_orders_weekly(self, request, restaurant_id=None):
-        today = timezone.now().date()
-        week_ago = today - timedelta(days=7)
-        orders = Order.objects.filter(restaurant_id=restaurant_id, created_at__gte=week_ago)
-        serializer = self.get_serializer(orders, many=True)
-        return Response(serializer.data)
+    @action(detail=True, methods=['get'])
+    def earnings(self, request, pk=None):
+        restaurant = get_object_or_404(Restaurant, pk=pk)
+        orders = Order.objects.filter(restaurant=restaurant)
+        total_earnings = sum(order.total for order in orders)
+        return Response({'total_earnings': total_earnings, 'orders': OrderSerializer(orders, many=True).data})
 
-    @action(detail=False, methods=['get'], url_path='monthly-orders/(?P<restaurant_id>[^/.]+)')
-    def filter_orders_monthly(self, request, restaurant_id=None):
-        today = timezone.now().date()
-        month_ago = today - timedelta(days=30)
-        orders = Order.objects.filter(restaurant_id=restaurant_id, created_at__gte=month_ago)
-        serializer = self.get_serializer(orders, many=True)
-        return Response(serializer.data)
+class PartnerViewSet(viewsets.ModelViewSet):
+    queryset = Partner.objects.all()
+    serializer_class = PartnerSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
-    @action(detail=True, methods=['get'], url_path='invoice')
-    def generate_pdf_invoice(self, request, pk=None):
-        order = self.get_object()
-        pdf_path, pdf_content = order.generate_invoice_pdf()
-        response = HttpResponse(pdf_content, content_type='application/pdf')
-        response['Content-Disposition'] = f'attachment; filename="invoice_{order.id}.pdf"'
-        return response
+    @action(detail=True, methods=['get'])
+    def earnings(self, request, pk=None):
+        partner = get_object_or_404(Partner, pk=pk)
+        earnings = partner.earnings
+        return Response({'total_earnings': earnings})
 
-class RestaurantUserViewSet(viewsets.ModelViewSet):
-    queryset = RestaurantUser.objects.all()
-    serializer_class = RestaurantUserSerializer
+class DriverViewSet(viewsets.ModelViewSet):
+    queryset = Driver.objects.all()
+    serializer_class = DriverSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
-    @action(detail=True, methods=['get'], url_path='user-invoice/(?P<restaurant_id>[^/.]+)/(?P<period>[^/.]+)')
-    def generate_user_invoice(self, request, pk=None, restaurant_id=None, period=None):
-        user = self.get_object()
-        restaurant = Restaurant.objects.get(id=restaurant_id)
-        association = RestaurantUser.objects.get(user=user, restaurant=restaurant)
-        if period == 'weekly':
-            today = timezone.now().date()
-            week_ago = today - timedelta(days=7)
-            orders = Order.objects.filter(restaurant=restaurant, created_at__gte=week_ago)
-        elif period == 'monthly':
-            today = timezone.now().date()
-            month_ago = today - timedelta(days=30)
-            orders = Order.objects.filter(restaurant=restaurant, created_at__gte=month_ago)
-        pdf_path, pdf_content = association.generate_user_invoice(orders)
-        response = HttpResponse(pdf_content, content_type='application/pdf')
-        response['Content-Disposition'] = f'attachment; filename="user_invoice_{user.id}_{period}.pdf"'
-        return response
+    @action(detail=True, methods=['get'])
+    def earnings(self, request, pk=None):
+        driver = get_object_or_404(Driver, pk=pk)
+        total_earnings = sum(order.calculate_driver_commission() for order in Order.objects.filter(driver=driver))
+        return Response({'total_earnings': total_earnings})
+

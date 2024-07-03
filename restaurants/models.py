@@ -3,6 +3,8 @@ from datetime import time, date, datetime
 from django.conf import settings
 from django.core.mail import send_mail, EmailMessage
 from django.contrib.auth import get_user_model
+from django.utils import timezone
+from django.db.models import Sum
 
 User = get_user_model()
 
@@ -31,6 +33,29 @@ class Restaurant(models.Model):
     restaurant_license = models.FileField(upload_to='vendor/license', blank=True, verbose_name='Licenca do restaurante')
     barnner = models.BooleanField(default=False)
     is_approved = models.BooleanField(default=False)
+    
+    def get_orders(self, period):
+        if period == 'weekly':
+            start_date = timezone.now() - timezone.timedelta(days=7)
+        elif period == 'monthly':
+            start_date = timezone.now() - timezone.timedelta(days=30)
+        else:
+            start_date = timezone.now() - timezone.timedelta(days=1)
+
+        orders = Order.objects.filter(restaurant=self, created_at__gte=start_date)
+        return orders
+
+    def generate_invoice(self, period):
+        orders = self.get_orders(period)
+        total_amount = orders.aggregate(Sum('total'))['total__sum']
+        context = {
+            'restaurant': self,
+            'orders': orders,
+            'total_amount': total_amount,
+            'period': period,
+        }
+        pdf_path, pdf_content = generate_invoice(context)
+        return pdf_path, pdf_content
 
     def __str__(self):
         return self.name
@@ -129,7 +154,7 @@ class Meal(models.Model):
     quantity = models.IntegerField()
     category = models.ForeignKey(MealCategory, on_delete=models.CASCADE, related_name='meals')
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='meals')
-    percentage_markup = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    percentage_markup = models.DecimalField(max_digits=5, decimal_places=2, default=10)  # 10% markup
 
     @property
     def price_with_markup(self):

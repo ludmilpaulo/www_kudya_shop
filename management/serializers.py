@@ -1,9 +1,10 @@
 from rest_framework import serializers
-from .models import  RestaurantUser
 
-c
+from management.models import Partner
 
-class RestaurantUserSerializer(serializers.ModelSerializer):
+
+
+class PartnerSerializer(serializers.ModelSerializer):
     class Meta:
-        model = RestaurantUser
+        model = Partner
         fields = '__all__'

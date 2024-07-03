@@ -14,6 +14,7 @@ urlpatterns = [
     path('careers/', include('careers.urls')),
     path('report/', include('report.urls')),
     path('restaurant/', include('restaurants.urls')),
+    path('manager/', include('management.urls')),
     path("ckeditor5/", include('django_ckeditor_5.urls'), name="ck_editor_5_upload_file"),
 ]
 
