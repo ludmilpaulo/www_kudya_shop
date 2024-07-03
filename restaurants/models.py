@@ -154,7 +154,7 @@ class Meal(models.Model):
     quantity = models.IntegerField()
     category = models.ForeignKey(MealCategory, on_delete=models.CASCADE, related_name='meals')
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='meals')
-    percentage_markup = models.DecimalField(max_digits=5, decimal_places=2, default=10)  # 10% markup
+    percentage = models.DecimalField(max_digits=5, decimal_places=2, default=10)  # 10% markup
 
     @property
     def price_with_markup(self):
