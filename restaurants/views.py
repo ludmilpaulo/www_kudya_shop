@@ -89,62 +89,107 @@ class CategoriaListCreate(generics.ListCreateAPIView):
 
 
 
+from rest_framework.decorators import api_view, parser_classes
+from rest_framework.parsers import JSONParser, MultiPartParser, FormParser, FileUploadParser
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.authtoken.models import Token
+from django.db import IntegrityError
+from .models import Meal, MealCategory
 
 
 @api_view(["POST"])
 @parser_classes([JSONParser, MultiPartParser, FormParser, FileUploadParser])
 def fornecedor_add_product(request, format=None):
     data = request.data
+    print("Request data:", data)
 
     try:
         # Retrieve the user associated with the access token
-        access = Token.objects.get(key=data['access_token']).user
+        access_token = data.get('access_token')
+        if not access_token:
+            return Response({'error': 'Access token is required'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        access = Token.objects.get(key=access_token).user
+        print("User associated with token:", access)
 
         # Retrieve the restaurant associated with the user
-        restaurant = access.restaurant
+        try:
+            restaurant = access.restaurant
+        except Restaurant.DoesNotExist:
+            return Response({'error': 'Restaurant not found for the user'}, status=status.HTTP_404_NOT_FOUND)
+        print("Restaurant associated with user:", restaurant)
 
         # Retrieve or create the category based on the slug
-        category_slug = data['category']
+        category_slug = data.get('category')
+        if not category_slug:
+            return Response({'error': 'Category slug is required'}, status=status.HTTP_400_BAD_REQUEST)
+        
         try:
             category = MealCategory.objects.get(slug=category_slug)
         except MealCategory.DoesNotExist:
             category = MealCategory.objects.create(slug=category_slug, name=category_slug)
+        print("Meal category:", category)
 
         # Convert price to float
-        price = float(data['price'])
+        price = data.get('price')
+        if not price:
+            return Response({'error': 'Price is required'}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            price = float(price)
+        except ValueError:
+            return Response({'error': 'Invalid price format'}, status=status.HTTP_400_BAD_REQUEST)
+        print("Price:", price)
+
+        # Retrieve quantity if provided, otherwise use default
+        quantity = data.get('quantity', 1)
+        try:
+            quantity = int(quantity)
+        except ValueError:
+            return Response({'error': 'Invalid quantity format'}, status=status.HTTP_400_BAD_REQUEST)
+        print("Quantity:", quantity)
 
         # Create a new meal for the restaurant
         meal = Meal(
             restaurant=restaurant,
             category=category,
-            name=data['name'],
-            short_description=data['short_description'],
+            name=data.get('name'),
+            short_description=data.get('short_description'),
             price=price,
+            quantity=quantity,
         )
+        print("Meal object created:", meal)
 
         # Handle image file
         if 'image' in request.FILES:
             meal.image = request.FILES['image']
+            print("Image file received")
 
         try:
             # Try to save the meal
             meal.save()
-        except IntegrityError:
-            # If there is a unique constraint violation (e.g., duplicate name), you can handle it here
+            print("Meal saved successfully")
+        except IntegrityError as e:
+            print("IntegrityError:", str(e))
             return Response({'error': 'Meal with the same name already exists'}, status=status.HTTP_400_BAD_REQUEST)
 
         return Response({"status": "Os Seus Dados enviados com sucesso"}, status=status.HTTP_201_CREATED)
 
-    except Token.DoesNotExist:
+    except Token.DoesNotExist as e:
+        print("Token.DoesNotExist:", str(e))
         return Response({'error': 'Invalid access token'}, status=status.HTTP_401_UNAUTHORIZED)
 
-    except User.DoesNotExist:
-        return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
-    
+    except Restaurant.DoesNotExist as e:
+        print("Restaurant.DoesNotExist:", str(e))
+        return Response({'error': 'Restaurant not found for the user'}, status=status.HTTP_404_NOT_FOUND)
+
     except ValueError as e:
+        print("ValueError:", str(e))
         return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-
+    except Exception as e:
+        print("Unexpected error:", str(e))
+        return Response({'error': 'Unexpected error occurred'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 

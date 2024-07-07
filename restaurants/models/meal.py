@@ -18,7 +18,7 @@ class Meal(models.Model):
     short_description = models.TextField()
     image = models.ImageField(upload_to='meal_images/')
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    quantity = models.IntegerField()
+    quantity = models.IntegerField(null=True, blank=True, default=1)
     category = models.ForeignKey(MealCategory, on_delete=models.CASCADE, related_name='meals')
     restaurant = models.ForeignKey('restaurants.Restaurant', on_delete=models.CASCADE, related_name='meals')
     percentage = models.DecimalField(max_digits=5, decimal_places=2, default=10)  # 10% markup
