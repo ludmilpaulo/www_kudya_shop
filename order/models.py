@@ -13,15 +13,15 @@ from .utils import generate_invoice
 from django.conf import settings
 import logging
 
-
 logger = logging.getLogger(__name__)
 
 class Order(models.Model):
+    DRIVER_COMMISSION_PERCENTAGE_DEFAULT = 5  # Example default percentage
+
     COOKING = 1
     READY = 2
     ONTHEWAY = 3
     DELIVERED = 4
-
 
     STATUS_CHOICES = (
         (COOKING, "Cozinhando"),
@@ -29,7 +29,7 @@ class Order(models.Model):
         (ONTHEWAY, "A caminho"),
         (DELIVERED, "Entregue"),
     )
-    
+
     PAID = 'paid'
     UNPAID = 'unpaid'
 
@@ -42,7 +42,7 @@ class Order(models.Model):
     restaurant = models.ForeignKey('restaurants.Restaurant', on_delete=models.CASCADE, verbose_name='restaurante')
     driver = models.ForeignKey(Driver, blank=True, null=True, on_delete=models.CASCADE, verbose_name='motorista')
     address = models.CharField(max_length=500, verbose_name='Endereco')
-    total = models.IntegerField()
+    total = models.DecimalField(max_digits=10, decimal_places=2)
     status = models.IntegerField(choices=STATUS_CHOICES, verbose_name='stado')
     payment_method = models.CharField(max_length=50, verbose_name='método de pagamento')
     chat = models.OneToOneField(Chat, on_delete=models.CASCADE, null=True, blank=True, related_name='order_chat')
@@ -50,18 +50,19 @@ class Order(models.Model):
     picked_at = models.DateTimeField(blank=True, null=True, verbose_name='pegar em')
     invoice_pdf = models.FileField(upload_to='invoices/', null=True, blank=True, verbose_name='Fatura PDF')
     secret_pin = models.CharField(max_length=6, verbose_name='PIN Secreto', blank=True, null=True)
-    driver_commission_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=1)
+    driver_commission_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=DRIVER_COMMISSION_PERCENTAGE_DEFAULT)
     proof_of_payment_restaurant = models.FileField(upload_to='proof_of_payment/restaurant/', null=True, blank=True, verbose_name='Prova de Pagamento ao Restaurante')
     proof_of_payment_driver = models.FileField(upload_to='proof_of_payment/driver/', null=True, blank=True, verbose_name='Prova de Pagamento ao Motorista')
     payment_status_restaurant = models.CharField(max_length=10, choices=PAYMENT_STATUS_CHOICES, default=UNPAID, verbose_name='Status de Pagamento ao Restaurante')
     payment_status_driver = models.CharField(max_length=10, choices=PAYMENT_STATUS_CHOICES, default=UNPAID, verbose_name='Status de Pagamento ao Motorista')
+    original_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    driver_commission = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
 
     @property
     def loyalty_discount(self):
         order_count = Order.objects.filter(customer=self.customer).count()
         discount = min(order_count, 10)  # Maximum discount is 10%
         return discount
-
 
     def calculate_driver_commission(self):
         if self.driver:
@@ -72,16 +73,6 @@ class Order(models.Model):
     def save(self, *args, **kwargs):
         if not self.pk:
             self.driver_commission_percentage = self.DRIVER_COMMISSION_PERCENTAGE_DEFAULT
-        super().save(*args, **kwargs)
-
-    class Meta:
-        verbose_name = 'Pedido'
-        verbose_name_plural = 'Pedidos'
-
-    def __str__(self):
-        return str(self.id)
-
-    def save(self, *args, **kwargs):
         if not self.secret_pin:
             self.secret_pin = ''.join(random.choices(string.digits, k=6))
         if self.pk:
@@ -116,13 +107,11 @@ class Order(models.Model):
         email.send()
         logger.info(f"Status update email sent for order {self.id}")
 
-
-
 class OrderDetails(models.Model):
     order = models.ForeignKey(Order, related_name='order_details', on_delete=models.CASCADE, verbose_name='Pedido')
     meal = models.ForeignKey('restaurants.Meal', on_delete=models.CASCADE, verbose_name='Refeição')
     quantity = models.IntegerField(verbose_name='Quantidade')
-    sub_total = models.IntegerField()
+    sub_total = models.DecimalField(max_digits=10, decimal_places=2)
 
     class Meta:
         verbose_name ='Detalhe do pedido'

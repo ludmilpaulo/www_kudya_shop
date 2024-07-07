@@ -1,4 +1,5 @@
 from django.views.decorators.csrf import csrf_exempt
+
 from curtomers.models import Customer
 from order.email_utils import send_order_email
 from order.models import Order, OrderDetails
@@ -46,13 +47,19 @@ def customer_add_order(request):
         return Response({"status": "failed", "error": "Order details are required."})
 
     order_total = 0
+    original_total = 0
     for meal in order_details:
         try:
             meal_obj = Meal.objects.get(id=meal["meal_id"])
             meal_price_with_markup = meal_obj.price_with_markup
             order_total += meal_price_with_markup * meal["quantity"]
+            original_total += meal_obj.price * meal["quantity"]
         except Meal.DoesNotExist:
             return Response({"status": "failed", "error": f"Meal with ID {meal['meal_id']} not found."})
+
+    # Calculate driver commission
+    driver_commission_percentage = Order.DRIVER_COMMISSION_PERCENTAGE_DEFAULT
+    driver_commission = (order_total * driver_commission_percentage) / 100
 
     # Step 2 - Create an Order
     try:
@@ -62,7 +69,9 @@ def customer_add_order(request):
             total=order_total,
             status=Order.COOKING,
             address=data["address"],
-            payment_method=data["payment_method"]
+            payment_method=data["payment_method"],
+            original_price=original_total,
+            driver_commission=driver_commission
         )
     except Exception as e:
         logger.error(f"Error creating order: {e}")
