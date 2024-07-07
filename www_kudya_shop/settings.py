@@ -11,11 +11,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-76vdd*oh$e-t_lyxs#5jdx@hus^9vxro%@j)69plvh&8$n1zn5'
 # Get environment variable
-#ENV = os.getenv('DJANGO_ENV', 'development')
+ENV = os.getenv('DJANGO_ENV', 'development')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['www.kudya.shop']
 
 FRONTEND_URL = 'https://www.sdkudya.com'
 
@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'report',
     'info',
     'careers',
+    
     'django_ckeditor_5',
-    'management',
 
     'rest_framework',
     'rest_framework.authtoken',
@@ -96,11 +96,15 @@ WSGI_APPLICATION = 'www_kudya_shop.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'kudya',
+            'USER': 'super',
+            'PASSWORD': 'Maitland@2024',  # Replace with your actual password
+            'HOST': 'maindoagency-3864.postgres.pythonanywhere-services.com',
+            'PORT': '13864',
+        }
     }
-}
 
 
 
