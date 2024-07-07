@@ -2,6 +2,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
+from . import views
 from django.conf import settings
 
 urlpatterns = [
@@ -15,6 +16,9 @@ urlpatterns = [
     path('report/', include('report.urls')),
     path('restaurant/', include('restaurants.urls')),
     path('manager/', include('management.urls')),
+    path('api/backup/', views.backup_database, name='backup_database'),
+    path('api/delete/', views.delete_database, name='delete_database'),
+    path('api/load/', views.load_database, name='load_database'),
     path("ckeditor5/", include('django_ckeditor_5.urls'), name="ck_editor_5_upload_file"),
 ]
 
