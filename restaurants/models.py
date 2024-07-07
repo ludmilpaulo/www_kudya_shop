@@ -33,7 +33,15 @@ class Restaurant(models.Model):
     restaurant_license = models.FileField(upload_to='vendor/license', blank=True, verbose_name='Licenca do restaurante')
     barnner = models.BooleanField(default=False)
     is_approved = models.BooleanField(default=False)
-    
+
+    def activate(self):
+        self.is_approved = True
+        self.save()
+
+    def deactivate(self):
+        self.is_approved = False
+        self.save()
+
     def get_orders(self, period):
         if period == 'weekly':
             start_date = timezone.now() - timezone.timedelta(days=7)
@@ -146,23 +154,6 @@ class MealCategory(models.Model):
     def __str__(self):
         return self.name
 
-class Meal(models.Model):
-    name = models.CharField(max_length=255)
-    short_description = models.TextField()
-    image = models.ImageField(upload_to='meal_images/')
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    quantity = models.IntegerField()
-    category = models.ForeignKey(MealCategory, on_delete=models.CASCADE, related_name='meals')
-    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='meals')
-   # percentage = models.DecimalField(max_digits=5, decimal_places=2, default=10)  # 10% markup
-
-   # @property
-   # def price_with_markup(self):
-    #    return self.price * (1 + self.percentage / 100)
-
-    def __str__(self):
-        return self.name
-
 
 DAYS = [
     (1, "Segunda-feira"),
@@ -198,3 +189,22 @@ class OpeningHour(models.Model):
 
     def __str__(self):
         return f"{self.get_day_display()} {self.from_hour} - {self.to_hour}"
+
+
+class Meal(models.Model):
+    name = models.CharField(max_length=255)
+    short_description = models.TextField()
+    image = models.ImageField(upload_to='meal_images/')
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    quantity = models.IntegerField()
+    category = models.ForeignKey(MealCategory, on_delete=models.CASCADE, related_name='meals')
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='meals')
+    percentage = models.DecimalField(max_digits=5, decimal_places=2, default=10)  # 10% markup
+
+    @property
+    def price_with_markup(self):
+        return self.price * (1 + self.percentage / 100)
+
+    def __str__(self):
+        return self.name
+

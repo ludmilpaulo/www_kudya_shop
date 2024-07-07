@@ -1,10 +1,10 @@
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
-
-
-from django.urls import path
-
+from restaurants.admin_views import RestaurantViewSet, meal_list
 from restaurants.views import MealCategoryList, OrderListView, ProdutoListView, RestaurantCategoryList, delete_product, fornecedor_add_product, fornecedor_sign_up, get_fornecedor, opening_hour_list, restaurant_detail, restaurant_get_meals, restaurant_order, sse, update_location, update_product
-
+router = DefaultRouter()
+router.register(r'restaurants', RestaurantViewSet, basename='restaurant')
 
 urlpatterns = [
     path('fornecedor/', fornecedor_sign_up),
@@ -23,6 +23,8 @@ urlpatterns = [
     path('restaurants/<int:user_id>/', restaurant_detail, name='restaurant-detail'),
     path('restaurants/<int:restaurant_pk>/opening_hours/', opening_hour_list, name='opening-hour-list'),
     path('meal-categories/', MealCategoryList.as_view(), name='meal-category-list'),
+    path('api/', include(router.urls)), 
+    path('api/meals/', meal_list, name='meal-list'),
 
 ]
 

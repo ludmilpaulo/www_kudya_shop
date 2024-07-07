@@ -30,6 +30,14 @@ class Order(models.Model):
         (ONTHEWAY, "A caminho"),
         (DELIVERED, "Entregue"),
     )
+    
+    PAID = 'paid'
+    UNPAID = 'unpaid'
+
+    PAYMENT_STATUS_CHOICES = (
+        (PAID, "Paid"),
+        (UNPAID, "Unpaid"),
+    )
 
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, verbose_name='cliente')
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, verbose_name='restaurante')
@@ -44,7 +52,11 @@ class Order(models.Model):
     invoice_pdf = models.FileField(upload_to='invoices/', null=True, blank=True, verbose_name='Fatura PDF')
     secret_pin = models.CharField(max_length=6, verbose_name='PIN Secreto', blank=True, null=True)
     driver_commission_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=1)
-    
+    proof_of_payment_restaurant = models.FileField(upload_to='proof_of_payment/restaurant/', null=True, blank=True, verbose_name='Prova de Pagamento ao Restaurante')
+    proof_of_payment_driver = models.FileField(upload_to='proof_of_payment/driver/', null=True, blank=True, verbose_name='Prova de Pagamento ao Motorista')
+    payment_status_restaurant = models.CharField(max_length=10, choices=PAYMENT_STATUS_CHOICES, default=UNPAID, verbose_name='Status de Pagamento ao Restaurante')
+    payment_status_driver = models.CharField(max_length=10, choices=PAYMENT_STATUS_CHOICES, default=UNPAID, verbose_name='Status de Pagamento ao Motorista')
+
     @property
     def loyalty_discount(self):
         order_count = Order.objects.filter(customer=self.customer).count()

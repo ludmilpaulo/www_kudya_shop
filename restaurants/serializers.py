@@ -43,6 +43,18 @@ class RestaurantSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         logo_url = restaurant.logo.url
         return request.build_absolute_uri(logo_url)
+    
+    def update(self, instance, validated_data):
+        # Update basic fields
+        instance.name = validated_data.get('name', instance.name)
+        instance.phone = validated_data.get('phone', instance.phone)
+        instance.address = validated_data.get('address', instance.address)
+        instance.barnner = validated_data.get('barnner', instance.barnner)
+        instance.is_approved = validated_data.get('is_approved', instance.is_approved)
+        instance.location = validated_data.get('location', instance.location)
+        
+        instance.save()
+        return instance
 
     class Meta:
         model = Restaurant
