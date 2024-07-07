@@ -4,11 +4,10 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import authenticate
-
 from rest_framework.authtoken.models import Token
 from .serializers import RestaurantSerializer
-
 from django.contrib.auth import get_user_model
+
 User = get_user_model()
 
 @api_view(['POST'])
@@ -31,15 +30,17 @@ def fornecedor_sign_up(request, format=None):
         new_user = User.objects.create_user(username=username, password=password, email=email)
 
         # Handle uploaded files
-        logo = request.FILES.get('logo', None)
-        licenca = request.FILES.get('restaurant_license', None)
+        logo = request.FILES.get('logo')
+        licenca = request.FILES.get('restaurant_license')
+
+        data = request.data.copy()
         if logo:
-            request.data['logo'] = logo
+            data['logo'] = logo
         if licenca:
-            request.data['restaurant_license'] = licenca
+            data['restaurant_license'] = licenca
 
         # Pass the request object to the serializer
-        serializer = RestaurantSerializer(data=request.data, context={'request': request})
+        serializer = RestaurantSerializer(data=data, context={'request': request})
         print(f"Serializer initial data: {serializer.initial_data}")
 
         if serializer.is_valid():
@@ -47,10 +48,12 @@ def fornecedor_sign_up(request, format=None):
             serializer.validated_data['user'] = new_user
             restaurant = serializer.save()
 
-            # Ensure that the logo field is set in the restaurant object
+            # Ensure that the logo and license fields are set in the restaurant object
             if logo:
                 restaurant.logo = logo
-                restaurant.save()
+            if licenca:
+                restaurant.restaurant_license = licenca
+            restaurant.save()
 
             # Serialize the Restaurant object into a dictionary
             restaurant_data = RestaurantSerializer(restaurant, context={'request': request}).data

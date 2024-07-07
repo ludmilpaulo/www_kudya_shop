@@ -1,13 +1,17 @@
 from django.db import models
-from datetime import time, date, datetime
+from datetime import date, datetime, time
 from django.conf import settings
-from django.core.mail import send_mail, EmailMessage
+from django.core.mail import send_mail
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 from django.db.models import Sum
+from django.template.loader import render_to_string
+import logging
 
 from order.models import Order
 from order.utils import generate_invoice
+
+logger = logging.getLogger(__name__)
 
 User = get_user_model()
 
@@ -40,10 +44,12 @@ class Restaurant(models.Model):
     def activate(self):
         self.is_approved = True
         self.save()
+        self.send_approval_email()
 
     def deactivate(self):
         self.is_approved = False
         self.save()
+        self.send_rejection_email()
 
     def get_orders(self, period):
         if period == 'weekly':
@@ -93,58 +99,39 @@ class Restaurant(models.Model):
         return is_open
 
     def save(self, *args, **kwargs):
-        if self.pk is not None:
-            # Update
-            orig = Restaurant.objects.get(pk=self.pk)
-            if orig.is_approved != self.is_approved:
-                context = {
-                    'user': self.user,
-                    'restaurant': self,
-                }
-                if self.is_approved:
-                    # Send notification email
-                    mail_subject = "Parabéns! Seu restaurante foi aprovado."
-                    message = f"""
-                    <html>
-                    <body>
-                        <p>Olá, {context['user'].username}!</p>
-                        <p>Estamos felizes em informar que o seu restaurante <strong>{context['restaurant'].name}</strong> foi aprovado para utilizar a nossa plataforma.</p>
-                        <p>Agora você pode começar a publicar seus cardápios, receber pedidos e alcançar mais clientes através do nosso marketplace.</p>
-                        <p>Se precisar de ajuda para configurar seu restaurante na plataforma, não hesite em nos contatar.</p>
-                        <p>Bem-vindo(a) e sucesso nos negócios!</p>
-                        <p>&copy; 2024 Kudya. Todos os direitos reservados.</p>
-                    </body>
-                    </html>
-                    """
-                    send_notification(mail_subject, message, context['user'].email)
-                else:
-                    # Send notification email
-                    mail_subject = "Nós lamentamos! Você não está qualificado para publicar seu cardápio de comida em nosso mercado."
-                    message = f"""
-                    <html>
-                    <body>
-                        <p>Olá, {context['user'].username}!</p>
-                        <p>Lamentamos informar que o seu restaurante <strong>{context['restaurant'].name}</strong> não está qualificado para publicar seu cardápio de comida em nosso mercado.</p>
-                        <p>Se precisar de mais informações, não hesite em nos contatar.</p>
-                        <p>&copy; 2024 SD Kudya. Todos os direitos reservados.</p>
-                    </body>
-                    </html>
-                    """
-                    send_notification(mail_subject, message, context['user'].email)
-            else:
-                # This means it's a new sign-up
-                self.send_signup_email()
-        return super(Restaurant, self).save(*args, **kwargs)
+        if self.pk is None:
+            self.send_signup_email()
+        super(Restaurant, self).save(*args, **kwargs)
 
     def send_signup_email(self):
         """Send a sign-up confirmation email."""
         subject = 'Bem-vindo ao nossa plataforma!'
-        message = 'Obrigado por se inscrever. Estamos revisando sua inscrição e entraremos em contato em breve!'
+        message = render_to_string('email_templates/welcome_email.html', {'user': self.user, 'restaurant': self})
         email_from = settings.EMAIL_HOST_USER
-        send_mail(subject, message, email_from, [self.user.email])
+        try:
+            send_mail(subject, message, email_from, [self.user.email])
+        except Exception as e:
+            logger.error(f"Error sending email: {e}")
 
+    def send_approval_email(self):
+        """Send an approval email."""
+        context = {'user': self.user, 'restaurant': self}
+        mail_subject = "Parabéns! Seu restaurante foi aprovado."
+        message = render_to_string('email_templates/approval_email.html', context)
+        try:
+            send_mail(mail_subject, message, settings.EMAIL_HOST_USER, [self.user.email])
+        except Exception as e:
+            logger.error(f"Error sending email: {e}")
 
-
+    def send_rejection_email(self):
+        """Send a rejection email."""
+        context = {'user': self.user, 'restaurant': self}
+        mail_subject = "Nós lamentamos! Você não está qualificado para publicar seu cardápio de comida em nosso mercado."
+        message = render_to_string('email_templates/rejection_email.html', context)
+        try:
+            send_mail(mail_subject, message, settings.EMAIL_HOST_USER, [self.user.email])
+        except Exception as e:
+            logger.error(f"Error sending email: {e}")
 
 DAYS = [
     (1, "Segunda-feira"),
@@ -155,15 +142,6 @@ DAYS = [
     (6, "Sábado"),
     (7, "Domingo"),
 ]
-
-
-def send_notification(mail_subject, message, to_email):
-    from_email = settings.DEFAULT_FROM_EMAIL
-    mail = EmailMessage(mail_subject, message, from_email, to=[to_email])
-    mail.content_subtype = "html"
-    mail.send()
-
-from datetime import time
 
 HOUR_OF_DAY_24 = [(time(h, m).strftime('%I:%M %p'), time(h, m).strftime('%I:%M %p')) for h in range(24) for m in (0, 30)]
 
@@ -180,6 +158,3 @@ class OpeningHour(models.Model):
 
     def __str__(self):
         return f"{self.get_day_display()} {self.from_hour} - {self.to_hour}"
-
-
-

@@ -103,8 +103,8 @@ DATABASES = {
             'PASSWORD': 'Maitland@2024',  # Replace with your actual password
             'HOST': 'maindoagency-3864.postgres.pythonanywhere-services.com',
             'PORT': '13864',
-            #'HOST': 'localhost',
-            #'PORT': '5432',
+           # 'HOST': 'localhost',
+           # 'PORT': '5432',
         }
     }
 

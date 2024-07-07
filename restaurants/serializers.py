@@ -17,10 +17,12 @@ class OpeningHourSerializer(serializers.ModelSerializer):
         model = OpeningHour
         fields = ('day', 'from_hour', 'to_hour', 'is_closed')
 
+
 class RestaurantSerializer(serializers.ModelSerializer):
     category = serializers.SerializerMethodField()
-    logo = serializers.SerializerMethodField()
-    opening_hours = OpeningHourSerializer(many=True, source='openinghour_set', required=False)  # Make optional
+    logo = serializers.ImageField(required=False, allow_empty_file=True)
+    restaurant_license = serializers.FileField(required=False, allow_empty_file=True)
+    opening_hours = OpeningHourSerializer(many=True, source='openinghour_set', required=False)
 
     def get_category(self, restaurant):
         category = restaurant.category
@@ -43,7 +45,7 @@ class RestaurantSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         logo_url = restaurant.logo.url
         return request.build_absolute_uri(logo_url)
-    
+
     def update(self, instance, validated_data):
         # Update basic fields
         instance.name = validated_data.get('name', instance.name)
@@ -53,13 +55,18 @@ class RestaurantSerializer(serializers.ModelSerializer):
         instance.is_approved = validated_data.get('is_approved', instance.is_approved)
         instance.location = validated_data.get('location', instance.location)
         
+        # Handle logo and license
+        if 'logo' in validated_data:
+            instance.logo = validated_data['logo']
+        if 'restaurant_license' in validated_data:
+            instance.restaurant_license = validated_data['restaurant_license']
+
         instance.save()
         return instance
 
     class Meta:
         model = Restaurant
-        fields = ("id", "name", "phone", "address", "logo", "category", "barnner", "is_approved", "opening_hours","location")
-
+        fields = ("id", "name", "phone", "address", "logo", "restaurant_license", "category", "barnner", "is_approved", "opening_hours", "location")
 
 
 
