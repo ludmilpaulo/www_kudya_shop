@@ -18,7 +18,6 @@ def fornecedor_sign_up(request, format=None):
         username = request.data.get("username")
         email = request.data.get("email")
         password = request.data.get("password")
-        print(f"Received data: username={username}, email={email}, password={password}")
 
         if not username or not password:
             return Response({"message": "Nome de usuário e senha são necessários."}, status=status.HTTP_400_BAD_REQUEST)
@@ -26,10 +25,8 @@ def fornecedor_sign_up(request, format=None):
         if User.objects.filter(username=username).exists():
             return Response({"message": "O nome de usuário já existe."}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Create the User object
         new_user = User.objects.create_user(username=username, password=password, email=email)
 
-        # Handle uploaded files
         logo = request.FILES.get('logo')
         licenca = request.FILES.get('restaurant_license')
 
@@ -39,38 +36,32 @@ def fornecedor_sign_up(request, format=None):
         if licenca:
             data['restaurant_license'] = licenca
 
-        # Pass the request object to the serializer
         serializer = RestaurantSerializer(data=data, context={'request': request})
-        print(f"Serializer initial data: {serializer.initial_data}")
 
         if serializer.is_valid():
-            # Create the Restaurant object with the user field set
             serializer.validated_data['user'] = new_user
             restaurant = serializer.save()
 
-            # Ensure that the logo and license fields are set in the restaurant object
             if logo:
                 restaurant.logo = logo
             if licenca:
                 restaurant.restaurant_license = licenca
             restaurant.save()
 
-            # Serialize the Restaurant object into a dictionary
             restaurant_data = RestaurantSerializer(restaurant, context={'request': request}).data
 
-            # Authenticate the user after saving the data
             user = authenticate(username=username, password=password)
             if user is not None:
+                token, _ = Token.objects.get_or_create(user=user)
                 return Response({
-                    "token": Token.objects.get(user=user).key,
+                    "token": token.key,
                     'user_id': user.pk,
                     "message": "Conta criada com sucesso",
-                    "fornecedor_id": restaurant_data,  # Include the serialized restaurant data
+                    "fornecedor_id": restaurant_data,
                     'username': user.username,
                     "status": "201"
                 }, status=status.HTTP_201_CREATED)
             else:
                 return Response({"error": "Falha na autenticação."}, status=status.HTTP_400_BAD_REQUEST)
 
-        print(f"Serializer errors: {serializer.errors}")
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -1,6 +1,16 @@
+from venv import logger
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from django.http import JsonResponse
+
+from .models import Restaurant, Meal
+from .serializers import RestaurantSerializer
+from .utils import send_notification
+from django.template.loader import render_to_string
+from django.conf import settings
+from django.core.mail import send_mail
+
 from .models import Restaurant
 from .serializers import RestaurantSerializer
 from .utils import send_notification 
@@ -12,41 +22,40 @@ class RestaurantViewSet(viewsets.ModelViewSet):
     def activate(self, request, pk=None):
         restaurant = self.get_object()
         restaurant.activate()
-        # Send activation email
-        mail_subject = "Parabéns! Seu restaurante foi aprovado."
-        message = f"""
-        <html>
-        <body>
-            <p>Olá, {restaurant.user.username}!</p>
-            <p>Estamos felizes em informar que o seu restaurante <strong>{restaurant.name}</strong> foi aprovado para utilizar a nossa plataforma.</p>
-            <p>Agora você pode começar a publicar seus cardápios, receber pedidos e alcançar mais clientes através do nosso marketplace.</p>
-            <p>Se precisar de ajuda para configurar seu restaurante na plataforma, não hesite em nos contatar.</p>
-            <p>Bem-vindo(a) e sucesso nos negócios!</p>
-            <p>&copy; 2024 Sua Empresa. Todos os direitos reservados.</p>
-        </body>
-        </html>
-        """
-        send_notification(mail_subject, message, restaurant.user.email)
+        self._send_activation_email(restaurant)
         return Response({'status': 'restaurant activated'})
 
     @action(detail=True, methods=['post'])
     def deactivate(self, request, pk=None):
         restaurant = self.get_object()
         restaurant.deactivate()
-        # Send deactivation email
-        mail_subject = "Nós lamentamos! Você não está qualificado para publicar seu cardápio de comida em nosso mercado."
-        message = f"""
-        <html>
-        <body>
-            <p>Olá, {restaurant.user.username}!</p>
-            <p>Lamentamos informar que o seu restaurante <strong>{restaurant.name}</strong> não está qualificado para publicar seu cardápio de comida em nosso mercado.</p>
-            <p>Se precisar de mais informações, não hesite em nos contatar.</p>
-            <p>&copy; 2024 Sua Empresa. Todos os direitos reservados.</p>
-        </body>
-        </html>
-        """
-        send_notification(mail_subject, message, restaurant.user.email)
+        self._send_deactivation_email(restaurant)
         return Response({'status': 'restaurant deactivated'})
+
+    def _send_activation_email(self, restaurant):
+        context = {
+            'user': restaurant.user,
+            'restaurant': restaurant,
+        }
+        mail_subject = "Parabéns! Seu restaurante foi aprovado."
+        message = render_to_string('email_templates/approval_email.html', context)
+        try:
+            send_mail(mail_subject, message, settings.EMAIL_HOST_USER, [restaurant.user.email], html_message=message)
+        except Exception as e:
+            logger.error(f"Error sending email: {e}")
+
+    def _send_deactivation_email(self, restaurant):
+        context = {
+            'user': restaurant.user,
+            'restaurant': restaurant,
+        }
+        mail_subject = "Nós lamentamos! Você não está qualificado para publicar seu cardápio de comida em nosso mercado."
+        message = render_to_string('email_templates/rejection_email.html', context)
+        try:
+            send_mail(mail_subject, message, settings.EMAIL_HOST_USER, [restaurant.user.email], html_message=message)
+        except Exception as e:
+            logger.error(f"Error sending email: {e}")
+
 
 
 from django.http import JsonResponse

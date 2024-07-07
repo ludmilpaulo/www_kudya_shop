@@ -1,7 +1,7 @@
 from django.db import models
 from datetime import date, datetime, time
 from django.conf import settings
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 from django.db.models import Sum
@@ -42,14 +42,16 @@ class Restaurant(models.Model):
     is_approved = models.BooleanField(default=False)
 
     def activate(self):
-        self.is_approved = True
-        self.save()
-        self.send_approval_email()
+        if not self.is_approved:
+            self.is_approved = True
+            self.save()
+            self.send_approval_email()
 
     def deactivate(self):
-        self.is_approved = False
-        self.save()
-        self.send_rejection_email()
+        if self.is_approved:
+            self.is_approved = False
+            self.save()
+            self.send_rejection_email()
 
     def get_orders(self, period):
         if period == 'weekly':
@@ -78,7 +80,6 @@ class Restaurant(models.Model):
         return self.name
 
     def is_open(self):
-        # Check current day's opening hours.
         today_date = date.today()
         today = today_date.isoweekday()
 
@@ -99,37 +100,41 @@ class Restaurant(models.Model):
         return is_open
 
     def save(self, *args, **kwargs):
-        if self.pk is None:
-            self.send_signup_email()
+        new_restaurant = self.pk is None
         super(Restaurant, self).save(*args, **kwargs)
+        if new_restaurant:
+            self.send_signup_email()
 
     def send_signup_email(self):
-        """Send a sign-up confirmation email."""
         subject = 'Bem-vindo ao nossa plataforma!'
         message = render_to_string('email_templates/welcome_email.html', {'user': self.user, 'restaurant': self})
         email_from = settings.EMAIL_HOST_USER
         try:
-            send_mail(subject, message, email_from, [self.user.email])
+            email = EmailMessage(subject, message, email_from, [self.user.email])
+            email.content_subtype = "html"  # Set the email content type to HTML
+            email.send()
         except Exception as e:
             logger.error(f"Error sending email: {e}")
 
     def send_approval_email(self):
-        """Send an approval email."""
         context = {'user': self.user, 'restaurant': self}
         mail_subject = "Parabéns! Seu restaurante foi aprovado."
         message = render_to_string('email_templates/approval_email.html', context)
         try:
-            send_mail(mail_subject, message, settings.EMAIL_HOST_USER, [self.user.email])
+            email = EmailMessage(mail_subject, message, settings.EMAIL_HOST_USER, [self.user.email])
+            email.content_subtype = "html"  # Set the email content type to HTML
+            email.send()
         except Exception as e:
             logger.error(f"Error sending email: {e}")
 
     def send_rejection_email(self):
-        """Send a rejection email."""
         context = {'user': self.user, 'restaurant': self}
         mail_subject = "Nós lamentamos! Você não está qualificado para publicar seu cardápio de comida em nosso mercado."
         message = render_to_string('email_templates/rejection_email.html', context)
         try:
-            send_mail(mail_subject, message, settings.EMAIL_HOST_USER, [self.user.email])
+            email = EmailMessage(mail_subject, message, settings.EMAIL_HOST_USER, [self.user.email])
+            email.content_subtype = "html"  # Set the email content type to HTML
+            email.send()
         except Exception as e:
             logger.error(f"Error sending email: {e}")
 
