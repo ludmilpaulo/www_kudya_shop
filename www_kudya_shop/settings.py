@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'report',
     'info',
     'careers',
-    
+    'management',
     'django_ckeditor_5',
 
     'rest_framework',
