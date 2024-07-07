@@ -104,7 +104,7 @@ DATABASES = {
             'HOST': 'maindoagency-3864.postgres.pythonanywhere-services.com',
             'PORT': '13864',
             #'HOST': 'localhost',
-            #'PORT': '5432',
+           # 'PORT': '5432',
         }
     }
 
