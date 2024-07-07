@@ -20,7 +20,7 @@ class OpeningHourSerializer(serializers.ModelSerializer):
 class RestaurantSerializer(serializers.ModelSerializer):
     category = serializers.SerializerMethodField()
     logo = serializers.SerializerMethodField()
-    opening_hours = OpeningHourSerializer(many=True, source='openinghour_set')
+    opening_hours = OpeningHourSerializer(many=True, source='openinghour_set', required=False)  # Make optional
 
     def get_category(self, restaurant):
         category = restaurant.category

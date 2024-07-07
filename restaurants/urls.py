@@ -2,7 +2,8 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from restaurants.admin_views import RestaurantViewSet, meal_list
-from restaurants.views import MealCategoryList, OrderListView, ProdutoListView, RestaurantCategoryList, delete_product, fornecedor_add_product, fornecedor_sign_up, get_fornecedor, opening_hour_list, restaurant_detail, restaurant_get_meals, restaurant_order, sse, update_location, update_product
+from restaurants.restaurant_sign import fornecedor_sign_up
+from restaurants.views import MealCategoryList, OrderListView, ProdutoListView, RestaurantCategoryList, delete_product, fornecedor_add_product, get_fornecedor, opening_hour_list, restaurant_detail, restaurant_get_meals, restaurant_order, sse, update_location, update_product
 router = DefaultRouter()
 router.register(r'restaurants', RestaurantViewSet, basename='restaurant')
 

@@ -15,7 +15,7 @@ ENV = os.getenv('DJANGO_ENV', 'development')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.kudya.shop']
+ALLOWED_HOSTS = ['*']
 
 FRONTEND_URL = 'https://www.sdkudya.com'
 
@@ -103,6 +103,8 @@ DATABASES = {
             'PASSWORD': 'Maitland@2024',  # Replace with your actual password
             'HOST': 'maindoagency-3864.postgres.pythonanywhere-services.com',
             'PORT': '13864',
+            #'HOST': 'localhost',
+            #'PORT': '5432',
         }
     }
 

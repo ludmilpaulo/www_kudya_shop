@@ -6,6 +6,9 @@ from django.contrib.auth import get_user_model
 from django.utils import timezone
 from django.db.models import Sum
 
+from order.models import Order
+from order.utils import generate_invoice
+
 User = get_user_model()
 
 class RestaurantCategory(models.Model):
@@ -139,20 +142,8 @@ class Restaurant(models.Model):
         message = 'Obrigado por se inscrever. Estamos revisando sua inscrição e entraremos em contato em breve!'
         email_from = settings.EMAIL_HOST_USER
         send_mail(subject, message, email_from, [self.user.email])
-from django.db import models
 
-class MealCategory(models.Model):
-    name = models.CharField(max_length=200, db_index=True)
-    image = models.ImageField(upload_to='category/', blank=True)
-    slug = models.SlugField(max_length=200, unique=True)
 
-    class Meta:
-        ordering = ('name',)
-        verbose_name = 'category'
-        verbose_name_plural = 'categories'
-
-    def __str__(self):
-        return self.name
 
 
 DAYS = [
@@ -171,7 +162,7 @@ def send_notification(mail_subject, message, to_email):
     mail = EmailMessage(mail_subject, message, from_email, to=[to_email])
     mail.content_subtype = "html"
     mail.send()
-    
+
 from datetime import time
 
 HOUR_OF_DAY_24 = [(time(h, m).strftime('%I:%M %p'), time(h, m).strftime('%I:%M %p')) for h in range(24) for m in (0, 30)]
@@ -191,20 +182,4 @@ class OpeningHour(models.Model):
         return f"{self.get_day_display()} {self.from_hour} - {self.to_hour}"
 
 
-class Meal(models.Model):
-    name = models.CharField(max_length=255)
-    short_description = models.TextField()
-    image = models.ImageField(upload_to='meal_images/')
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    quantity = models.IntegerField()
-    category = models.ForeignKey(MealCategory, on_delete=models.CASCADE, related_name='meals')
-    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='meals')
-    percentage = models.DecimalField(max_digits=5, decimal_places=2, default=10)  # 10% markup
-
-    @property
-    def price_with_markup(self):
-        return self.price * (1 + self.percentage / 100)
-
-    def __str__(self):
-        return self.name
 

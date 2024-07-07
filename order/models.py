@@ -4,7 +4,6 @@ from django.utils import timezone
 from curtomers.models import Customer
 from drivers.models import Driver
 from info.models import Chat
-from restaurants.models import Meal, Restaurant
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.core.files.base import ContentFile
@@ -40,7 +39,7 @@ class Order(models.Model):
     )
 
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, verbose_name='cliente')
-    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, verbose_name='restaurante')
+    restaurant = models.ForeignKey('restaurants.Restaurant', on_delete=models.CASCADE, verbose_name='restaurante')
     driver = models.ForeignKey(Driver, blank=True, null=True, on_delete=models.CASCADE, verbose_name='motorista')
     address = models.CharField(max_length=500, verbose_name='Endereco')
     total = models.IntegerField()
@@ -121,7 +120,7 @@ class Order(models.Model):
 
 class OrderDetails(models.Model):
     order = models.ForeignKey(Order, related_name='order_details', on_delete=models.CASCADE, verbose_name='Pedido')
-    meal = models.ForeignKey(Meal, on_delete=models.CASCADE, verbose_name='Refeição')
+    meal = models.ForeignKey('restaurants.Meal', on_delete=models.CASCADE, verbose_name='Refeição')
     quantity = models.IntegerField(verbose_name='Quantidade')
     sub_total = models.IntegerField()
 
