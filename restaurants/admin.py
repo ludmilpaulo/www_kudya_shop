@@ -2,6 +2,8 @@ from django.core.mail import send_mail, EmailMessage
 from django.conf import settings
 from django.contrib import admin
 from django.template.loader import render_to_string
+
+from restaurants.models.meal import Meal
 from .models import RestaurantCategory, Restaurant, OpeningHour
 
 def send_notification(mail_subject, message, to_email):
@@ -42,3 +44,17 @@ class RestaurantAdmin(admin.ModelAdmin):
 
                 send_notification(mail_subject, message, context['user'].email)
         super().save_model(request, obj, form, change)
+        
+        
+        
+@admin.register(Meal)
+class MealAdmin(admin.ModelAdmin):
+    list_display = ['name', 'restaurant', 'category', 'price', 'quantity']
+    list_filter = ['category', 'restaurant']
+    search_fields = ['name', 'restaurant__name']
+
+@admin.register(OpeningHour)
+class OpeningHourAdmin(admin.ModelAdmin):
+    list_display = ['restaurant', 'day', 'from_hour', 'to_hour', 'is_closed']
+    list_filter = ['restaurant', 'day']
+    search_fields = ['restaurant__name']

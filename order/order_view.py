@@ -49,7 +49,8 @@ def customer_add_order(request):
     for meal in order_details:
         try:
             meal_obj = Meal.objects.get(id=meal["meal_id"])
-            order_total += meal_obj.price * meal["quantity"]
+            meal_price_with_markup = meal_obj.price_with_markup
+            order_total += meal_price_with_markup * meal["quantity"]
         except Meal.DoesNotExist:
             return Response({"status": "failed", "error": f"Meal with ID {meal['meal_id']} not found."})
 
@@ -70,11 +71,13 @@ def customer_add_order(request):
     # Step 3 - Create Order details
     for meal in order_details:
         try:
+            meal_obj = Meal.objects.get(id=meal["meal_id"])
+            meal_price_with_markup = meal_obj.price_with_markup
             OrderDetails.objects.create(
                 order=order,
                 meal_id=meal["meal_id"],
                 quantity=meal["quantity"],
-                sub_total=meal_obj.price * meal["quantity"]
+                sub_total=meal_price_with_markup * meal["quantity"]
             )
         except Exception as e:
             logger.error(f"Error creating order details: {e}")

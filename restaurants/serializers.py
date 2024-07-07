@@ -87,6 +87,10 @@ class MealSerializer(serializers.ModelSerializer):
     def get_category(self, obj):
         return obj.category.name if obj.category else None
 
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['price'] = instance.price_with_markup
+        return representation
 
 class RestaurantCategorySerializer(serializers.ModelSerializer):
     class Meta:
