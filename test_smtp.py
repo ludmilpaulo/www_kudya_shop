@@ -1,11 +1,12 @@
 import smtplib
 import ssl
 
+
 def test_smtp_connection():
-    smtp_server = 'smtpout.secureserver.net'
+    smtp_server = "smtpout.secureserver.net"
     port = 465  # For SSL
-    login = 'support@maindodigital.com'  # Your email
-    password = 'Maitland@2024'  # Your email password
+    login = "support@maindodigital.com"  # Your email
+    password = "Maitland@2024"  # Your email password
 
     context = ssl.create_default_context()
 
@@ -16,6 +17,7 @@ def test_smtp_connection():
             print("Successfully connected to the SMTP server and logged in.")
     except Exception as e:
         print(f"Failed to connect: {e}")
+
 
 if __name__ == "__main__":
     test_smtp_connection()

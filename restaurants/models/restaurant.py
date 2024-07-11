@@ -15,29 +15,43 @@ logger = logging.getLogger(__name__)
 
 User = get_user_model()
 
+
 class RestaurantCategory(models.Model):
     name = models.CharField(max_length=200, db_index=True)
-    image = models.ImageField(upload_to='category/', blank=True)
+    image = models.ImageField(upload_to="category/", blank=True)
     slug = models.SlugField(max_length=200, unique=True)
 
     class Meta:
-        ordering = ('name',)
-        verbose_name = 'category'
-        verbose_name_plural = 'categories'
+        ordering = ("name",)
+        verbose_name = "category"
+        verbose_name_plural = "categories"
 
     def __str__(self):
         return self.name
 
 
 class Restaurant(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='usuário', blank=True)
-    category = models.ForeignKey(RestaurantCategory, related_name='restaurant', on_delete=models.CASCADE, null=True)
-    name = models.CharField(max_length=500, verbose_name='Nome do restaurante')
-    phone = models.CharField(max_length=500, verbose_name='Telefone do restaurante')
-    address = models.CharField(max_length=500, verbose_name='Endereço do restaurante')
-    logo = models.ImageField(upload_to='restaurant_logo/', blank=False, verbose_name='Logotipo do restaurante')
-    location = models.CharField(max_length=500, blank=True, verbose_name='localização')
-    restaurant_license = models.FileField(upload_to='vendor/license', blank=True, verbose_name='Licenca do restaurante')
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, verbose_name="usuário", blank=True
+    )
+    category = models.ForeignKey(
+        RestaurantCategory,
+        related_name="restaurant",
+        on_delete=models.CASCADE,
+        null=True,
+    )
+    name = models.CharField(max_length=500, verbose_name="Nome do restaurante")
+    phone = models.CharField(max_length=500, verbose_name="Telefone do restaurante")
+    address = models.CharField(max_length=500, verbose_name="Endereço do restaurante")
+    logo = models.ImageField(
+        upload_to="restaurant_logo/",
+        blank=False,
+        verbose_name="Logotipo do restaurante",
+    )
+    location = models.CharField(max_length=500, blank=True, verbose_name="localização")
+    restaurant_license = models.FileField(
+        upload_to="vendor/license", blank=True, verbose_name="Licenca do restaurante"
+    )
     barnner = models.BooleanField(default=False)
     is_approved = models.BooleanField(default=False)
 
@@ -54,9 +68,9 @@ class Restaurant(models.Model):
             self.send_rejection_email()
 
     def get_orders(self, period):
-        if period == 'weekly':
+        if period == "weekly":
             start_date = timezone.now() - timezone.timedelta(days=7)
-        elif period == 'monthly':
+        elif period == "monthly":
             start_date = timezone.now() - timezone.timedelta(days=30)
         else:
             start_date = timezone.now() - timezone.timedelta(days=1)
@@ -66,12 +80,12 @@ class Restaurant(models.Model):
 
     def generate_invoice(self, period):
         orders = self.get_orders(period)
-        total_amount = orders.aggregate(Sum('total'))['total__sum']
+        total_amount = orders.aggregate(Sum("total"))["total__sum"]
         context = {
-            'restaurant': self,
-            'orders': orders,
-            'total_amount': total_amount,
-            'period': period,
+            "restaurant": self,
+            "orders": orders,
+            "total_amount": total_amount,
+            "period": period,
         }
         pdf_path, pdf_content = generate_invoice(context)
         return pdf_path, pdf_content
@@ -106,8 +120,11 @@ class Restaurant(models.Model):
             self.send_signup_email()
 
     def send_signup_email(self):
-        subject = 'Bem-vindo ao nossa plataforma!'
-        message = render_to_string('email_templates/welcome_email.html', {'user': self.user, 'restaurant': self})
+        subject = "Bem-vindo ao nossa plataforma!"
+        message = render_to_string(
+            "email_templates/welcome_email.html",
+            {"user": self.user, "restaurant": self},
+        )
         email_from = settings.EMAIL_HOST_USER
         try:
             email = EmailMessage(subject, message, email_from, [self.user.email])
@@ -117,26 +134,31 @@ class Restaurant(models.Model):
             logger.error(f"Error sending email: {e}")
 
     def send_approval_email(self):
-        context = {'user': self.user, 'restaurant': self}
+        context = {"user": self.user, "restaurant": self}
         mail_subject = "Parabéns! Seu restaurante foi aprovado."
-        message = render_to_string('email_templates/approval_email.html', context)
+        message = render_to_string("email_templates/approval_email.html", context)
         try:
-            email = EmailMessage(mail_subject, message, settings.EMAIL_HOST_USER, [self.user.email])
+            email = EmailMessage(
+                mail_subject, message, settings.EMAIL_HOST_USER, [self.user.email]
+            )
             email.content_subtype = "html"  # Set the email content type to HTML
             email.send()
         except Exception as e:
             logger.error(f"Error sending email: {e}")
 
     def send_rejection_email(self):
-        context = {'user': self.user, 'restaurant': self}
+        context = {"user": self.user, "restaurant": self}
         mail_subject = "Nós lamentamos! Você não está qualificado para publicar seu cardápio de comida em nosso mercado."
-        message = render_to_string('email_templates/rejection_email.html', context)
+        message = render_to_string("email_templates/rejection_email.html", context)
         try:
-            email = EmailMessage(mail_subject, message, settings.EMAIL_HOST_USER, [self.user.email])
+            email = EmailMessage(
+                mail_subject, message, settings.EMAIL_HOST_USER, [self.user.email]
+            )
             email.content_subtype = "html"  # Set the email content type to HTML
             email.send()
         except Exception as e:
             logger.error(f"Error sending email: {e}")
+
 
 DAYS = [
     (1, "Segunda-feira"),
@@ -148,18 +170,23 @@ DAYS = [
     (7, "Domingo"),
 ]
 
-HOUR_OF_DAY_24 = [(time(h, m).strftime('%I:%M %p'), time(h, m).strftime('%I:%M %p')) for h in range(24) for m in (0, 30)]
+HOUR_OF_DAY_24 = [
+    (time(h, m).strftime("%I:%M %p"), time(h, m).strftime("%I:%M %p"))
+    for h in range(24)
+    for m in (0, 30)
+]
+
 
 class OpeningHour(models.Model):
-    restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
+    restaurant = models.ForeignKey("Restaurant", on_delete=models.CASCADE)
     day = models.IntegerField(choices=DAYS)
     from_hour = models.CharField(choices=HOUR_OF_DAY_24, max_length=10, blank=True)
     to_hour = models.CharField(choices=HOUR_OF_DAY_24, max_length=10, blank=True)
     is_closed = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ('day', '-from_hour')
-        unique_together = ('restaurant', 'day', 'from_hour', 'to_hour')
+        ordering = ("day", "-from_hour")
+        unique_together = ("restaurant", "day", "from_hour", "to_hour")
 
     def __str__(self):
         return f"{self.get_day_display()} {self.from_hour} - {self.to_hour}"

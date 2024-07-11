@@ -6,28 +6,48 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('order', '0001_initial'),
+        ("order", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='order',
-            name='payment_status_driver',
-            field=models.CharField(choices=[('paid', 'Paid'), ('unpaid', 'Unpaid')], default='unpaid', max_length=10, verbose_name='Status de Pagamento ao Motorista'),
+            model_name="order",
+            name="payment_status_driver",
+            field=models.CharField(
+                choices=[("paid", "Paid"), ("unpaid", "Unpaid")],
+                default="unpaid",
+                max_length=10,
+                verbose_name="Status de Pagamento ao Motorista",
+            ),
         ),
         migrations.AddField(
-            model_name='order',
-            name='payment_status_restaurant',
-            field=models.CharField(choices=[('paid', 'Paid'), ('unpaid', 'Unpaid')], default='unpaid', max_length=10, verbose_name='Status de Pagamento ao Restaurante'),
+            model_name="order",
+            name="payment_status_restaurant",
+            field=models.CharField(
+                choices=[("paid", "Paid"), ("unpaid", "Unpaid")],
+                default="unpaid",
+                max_length=10,
+                verbose_name="Status de Pagamento ao Restaurante",
+            ),
         ),
         migrations.AddField(
-            model_name='order',
-            name='proof_of_payment_driver',
-            field=models.FileField(blank=True, null=True, upload_to='proof_of_payment/driver/', verbose_name='Prova de Pagamento ao Motorista'),
+            model_name="order",
+            name="proof_of_payment_driver",
+            field=models.FileField(
+                blank=True,
+                null=True,
+                upload_to="proof_of_payment/driver/",
+                verbose_name="Prova de Pagamento ao Motorista",
+            ),
         ),
         migrations.AddField(
-            model_name='order',
-            name='proof_of_payment_restaurant',
-            field=models.FileField(blank=True, null=True, upload_to='proof_of_payment/restaurant/', verbose_name='Prova de Pagamento ao Restaurante'),
+            model_name="order",
+            name="proof_of_payment_restaurant",
+            field=models.FileField(
+                blank=True,
+                null=True,
+                upload_to="proof_of_payment/restaurant/",
+                verbose_name="Prova de Pagamento ao Restaurante",
+            ),
         ),
     ]

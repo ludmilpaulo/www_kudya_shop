@@ -9,26 +9,49 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Career',
+            name="Career",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100)),
-                ('description', django_ckeditor_5.fields.CKEditor5Field(verbose_name='Text')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100)),
+                (
+                    "description",
+                    django_ckeditor_5.fields.CKEditor5Field(verbose_name="Text"),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='JobApplication',
+            name="JobApplication",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('full_name', models.CharField(max_length=100)),
-                ('email', models.EmailField(max_length=254)),
-                ('resume', models.FileField(upload_to='resumes/')),
-                ('career', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='careers.career')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("full_name", models.CharField(max_length=100)),
+                ("email", models.EmailField(max_length=254)),
+                ("resume", models.FileField(upload_to="resumes/")),
+                (
+                    "career",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="careers.career"
+                    ),
+                ),
             ],
         ),
     ]

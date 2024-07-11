@@ -15,12 +15,13 @@ from restaurants.models import Meal
 
 logger = logging.getLogger(__name__)
 
+
 @csrf_exempt
-@api_view(['POST'])
+@api_view(["POST"])
 def customer_add_order(request):
     data = request.data
     try:
-        access = Token.objects.get(key=data['access_token']).user
+        access = Token.objects.get(key=data["access_token"]).user
     except Token.DoesNotExist:
         return Response({"status": "failed", "error": "Invalid access token."})
 
@@ -33,12 +34,19 @@ def customer_add_order(request):
         return Response({"status": "failed", "error": "Customer profile not found."})
 
     # Check for existing orders to the same restaurant that are not delivered
-    existing_orders = Order.objects.filter(customer=customer, restaurant_id=data["restaurant_id"]).exclude(status=Order.DELIVERED)
+    existing_orders = Order.objects.filter(
+        customer=customer, restaurant_id=data["restaurant_id"]
+    ).exclude(status=Order.DELIVERED)
     if existing_orders.exists():
-        return Response({"status": "failed", "error": "Seu último pedido deve ser entregue para Pedir Outro."})
+        return Response(
+            {
+                "status": "failed",
+                "error": "Seu último pedido deve ser entregue para Pedir Outro.",
+            }
+        )
 
     # Check Address
-    if not data.get('address'):
+    if not data.get("address"):
         return Response({"status": "failed", "error": "Address is required."})
 
     # Get Order Details
@@ -55,7 +63,12 @@ def customer_add_order(request):
             order_total += meal_price_with_markup * meal["quantity"]
             original_total += meal_obj.price * meal["quantity"]
         except Meal.DoesNotExist:
-            return Response({"status": "failed", "error": f"Meal with ID {meal['meal_id']} not found."})
+            return Response(
+                {
+                    "status": "failed",
+                    "error": f"Meal with ID {meal['meal_id']} not found.",
+                }
+            )
 
     # Calculate driver commission
     driver_commission_percentage = Order.DRIVER_COMMISSION_PERCENTAGE_DEFAULT
@@ -71,7 +84,7 @@ def customer_add_order(request):
             address=data["address"],
             payment_method=data["payment_method"],
             original_price=original_total,
-            driver_commission=driver_commission
+            driver_commission=driver_commission,
         )
     except Exception as e:
         logger.error(f"Error creating order: {e}")
@@ -86,16 +99,20 @@ def customer_add_order(request):
                 order=order,
                 meal_id=meal["meal_id"],
                 quantity=meal["quantity"],
-                sub_total=meal_price_with_markup * meal["quantity"]
+                sub_total=meal_price_with_markup * meal["quantity"],
             )
         except Exception as e:
             logger.error(f"Error creating order details: {e}")
-            return Response({"status": "failed", "error": "Error creating order details."})
+            return Response(
+                {"status": "failed", "error": "Error creating order details."}
+            )
 
     # Generate invoice
     try:
         pdf_path, pdf_content = generate_invoice(order)
-        order.invoice_pdf.save(f"order_{order.id}.pdf", ContentFile(pdf_content), save=False)
+        order.invoice_pdf.save(
+            f"order_{order.id}.pdf", ContentFile(pdf_content), save=False
+        )
         order.save()
     except Exception as e:
         logger.error(f"Error generating invoice: {e}")
@@ -103,16 +120,38 @@ def customer_add_order(request):
 
     try:
         # Send email notifications
-        send_order_email(to_email=customer.user.email, order=order, pdf_path=pdf_path, pdf_content=pdf_content)
+        send_order_email(
+            to_email=customer.user.email,
+            order=order,
+            pdf_path=pdf_path,
+            pdf_content=pdf_content,
+        )
         restaurant_email = order.restaurant.user.email
-        send_order_email(to_email=restaurant_email, order=order, pdf_path=pdf_path, pdf_content=pdf_content, is_restaurant=True)
+        send_order_email(
+            to_email=restaurant_email,
+            order=order,
+            pdf_path=pdf_path,
+            pdf_content=pdf_content,
+            is_restaurant=True,
+        )
     except Exception as e:
         logger.error(f"Error sending email: {e}")
-        return Response({"status": "failed", "error": "Erro ao enviar email. Por favor, tente novamente."})
+        return Response(
+            {
+                "status": "failed",
+                "error": "Erro ao enviar email. Por favor, tente novamente.",
+            }
+        )
 
     # Generate WhatsApp URL
     phone_number = "customer_phone_number"  # Replace with the actual phone number
     message = f"Olá {customer.user.get_full_name()}, seu pedido foi recebido com sucesso. Seu PIN secreto é {order.secret_pin}."
     whatsapp_url = f"https://wa.me/{phone_number}?text={urllib.parse.quote(message)}"
 
-    return Response({"status": "success", "secret_pin": order.secret_pin, "whatsapp_url": whatsapp_url})
+    return Response(
+        {
+            "status": "success",
+            "secret_pin": order.secret_pin,
+            "whatsapp_url": whatsapp_url,
+        }
+    )

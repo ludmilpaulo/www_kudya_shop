@@ -9,18 +9,47 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('order', '0001_initial'),
-        ('restaurants', '0001_initial'),
+        ("order", "0001_initial"),
+        ("restaurants", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Invoice',
+            name="Invoice",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('status', models.IntegerField(choices=[('paid', 'Pago'), ('unpaid', 'Não Pago')], default='unpaid', verbose_name='estado')),
-                ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='order.order', verbose_name='pedido')),
-                ('shop', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='restaurants.restaurant', verbose_name='loja')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "status",
+                    models.IntegerField(
+                        choices=[("paid", "Pago"), ("unpaid", "Não Pago")],
+                        default="unpaid",
+                        verbose_name="estado",
+                    ),
+                ),
+                (
+                    "order",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="order.order",
+                        verbose_name="pedido",
+                    ),
+                ),
+                (
+                    "shop",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="restaurants.restaurant",
+                        verbose_name="loja",
+                    ),
+                ),
             ],
         ),
     ]

@@ -7,6 +7,7 @@ from weasyprint import HTML
 
 logger = logging.getLogger(__name__)
 
+
 def send_notification(mail_subject, message, to_email):
     from_email = settings.DEFAULT_FROM_EMAIL
     try:
@@ -16,8 +17,9 @@ def send_notification(mail_subject, message, to_email):
     except Exception as e:
         logger.error(f"Error sending email: {e}")
 
+
 def generate_invoice(context):
-    html_string = render_to_string('invoice_template.html', context)
+    html_string = render_to_string("invoice_template.html", context)
     html = HTML(string=html_string)
     pdf = html.write_pdf()
     return pdf
