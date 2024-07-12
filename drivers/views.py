@@ -305,12 +305,29 @@ def get_ongoing_order(request):
                     "phone": ongoing_order.restaurant.phone,
                     "address": ongoing_order.restaurant.address,
                     "logo": ongoing_order.restaurant.logo.url if ongoing_order.restaurant.logo else None,
+                    "location": ongoing_order.restaurant.location,
                 },
                 "customer": {
                     "avatar": ongoing_order.customer.avatar.url if ongoing_order.customer.avatar else None,
+                    "phone": ongoing_order.customer.phone,
+                    "address": ongoing_order.customer.address,
+                    "location": ongoing_order.customer.location,
                 },
+                "order_details": [
+                    {
+                        "id": detail.id,
+                        "meal": {
+                            "id": detail.meal.id,
+                            "name": detail.meal.name,
+                            "price": str(detail.meal.price)
+                        },
+                        "quantity": detail.quantity,
+                        "sub_total": str(detail.sub_total)
+                    } for detail in ongoing_order.order_details.all()
+                ],
                 "status": ongoing_order.status,
                 "address": ongoing_order.address,
+                "secret_pin":ongoing_order.secret_pin,
             }
             return JsonResponse({"status": "success", "order": order_data})
         else:
@@ -320,3 +337,82 @@ def get_ongoing_order(request):
     except Order.DoesNotExist:
         return JsonResponse({"status": "success", "order": None})
 
+
+
+@api_view(["POST"])
+def verify_order(request):
+    data = request.data
+    print(data)
+    access = Token.objects.get(key=data["access_token"]).user
+    driver = Driver.objects.get(user=access)
+
+    try:
+        order = Order.objects.get(id=data["order_id"], driver=driver, status=Order.ONTHEWAY)
+        # Verify if all items are checked
+        received_items = data.get("received_items", [])
+        if len(received_items) != order.order_details.count():
+            return JsonResponse({"status": "failed", "message": "All items have not been received."})
+
+        if order.secret_pin == data["pin"]:
+            order.status = Order.VERIFIED  # Change to VERIFIED status
+            order.save()
+            return JsonResponse({"status": "success", "message": "Order verified successfully."})
+        else:
+            return JsonResponse({"status": "failed", "message": "Invalid PIN."})
+    except Order.DoesNotExist:
+        return JsonResponse({"status": "failed", "message": "Order not found or you are not assigned to this order."})
+
+
+
+
+@api_view(["POST"])
+def get_verified_order(request):
+    data = request.data
+    try:
+        access = Token.objects.get(key=data["access_token"]).user
+        driver = Driver.objects.get(user=access)
+        
+        # Fetch the first verified order for the driver
+        verified_order = Order.objects.filter(driver=driver, status=Order.VERIFIED).first()
+        
+        if verified_order:
+            order_data = {
+                "id": verified_order.id,
+                "restaurant": {
+                    "name": verified_order.restaurant.name,
+                    "phone": verified_order.restaurant.phone,
+                    "address": verified_order.restaurant.address,
+                    "logo": verified_order.restaurant.logo.url if verified_order.restaurant.logo else None,
+                    "location": verified_order.restaurant.location,
+                },
+                 "customer": {
+                    "avatar": verified_order.customer.avatar.url if verified_order.customer.avatar else None,
+                    "phone": verified_order.customer.phone,
+                    "address": verified_order.customer.address,
+                    "location": verified_order.customer.location,
+                },
+                "order_details": [
+                    {
+                        "id": detail.id,
+                        "meal": {
+                            "id": detail.meal.id,
+                            "name": detail.meal.name,
+                            "price": detail.meal.price
+                        },
+                        "quantity": detail.quantity,
+                        "sub_total": detail.sub_total
+                    } for detail in verified_order.order_details.all()
+                ],
+                "status": verified_order.status,
+                "address": verified_order.address,
+                "secret_pin": verified_order.secret_pin,
+            }
+            return JsonResponse({"status": "success", "order": order_data})
+        else:
+            return JsonResponse({"status": "success", "order": None})
+    except Token.DoesNotExist:
+        return JsonResponse({"status": "error", "message": "Invalid access token."}, status=401)
+    except Driver.DoesNotExist:
+        return JsonResponse({"status": "error", "message": "Driver not found."}, status=404)
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": str(e)}, status=500)

@@ -11,7 +11,7 @@ class OrderCustomerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Customer
-        fields = ("id", "name", "avatar", "phone", "address")
+        fields = ("id", "name", "avatar", "phone", "address", "location")
 
 
 class OrderDriverSerializer(serializers.ModelSerializer):
@@ -19,7 +19,7 @@ class OrderDriverSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Driver
-        fields = ("id", "name", "avatar", "phone", "address")
+        fields = ("id", "name", "avatar", "phone", "address", "location")
 
 
 class OrderRestaurantSerializer(serializers.ModelSerializer):

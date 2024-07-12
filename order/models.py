@@ -26,6 +26,7 @@ class Order(models.Model):
     ONTHEWAY = 3
     DELIVERED = 4
     REJECTED = 5
+    VERIFIED = 6
 
     STATUS_CHOICES = (
         (COOKING, "Cozinhando"),
@@ -33,6 +34,7 @@ class Order(models.Model):
         (ONTHEWAY, "A caminho"),
         (DELIVERED, "Entregue"),
         (REJECTED, "Rejeitado"),
+        (VERIFIED, "Verificado"),
     )
 
     PAID = "paid"

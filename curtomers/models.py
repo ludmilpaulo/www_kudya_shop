@@ -12,6 +12,7 @@ class Customer(models.Model):
     avatar = models.ImageField(upload_to="customer/", blank=True)
     phone = models.CharField(max_length=500, blank=True, verbose_name="telefone")
     address = models.CharField(max_length=500, blank=True, verbose_name="Endereço")
+    location = models.CharField(max_length=500, blank=True, verbose_name="localização")
 
     class Meta:
         verbose_name = "Cliente"

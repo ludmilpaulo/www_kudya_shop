@@ -14,8 +14,10 @@ from drivers.views import (
     driver_update_location,
     driver_update_profile,
     get_ongoing_order,
+    get_verified_order,
     reject_order,
     test_reject_order_view,
+    verify_order,
 )
 
 
@@ -38,5 +40,8 @@ urlpatterns = [
     ),
     path('reject-order/', reject_order, name='reject_order'),
     path("ongoing-order/", get_ongoing_order),
+    path("verify-order/", verify_order, name="verify-order"),
+    path('verified-order/', get_verified_order, name='get_verified_order'),
 ]
+
 
