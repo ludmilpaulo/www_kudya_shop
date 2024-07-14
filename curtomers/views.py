@@ -156,11 +156,12 @@ def customer_get_latest_order(request):
     access = Token.objects.get(key=data["access_token"]).user
 
     # Get profile
-
     customer = Customer.objects.get(user=access)
-    order = OrderSerializer(Order.objects.filter(customer=customer).last()).data
+    # Get all orders that are not delivered
+    orders = Order.objects.filter(customer=customer).exclude(status=Order.DELIVERED)
+    orders_data = OrderSerializer(orders, many=True).data
 
-    return JsonResponse({"order": order})
+    return JsonResponse({"orders": orders_data})
 
 
 @api_view(["POST"])
@@ -169,14 +170,30 @@ def customer_driver_location(request):
     access = Token.objects.get(key=data["access_token"]).user
 
     # Get profile
-
     customer = Customer.objects.get(user=access)
-    current_order = Order.objects.filter(
-        customer=customer, status=Order.ONTHEWAY
-    ).last()
-    location = current_order.driver.location
 
-    return JsonResponse({"location": location})
+    # Get all orders that are not delivered
+    orders = Order.objects.filter(customer=customer).exclude(status=Order.DELIVERED)
+    
+    # Collect locations for orders with drivers
+    order_locations = []
+    for order in orders:
+        if order.driver:
+            order_locations.append({
+                'order_id': order.id,
+                'driver_location': order.driver.location,
+                'secret_pin': order.secret_pin
+            })
+        else:
+            order_locations.append({
+                'order_id': order.id,
+                'driver_location': None,
+                'restaurant': order.restaurant.name,
+                'secret_pin': order.secret_pin
+            })
+
+    return JsonResponse({"order_locations": order_locations})
+
 
 
 # GET params: access_token

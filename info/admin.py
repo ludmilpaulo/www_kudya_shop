@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Image, Carousel, AboutUs, Why_Choose_Us, Team, Contact, Chat
+from .models import Image, Carousel, AboutUs, Why_Choose_Us, Team, Contact, ChatMessage
 
 
 # Register the Image model
@@ -47,7 +47,7 @@ class ContactAdmin(admin.ModelAdmin):
 
 
 # Register the Chat model
-@admin.register(Chat)
+@admin.register(ChatMessage)
 class ChatAdmin(admin.ModelAdmin):
     list_display = ("id", "sender", "message", "timestamp")
     search_fields = ("sender__username", "message")

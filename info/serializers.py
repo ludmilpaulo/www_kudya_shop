@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Image, Carousel, AboutUs, Why_Choose_Us, Team, Contact
+from .models import ChatMessage, Image, Carousel, AboutUs, Why_Choose_Us, Team, Contact
 
 
 class ImageSerializer(serializers.ModelSerializer):
@@ -38,3 +38,13 @@ class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
         fields = "__all__"
+
+
+
+
+class ChatMessageSerializer(serializers.ModelSerializer):
+    sender_username = serializers.CharField(source='sender.username', read_only=True)
+
+    class Meta:
+        model = ChatMessage
+        fields = ['id', 'order', 'sender', 'sender_username', 'message', 'timestamp']

@@ -310,6 +310,7 @@ def get_ongoing_order(request):
                 "customer": {
                     "avatar": ongoing_order.customer.avatar.url if ongoing_order.customer.avatar else None,
                     "phone": ongoing_order.customer.phone,
+                    "name": ongoing_order.customer.user.username,
                     "address": ongoing_order.customer.address,
                     "location": ongoing_order.customer.location,
                 },
@@ -386,10 +387,18 @@ def get_verified_order(request):
                     "location": verified_order.restaurant.location,
                 },
                  "customer": {
+                    "name": verified_order.customer.user.username,
                     "avatar": verified_order.customer.avatar.url if verified_order.customer.avatar else None,
                     "phone": verified_order.customer.phone,
                     "address": verified_order.customer.address,
                     "location": verified_order.customer.location,
+                },
+                 "driver": {
+                    "name": verified_order.driver.user.username,
+                    "avatar": verified_order.driver.avatar.url if verified_order.customer.avatar else None,
+                    "phone": verified_order.driver.phone,
+                    "address": verified_order.driver.address,
+                    "location": verified_order.driver.location,
                 },
                 "order_details": [
                     {

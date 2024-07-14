@@ -1,4 +1,6 @@
 from django.urls import path
+
+from info.chat_view import get_order_chat, send_chat_message
 from .views import (
     ImageListCreateAPIView,
     ImageRetrieveUpdateDestroyAPIView,
@@ -57,4 +59,6 @@ urlpatterns = [
         ContactRetrieveUpdateDestroyAPIView.as_view(),
         name="contact-retrieve-update-destroy",
     ),
+    path('get_order_chat/<int:order_id>/', get_order_chat, name='get_order_chat'),
+    path('send_chat_message/', send_chat_message, name='send_chat_message'),
 ]

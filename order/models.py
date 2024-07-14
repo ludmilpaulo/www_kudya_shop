@@ -3,7 +3,7 @@ from django.db import models
 from django.utils import timezone
 from curtomers.models import Customer
 from drivers.models import Driver
-from info.models import Chat
+
 from django.core.mail import EmailMessage
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -58,12 +58,12 @@ class Order(models.Model):
         on_delete=models.CASCADE,
         verbose_name="motorista",
     )
-    address = models.CharField(max_length=500, verbose_name="Endereco")
+    address = models.CharField(max_length=500, verbose_name="Endereco", blank=True, null=True)
     total = models.DecimalField(max_digits=10, decimal_places=2)
     status = models.IntegerField(choices=STATUS_CHOICES, verbose_name="stado")
     payment_method = models.CharField(max_length=50, verbose_name="método de pagamento")
     chat = models.OneToOneField(
-        Chat, on_delete=models.CASCADE, null=True, blank=True, related_name="order_chat"
+        "info.ChatMessage", on_delete=models.CASCADE, null=True, blank=True, related_name="order_chat"
     )
     created_at = models.DateTimeField(default=timezone.now, verbose_name="criado em")
     picked_at = models.DateTimeField(blank=True, null=True, verbose_name="pegar em")

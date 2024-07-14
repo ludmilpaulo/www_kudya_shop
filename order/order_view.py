@@ -15,7 +15,6 @@ from restaurants.models import Meal
 
 logger = logging.getLogger(__name__)
 
-
 @csrf_exempt
 @api_view(["POST"])
 def customer_add_order(request):
@@ -46,8 +45,10 @@ def customer_add_order(request):
         )
 
     # Check Address
-    if not data.get("address"):
-        return Response({"status": "failed", "error": "Address is required."})
+    address = data.get("address")
+    use_current_location = data.get("use_current_location", False)
+    if not address and not use_current_location:
+        return Response({"status": "failed", "error": "Address or current location is required."})
 
     # Get Order Details
     order_details = data.get("order_details", [])
@@ -81,7 +82,7 @@ def customer_add_order(request):
             restaurant_id=data["restaurant_id"],
             total=order_total,
             status=Order.COOKING,
-            address=data["address"],
+            address=address if not use_current_location else "",
             payment_method=data["payment_method"],
             original_price=original_total,
             driver_commission=driver_commission,
@@ -142,6 +143,13 @@ def customer_add_order(request):
                 "error": "Erro ao enviar email. Por favor, tente novamente.",
             }
         )
+
+    # Update Customer's address or location
+    if use_current_location:
+        customer.location = f"{data['latitude']},{data['longitude']}"
+    else:
+        customer.address = address
+    customer.save()
 
     # Generate WhatsApp URL
     phone_number = "customer_phone_number"  # Replace with the actual phone number
