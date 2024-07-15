@@ -102,7 +102,8 @@ def driver_get_latest_order(request):
     return JsonResponse({"order": order})
 
 
-# POST params: access_token, order_id
+
+
 @api_view(["POST"])
 def driver_complete_order(request):
     # Get token
@@ -111,11 +112,18 @@ def driver_complete_order(request):
 
     driver = Driver.objects.get(user=access)
 
-    order = Order.objects.get(id=data["order_id"], driver=driver)
-    order.status = Order.DELIVERED
-    order.save()
+    try:
+        order = Order.objects.get(id=data["order_id"], driver=driver)
+    except Order.DoesNotExist:
+        return JsonResponse({"status": "error", "message": "Order not found or not assigned to this driver"})
 
-    return JsonResponse({"status": "success"})
+    if order.secret_pin == data["secret_pin"]:
+        order.status = Order.DELIVERED
+        order.save()
+        return JsonResponse({"status": "success"})
+    else:
+        return JsonResponse({"status": "error", "message": "Incorrect PIN"})
+
 
 
 @api_view(["POST"])
