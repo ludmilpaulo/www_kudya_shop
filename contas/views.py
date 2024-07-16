@@ -145,16 +145,19 @@ class CustomAuthToken(ObtainAuthToken):
         password = request.data.get("password")
 
         if not User.objects.filter(username=username).exists():
+            print(f"Username '{username}' not found.")
             return Response(
                 {"message": "Usuário não encontrado."}, status=status.HTTP_404_NOT_FOUND
             )
 
         user = User.objects.filter(username=username).first()
         if not user.check_password(password):
+            print(f"Incorrect password for username '{username}'.")
             return Response(
                 {"message": "Senha incorreta."}, status=status.HTTP_401_UNAUTHORIZED
             )
 
+        print(f"Unknown error for username '{username}'.")
         return Response(
             {"message": "Erro desconhecido."}, status=status.HTTP_400_BAD_REQUEST
         )

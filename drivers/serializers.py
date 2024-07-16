@@ -40,7 +40,8 @@ class DriverSignupSerializer(serializers.ModelSerializer):
 
 
 class DriverSerializer(serializers.ModelSerializer):
+    name = serializers.ReadOnlyField(source="user.get_full_name")
 
     class Meta:
         model = Driver
-        fields = ("id", "avatar", "phone", "address", "location")
+        fields = ("id", "name", "avatar", "phone", "address", "location")
