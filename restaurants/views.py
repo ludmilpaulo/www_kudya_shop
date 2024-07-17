@@ -233,39 +233,51 @@ def fornecedor_add_product(request, format=None):
             status=status.HTTP_500_INTERNAL_SERVER_ERROR,
         )
 
+###########################################
+
+import logging
+
+logger = logging.getLogger(__name__)
 
 @api_view(["DELETE"])
-# @permission_classes([IsAuthenticated])
 def delete_product(request, pk):
     try:
-        # Authenticate the user using the user_id from the request
         user_id = request.data.get("user_id")
         if not user_id:
+            logger.error("user_id not provided")
             return Response(
                 {"error": "user_id not provided"}, status=status.HTTP_400_BAD_REQUEST
             )
 
         user = User.objects.get(pk=user_id)
-
-        # Check if the user has permission to delete the product
         product = Meal.objects.get(pk=pk)
+        
         if not hasattr(user, "restaurant") or user.restaurant != product.restaurant:
+            logger.error("User does not have permission to delete this product")
             return Response(
                 {"error": "User does not have permission to delete this product"},
                 status=status.HTTP_403_FORBIDDEN,
             )
 
-        # User is authenticated and has permission, delete the product
         product.delete()
+        logger.info(f"Product {pk} deleted successfully")
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     except User.DoesNotExist:
+        logger.error("User not found")
         return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
     except Meal.DoesNotExist:
+        logger.error("Product not found")
         return Response(
             {"error": "Product not found"}, status=status.HTTP_404_NOT_FOUND
         )
+    except Exception as e:
+        logger.error(f"Unexpected error: {str(e)}")
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+    
+    
 
 @api_view(["PUT"])
 @parser_classes([JSONParser, MultiPartParser, FormParser, FileUploadParser])
