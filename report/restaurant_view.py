@@ -54,6 +54,9 @@ def restaurant_report(request, user_id):
         revenue = []
         orders = []
         total_restaurant_amount = 0
+        total_paid_amount = 0
+        proof_of_payment = None
+
         current_days = [start_date + timedelta(days=i) for i in range((end_date - start_date).days + 1)]
         for day in current_days:
             day_orders = delivered_orders.filter(
@@ -65,6 +68,10 @@ def restaurant_report(request, user_id):
             orders.append(day_orders.count())
             for order in day_orders:
                 total_restaurant_amount += order.original_price
+                if order.payment_status_restaurant == Order.PAID:
+                    total_paid_amount += order.original_price
+                    if order.proof_of_payment_restaurant:
+                        proof_of_payment = order.proof_of_payment_restaurant.url
 
         if not any(revenue) and not any(orders):
             return Response({"message": "No sales data available for the selected dates"}, status=200)
@@ -103,6 +110,8 @@ def restaurant_report(request, user_id):
                 "drivers": drivers_data,
                 "customers": customers_data,
                 "total_restaurant_amount": total_restaurant_amount,
+                "total_paid_amount": total_paid_amount,
+                "proof_of_payment": proof_of_payment,
             }
         )
 
