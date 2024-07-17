@@ -130,7 +130,7 @@ def restaurant_report(request, user_id):
 
         # Calculate total restaurant amount excluding paid orders
         total_restaurant_amount = sum(
-            order.total for order in Order.objects.filter(
+            order.original_price for order in Order.objects.filter(
                 restaurant=restaurant,
                 status=Order.DELIVERED,
                 payment_status_restaurant=Order.UNPAID

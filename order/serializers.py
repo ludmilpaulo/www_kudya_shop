@@ -74,4 +74,6 @@ class OrderSerializer(serializers.ModelSerializer):
             "secret_pin",
             "picked_at",
             "updated_at",
+            "proof_of_payment_restaurant",
+            "proof_of_payment_driver",
         )
