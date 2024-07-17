@@ -1,16 +1,18 @@
 from django.contrib.auth import get_user_model
 from curtomers.models import Customer
+from curtomers.serializers import CustomerSerializer
 from drivers.models import Driver
 from drivers.serializers import DriverSerializer
 from order.models import Order
 from restaurants.models import Meal
+
+User = get_user_model()
+
 from django.db.models import Sum, Count, Case, When
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from datetime import datetime, timedelta
 from django.utils.timezone import make_aware, get_current_timezone
-
-User = get_user_model()
 
 @api_view(["GET"])
 def restaurant_report(request, user_id):
@@ -126,8 +128,15 @@ def restaurant_report(request, user_id):
             "data": [customer.total_order for customer in top3_customers],
         }
 
-        # Total amounts
-        total_restaurant_amount = sum(revenue)
+        # Calculate total restaurant amount excluding paid orders
+        total_restaurant_amount = sum(
+            order.total for order in Order.objects.filter(
+                restaurant=restaurant,
+                status=Order.DELIVERED,
+                payment_status_restaurant=Order.UNPAID
+            )
+        )
+
         total_paid_amount = sum(order.original_price for order in Order.objects.filter(
             restaurant=restaurant,
             payment_status_restaurant=Order.PAID,
@@ -156,7 +165,7 @@ def restaurant_report(request, user_id):
         )
 
     except User.DoesNotExist:
-        return Response({"error": "User not found"}, status=404)
+        return Response({"error": "Usuário não encontrado"}, status=404)
     except Exception as e:
         # Handle exceptions and return appropriate response
         return Response({"error": str(e)}, status=500)
