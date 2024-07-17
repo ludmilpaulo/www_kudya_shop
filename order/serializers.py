@@ -77,4 +77,5 @@ class OrderSerializer(serializers.ModelSerializer):
             "proof_of_payment_restaurant",
             "proof_of_payment_driver",
             "payment_status_restaurant",
+            "original_price",
         )
