@@ -1,5 +1,12 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+import pymysql
+
+pymysql.install_as_MySQLdb()
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -11,7 +18,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-76vdd*oh$e-t_lyxs#5jdx@hus^9vxro%@j)69plvh&8$n1zn5'
 # Get environment variable
-ENV = os.getenv('DJANGO_ENV', 'development')
+
+#ENV = os.getenv('DJANGO_ENV', 'development')
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -92,20 +101,35 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'www_kudya_shop.wsgi.application'
 
+DJANGO_ENV = os.getenv('DJANGO_ENV')
 
-
-
-DATABASES = {
+if DJANGO_ENV == 'production':
+    DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'kudya',
-            'USER': 'super',
-            'PASSWORD': 'Maitland@2024',  # Replace with your actual password
-            'HOST': 'maindoagency-3864.postgres.pythonanywhere-services.com',
-            'PORT': '13864',
-            #'HOST': 'localhost',
-            #'PORT': '5432',
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.getenv('PROD_DB_NAME'),
+            'USER': os.getenv('PROD_DB_USER'),
+            'PASSWORD': os.getenv('PROD_DB_PASSWORD'),
+            'HOST': os.getenv('PROD_DB_HOST'),
+            'PORT': os.getenv('PROD_DB_PORT', '3306'),
+            'OPTIONS': {
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'"
+            }
         }
+    }
+else:
+
+    DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': 'kudya',
+                'USER': 'super',
+                'PASSWORD': 'Maitland@2024',  # Replace with your actual password
+            # 'HOST': 'maindoagency-3864.postgres.pythonanywhere-services.com',
+            # 'PORT': '13864',
+                'HOST': 'localhost',
+                'PORT': '5432',
+            }
     }
 
 
