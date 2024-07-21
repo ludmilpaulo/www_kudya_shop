@@ -1,5 +1,12 @@
+# Ignore the database file
 db.sqlite3
+
+# Ignore the static files directory
 static_cdn/
+
 # Ignore the settings.py file
-/settings.py
 settings.py
+# Ignore the settings.py file
+www_kudya_shop/settings.py
+# Ignore .env file
+.env
