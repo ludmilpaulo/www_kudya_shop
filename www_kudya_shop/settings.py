@@ -118,7 +118,6 @@ if DJANGO_ENV == 'production':
         }
     }
 else:
-
     DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.postgresql',
