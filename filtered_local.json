@@ -1974,9 +1974,9 @@
         "model": "restaurants.mealcategory",
         "pk": 13,
         "fields": {
-            "name": "frito",
+            "name": "fry",
             "image": "",
-            "slug": "frito"
+            "slug": "fry"
         }
     },
     {
