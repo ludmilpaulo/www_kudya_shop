@@ -78,4 +78,6 @@ class OrderSerializer(serializers.ModelSerializer):
             "proof_of_payment_driver",
             "payment_status_restaurant",
             "original_price",
+            "location",
+            "use_current_location",
         )

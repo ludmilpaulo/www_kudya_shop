@@ -1,13 +1,14 @@
 from django.views.decorators.csrf import csrf_exempt
-
+from django.utils import timezone
 from curtomers.models import Customer
 from order.email_utils import send_order_email
-from order.models import Order, OrderDetails
+from order.models import Coupon, Order, OrderDetails
 from order.utils import generate_invoice
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from django.core.files.base import ContentFile
+from decimal import Decimal
 import urllib.parse
 import logging
 
@@ -19,6 +20,7 @@ logger = logging.getLogger(__name__)
 @api_view(["POST"])
 def customer_add_order(request):
     data = request.data
+    print(data)
     try:
         access = Token.objects.get(key=data["access_token"]).user
     except Token.DoesNotExist:
@@ -55,6 +57,18 @@ def customer_add_order(request):
     if not order_details:
         return Response({"status": "failed", "error": "Order details are required."})
 
+    # Check for a coupon code
+    coupon_code = data.get("coupon_code")
+    coupon = None
+    if coupon_code:
+        try:
+            coupon = Coupon.objects.get(code=coupon_code, valid_from__lte=timezone.now(), valid_to__gte=timezone.now())
+            if coupon.order_count < 10:
+                return Response({"status": "failed", "error": "Cupom inválido. Você deve fazer pelo menos 10 pedidos para usar o cupom."})
+        except Coupon.DoesNotExist:
+            return Response({"status": "failed", "error": "Código de cupom inválido ou expirado."})
+
+
     order_total = 0
     original_total = 0
     for meal in order_details:
@@ -74,18 +88,35 @@ def customer_add_order(request):
     # Calculate driver commission
     driver_commission_percentage = Order.DRIVER_COMMISSION_PERCENTAGE_DEFAULT
     driver_commission = (order_total * driver_commission_percentage) / 100
+    
+    # Apply discount
+    discount_amount = Decimal(0)
+    if coupon:
+        discount_amount = (order_total * Decimal(coupon.discount_percentage)) / 100
 
+    # Convert delivery fee to Decimal
+    delivery_fee = Decimal(data["delivery_fee"])
+
+    # Final order total
+    final_total = order_total + delivery_fee - discount_amount
+  
     # Step 2 - Create an Order
     try:
-        order = Order.objects.create(
+       order = Order.objects.create(
             customer=customer,
             restaurant_id=data["restaurant_id"],
-            total=order_total,
+            total=final_total,
             status=Order.COOKING,
             address=address if not use_current_location else "",
+            location=data["location"],
+            use_current_location =data["use_current_location"],
             payment_method=data["payment_method"],
             original_price=original_total,
-            driver_commission=driver_commission,
+            driver_commission=(order_total * Order.DRIVER_COMMISSION_PERCENTAGE_DEFAULT) / 100,
+            delivery_fee=data["delivery_fee"],
+            discount_amount=discount_amount,
+            coupon=coupon,
+            delivery_notes=data.get("delivery_notes", ""),
         )
     except Exception as e:
         logger.error(f"Error creating order: {e}")
@@ -144,12 +175,6 @@ def customer_add_order(request):
             }
         )
 
-    # Update Customer's address or location
-    if use_current_location:
-        customer.location = f"{data['latitude']},{data['longitude']}"
-    else:
-        customer.address = address
-    customer.save()
 
     # Generate WhatsApp URL
     phone_number = "customer_phone_number"  # Replace with the actual phone number
@@ -163,3 +188,29 @@ def customer_add_order(request):
             "whatsapp_url": whatsapp_url,
         }
     )
+
+
+
+@api_view(["POST"])
+def check_user_coupon(request):
+    data = request.data
+    try:
+        access = Token.objects.get(key=data["access_token"]).user
+    except Token.DoesNotExist:
+        return Response({"status": "failed", "error": "Token de acesso inválido."})
+
+    # Get profile
+    try:
+        customer = Customer.objects.get(user=access)
+    except Customer.DoesNotExist:
+        return Response({"status": "failed", "error": "Perfil do cliente não encontrado."})
+
+    try:
+        # Check if the coupon exists and is associated with the user
+        coupon = Coupon.objects.filter(user=customer.user).first()
+        if coupon and coupon.order_count >= 10:
+            return Response({"status": "success", "coupon_code": coupon.code})
+        else:
+            return Response({"status": "failed", "error": "Nenhum cupom válido disponível"})
+    except Coupon.DoesNotExist:
+        return Response({"status": "failed", "error": "Nenhum cupom válido disponível"})

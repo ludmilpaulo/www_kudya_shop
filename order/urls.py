@@ -6,7 +6,7 @@ from order.admin_order import (
     upload_proof_of_payment_driver,
     upload_proof_of_payment_restaurant,
 )
-from order.order_view import customer_add_order
+from order.order_view import check_user_coupon, customer_add_order
 from .views import generate_restaurant_invoices, restaurant_details
 
 urlpatterns = [
@@ -35,4 +35,5 @@ urlpatterns = [
     path(
         "api/mark_as_paid/<str:type>/<int:order_id>/", mark_as_paid, name="mark_as_paid"
     ),
+    path('coupons/check/', check_user_coupon, name='check_user_coupon'),
 ]

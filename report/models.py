@@ -24,3 +24,5 @@ class Invoice(models.Model):
 
     def __str__(self):
         return f"Invoice for Order {self.order.id}"
+
+

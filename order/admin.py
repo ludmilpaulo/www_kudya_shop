@@ -1,6 +1,10 @@
 from django.contrib import admin
-from .models import Order, OrderDetails
+from .models import Order, OrderDetails, Coupon
 
+
+@admin.register(Coupon)
+class CouponAdmin(admin.ModelAdmin):
+    list_display = ("id", "code", "discount_percentage", "user", "order_count")
 
 # Register the OrderDetails model
 @admin.register(OrderDetails)

@@ -5,17 +5,32 @@ from curtomers.models import Customer
 from drivers.models import Driver
 
 from django.core.mail import EmailMessage
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from django.template.loader import render_to_string
 from django.core.files.base import ContentFile
 import random
 import string
+
+
 from .utils import generate_invoice
 from django.conf import settings
 import logging
 
 logger = logging.getLogger(__name__)
+
+from django.db import models
+from django.utils import timezone
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+class Coupon(models.Model):
+    code = models.CharField(max_length=50, unique=True, verbose_name="Código")
+    discount_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0, verbose_name="Percentual de Desconto")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Usuário")
+    order_count = models.IntegerField(default=0, verbose_name="Contagem de Pedidos")
+
+    def __str__(self):
+        return self.code
 
 
 class Order(models.Model):
@@ -60,6 +75,12 @@ class Order(models.Model):
     )
     address = models.CharField(max_length=500, verbose_name="Endereco", blank=True, null=True)
     total = models.DecimalField(max_digits=10, decimal_places=2)
+    delivery_notes = models.TextField(blank=True, null=True, verbose_name="Notas de Entrega")
+    delivery_fee = models.DecimalField(max_digits=10, decimal_places=2, default=0.0, verbose_name="Taxa de Entrega")
+    discount_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.0, verbose_name="Valor do Desconto")
+    coupon = models.ForeignKey(Coupon, null=True, blank=True, on_delete=models.SET_NULL, verbose_name="Cupom")
+    use_current_location = models.BooleanField(default=False)
+    location =  models.CharField(max_length=500, verbose_name="localizacao", blank=True, null=True)
     status = models.IntegerField(choices=STATUS_CHOICES, verbose_name="stado")
     payment_method = models.CharField(max_length=50, verbose_name="método de pagamento")
     chat = models.OneToOneField(
@@ -104,7 +125,49 @@ class Order(models.Model):
     driver_commission = models.DecimalField(
         max_digits=10, decimal_places=2, default=0.0
     )
+##########################################################################################
+    def apply_coupon(self):
+        print("Applying coupon...")
+        if self.coupon and self.coupon.discount_percentage > 0:
+            print(f"Coupon found: {self.coupon.code} with {self.coupon.discount_percentage}% discount")
+            self.discount_amount = (self.total * self.coupon.discount_percentage) / 100
+            print(f"Calculated discount amount: {self.discount_amount}")
+            self.coupon.discount_percentage -= self.discount_amount / self.total * 100  # Deduct used points
+            self.coupon.order_count += 1
+            self.coupon.save()
+            print(f"Coupon updated: {self.coupon.discount_percentage}% remaining, {self.coupon.order_count} order count")
+        else:
+            print("No valid coupon found or discount percentage is zero")
+            self.discount_amount = 0.0
 
+    def save(self, *args, **kwargs):
+        print("Saving order...")
+        self.apply_coupon()  # Apply the coupon before saving
+        print(f"Total before discount: {self.total}")
+        self.total -= self.discount_amount  # Apply discount
+        print(f"Total after discount: {self.total}")
+        self.total += self.delivery_fee  # Add delivery fee
+        print(f"Total after adding delivery fee: {self.total}")
+        super().save(*args, **kwargs)
+        print("Order saved")
+
+        if self.status == self.DELIVERED:
+            print("Order delivered. Updating customer coupon...")
+            customer_coupon, created = Coupon.objects.get_or_create(user=self.customer.user)
+            if created:
+                print("New coupon created for user")
+                customer_coupon.code = f"{self.customer.user.username}_coupon"
+                customer_coupon.save()
+            else:
+                print("Existing coupon found for user")
+
+            print(f"Current discount percentage before update: {customer_coupon.discount_percentage}%")
+            customer_coupon.discount_percentage = min(100, customer_coupon.discount_percentage + 1)  # Add 1% point for each delivered order
+            customer_coupon.save()
+            print(f"Updated discount percentage: {customer_coupon.discount_percentage}%")
+
+
+########################################################################################
     @property
     def loyalty_discount(self):
         order_count = Order.objects.filter(customer=self.customer).count()

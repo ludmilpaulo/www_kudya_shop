@@ -1,6 +1,7 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 
+from drivers.revenue_views import driver_get_revenue
 from drivers.views import (
     DriverSignupView,
     driver_complete_order,
@@ -9,7 +10,6 @@ from drivers.views import (
     driver_get_order_history,
     driver_get_profile,
     driver_get_ready_orders,
-    driver_get_revenue,
     driver_pick_order,
     driver_update_location,
     driver_update_profile,
