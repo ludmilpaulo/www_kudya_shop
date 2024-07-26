@@ -19,7 +19,7 @@ class OrderDriverSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Driver
-        fields = ("id", "name", "avatar", "phone", "address", "location")
+        fields = ("id", "name", "avatar", "phone", "address", "location","plate","make")
 
 
 class OrderRestaurantSerializer(serializers.ModelSerializer):

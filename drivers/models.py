@@ -17,6 +17,11 @@ class Driver(models.Model):
     avatar = models.ImageField(upload_to="driver/", blank=True)
     phone = models.CharField(max_length=500, blank=True, verbose_name="telefone")
     address = models.CharField(max_length=500, blank=True, verbose_name="Endereço")
+    bank = models.CharField(max_length=500, blank=True, verbose_name="bank")
+    account_number = models.CharField(max_length=500, blank=True, verbose_name="account")
+    iban = models.CharField(max_length=500, blank=True, verbose_name="iban")
+    plate = models.CharField(max_length=500, blank=True, verbose_name="Matricula")
+    make = models.CharField(max_length=500, blank=True, verbose_name="Model")
     location = models.CharField(max_length=500, blank=True, verbose_name="localização")
     rejected_orders = models.IntegerField(default=0, verbose_name="Pedidos Rejeitados")
 

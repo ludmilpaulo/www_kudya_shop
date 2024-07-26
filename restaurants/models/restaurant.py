@@ -43,6 +43,9 @@ class Restaurant(models.Model):
     name = models.CharField(max_length=500, verbose_name="Nome do restaurante")
     phone = models.CharField(max_length=500, verbose_name="Telefone do restaurante")
     address = models.CharField(max_length=500, verbose_name="Endereço do restaurante")
+    bank = models.CharField(max_length=500, blank=True, verbose_name="bank")
+    account_number = models.CharField(max_length=500, blank=True, verbose_name="account")
+    iban = models.CharField(max_length=500, blank=True, verbose_name="iban")
     logo = models.ImageField(
         upload_to="restaurant_logo/",
         blank=False,
