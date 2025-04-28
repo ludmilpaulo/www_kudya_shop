@@ -120,18 +120,11 @@ if DJANGO_ENV == 'production':
 else:
 
     DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.postgresql',
-                'NAME': 'kudya',
-                'USER': 'super',
-                'PASSWORD': 'Maitland@2024',  # Replace with your actual password
-            # 'HOST': 'maindoagency-3864.postgres.pythonanywhere-services.com',
-            # 'PORT': '13864',
-                'HOST': 'localhost',
-                'PORT': '5432',
-            }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-
+}
 
 
 # Password validation
