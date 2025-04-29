@@ -101,25 +101,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'www_kudya_shop.wsgi.application'
 
-DJANGO_ENV = os.getenv('DJANGO_ENV')
 
-if DJANGO_ENV == 'production':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.getenv('PROD_DB_NAME'),
-            'USER': os.getenv('PROD_DB_USER'),
-            'PASSWORD': os.getenv('PROD_DB_PASSWORD'),
-            'HOST': os.getenv('PROD_DB_HOST'),
-            'PORT': os.getenv('PROD_DB_PORT', '3306'),
-            'OPTIONS': {
-                'init_command': "SET sql_mode='STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'"
-            }
-        }
-    }
-else:
-
-    DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
