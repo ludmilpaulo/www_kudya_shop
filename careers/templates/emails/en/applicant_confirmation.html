@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Application Received</title>
+  <style>
+    body {
+      background-color: #f3f4f6;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      padding: 2rem;
+      color: #1f2937;
+    }
+    .card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 2rem;
+      max-width: 640px;
+      margin: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>👋 Hello {{ full_name }},</h2>
+
+    <p>
+      Thank you for applying to the <strong>{{ title }}</strong> position at our company.
+    </p>
+
+    <p>
+      We’ve received your application and our team will review it shortly.
+      If your profile is a good match, we’ll reach out to you for the next steps.
+    </p>
+
+    <p>
+      We truly appreciate your interest and the time you took to apply.
+    </p>
+
+    <p style="margin-top: 2rem;">Best regards,<br />HR Team</p>
+  </div>
+</body>
+</html>

@@ -1,11 +1,16 @@
-from django.urls import path
-from . import views
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+
+from .application import JobApplicationViewSet
+
+
+from .views import CareerViewSet
+
+router = DefaultRouter()
+router.register(r'careers', CareerViewSet, basename='career')
+router.register(r'job-applications', JobApplicationViewSet)
+
 
 urlpatterns = [
-    path("careers/", views.CareerListAPIView.as_view(), name="career_list_api"),
-    path(
-        "apply-for-job/",
-        views.JobApplicationCreateAPIView.as_view(),
-        name="apply_for_job_api",
-    ),
+    path('', include(router.urls)),
 ]

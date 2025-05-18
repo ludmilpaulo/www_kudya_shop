@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt" style="font-family: 'Segoe UI', sans-serif; background: #f4f4f5; color: #111827;">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Atualização do Status da Candidatura</title>
+  </head>
+  <body style="margin: 0; padding: 2rem; background-color: #f4f4f5;">
+    <div style="max-width: 640px; margin: auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 18px rgba(0,0,0,0.06);">
+      <div style="background: linear-gradient(to right, #4f46e5, #3b82f6); padding: 1.5rem 2rem;">
+        <h2 style="color: white; font-size: 1.5rem; margin: 0;">Atualização de Status da Candidatura</h2>
+      </div>
+
+      <div style="padding: 2rem;">
+        <p style="font-size: 16px;">Olá <strong>{{ full_name }}</strong>,</p>
+
+        <p style="font-size: 16px; margin-top: 1rem;">
+          Agradecemos seu interesse pela vaga de <strong>{{ title }}</strong>.
+        </p>
+
+        <!-- ✅ Dynamic intro message -->
+        <p style="font-size: 16px; margin-top: 1.5rem;">
+          {{ intro }}
+        </p>
+
+        <div style="margin: 1rem 0;">
+          <p style="font-size: 18px; font-weight: 600; padding: 0.75rem 1rem; background-color: #eff6ff; border-left: 4px solid #3b82f6; color: #1e40af; border-radius: 6px;">
+            {{ status|title }}
+          </p>
+        </div>
+
+        <p style="font-size: 16px; margin-top: 1.5rem;">
+          Caso tenha dúvidas ou precise de mais informações, entre em contato com a nossa equipe.
+        </p>
+
+        <p style="margin-top: 2rem;">Atenciosamente,</p>
+        <p style="font-weight: 600;">Equipe de Recrutamento</p>
+      </div>
+
+      <div style="text-align: center; font-size: 12px; color: #9ca3af; padding: 1rem 2rem; border-top: 1px solid #e5e7eb;">
+        © {{ now.year }} Sua Empresa. Todos os direitos reservados.
+      </div>
+    </div>
+  </body>
+</html>

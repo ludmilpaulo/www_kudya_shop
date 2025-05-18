@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Confirmação de Candidatura</title>
+  <style>
+    body {
+      background-color: #f3f4f6;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      padding: 2rem;
+      color: #1f2937;
+    }
+    .card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 2rem;
+      max-width: 640px;
+      margin: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>👋 Olá {{ full_name }},</h2>
+
+    <p>
+      Obrigado por se candidatar à vaga de <strong>{{ title }}</strong> em nossa empresa.
+    </p>
+
+    <p>
+      Recebemos sua candidatura e nossa equipe irá analisá-la em breve.
+      Caso seu perfil seja compatível com a vaga, entraremos em contato com você.
+    </p>
+
+    <p>
+      Agradecemos muito o seu interesse e o tempo dedicado ao processo.
+    </p>
+
+    <p style="margin-top: 2rem;">Atenciosamente,<br />Equipe de RH</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>New Application Notification</title>
+  <style>
+    body {
+      background-color: #f9fafb;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      padding: 2rem;
+      color: #111827;
+    }
+    .card {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      max-width: 640px;
+      margin: auto;
+    }
+    .label {
+      font-weight: 600;
+      color: #374151;
+    }
+    .value {
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>📥 New Application / Nova Candidatura</h2>
+
+    <p><span class="label">Name / Nome:</span> {{ full_name }}</p>
+    <p><span class="label">Email:</span> {{ email }}</p>
+    <p><span class="label">Position / Cargo:</span> {{ title }}</p>
+    <p><span class="label">Location / Localização:</span> {{ location }}</p>
+
+    <p><span class="label">Cover Letter / Carta de Apresentação:</span></p>
+    <div class="value">{{ cover_letter|linebreaks }}</div>
+
+    <p>📎 The candidate’s resume is attached. / O currículo do candidato está em anexo.</p>
+  </div>
+</body>
+</html>
