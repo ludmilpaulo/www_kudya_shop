@@ -66,3 +66,120 @@ class OpeningHourAdmin(admin.ModelAdmin):
     list_display = ["restaurant", "day", "from_hour", "to_hour", "is_closed"]
     list_filter = ["restaurant", "day"]
     search_fields = ["restaurant__name"]
+
+
+from django.contrib import admin
+from .models import (
+    StoreType,
+    StoreCategory,
+    Store,
+    ProductCategory,
+    Image,
+    Size,
+    Product,
+    Wishlist,
+    Review,
+)
+
+from django.utils.html import format_html
+
+
+@admin.register(StoreType)
+class StoreTypeAdmin(admin.ModelAdmin):
+    list_display = ("name", "icon_preview", "description")
+    search_fields = ("name",)
+
+    def icon_preview(self, obj):
+        if obj.icon:
+            return format_html('<img src="{}" width="50" height="50" />', obj.icon.url)
+        return "-"
+    icon_preview.short_description = "Icon"
+
+
+@admin.register(StoreCategory)
+class StoreCategoryAdmin(admin.ModelAdmin):
+    list_display = ("name", "slug", "image_preview")
+    search_fields = ("name", "slug")
+
+    def image_preview(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" width="60" height="60" />', obj.image.url)
+        return "-"
+    image_preview.short_description = "Image"
+
+
+@admin.register(Store)
+class StoreAdmin(admin.ModelAdmin):
+    list_display = ("name", "user", "store_type", "category", "is_approved", "banner")
+    list_filter = ("is_approved", "banner", "store_type")
+    search_fields = ("name", "user__username", "phone", "address")
+
+
+@admin.register(ProductCategory)
+class ProductCategoryAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+    search_fields = ("name",)
+
+
+@admin.register(Image)
+class ImageAdmin(admin.ModelAdmin):
+    list_display = ("image_preview", "created_at")
+    readonly_fields = ("image_preview",)
+    search_fields = ("image",)
+
+    def image_preview(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" width="100" />', obj.image.url)
+        return "-"
+    image_preview.short_description = "Preview"
+
+
+@admin.register(Size)
+class SizeAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+    search_fields = ("name",)
+
+
+class ImageInline(admin.TabularInline):
+    model = Product.images.through
+    extra = 1
+
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ("name", "store", "category", "price", "stock", "on_sale", "bulk_sale", "season", "gender")
+    list_filter = ("category", "store", "on_sale", "bulk_sale", "season", "gender")
+    search_fields = ("name", "store__name", "category__name")
+    inlines = [ImageInline]
+    filter_horizontal = ("images", "sizes")
+
+    fieldsets = (
+        (None, {
+            "fields": ("name", "store", "description", "category", "images", "sizes")
+        }),
+        ("Pricing & Stock", {
+            "fields": ("price", "percentage", "discount_percentage", "stock", "on_sale", "bulk_sale")
+        }),
+        ("Attributes", {
+            "fields": ("season", "gender")
+        }),
+    )
+
+
+@admin.register(Wishlist)
+class WishlistAdmin(admin.ModelAdmin):
+    list_display = ("user", "product", "added_at")
+    search_fields = ("user__username", "product__name")
+
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ("user", "product", "rating", "created_at", "like_count", "dislike_count")
+    search_fields = ("user__username", "product__name", "comment")
+    list_filter = ("rating", "created_at")
+
+    def like_count(self, obj):
+        return obj.likes.count()
+
+    def dislike_count(self, obj):
+        return obj.dislikes.count()

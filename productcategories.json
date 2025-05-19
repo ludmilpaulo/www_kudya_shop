@@ -1,0 +1,72 @@
+[
+  {
+    "model": "restaurants.productcategory",
+    "pk": 1,
+    "fields": {
+      "name": "Category 1"
+    }
+  },
+  {
+    "model": "restaurants.productcategory",
+    "pk": 2,
+    "fields": {
+      "name": "Category 2"
+    }
+  },
+  {
+    "model": "restaurants.productcategory",
+    "pk": 3,
+    "fields": {
+      "name": "Category 3"
+    }
+  },
+  {
+    "model": "restaurants.productcategory",
+    "pk": 4,
+    "fields": {
+      "name": "Category 4"
+    }
+  },
+  {
+    "model": "restaurants.productcategory",
+    "pk": 5,
+    "fields": {
+      "name": "Category 5"
+    }
+  },
+  {
+    "model": "restaurants.productcategory",
+    "pk": 6,
+    "fields": {
+      "name": "Category 6"
+    }
+  },
+  {
+    "model": "restaurants.productcategory",
+    "pk": 7,
+    "fields": {
+      "name": "Category 7"
+    }
+  },
+  {
+    "model": "restaurants.productcategory",
+    "pk": 8,
+    "fields": {
+      "name": "Category 8"
+    }
+  },
+  {
+    "model": "restaurants.productcategory",
+    "pk": 9,
+    "fields": {
+      "name": "Category 9"
+    }
+  },
+  {
+    "model": "restaurants.productcategory",
+    "pk": 10,
+    "fields": {
+      "name": "Category 10"
+    }
+  }
+]

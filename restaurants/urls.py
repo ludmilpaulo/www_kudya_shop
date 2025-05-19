@@ -2,6 +2,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from restaurants.admin_views import RestaurantViewSet, meal_list
+from .store_views import  StoreTypeListView
 from restaurants.restaurant_sign import fornecedor_sign_up
 from restaurants.views import (
     MealCategoryList,
@@ -50,4 +51,7 @@ urlpatterns = [
     path("meal-categories/", MealCategoryList.as_view(), name="meal-category-list"),
     path("api/", include(router.urls)),
     path("api/meals/", meal_list, name="meal-list"),
+    
+    path('store-types/', StoreTypeListView.as_view()),
+    path('stores/?store_type=/', StoreViewSet.as_view()),
 ]

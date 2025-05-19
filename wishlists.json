@@ -1,0 +1,1802 @@
+[
+  {
+    "model": "restaurants.wishlist",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "product": 1,
+      "added_at": "2025-05-18T13:16:17.442395"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "product": 2,
+      "added_at": "2025-05-18T13:16:17.442402"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 3,
+    "fields": {
+      "user": 2,
+      "product": 2,
+      "added_at": "2025-05-18T13:16:17.442407"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 4,
+    "fields": {
+      "user": 2,
+      "product": 3,
+      "added_at": "2025-05-18T13:16:17.442410"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 5,
+    "fields": {
+      "user": 3,
+      "product": 3,
+      "added_at": "2025-05-18T13:16:17.442412"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 6,
+    "fields": {
+      "user": 3,
+      "product": 4,
+      "added_at": "2025-05-18T13:16:17.442416"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 7,
+    "fields": {
+      "user": 4,
+      "product": 4,
+      "added_at": "2025-05-18T13:16:17.442419"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 8,
+    "fields": {
+      "user": 4,
+      "product": 5,
+      "added_at": "2025-05-18T13:16:17.442422"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 9,
+    "fields": {
+      "user": 5,
+      "product": 5,
+      "added_at": "2025-05-18T13:16:17.442424"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 10,
+    "fields": {
+      "user": 5,
+      "product": 6,
+      "added_at": "2025-05-18T13:16:17.442426"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 11,
+    "fields": {
+      "user": 6,
+      "product": 6,
+      "added_at": "2025-05-18T13:16:17.442430"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 12,
+    "fields": {
+      "user": 6,
+      "product": 7,
+      "added_at": "2025-05-18T13:16:17.442433"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 13,
+    "fields": {
+      "user": 7,
+      "product": 7,
+      "added_at": "2025-05-18T13:16:17.442435"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 14,
+    "fields": {
+      "user": 7,
+      "product": 8,
+      "added_at": "2025-05-18T13:16:17.442437"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 15,
+    "fields": {
+      "user": 8,
+      "product": 8,
+      "added_at": "2025-05-18T13:16:17.442440"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 16,
+    "fields": {
+      "user": 8,
+      "product": 9,
+      "added_at": "2025-05-18T13:16:17.442442"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 17,
+    "fields": {
+      "user": 9,
+      "product": 9,
+      "added_at": "2025-05-18T13:16:17.442444"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 18,
+    "fields": {
+      "user": 9,
+      "product": 10,
+      "added_at": "2025-05-18T13:16:17.442446"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 19,
+    "fields": {
+      "user": 10,
+      "product": 10,
+      "added_at": "2025-05-18T13:16:17.442449"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 20,
+    "fields": {
+      "user": 10,
+      "product": 11,
+      "added_at": "2025-05-18T13:16:17.442451"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 21,
+    "fields": {
+      "user": 11,
+      "product": 11,
+      "added_at": "2025-05-18T13:16:17.442453"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 22,
+    "fields": {
+      "user": 11,
+      "product": 12,
+      "added_at": "2025-05-18T13:16:17.442455"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 23,
+    "fields": {
+      "user": 12,
+      "product": 12,
+      "added_at": "2025-05-18T13:16:17.442458"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 24,
+    "fields": {
+      "user": 12,
+      "product": 13,
+      "added_at": "2025-05-18T13:16:17.442460"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 25,
+    "fields": {
+      "user": 13,
+      "product": 13,
+      "added_at": "2025-05-18T13:16:17.442462"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 26,
+    "fields": {
+      "user": 13,
+      "product": 14,
+      "added_at": "2025-05-18T13:16:17.442465"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 27,
+    "fields": {
+      "user": 14,
+      "product": 14,
+      "added_at": "2025-05-18T13:16:17.442468"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 28,
+    "fields": {
+      "user": 14,
+      "product": 15,
+      "added_at": "2025-05-18T13:16:17.442473"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 29,
+    "fields": {
+      "user": 15,
+      "product": 15,
+      "added_at": "2025-05-18T13:16:17.442488"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 30,
+    "fields": {
+      "user": 15,
+      "product": 16,
+      "added_at": "2025-05-18T13:16:17.442492"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 31,
+    "fields": {
+      "user": 16,
+      "product": 16,
+      "added_at": "2025-05-18T13:16:17.442495"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 32,
+    "fields": {
+      "user": 16,
+      "product": 17,
+      "added_at": "2025-05-18T13:16:17.442499"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 33,
+    "fields": {
+      "user": 17,
+      "product": 17,
+      "added_at": "2025-05-18T13:16:17.442502"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 34,
+    "fields": {
+      "user": 17,
+      "product": 18,
+      "added_at": "2025-05-18T13:16:17.442507"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 35,
+    "fields": {
+      "user": 18,
+      "product": 18,
+      "added_at": "2025-05-18T13:16:17.442510"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 36,
+    "fields": {
+      "user": 18,
+      "product": 19,
+      "added_at": "2025-05-18T13:16:17.442776"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 37,
+    "fields": {
+      "user": 19,
+      "product": 19,
+      "added_at": "2025-05-18T13:16:17.442791"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 38,
+    "fields": {
+      "user": 19,
+      "product": 20,
+      "added_at": "2025-05-18T13:16:17.442794"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 39,
+    "fields": {
+      "user": 20,
+      "product": 20,
+      "added_at": "2025-05-18T13:16:17.442797"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 40,
+    "fields": {
+      "user": 20,
+      "product": 21,
+      "added_at": "2025-05-18T13:16:17.442801"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 41,
+    "fields": {
+      "user": 21,
+      "product": 21,
+      "added_at": "2025-05-18T13:16:17.442808"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 42,
+    "fields": {
+      "user": 21,
+      "product": 22,
+      "added_at": "2025-05-18T13:16:17.442811"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 43,
+    "fields": {
+      "user": 22,
+      "product": 22,
+      "added_at": "2025-05-18T13:16:17.442813"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 44,
+    "fields": {
+      "user": 22,
+      "product": 23,
+      "added_at": "2025-05-18T13:16:17.442816"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 45,
+    "fields": {
+      "user": 23,
+      "product": 23,
+      "added_at": "2025-05-18T13:16:17.442825"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 46,
+    "fields": {
+      "user": 23,
+      "product": 24,
+      "added_at": "2025-05-18T13:16:17.442833"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 47,
+    "fields": {
+      "user": 24,
+      "product": 24,
+      "added_at": "2025-05-18T13:16:17.442836"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 48,
+    "fields": {
+      "user": 24,
+      "product": 25,
+      "added_at": "2025-05-18T13:16:17.442838"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 49,
+    "fields": {
+      "user": 25,
+      "product": 25,
+      "added_at": "2025-05-18T13:16:17.442841"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 50,
+    "fields": {
+      "user": 25,
+      "product": 26,
+      "added_at": "2025-05-18T13:16:17.442843"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 51,
+    "fields": {
+      "user": 26,
+      "product": 26,
+      "added_at": "2025-05-18T13:16:17.442845"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 52,
+    "fields": {
+      "user": 26,
+      "product": 27,
+      "added_at": "2025-05-18T13:16:17.442847"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 53,
+    "fields": {
+      "user": 27,
+      "product": 27,
+      "added_at": "2025-05-18T13:16:17.442850"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 54,
+    "fields": {
+      "user": 27,
+      "product": 28,
+      "added_at": "2025-05-18T13:16:17.442852"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 55,
+    "fields": {
+      "user": 28,
+      "product": 28,
+      "added_at": "2025-05-18T13:16:17.442855"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 56,
+    "fields": {
+      "user": 28,
+      "product": 29,
+      "added_at": "2025-05-18T13:16:17.442857"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 57,
+    "fields": {
+      "user": 29,
+      "product": 29,
+      "added_at": "2025-05-18T13:16:17.442859"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 58,
+    "fields": {
+      "user": 29,
+      "product": 30,
+      "added_at": "2025-05-18T13:16:17.442861"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 59,
+    "fields": {
+      "user": 30,
+      "product": 30,
+      "added_at": "2025-05-18T13:16:17.442864"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 60,
+    "fields": {
+      "user": 30,
+      "product": 31,
+      "added_at": "2025-05-18T13:16:17.442866"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 61,
+    "fields": {
+      "user": 31,
+      "product": 31,
+      "added_at": "2025-05-18T13:16:17.442872"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 62,
+    "fields": {
+      "user": 31,
+      "product": 32,
+      "added_at": "2025-05-18T13:16:17.442875"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 63,
+    "fields": {
+      "user": 32,
+      "product": 32,
+      "added_at": "2025-05-18T13:16:17.442877"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 64,
+    "fields": {
+      "user": 32,
+      "product": 33,
+      "added_at": "2025-05-18T13:16:17.442880"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 65,
+    "fields": {
+      "user": 33,
+      "product": 33,
+      "added_at": "2025-05-18T13:16:17.442882"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 66,
+    "fields": {
+      "user": 33,
+      "product": 34,
+      "added_at": "2025-05-18T13:16:17.442885"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 67,
+    "fields": {
+      "user": 34,
+      "product": 34,
+      "added_at": "2025-05-18T13:16:17.442887"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 68,
+    "fields": {
+      "user": 34,
+      "product": 35,
+      "added_at": "2025-05-18T13:16:17.442893"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 69,
+    "fields": {
+      "user": 35,
+      "product": 35,
+      "added_at": "2025-05-18T13:16:17.442895"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 70,
+    "fields": {
+      "user": 35,
+      "product": 36,
+      "added_at": "2025-05-18T13:16:17.442897"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 71,
+    "fields": {
+      "user": 36,
+      "product": 36,
+      "added_at": "2025-05-18T13:16:17.442900"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 72,
+    "fields": {
+      "user": 36,
+      "product": 37,
+      "added_at": "2025-05-18T13:16:17.442902"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 73,
+    "fields": {
+      "user": 37,
+      "product": 37,
+      "added_at": "2025-05-18T13:16:17.442905"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 74,
+    "fields": {
+      "user": 37,
+      "product": 38,
+      "added_at": "2025-05-18T13:16:17.442907"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 75,
+    "fields": {
+      "user": 38,
+      "product": 38,
+      "added_at": "2025-05-18T13:16:17.442910"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 76,
+    "fields": {
+      "user": 38,
+      "product": 39,
+      "added_at": "2025-05-18T13:16:17.442913"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 77,
+    "fields": {
+      "user": 39,
+      "product": 39,
+      "added_at": "2025-05-18T13:16:17.443046"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 78,
+    "fields": {
+      "user": 39,
+      "product": 40,
+      "added_at": "2025-05-18T13:16:17.443053"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 79,
+    "fields": {
+      "user": 40,
+      "product": 40,
+      "added_at": "2025-05-18T13:16:17.443055"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 80,
+    "fields": {
+      "user": 40,
+      "product": 41,
+      "added_at": "2025-05-18T13:16:17.443058"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 81,
+    "fields": {
+      "user": 41,
+      "product": 41,
+      "added_at": "2025-05-18T13:16:17.443060"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 82,
+    "fields": {
+      "user": 41,
+      "product": 42,
+      "added_at": "2025-05-18T13:16:17.443063"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 83,
+    "fields": {
+      "user": 42,
+      "product": 42,
+      "added_at": "2025-05-18T13:16:17.443065"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 84,
+    "fields": {
+      "user": 42,
+      "product": 43,
+      "added_at": "2025-05-18T13:16:17.443068"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 85,
+    "fields": {
+      "user": 43,
+      "product": 43,
+      "added_at": "2025-05-18T13:16:17.443070"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 86,
+    "fields": {
+      "user": 43,
+      "product": 44,
+      "added_at": "2025-05-18T13:16:17.443072"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 87,
+    "fields": {
+      "user": 44,
+      "product": 44,
+      "added_at": "2025-05-18T13:16:17.443074"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 88,
+    "fields": {
+      "user": 44,
+      "product": 45,
+      "added_at": "2025-05-18T13:16:17.443092"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 89,
+    "fields": {
+      "user": 45,
+      "product": 45,
+      "added_at": "2025-05-18T13:16:17.443097"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 90,
+    "fields": {
+      "user": 45,
+      "product": 46,
+      "added_at": "2025-05-18T13:16:17.443100"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 91,
+    "fields": {
+      "user": 46,
+      "product": 46,
+      "added_at": "2025-05-18T13:16:17.443104"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 92,
+    "fields": {
+      "user": 46,
+      "product": 47,
+      "added_at": "2025-05-18T13:16:17.443111"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 93,
+    "fields": {
+      "user": 47,
+      "product": 47,
+      "added_at": "2025-05-18T13:16:17.443277"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 94,
+    "fields": {
+      "user": 47,
+      "product": 48,
+      "added_at": "2025-05-18T13:16:17.443298"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 95,
+    "fields": {
+      "user": 48,
+      "product": 48,
+      "added_at": "2025-05-18T13:16:17.443303"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 96,
+    "fields": {
+      "user": 48,
+      "product": 49,
+      "added_at": "2025-05-18T13:16:17.443308"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 97,
+    "fields": {
+      "user": 49,
+      "product": 49,
+      "added_at": "2025-05-18T13:16:17.443321"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 98,
+    "fields": {
+      "user": 49,
+      "product": 50,
+      "added_at": "2025-05-18T13:16:17.443325"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 99,
+    "fields": {
+      "user": 50,
+      "product": 50,
+      "added_at": "2025-05-18T13:16:17.443329"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 100,
+    "fields": {
+      "user": 50,
+      "product": 51,
+      "added_at": "2025-05-18T13:16:17.443341"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 101,
+    "fields": {
+      "user": 51,
+      "product": 51,
+      "added_at": "2025-05-18T13:16:17.443345"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 102,
+    "fields": {
+      "user": 51,
+      "product": 52,
+      "added_at": "2025-05-18T13:16:17.443349"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 103,
+    "fields": {
+      "user": 52,
+      "product": 52,
+      "added_at": "2025-05-18T13:16:17.443353"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 104,
+    "fields": {
+      "user": 52,
+      "product": 53,
+      "added_at": "2025-05-18T13:16:17.443357"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 105,
+    "fields": {
+      "user": 53,
+      "product": 53,
+      "added_at": "2025-05-18T13:16:17.443367"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 106,
+    "fields": {
+      "user": 53,
+      "product": 54,
+      "added_at": "2025-05-18T13:16:17.443371"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 107,
+    "fields": {
+      "user": 54,
+      "product": 54,
+      "added_at": "2025-05-18T13:16:17.443375"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 108,
+    "fields": {
+      "user": 54,
+      "product": 55,
+      "added_at": "2025-05-18T13:16:17.443381"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 109,
+    "fields": {
+      "user": 55,
+      "product": 55,
+      "added_at": "2025-05-18T13:16:17.443390"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 110,
+    "fields": {
+      "user": 55,
+      "product": 56,
+      "added_at": "2025-05-18T13:16:17.443395"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 111,
+    "fields": {
+      "user": 56,
+      "product": 56,
+      "added_at": "2025-05-18T13:16:17.443399"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 112,
+    "fields": {
+      "user": 56,
+      "product": 57,
+      "added_at": "2025-05-18T13:16:17.443403"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 113,
+    "fields": {
+      "user": 57,
+      "product": 57,
+      "added_at": "2025-05-18T13:16:17.443407"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 114,
+    "fields": {
+      "user": 57,
+      "product": 58,
+      "added_at": "2025-05-18T13:16:17.443411"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 115,
+    "fields": {
+      "user": 58,
+      "product": 58,
+      "added_at": "2025-05-18T13:16:17.443414"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 116,
+    "fields": {
+      "user": 58,
+      "product": 59,
+      "added_at": "2025-05-18T13:16:17.443419"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 117,
+    "fields": {
+      "user": 59,
+      "product": 59,
+      "added_at": "2025-05-18T13:16:17.443423"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 118,
+    "fields": {
+      "user": 59,
+      "product": 60,
+      "added_at": "2025-05-18T13:16:17.443426"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 119,
+    "fields": {
+      "user": 60,
+      "product": 60,
+      "added_at": "2025-05-18T13:16:17.443431"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 120,
+    "fields": {
+      "user": 60,
+      "product": 61,
+      "added_at": "2025-05-18T13:16:17.443434"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 121,
+    "fields": {
+      "user": 61,
+      "product": 61,
+      "added_at": "2025-05-18T13:16:17.443439"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 122,
+    "fields": {
+      "user": 61,
+      "product": 62,
+      "added_at": "2025-05-18T13:16:17.443442"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 123,
+    "fields": {
+      "user": 62,
+      "product": 62,
+      "added_at": "2025-05-18T13:16:17.443446"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 124,
+    "fields": {
+      "user": 62,
+      "product": 63,
+      "added_at": "2025-05-18T13:16:17.443452"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 125,
+    "fields": {
+      "user": 63,
+      "product": 63,
+      "added_at": "2025-05-18T13:16:17.443587"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 126,
+    "fields": {
+      "user": 63,
+      "product": 64,
+      "added_at": "2025-05-18T13:16:17.443601"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 127,
+    "fields": {
+      "user": 64,
+      "product": 64,
+      "added_at": "2025-05-18T13:16:17.443606"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 128,
+    "fields": {
+      "user": 64,
+      "product": 65,
+      "added_at": "2025-05-18T13:16:17.443612"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 129,
+    "fields": {
+      "user": 65,
+      "product": 65,
+      "added_at": "2025-05-18T13:16:17.443616"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 130,
+    "fields": {
+      "user": 65,
+      "product": 66,
+      "added_at": "2025-05-18T13:16:17.443622"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 131,
+    "fields": {
+      "user": 66,
+      "product": 66,
+      "added_at": "2025-05-18T13:16:17.443626"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 132,
+    "fields": {
+      "user": 66,
+      "product": 67,
+      "added_at": "2025-05-18T13:16:17.443637"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 133,
+    "fields": {
+      "user": 67,
+      "product": 67,
+      "added_at": "2025-05-18T13:16:17.443641"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 134,
+    "fields": {
+      "user": 67,
+      "product": 68,
+      "added_at": "2025-05-18T13:16:17.443650"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 135,
+    "fields": {
+      "user": 68,
+      "product": 68,
+      "added_at": "2025-05-18T13:16:17.443656"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 136,
+    "fields": {
+      "user": 68,
+      "product": 69,
+      "added_at": "2025-05-18T13:16:17.443660"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 137,
+    "fields": {
+      "user": 69,
+      "product": 69,
+      "added_at": "2025-05-18T13:16:17.443667"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 138,
+    "fields": {
+      "user": 69,
+      "product": 70,
+      "added_at": "2025-05-18T13:16:17.443671"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 139,
+    "fields": {
+      "user": 70,
+      "product": 70,
+      "added_at": "2025-05-18T13:16:17.443676"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 140,
+    "fields": {
+      "user": 70,
+      "product": 71,
+      "added_at": "2025-05-18T13:16:17.443681"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 141,
+    "fields": {
+      "user": 71,
+      "product": 71,
+      "added_at": "2025-05-18T13:16:17.443691"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 142,
+    "fields": {
+      "user": 71,
+      "product": 72,
+      "added_at": "2025-05-18T13:16:17.443695"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 143,
+    "fields": {
+      "user": 72,
+      "product": 72,
+      "added_at": "2025-05-18T13:16:17.443700"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 144,
+    "fields": {
+      "user": 72,
+      "product": 73,
+      "added_at": "2025-05-18T13:16:17.443704"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 145,
+    "fields": {
+      "user": 73,
+      "product": 73,
+      "added_at": "2025-05-18T13:16:17.443708"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 146,
+    "fields": {
+      "user": 73,
+      "product": 74,
+      "added_at": "2025-05-18T13:16:17.443713"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 147,
+    "fields": {
+      "user": 74,
+      "product": 74,
+      "added_at": "2025-05-18T13:16:17.443717"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 148,
+    "fields": {
+      "user": 74,
+      "product": 75,
+      "added_at": "2025-05-18T13:16:17.443721"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 149,
+    "fields": {
+      "user": 75,
+      "product": 75,
+      "added_at": "2025-05-18T13:16:17.443732"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 150,
+    "fields": {
+      "user": 75,
+      "product": 76,
+      "added_at": "2025-05-18T13:16:17.443737"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 151,
+    "fields": {
+      "user": 76,
+      "product": 76,
+      "added_at": "2025-05-18T13:16:17.443742"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 152,
+    "fields": {
+      "user": 76,
+      "product": 77,
+      "added_at": "2025-05-18T13:16:17.443746"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 153,
+    "fields": {
+      "user": 77,
+      "product": 77,
+      "added_at": "2025-05-18T13:16:17.443750"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 154,
+    "fields": {
+      "user": 77,
+      "product": 78,
+      "added_at": "2025-05-18T13:16:17.443754"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 155,
+    "fields": {
+      "user": 78,
+      "product": 78,
+      "added_at": "2025-05-18T13:16:17.443758"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 156,
+    "fields": {
+      "user": 78,
+      "product": 79,
+      "added_at": "2025-05-18T13:16:17.443763"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 157,
+    "fields": {
+      "user": 79,
+      "product": 79,
+      "added_at": "2025-05-18T13:16:17.443912"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 158,
+    "fields": {
+      "user": 79,
+      "product": 80,
+      "added_at": "2025-05-18T13:16:17.443924"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 159,
+    "fields": {
+      "user": 80,
+      "product": 80,
+      "added_at": "2025-05-18T13:16:17.443927"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 160,
+    "fields": {
+      "user": 80,
+      "product": 81,
+      "added_at": "2025-05-18T13:16:17.443931"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 161,
+    "fields": {
+      "user": 81,
+      "product": 81,
+      "added_at": "2025-05-18T13:16:17.443933"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 162,
+    "fields": {
+      "user": 81,
+      "product": 82,
+      "added_at": "2025-05-18T13:16:17.443936"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 163,
+    "fields": {
+      "user": 82,
+      "product": 82,
+      "added_at": "2025-05-18T13:16:17.443938"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 164,
+    "fields": {
+      "user": 82,
+      "product": 83,
+      "added_at": "2025-05-18T13:16:17.443946"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 165,
+    "fields": {
+      "user": 83,
+      "product": 83,
+      "added_at": "2025-05-18T13:16:17.443953"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 166,
+    "fields": {
+      "user": 83,
+      "product": 84,
+      "added_at": "2025-05-18T13:16:17.443957"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 167,
+    "fields": {
+      "user": 84,
+      "product": 84,
+      "added_at": "2025-05-18T13:16:17.443961"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 168,
+    "fields": {
+      "user": 84,
+      "product": 85,
+      "added_at": "2025-05-18T13:16:17.443964"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 169,
+    "fields": {
+      "user": 85,
+      "product": 85,
+      "added_at": "2025-05-18T13:16:17.443987"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 170,
+    "fields": {
+      "user": 85,
+      "product": 86,
+      "added_at": "2025-05-18T13:16:17.443991"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 171,
+    "fields": {
+      "user": 86,
+      "product": 86,
+      "added_at": "2025-05-18T13:16:17.443996"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 172,
+    "fields": {
+      "user": 86,
+      "product": 87,
+      "added_at": "2025-05-18T13:16:17.444001"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 173,
+    "fields": {
+      "user": 87,
+      "product": 87,
+      "added_at": "2025-05-18T13:16:17.444010"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 174,
+    "fields": {
+      "user": 87,
+      "product": 88,
+      "added_at": "2025-05-18T13:16:17.444014"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 175,
+    "fields": {
+      "user": 88,
+      "product": 88,
+      "added_at": "2025-05-18T13:16:17.444017"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 176,
+    "fields": {
+      "user": 88,
+      "product": 89,
+      "added_at": "2025-05-18T13:16:17.444019"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 177,
+    "fields": {
+      "user": 89,
+      "product": 89,
+      "added_at": "2025-05-18T13:16:17.444021"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 178,
+    "fields": {
+      "user": 89,
+      "product": 90,
+      "added_at": "2025-05-18T13:16:17.444024"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 179,
+    "fields": {
+      "user": 90,
+      "product": 90,
+      "added_at": "2025-05-18T13:16:17.444027"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 180,
+    "fields": {
+      "user": 90,
+      "product": 91,
+      "added_at": "2025-05-18T13:16:17.444030"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 181,
+    "fields": {
+      "user": 91,
+      "product": 91,
+      "added_at": "2025-05-18T13:16:17.444034"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 182,
+    "fields": {
+      "user": 91,
+      "product": 92,
+      "added_at": "2025-05-18T13:16:17.444038"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 183,
+    "fields": {
+      "user": 92,
+      "product": 92,
+      "added_at": "2025-05-18T13:16:17.444041"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 184,
+    "fields": {
+      "user": 92,
+      "product": 93,
+      "added_at": "2025-05-18T13:16:17.444045"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 185,
+    "fields": {
+      "user": 93,
+      "product": 93,
+      "added_at": "2025-05-18T13:16:17.444049"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 186,
+    "fields": {
+      "user": 93,
+      "product": 94,
+      "added_at": "2025-05-18T13:16:17.444053"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 187,
+    "fields": {
+      "user": 94,
+      "product": 94,
+      "added_at": "2025-05-18T13:16:17.444062"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 188,
+    "fields": {
+      "user": 94,
+      "product": 95,
+      "added_at": "2025-05-18T13:16:17.444065"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 189,
+    "fields": {
+      "user": 95,
+      "product": 95,
+      "added_at": "2025-05-18T13:16:17.444072"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 190,
+    "fields": {
+      "user": 95,
+      "product": 96,
+      "added_at": "2025-05-18T13:16:17.444075"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 191,
+    "fields": {
+      "user": 96,
+      "product": 96,
+      "added_at": "2025-05-18T13:16:17.444077"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 192,
+    "fields": {
+      "user": 96,
+      "product": 97,
+      "added_at": "2025-05-18T13:16:17.444079"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 193,
+    "fields": {
+      "user": 97,
+      "product": 97,
+      "added_at": "2025-05-18T13:16:17.444082"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 194,
+    "fields": {
+      "user": 97,
+      "product": 98,
+      "added_at": "2025-05-18T13:16:17.444084"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 195,
+    "fields": {
+      "user": 98,
+      "product": 98,
+      "added_at": "2025-05-18T13:16:17.444095"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 196,
+    "fields": {
+      "user": 98,
+      "product": 99,
+      "added_at": "2025-05-18T13:16:17.444101"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 197,
+    "fields": {
+      "user": 99,
+      "product": 99,
+      "added_at": "2025-05-18T13:16:17.444103"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 198,
+    "fields": {
+      "user": 99,
+      "product": 100,
+      "added_at": "2025-05-18T13:16:17.444105"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 199,
+    "fields": {
+      "user": 100,
+      "product": 100,
+      "added_at": "2025-05-18T13:16:17.444108"
+    }
+  },
+  {
+    "model": "restaurants.wishlist",
+    "pk": 200,
+    "fields": {
+      "user": 100,
+      "product": 101,
+      "added_at": "2025-05-18T13:16:17.444114"
+    }
+  }
+]

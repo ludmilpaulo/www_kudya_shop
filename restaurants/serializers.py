@@ -173,15 +173,18 @@ class OpeningHourSerializer(serializers.ModelSerializer):
         )
         print(f"Post-validation data: {data}")
         return data
-    
-    
-    
-    
 
 
 
-from .models import Product, Image, Category
+
+from .models import Product, Image, ProductCategory
 from .models import Review, Wishlist
+from .models import StoreType, Store
+
+class StoreTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StoreType
+        fields = ['id', 'name', 'description', 'icon']
 
 
 class ReviewSerializer(serializers.ModelSerializer):
@@ -206,7 +209,7 @@ class ImageSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    category = serializers.CharField(source="category.name", read_only=True)
+    category = serializers.CharField(source="productcategory.name", read_only=True)
     brand = serializers.CharField(source="brand.name", read_only=True)
     sizes = serializers.SerializerMethodField()
     images = ImageSerializer(many=True, read_only=True)
@@ -256,7 +259,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Category
+        model = ProductCategory
         fields = "__all__"
 
 
@@ -273,3 +276,35 @@ class WishlistSerializer(serializers.ModelSerializer):
 
     def get_product_price(self, obj):
         return obj.product.price if obj.product and obj.product.price else 0.00
+    
+class StoreSerializer(serializers.ModelSerializer):
+    store_type = serializers.SerializerMethodField()
+    logo = serializers.ImageField(required=False, allow_empty_file=True)
+    restaurant_license = serializers.FileField(required=False, allow_empty_file=True)
+    opening_hours = OpeningHourSerializer(
+        many=True, source="openinghour_set", required=False
+    )
+
+    def get_store_type(self, store):
+        store_type = store.store_type
+        if store_type:
+            return {
+                "id": store_type.id,
+                "name": store_type.name,
+                "image": self.get_store_type_image_url(store_type),
+            }
+        return None
+
+    def get_store_type_image_url(self, store_type):
+        request = self.context.get("request")
+        if store_type.image:
+            image_url = store_type.image.url
+            return request.build_absolute_uri(image_url)
+        return None
+    def get_logo(self, store):  
+        request = self.context.get("request")
+        logo_url = store.logo.url
+        return request.build_absolute_uri(logo_url)
+    
+    
+    

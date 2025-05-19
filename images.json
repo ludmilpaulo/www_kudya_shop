@@ -1,0 +1,9 @@
+[
+  {
+    "model": "restaurants.image",
+    "pk": 1,
+    "fields": {
+      "image": "product_images/sample.jpg"
+    }
+  }
+]

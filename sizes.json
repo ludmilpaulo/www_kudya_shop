@@ -1,0 +1,23 @@
+[
+  {
+    "model": "restaurants.size",
+    "pk": 1,
+    "fields": {
+      "name": "S"
+    }
+  },
+  {
+    "model": "restaurants.size",
+    "pk": 2,
+    "fields": {
+      "name": "M"
+    }
+  },
+  {
+    "model": "restaurants.size",
+    "pk": 3,
+    "fields": {
+      "name": "L"
+    }
+  }
+]

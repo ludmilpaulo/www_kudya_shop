@@ -1,0 +1,10 @@
+[
+  {
+    "model": "restaurants.image",
+    "pk": 1,
+    "fields": {
+      "image": "product_images/sample.jpg",
+      "created_at": "2025-05-18T13:14:22.454263"
+    }
+  }
+]

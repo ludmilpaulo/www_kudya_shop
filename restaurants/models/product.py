@@ -24,7 +24,7 @@ def resize_image(image_field, size=(800, 800)):
 
 
 
-class Category(models.Model):
+class ProductCategory(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
     def __str__(self):
@@ -78,7 +78,7 @@ class Product(models.Model):
     images = models.ManyToManyField("Image")
     price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.ForeignKey(
-        Category, on_delete=models.CASCADE, related_name="products"
+        ProductCategory, on_delete=models.CASCADE, related_name="products"
     )
     sizes = models.ManyToManyField(Size, blank=True)
     stock = models.PositiveIntegerField(default=0)
