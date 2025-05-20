@@ -53,5 +53,5 @@ urlpatterns = [
     path("api/meals/", meal_list, name="meal-list"),
     
     path('store-types/', StoreTypeListView.as_view()),
-    path('stores/?store_type=/', StoreViewSet.as_view()),
+   # path('stores/?store_type=/', StoreViewSet.as_view()),
 ]

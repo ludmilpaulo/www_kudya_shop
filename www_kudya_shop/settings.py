@@ -102,7 +102,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'www_kudya_shop.wsgi.application'
 
 
-from decouple import config
 
 DATABASES = {
     "default": {
