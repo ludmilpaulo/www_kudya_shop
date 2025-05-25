@@ -23,12 +23,14 @@ def resize_image(image_field, size=(800, 800)):
 
 
 
-
+# models.py
 class ProductCategory(models.Model):
     name = models.CharField(max_length=255, unique=True)
+    icon = models.CharField(max_length=50, blank=True, default='th-large')  # Use FontAwesome icon names
 
     def __str__(self):
         return self.name
+
 
 
 
@@ -42,7 +44,7 @@ class Image(models.Model):
     class Meta:
         verbose_name = "Product Image"
         verbose_name_plural = "Products Images"
-        
+
     def save(self, *args, **kwargs):
         if self.image:
             self.image = resize_image(self.image, size=(800, 800))

@@ -8,6 +8,8 @@ from restaurants.models import (
 )
 from django.contrib.auth import get_user_model
 
+from restaurants.models.product import Size, ProductCategory
+
 User = get_user_model()
 
 
@@ -196,28 +198,30 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = Review
         fields = ["id", "user", "comment", "rating", "created_at"]
 
-
 class ImageSerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
 
     class Meta:
         model = Image
-        fields = ["id", "image"]
+        fields = ['id', 'image', 'created_at']
 
     def get_image(self, obj):
-        return obj.url  # uses the @property
+        request = self.context.get('request')
+        if obj.image and hasattr(obj.image, 'url'):
+            if request:
+                return request.build_absolute_uri(obj.image.url)
+            return obj.image.url
+        return None
 
+class SizeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Size
+        fields = ['name']
 
 class ProductSerializer(serializers.ModelSerializer):
-    category = serializers.CharField(source="productcategory.name", read_only=True)
-    brand = serializers.CharField(source="brand.name", read_only=True)
-    sizes = serializers.SerializerMethodField()
+    category = serializers.CharField(source="category.name", read_only=True)
     images = ImageSerializer(many=True, read_only=True)
-    uploaded_images = serializers.ListField(
-        child=serializers.ImageField(allow_empty_file=False, use_url=False),
-        write_only=True,
-        required=False,
-    )
+    sizes = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
@@ -225,17 +229,15 @@ class ProductSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "description",
-            "price",
+            "price",      # Will output price_with_markup via to_representation
             "category",
-            "brand",
             "stock",
             "on_sale",
             "bulk_sale",
             "discount_percentage",
             "season",
-            "images",
+            "images",     # Already returns full URLs if your ImageSerializer does so
             "gender",
-            "uploaded_images",
             "sizes",
         ]
 
@@ -243,27 +245,10 @@ class ProductSerializer(serializers.ModelSerializer):
         return [size.name for size in obj.sizes.all()]
 
     def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation["price"] = instance.price_with_markup
-        return representation
-
-    def create(self, validated_data):
-        uploaded_images = validated_data.pop("uploaded_images", [])
-        product = Product.objects.create(**validated_data)
-
-        for image in uploaded_images:
-            Image.objects.create(product=product, image=image)
-
-        return product
-
-
-class CategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ProductCategory
-        fields = "__all__"
-
-
-
+        rep = super().to_representation(instance)
+        # Return price_with_markup as price
+        rep["price"] = str(instance.price_with_markup)
+        return rep
 
 
 class WishlistSerializer(serializers.ModelSerializer):
@@ -280,10 +265,14 @@ class WishlistSerializer(serializers.ModelSerializer):
 class StoreSerializer(serializers.ModelSerializer):
     store_type = serializers.SerializerMethodField()
     logo = serializers.ImageField(required=False, allow_empty_file=True)
-    restaurant_license = serializers.FileField(required=False, allow_empty_file=True)
+    license = serializers.FileField(required=False, allow_empty_file=True)
     opening_hours = OpeningHourSerializer(
         many=True, source="openinghour_set", required=False
     )
+    
+    class Meta:
+        model = Store
+        fields = "__all__"
 
     def get_store_type(self, store):
         store_type = store.store_type
@@ -291,20 +280,35 @@ class StoreSerializer(serializers.ModelSerializer):
             return {
                 "id": store_type.id,
                 "name": store_type.name,
-                "image": self.get_store_type_image_url(store_type),
+                "icon": self.get_store_type_icon_url(store_type),
             }
         return None
 
-    def get_store_type_image_url(self, store_type):
+    def get_store_type_icon_url(self, store_type):
         request = self.context.get("request")
-        if store_type.image:
-            image_url = store_type.image.url
-            return request.build_absolute_uri(image_url)
+        if store_type.icon:
+            icon_url = store_type.icon.url
+            return request.build_absolute_uri(icon_url)
         return None
+
     def get_logo(self, store):  
         request = self.context.get("request")
         logo_url = store.logo.url
         return request.build_absolute_uri(logo_url)
-    
-    
-    
+
+class WishlistSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Wishlist
+        fields = "__all__"
+        depth = 2  # Includes product fields
+
+class ReviewSerializer(serializers.ModelSerializer):
+    user = serializers.StringRelatedField(read_only=True)
+    class Meta:
+        model = Review
+        fields = "__all__"
+
+class ProductCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductCategory
+        fields = ['id', 'name', 'icon']
