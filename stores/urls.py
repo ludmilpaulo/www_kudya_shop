@@ -25,7 +25,7 @@ from stores.views import (
 
 router = DefaultRouter()
 router.register(r"stores", StoreViewSet, basename="store")
-router.register(r"stores", StoreViewSet, basename="store")
+#router.register(r"stores", StoreViewSet, basename="store")
 router.register(r"store-types", StoreTypeViewSet, basename="store-type")
 router.register(r'products', ProductViewSet, basename='product')
 router.register(r'wishlist', WishlistViewSet, basename='wishlist')
