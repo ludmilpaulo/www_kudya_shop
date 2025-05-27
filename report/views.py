@@ -10,7 +10,7 @@ from drivers.serializers import DriverSerializer
 from order.models import Order
 from django.db.models import Count, Sum, Case, When
 
-from restaurants.models import Meal
+from stores.models import product
 
 
 User = get_user_model()
@@ -21,13 +21,13 @@ User = get_user_model()
 
 
 @api_view(["GET"])
-def restaurant_customers(request, user_id):
+def store_customers(request, user_id):
     user = User.objects.get(id=user_id)
-    restaurant = (
-        user.restaurant
-    )  # Assuming user has a foreign key relationship with Restaurant model
+    store = (
+        user.store
+    )  # Assuming user has a foreign key relationship with store model
     customers = Customer.objects.annotate(
-        total_order=Count(Case(When(order__restaurant=restaurant, then=1)))
+        total_order=Count(Case(When(order__store=store, then=1)))
     ).order_by("-total_order")
 
     all_customers = [customer for customer in customers if customer.total_order > 0]
@@ -37,11 +37,11 @@ def restaurant_customers(request, user_id):
 
 
 @api_view(["GET"])
-def restaurant_drivers(request, user_id):
+def store_drivers(request, user_id):
     user = User.objects.get(id=user_id)
-    restaurant = user.restaurant
+    store = user.store
     drivers = Driver.objects.annotate(
-        total_order=Count(Case(When(order__restaurant=restaurant, then=1)))
+        total_order=Count(Case(When(order__store=store, then=1)))
     ).order_by("-total_order")
 
     all_drivers = [driver for driver in drivers if driver.total_order > 0]

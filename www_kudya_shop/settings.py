@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'contas',
     'curtomers',
-    'restaurants',
+    'stores',
     'drivers',
     'order',
     'report',

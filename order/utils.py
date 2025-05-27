@@ -17,7 +17,7 @@ def generate_invoice(order):
         "address": order.address,
         "order_details": [
             {
-                "meal_name": detail.meal.name,
+                "product_name": detail.product.name,
                 "quantity": detail.quantity,
                 "sub_total": detail.sub_total,
             }

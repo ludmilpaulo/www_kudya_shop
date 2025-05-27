@@ -9,19 +9,19 @@ from management.models import Partner
 from management.serializers import PartnerSerializer
 from order.models import Order
 from order.serializers import OrderSerializer
-from restaurants.models import Restaurant
-from restaurants.serializers import RestaurantSerializer
+from stores.models import Store
+from stores.serializers import StoreSerializer
 
 
-class RestaurantViewSet(viewsets.ModelViewSet):
-    queryset = Restaurant.objects.all()
-    serializer_class = RestaurantSerializer
+class storeViewSet(viewsets.ModelViewSet):
+    queryset = Store.objects.all()
+    serializer_class = StoreSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     @action(detail=True, methods=["get"])
     def earnings(self, request, pk=None):
-        restaurant = get_object_or_404(Restaurant, pk=pk)
-        orders = Order.objects.filter(restaurant=restaurant)
+        store = get_object_or_404(Store, pk=pk)
+        orders = Order.objects.filter(store=store)
         total_earnings = sum(order.total for order in orders)
         return Response(
             {

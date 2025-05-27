@@ -1,7 +1,7 @@
 from django.db import models
 
 from order.models import Order
-from restaurants.models import Restaurant
+from stores.models import Store
 
 
 # Create your models here.
@@ -20,7 +20,7 @@ class Invoice(models.Model):
     status = models.IntegerField(
         choices=STATUS_CHOICES, default=UNPAID, verbose_name="estado"
     )
-    shop = models.ForeignKey(Restaurant, on_delete=models.CASCADE, verbose_name="loja")
+    shop = models.ForeignKey(Store, on_delete=models.CASCADE, verbose_name="loja")
 
     def __str__(self):
         return f"Invoice for Order {self.order.id}"

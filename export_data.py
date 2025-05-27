@@ -1,4 +1,4 @@
-# restaurants/management/commands/export_data.py
+# stores/management/commands/export_data.py
 from django.core.management.base import BaseCommand
 from django.core.serializers import serialize
 from django.apps import apps

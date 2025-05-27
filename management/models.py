@@ -10,7 +10,7 @@ from django.db.models import Sum
 
 # Import your existing models
 from order.utils import generate_invoice
-from restaurants.models import Restaurant, Meal
+from stores.models import Store, Product
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -18,13 +18,13 @@ User = get_user_model()
 
 class Partner(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="partners")
-    restaurant = models.ForeignKey(
-        Restaurant, on_delete=models.CASCADE, related_name="partners"
+    store = models.ForeignKey(
+        Store, on_delete=models.CASCADE, related_name="partners"
     )
     earnings = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     def calculate_earnings(self, period):
-        orders = self.restaurant.get_orders(period)
+        orders = self.store.get_orders(period)
         total_earnings = (
             orders.aggregate(Sum("total"))["total__sum"] * 0.01
         )  # 1% earnings
@@ -42,4 +42,4 @@ class Partner(models.Model):
         return pdf_path, pdf_content
 
     def __str__(self):
-        return f"{self.user.username} - {self.restaurant.name}"
+        return f"{self.user.username} - {self.store.name}"

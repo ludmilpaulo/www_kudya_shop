@@ -6,7 +6,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def send_order_email(to_email, order, pdf_path, pdf_content, is_restaurant=False):
+def send_order_email(to_email, order, pdf_path, pdf_content, is_store=False):
     context = {
         "customer_name": order.customer.user.get_full_name(),
         "order_status": order.get_status_display(),
@@ -16,7 +16,7 @@ def send_order_email(to_email, order, pdf_path, pdf_content, is_restaurant=False
         "order_details": order.order_details.all(),
         "secret_pin": order.secret_pin,
     }
-    subject = "Novo Pedido" if is_restaurant else "Pedido Recebido"
+    subject = "Novo Pedido" if is_store else "Pedido Recebido"
     message = render_to_string("email_templates/order_confirmation.html", context)
 
     email_message = EmailMessage(

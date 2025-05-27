@@ -12,7 +12,7 @@ from decimal import Decimal
 import urllib.parse
 import logging
 
-from restaurants.models import Meal
+from stores.models import product
 
 logger = logging.getLogger(__name__)
 
@@ -34,9 +34,9 @@ def customer_add_order(request):
     except Customer.DoesNotExist:
         return Response({"status": "failed", "error": "Customer profile not found."})
 
-    # Check for existing orders to the same restaurant that are not delivered
+    # Check for existing orders to the same store that are not delivered
     existing_orders = Order.objects.filter(
-        customer=customer, restaurant_id=data["restaurant_id"]
+        customer=customer, store_id=data["store_id"]
     ).exclude(status=Order.DELIVERED)
     if existing_orders.exists():
         return Response(
@@ -71,17 +71,17 @@ def customer_add_order(request):
 
     order_total = 0
     original_total = 0
-    for meal in order_details:
+    for product in order_details:
         try:
-            meal_obj = Meal.objects.get(id=meal["meal_id"])
-            meal_price_with_markup = meal_obj.price_with_markup
-            order_total += meal_price_with_markup * meal["quantity"]
-            original_total += meal_obj.price * meal["quantity"]
-        except Meal.DoesNotExist:
+            product_obj = product.objects.get(id=product["product_id"])
+            product_price_with_markup = product_obj.price_with_markup
+            order_total += product_price_with_markup * product["quantity"]
+            original_total += product_obj.price * product["quantity"]
+        except product.DoesNotExist:
             return Response(
                 {
                     "status": "failed",
-                    "error": f"Meal with ID {meal['meal_id']} not found.",
+                    "error": f"product with ID {product['product_id']} not found.",
                 }
             )
 
@@ -104,9 +104,9 @@ def customer_add_order(request):
     try:
        order = Order.objects.create(
             customer=customer,
-            restaurant_id=data["restaurant_id"],
+            store_id=data["store_id"],
             total=final_total,
-            status=Order.COOKING,
+            status=Order.PROCESSING,
             address=address if not use_current_location else "",
             location=data["location"],
             use_current_location =data["use_current_location"],
@@ -123,15 +123,15 @@ def customer_add_order(request):
         return Response({"status": "failed", "error": "Error creating order."})
 
     # Step 3 - Create Order details
-    for meal in order_details:
+    for product in order_details:
         try:
-            meal_obj = Meal.objects.get(id=meal["meal_id"])
-            meal_price_with_markup = meal_obj.price_with_markup
+            product_obj = product.objects.get(id=product["product_id"])
+            product_price_with_markup = product_obj.price_with_markup
             OrderDetails.objects.create(
                 order=order,
-                meal_id=meal["meal_id"],
-                quantity=meal["quantity"],
-                sub_total=meal_price_with_markup * meal["quantity"],
+                product_id=product["product_id"],
+                quantity=product["quantity"],
+                sub_total=product_price_with_markup * product["quantity"],
             )
         except Exception as e:
             logger.error(f"Error creating order details: {e}")
@@ -158,13 +158,13 @@ def customer_add_order(request):
             pdf_path=pdf_path,
             pdf_content=pdf_content,
         )
-        restaurant_email = order.restaurant.user.email
+        store_email = order.store.user.email
         send_order_email(
-            to_email=restaurant_email,
+            to_email=store_email,
             order=order,
             pdf_path=pdf_path,
             pdf_content=pdf_content,
-            is_restaurant=True,
+            is_store=True,
         )
     except Exception as e:
         logger.error(f"Error sending email: {e}")

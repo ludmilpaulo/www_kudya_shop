@@ -1,6 +1,6 @@
 [
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 1,
     "fields": {
       "user": 1,
@@ -9,7 +9,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 2,
     "fields": {
       "user": 1,
@@ -18,7 +18,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 3,
     "fields": {
       "user": 2,
@@ -27,7 +27,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 4,
     "fields": {
       "user": 2,
@@ -36,7 +36,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 5,
     "fields": {
       "user": 3,
@@ -45,7 +45,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 6,
     "fields": {
       "user": 3,
@@ -54,7 +54,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 7,
     "fields": {
       "user": 4,
@@ -63,7 +63,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 8,
     "fields": {
       "user": 4,
@@ -72,7 +72,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 9,
     "fields": {
       "user": 5,
@@ -81,7 +81,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 10,
     "fields": {
       "user": 5,
@@ -90,7 +90,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 11,
     "fields": {
       "user": 6,
@@ -99,7 +99,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 12,
     "fields": {
       "user": 6,
@@ -108,7 +108,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 13,
     "fields": {
       "user": 7,
@@ -117,7 +117,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 14,
     "fields": {
       "user": 7,
@@ -126,7 +126,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 15,
     "fields": {
       "user": 8,
@@ -135,7 +135,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 16,
     "fields": {
       "user": 8,
@@ -144,7 +144,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 17,
     "fields": {
       "user": 9,
@@ -153,7 +153,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 18,
     "fields": {
       "user": 9,
@@ -162,7 +162,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 19,
     "fields": {
       "user": 10,
@@ -171,7 +171,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 20,
     "fields": {
       "user": 10,
@@ -180,7 +180,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 21,
     "fields": {
       "user": 11,
@@ -189,7 +189,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 22,
     "fields": {
       "user": 11,
@@ -198,7 +198,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 23,
     "fields": {
       "user": 12,
@@ -207,7 +207,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 24,
     "fields": {
       "user": 12,
@@ -216,7 +216,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 25,
     "fields": {
       "user": 13,
@@ -225,7 +225,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 26,
     "fields": {
       "user": 13,
@@ -234,7 +234,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 27,
     "fields": {
       "user": 14,
@@ -243,7 +243,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 28,
     "fields": {
       "user": 14,
@@ -252,7 +252,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 29,
     "fields": {
       "user": 15,
@@ -261,7 +261,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 30,
     "fields": {
       "user": 15,
@@ -270,7 +270,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 31,
     "fields": {
       "user": 16,
@@ -279,7 +279,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 32,
     "fields": {
       "user": 16,
@@ -288,7 +288,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 33,
     "fields": {
       "user": 17,
@@ -297,7 +297,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 34,
     "fields": {
       "user": 17,
@@ -306,7 +306,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 35,
     "fields": {
       "user": 18,
@@ -315,7 +315,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 36,
     "fields": {
       "user": 18,
@@ -324,7 +324,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 37,
     "fields": {
       "user": 19,
@@ -333,7 +333,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 38,
     "fields": {
       "user": 19,
@@ -342,7 +342,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 39,
     "fields": {
       "user": 20,
@@ -351,7 +351,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 40,
     "fields": {
       "user": 20,
@@ -360,7 +360,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 41,
     "fields": {
       "user": 21,
@@ -369,7 +369,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 42,
     "fields": {
       "user": 21,
@@ -378,7 +378,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 43,
     "fields": {
       "user": 22,
@@ -387,7 +387,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 44,
     "fields": {
       "user": 22,
@@ -396,7 +396,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 45,
     "fields": {
       "user": 23,
@@ -405,7 +405,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 46,
     "fields": {
       "user": 23,
@@ -414,7 +414,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 47,
     "fields": {
       "user": 24,
@@ -423,7 +423,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 48,
     "fields": {
       "user": 24,
@@ -432,7 +432,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 49,
     "fields": {
       "user": 25,
@@ -441,7 +441,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 50,
     "fields": {
       "user": 25,
@@ -450,7 +450,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 51,
     "fields": {
       "user": 26,
@@ -459,7 +459,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 52,
     "fields": {
       "user": 26,
@@ -468,7 +468,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 53,
     "fields": {
       "user": 27,
@@ -477,7 +477,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 54,
     "fields": {
       "user": 27,
@@ -486,7 +486,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 55,
     "fields": {
       "user": 28,
@@ -495,7 +495,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 56,
     "fields": {
       "user": 28,
@@ -504,7 +504,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 57,
     "fields": {
       "user": 29,
@@ -513,7 +513,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 58,
     "fields": {
       "user": 29,
@@ -522,7 +522,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 59,
     "fields": {
       "user": 30,
@@ -531,7 +531,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 60,
     "fields": {
       "user": 30,
@@ -540,7 +540,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 61,
     "fields": {
       "user": 31,
@@ -549,7 +549,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 62,
     "fields": {
       "user": 31,
@@ -558,7 +558,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 63,
     "fields": {
       "user": 32,
@@ -567,7 +567,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 64,
     "fields": {
       "user": 32,
@@ -576,7 +576,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 65,
     "fields": {
       "user": 33,
@@ -585,7 +585,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 66,
     "fields": {
       "user": 33,
@@ -594,7 +594,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 67,
     "fields": {
       "user": 34,
@@ -603,7 +603,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 68,
     "fields": {
       "user": 34,
@@ -612,7 +612,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 69,
     "fields": {
       "user": 35,
@@ -621,7 +621,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 70,
     "fields": {
       "user": 35,
@@ -630,7 +630,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 71,
     "fields": {
       "user": 36,
@@ -639,7 +639,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 72,
     "fields": {
       "user": 36,
@@ -648,7 +648,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 73,
     "fields": {
       "user": 37,
@@ -657,7 +657,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 74,
     "fields": {
       "user": 37,
@@ -666,7 +666,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 75,
     "fields": {
       "user": 38,
@@ -675,7 +675,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 76,
     "fields": {
       "user": 38,
@@ -684,7 +684,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 77,
     "fields": {
       "user": 39,
@@ -693,7 +693,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 78,
     "fields": {
       "user": 39,
@@ -702,7 +702,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 79,
     "fields": {
       "user": 40,
@@ -711,7 +711,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 80,
     "fields": {
       "user": 40,
@@ -720,7 +720,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 81,
     "fields": {
       "user": 41,
@@ -729,7 +729,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 82,
     "fields": {
       "user": 41,
@@ -738,7 +738,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 83,
     "fields": {
       "user": 42,
@@ -747,7 +747,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 84,
     "fields": {
       "user": 42,
@@ -756,7 +756,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 85,
     "fields": {
       "user": 43,
@@ -765,7 +765,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 86,
     "fields": {
       "user": 43,
@@ -774,7 +774,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 87,
     "fields": {
       "user": 44,
@@ -783,7 +783,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 88,
     "fields": {
       "user": 44,
@@ -792,7 +792,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 89,
     "fields": {
       "user": 45,
@@ -801,7 +801,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 90,
     "fields": {
       "user": 45,
@@ -810,7 +810,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 91,
     "fields": {
       "user": 46,
@@ -819,7 +819,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 92,
     "fields": {
       "user": 46,
@@ -828,7 +828,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 93,
     "fields": {
       "user": 47,
@@ -837,7 +837,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 94,
     "fields": {
       "user": 47,
@@ -846,7 +846,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 95,
     "fields": {
       "user": 48,
@@ -855,7 +855,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 96,
     "fields": {
       "user": 48,
@@ -864,7 +864,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 97,
     "fields": {
       "user": 49,
@@ -873,7 +873,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 98,
     "fields": {
       "user": 49,
@@ -882,7 +882,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 99,
     "fields": {
       "user": 50,
@@ -891,7 +891,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 100,
     "fields": {
       "user": 50,
@@ -900,7 +900,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 101,
     "fields": {
       "user": 51,
@@ -909,7 +909,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 102,
     "fields": {
       "user": 51,
@@ -918,7 +918,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 103,
     "fields": {
       "user": 52,
@@ -927,7 +927,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 104,
     "fields": {
       "user": 52,
@@ -936,7 +936,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 105,
     "fields": {
       "user": 53,
@@ -945,7 +945,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 106,
     "fields": {
       "user": 53,
@@ -954,7 +954,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 107,
     "fields": {
       "user": 54,
@@ -963,7 +963,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 108,
     "fields": {
       "user": 54,
@@ -972,7 +972,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 109,
     "fields": {
       "user": 55,
@@ -981,7 +981,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 110,
     "fields": {
       "user": 55,
@@ -990,7 +990,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 111,
     "fields": {
       "user": 56,
@@ -999,7 +999,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 112,
     "fields": {
       "user": 56,
@@ -1008,7 +1008,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 113,
     "fields": {
       "user": 57,
@@ -1017,7 +1017,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 114,
     "fields": {
       "user": 57,
@@ -1026,7 +1026,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 115,
     "fields": {
       "user": 58,
@@ -1035,7 +1035,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 116,
     "fields": {
       "user": 58,
@@ -1044,7 +1044,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 117,
     "fields": {
       "user": 59,
@@ -1053,7 +1053,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 118,
     "fields": {
       "user": 59,
@@ -1062,7 +1062,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 119,
     "fields": {
       "user": 60,
@@ -1071,7 +1071,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 120,
     "fields": {
       "user": 60,
@@ -1080,7 +1080,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 121,
     "fields": {
       "user": 61,
@@ -1089,7 +1089,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 122,
     "fields": {
       "user": 61,
@@ -1098,7 +1098,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 123,
     "fields": {
       "user": 62,
@@ -1107,7 +1107,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 124,
     "fields": {
       "user": 62,
@@ -1116,7 +1116,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 125,
     "fields": {
       "user": 63,
@@ -1125,7 +1125,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 126,
     "fields": {
       "user": 63,
@@ -1134,7 +1134,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 127,
     "fields": {
       "user": 64,
@@ -1143,7 +1143,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 128,
     "fields": {
       "user": 64,
@@ -1152,7 +1152,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 129,
     "fields": {
       "user": 65,
@@ -1161,7 +1161,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 130,
     "fields": {
       "user": 65,
@@ -1170,7 +1170,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 131,
     "fields": {
       "user": 66,
@@ -1179,7 +1179,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 132,
     "fields": {
       "user": 66,
@@ -1188,7 +1188,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 133,
     "fields": {
       "user": 67,
@@ -1197,7 +1197,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 134,
     "fields": {
       "user": 67,
@@ -1206,7 +1206,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 135,
     "fields": {
       "user": 68,
@@ -1215,7 +1215,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 136,
     "fields": {
       "user": 68,
@@ -1224,7 +1224,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 137,
     "fields": {
       "user": 69,
@@ -1233,7 +1233,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 138,
     "fields": {
       "user": 69,
@@ -1242,7 +1242,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 139,
     "fields": {
       "user": 70,
@@ -1251,7 +1251,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 140,
     "fields": {
       "user": 70,
@@ -1260,7 +1260,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 141,
     "fields": {
       "user": 71,
@@ -1269,7 +1269,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 142,
     "fields": {
       "user": 71,
@@ -1278,7 +1278,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 143,
     "fields": {
       "user": 72,
@@ -1287,7 +1287,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 144,
     "fields": {
       "user": 72,
@@ -1296,7 +1296,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 145,
     "fields": {
       "user": 73,
@@ -1305,7 +1305,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 146,
     "fields": {
       "user": 73,
@@ -1314,7 +1314,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 147,
     "fields": {
       "user": 74,
@@ -1323,7 +1323,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 148,
     "fields": {
       "user": 74,
@@ -1332,7 +1332,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 149,
     "fields": {
       "user": 75,
@@ -1341,7 +1341,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 150,
     "fields": {
       "user": 75,
@@ -1350,7 +1350,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 151,
     "fields": {
       "user": 76,
@@ -1359,7 +1359,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 152,
     "fields": {
       "user": 76,
@@ -1368,7 +1368,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 153,
     "fields": {
       "user": 77,
@@ -1377,7 +1377,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 154,
     "fields": {
       "user": 77,
@@ -1386,7 +1386,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 155,
     "fields": {
       "user": 78,
@@ -1395,7 +1395,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 156,
     "fields": {
       "user": 78,
@@ -1404,7 +1404,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 157,
     "fields": {
       "user": 79,
@@ -1413,7 +1413,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 158,
     "fields": {
       "user": 79,
@@ -1422,7 +1422,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 159,
     "fields": {
       "user": 80,
@@ -1431,7 +1431,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 160,
     "fields": {
       "user": 80,
@@ -1440,7 +1440,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 161,
     "fields": {
       "user": 81,
@@ -1449,7 +1449,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 162,
     "fields": {
       "user": 81,
@@ -1458,7 +1458,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 163,
     "fields": {
       "user": 82,
@@ -1467,7 +1467,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 164,
     "fields": {
       "user": 82,
@@ -1476,7 +1476,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 165,
     "fields": {
       "user": 83,
@@ -1485,7 +1485,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 166,
     "fields": {
       "user": 83,
@@ -1494,7 +1494,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 167,
     "fields": {
       "user": 84,
@@ -1503,7 +1503,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 168,
     "fields": {
       "user": 84,
@@ -1512,7 +1512,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 169,
     "fields": {
       "user": 85,
@@ -1521,7 +1521,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 170,
     "fields": {
       "user": 85,
@@ -1530,7 +1530,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 171,
     "fields": {
       "user": 86,
@@ -1539,7 +1539,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 172,
     "fields": {
       "user": 86,
@@ -1548,7 +1548,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 173,
     "fields": {
       "user": 87,
@@ -1557,7 +1557,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 174,
     "fields": {
       "user": 87,
@@ -1566,7 +1566,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 175,
     "fields": {
       "user": 88,
@@ -1575,7 +1575,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 176,
     "fields": {
       "user": 88,
@@ -1584,7 +1584,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 177,
     "fields": {
       "user": 89,
@@ -1593,7 +1593,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 178,
     "fields": {
       "user": 89,
@@ -1602,7 +1602,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 179,
     "fields": {
       "user": 90,
@@ -1611,7 +1611,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 180,
     "fields": {
       "user": 90,
@@ -1620,7 +1620,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 181,
     "fields": {
       "user": 91,
@@ -1629,7 +1629,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 182,
     "fields": {
       "user": 91,
@@ -1638,7 +1638,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 183,
     "fields": {
       "user": 92,
@@ -1647,7 +1647,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 184,
     "fields": {
       "user": 92,
@@ -1656,7 +1656,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 185,
     "fields": {
       "user": 93,
@@ -1665,7 +1665,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 186,
     "fields": {
       "user": 93,
@@ -1674,7 +1674,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 187,
     "fields": {
       "user": 94,
@@ -1683,7 +1683,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 188,
     "fields": {
       "user": 94,
@@ -1692,7 +1692,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 189,
     "fields": {
       "user": 95,
@@ -1701,7 +1701,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 190,
     "fields": {
       "user": 95,
@@ -1710,7 +1710,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 191,
     "fields": {
       "user": 96,
@@ -1719,7 +1719,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 192,
     "fields": {
       "user": 96,
@@ -1728,7 +1728,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 193,
     "fields": {
       "user": 97,
@@ -1737,7 +1737,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 194,
     "fields": {
       "user": 97,
@@ -1746,7 +1746,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 195,
     "fields": {
       "user": 98,
@@ -1755,7 +1755,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 196,
     "fields": {
       "user": 98,
@@ -1764,7 +1764,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 197,
     "fields": {
       "user": 99,
@@ -1773,7 +1773,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 198,
     "fields": {
       "user": 99,
@@ -1782,7 +1782,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 199,
     "fields": {
       "user": 100,
@@ -1791,7 +1791,7 @@
     }
   },
   {
-    "model": "restaurants.wishlist",
+    "model": "stores.wishlist",
     "pk": 200,
     "fields": {
       "user": 100,

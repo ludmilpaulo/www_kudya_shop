@@ -276,12 +276,12 @@ def get_ongoing_order(request):
         if ongoing_order:
             order_data = {
                 "id": ongoing_order.id,
-                "restaurant": {
-                    "name": ongoing_order.restaurant.name,
-                    "phone": ongoing_order.restaurant.phone,
-                    "address": ongoing_order.restaurant.address,
-                    "logo": ongoing_order.restaurant.logo.url if ongoing_order.restaurant.logo else None,
-                    "location": ongoing_order.restaurant.location,
+                "store": {
+                    "name": ongoing_order.store.name,
+                    "phone": ongoing_order.store.phone,
+                    "address": ongoing_order.store.address,
+                    "logo": ongoing_order.store.logo.url if ongoing_order.store.logo else None,
+                    "location": ongoing_order.store.location,
                 },
                 "customer": {
                     "avatar": ongoing_order.customer.avatar.url if ongoing_order.customer.avatar else None,
@@ -293,10 +293,10 @@ def get_ongoing_order(request):
                 "order_details": [
                     {
                         "id": detail.id,
-                        "meal": {
-                            "id": detail.meal.id,
-                            "name": detail.meal.name,
-                            "price": str(detail.meal.price)
+                        "product": {
+                            "id": detail.product.id,
+                            "name": detail.product.name,
+                            "price": str(detail.product.price)
                         },
                         "quantity": detail.quantity,
                         "sub_total": str(detail.sub_total)
@@ -355,12 +355,12 @@ def get_verified_order(request):
         if verified_order:
             order_data = {
                 "id": verified_order.id,
-                "restaurant": {
-                    "name": verified_order.restaurant.name,
-                    "phone": verified_order.restaurant.phone,
-                    "address": verified_order.restaurant.address,
-                    "logo": verified_order.restaurant.logo.url if verified_order.restaurant.logo else None,
-                    "location": verified_order.restaurant.location,
+                "store": {
+                    "name": verified_order.store.name,
+                    "phone": verified_order.store.phone,
+                    "address": verified_order.store.address,
+                    "logo": verified_order.store.logo.url if verified_order.store.logo else None,
+                    "location": verified_order.store.location,
                 },
                  "customer": {
                     "name": verified_order.customer.user.username,
@@ -379,10 +379,10 @@ def get_verified_order(request):
                 "order_details": [
                     {
                         "id": detail.id,
-                        "meal": {
-                            "id": detail.meal.id,
-                            "name": detail.meal.name,
-                            "price": detail.meal.price
+                        "product": {
+                            "id": detail.product.id,
+                            "name": detail.product.name,
+                            "price": detail.product.price
                         },
                         "quantity": detail.quantity,
                         "sub_total": detail.sub_total

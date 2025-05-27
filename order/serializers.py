@@ -3,7 +3,7 @@ from rest_framework import serializers
 from curtomers.models import Customer
 from drivers.models import Driver
 from order.models import Order, OrderDetails
-from restaurants.models import Meal, Restaurant
+from stores.models import product, store
 
 
 class OrderCustomerSerializer(serializers.ModelSerializer):
@@ -22,30 +22,30 @@ class OrderDriverSerializer(serializers.ModelSerializer):
         fields = ("id", "name", "avatar", "phone", "address", "location","plate","make")
 
 
-class OrderRestaurantSerializer(serializers.ModelSerializer):
+class OrderstoreSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Restaurant
+        model = store
         fields = ("id", "name", "phone", "address", "location", "logo")
 
 
-class OrderMealSerializer(serializers.ModelSerializer):
+class OrderproductSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Meal
+        model = product
         fields = ("id", "name", "price")
 
 
 class OrderDetailsSerializer(serializers.ModelSerializer):
-    meal = OrderMealSerializer()
+    product = OrderproductSerializer()
 
     class Meta:
         model = OrderDetails
-        fields = ("id", "meal", "quantity", "sub_total")
+        fields = ("id", "product", "quantity", "sub_total")
 
 
 class OrderSerializer(serializers.ModelSerializer):
     customer = OrderCustomerSerializer()
     driver = OrderDriverSerializer()
-    restaurant = OrderRestaurantSerializer()
+    store = OrderstoreSerializer()
     order_details = OrderDetailsSerializer(many=True)
     status = serializers.ReadOnlyField(source="get_status_display")
     created_at = serializers.DateTimeField(
@@ -63,7 +63,7 @@ class OrderSerializer(serializers.ModelSerializer):
         fields = (
             "id",
             "customer",
-            "restaurant",
+            "store",
             "driver",
             "order_details",
             "total",
@@ -74,9 +74,9 @@ class OrderSerializer(serializers.ModelSerializer):
             "secret_pin",
             "picked_at",
             "updated_at",
-            "proof_of_payment_restaurant",
+            "proof_of_payment_store",
             "proof_of_payment_driver",
-            "payment_status_restaurant",
+            "payment_status_store",
             "original_price",
             "location",
             "use_current_location",

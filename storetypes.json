@@ -1,6 +1,6 @@
 [
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 1,
     "fields": {
       "name": "Clothing Stores",
@@ -9,7 +9,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 2,
     "fields": {
       "name": "Shoe Stores",
@@ -18,7 +18,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 3,
     "fields": {
       "name": "Accessories & Jewelry Stores",
@@ -27,7 +27,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 4,
     "fields": {
       "name": "Lingerie Stores",
@@ -36,7 +36,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 5,
     "fields": {
       "name": "Sportswear Stores",
@@ -45,7 +45,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 6,
     "fields": {
       "name": "Luxury Boutiques",
@@ -54,7 +54,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 7,
     "fields": {
       "name": "Mobile Phone Stores",
@@ -63,7 +63,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 8,
     "fields": {
       "name": "Computer & Gadget Shops",
@@ -72,7 +72,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 9,
     "fields": {
       "name": "Consumer Electronics Stores",
@@ -81,7 +81,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 10,
     "fields": {
       "name": "Tech Repair Shops",
@@ -90,7 +90,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 11,
     "fields": {
       "name": "Gaming Stores",
@@ -99,25 +99,25 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 12,
     "fields": {
-      "name": "Fast Food Restaurants",
-      "description": "Fast Food Restaurants provide goods or services related to their category.",
+      "name": "Fast Food stores",
+      "description": "Fast Food stores provide goods or services related to their category.",
       "icon": ""
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 13,
     "fields": {
-      "name": "Sit-down Restaurants",
-      "description": "Sit-down Restaurants provide goods or services related to their category.",
+      "name": "Sit-down stores",
+      "description": "Sit-down stores provide goods or services related to their category.",
       "icon": ""
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 14,
     "fields": {
       "name": "Coffee Shops",
@@ -126,7 +126,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 15,
     "fields": {
       "name": "Ice Cream Shops",
@@ -135,7 +135,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 16,
     "fields": {
       "name": "Bakeries",
@@ -144,7 +144,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 17,
     "fields": {
       "name": "Juice & Smoothie Bars",
@@ -153,7 +153,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 18,
     "fields": {
       "name": "Candy/Chocolate Stores",
@@ -162,7 +162,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 19,
     "fields": {
       "name": "Food Courts",
@@ -171,7 +171,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 20,
     "fields": {
       "name": "Pharmacies",
@@ -180,7 +180,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 21,
     "fields": {
       "name": "Cosmetic Stores",
@@ -189,7 +189,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 22,
     "fields": {
       "name": "Perfume Shops",
@@ -198,7 +198,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 23,
     "fields": {
       "name": "Supplement Stores",
@@ -207,7 +207,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 24,
     "fields": {
       "name": "Optical Stores",
@@ -216,7 +216,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 25,
     "fields": {
       "name": "Spas & Salons",
@@ -225,7 +225,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 26,
     "fields": {
       "name": "Nail Bars",
@@ -234,7 +234,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 27,
     "fields": {
       "name": "Toy Stores",
@@ -243,7 +243,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 28,
     "fields": {
       "name": "Arcades/Game Zones",
@@ -252,7 +252,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 29,
     "fields": {
       "name": "Kids Play Areas",
@@ -261,7 +261,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 30,
     "fields": {
       "name": "Children\u2019s Clothing Stores",
@@ -270,7 +270,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 31,
     "fields": {
       "name": "Learning Centers",
@@ -279,7 +279,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 32,
     "fields": {
       "name": "Bookstores",
@@ -288,7 +288,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 33,
     "fields": {
       "name": "Gift Shops",
@@ -297,7 +297,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 34,
     "fields": {
       "name": "Stationery Shops",
@@ -306,7 +306,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 35,
     "fields": {
       "name": "Art & Craft Stores",
@@ -315,7 +315,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 36,
     "fields": {
       "name": "Home Decor Stores",
@@ -324,7 +324,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 37,
     "fields": {
       "name": "Kitchenware Shops",
@@ -333,7 +333,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 38,
     "fields": {
       "name": "Linen & Bedding Stores",
@@ -342,7 +342,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 39,
     "fields": {
       "name": "Lighting Stores",
@@ -351,7 +351,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 40,
     "fields": {
       "name": "Luggage Shops",
@@ -360,7 +360,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 41,
     "fields": {
       "name": "Travel Agencies",
@@ -369,7 +369,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 42,
     "fields": {
       "name": "Pet Supply Shops",
@@ -378,7 +378,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 43,
     "fields": {
       "name": "Pet Grooming Services",
@@ -387,7 +387,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 44,
     "fields": {
       "name": "Watch Stores",
@@ -396,7 +396,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 45,
     "fields": {
       "name": "Sunglasses Stores",
@@ -405,7 +405,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 46,
     "fields": {
       "name": "Bags & Wallet Stores",
@@ -414,7 +414,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 47,
     "fields": {
       "name": "Tailor Shops",
@@ -423,7 +423,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 48,
     "fields": {
       "name": "Dry Cleaners",
@@ -432,7 +432,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 49,
     "fields": {
       "name": "Copy & Print Centers",
@@ -441,7 +441,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 50,
     "fields": {
       "name": "Currency Exchange Counters",
@@ -450,7 +450,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 51,
     "fields": {
       "name": "SIM Card/Airtime Shops",
@@ -459,7 +459,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 52,
     "fields": {
       "name": "Cinema/Theater",
@@ -468,7 +468,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 53,
     "fields": {
       "name": "Virtual Reality Centers",
@@ -477,7 +477,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 54,
     "fields": {
       "name": "Escape Rooms/Bowling Alleys",
@@ -486,7 +486,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 55,
     "fields": {
       "name": "Photography Services",
@@ -495,7 +495,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 56,
     "fields": {
       "name": "Music & Audio Stores",
@@ -504,7 +504,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 57,
     "fields": {
       "name": "Flower Shops",
@@ -513,7 +513,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 58,
     "fields": {
       "name": "DIY & Hardware Stores",
@@ -522,7 +522,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 59,
     "fields": {
       "name": "Thrift & Vintage Stores",
@@ -531,7 +531,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 60,
     "fields": {
       "name": "Second-hand Stores",
@@ -540,7 +540,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 61,
     "fields": {
       "name": "Discount Stores",
@@ -549,7 +549,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 62,
     "fields": {
       "name": "Outlet Stores",
@@ -558,7 +558,7 @@
     }
   },
   {
-    "model": "restaurants.storetype",
+    "model": "stores.storetype",
     "pk": 63,
     "fields": {
       "name": "Department Stores",

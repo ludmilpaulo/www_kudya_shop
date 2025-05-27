@@ -1,6 +1,6 @@
 [
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 1,
     "fields": {
       "user": 1,
@@ -17,7 +17,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 2,
     "fields": {
       "user": 2,
@@ -34,7 +34,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 3,
     "fields": {
       "user": 3,
@@ -51,7 +51,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 4,
     "fields": {
       "user": 4,
@@ -68,7 +68,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 5,
     "fields": {
       "user": 5,
@@ -85,7 +85,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 6,
     "fields": {
       "user": 6,
@@ -102,7 +102,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 7,
     "fields": {
       "user": 7,
@@ -119,7 +119,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 8,
     "fields": {
       "user": 8,
@@ -136,7 +136,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 9,
     "fields": {
       "user": 9,
@@ -153,7 +153,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 10,
     "fields": {
       "user": 10,
@@ -170,7 +170,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 11,
     "fields": {
       "user": 11,
@@ -187,7 +187,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 12,
     "fields": {
       "user": 12,
@@ -204,7 +204,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 13,
     "fields": {
       "user": 13,
@@ -221,7 +221,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 14,
     "fields": {
       "user": 14,
@@ -238,7 +238,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 15,
     "fields": {
       "user": 15,
@@ -255,7 +255,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 16,
     "fields": {
       "user": 16,
@@ -272,7 +272,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 17,
     "fields": {
       "user": 17,
@@ -289,7 +289,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 18,
     "fields": {
       "user": 18,
@@ -306,7 +306,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 19,
     "fields": {
       "user": 19,
@@ -323,7 +323,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 20,
     "fields": {
       "user": 20,
@@ -340,7 +340,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 21,
     "fields": {
       "user": 21,
@@ -357,7 +357,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 22,
     "fields": {
       "user": 22,
@@ -374,7 +374,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 23,
     "fields": {
       "user": 23,
@@ -391,7 +391,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 24,
     "fields": {
       "user": 24,
@@ -408,7 +408,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 25,
     "fields": {
       "user": 25,
@@ -425,7 +425,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 26,
     "fields": {
       "user": 26,
@@ -442,7 +442,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 27,
     "fields": {
       "user": 27,
@@ -459,7 +459,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 28,
     "fields": {
       "user": 28,
@@ -476,7 +476,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 29,
     "fields": {
       "user": 29,
@@ -493,7 +493,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 30,
     "fields": {
       "user": 30,
@@ -510,7 +510,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 31,
     "fields": {
       "user": 31,
@@ -527,7 +527,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 32,
     "fields": {
       "user": 32,
@@ -544,7 +544,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 33,
     "fields": {
       "user": 33,
@@ -561,7 +561,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 34,
     "fields": {
       "user": 34,
@@ -578,7 +578,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 35,
     "fields": {
       "user": 35,
@@ -595,7 +595,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 36,
     "fields": {
       "user": 36,
@@ -612,7 +612,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 37,
     "fields": {
       "user": 37,
@@ -629,7 +629,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 38,
     "fields": {
       "user": 38,
@@ -646,7 +646,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 39,
     "fields": {
       "user": 39,
@@ -663,7 +663,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 40,
     "fields": {
       "user": 40,
@@ -680,7 +680,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 41,
     "fields": {
       "user": 41,
@@ -697,7 +697,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 42,
     "fields": {
       "user": 42,
@@ -714,7 +714,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 43,
     "fields": {
       "user": 43,
@@ -731,7 +731,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 44,
     "fields": {
       "user": 44,
@@ -748,7 +748,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 45,
     "fields": {
       "user": 45,
@@ -765,7 +765,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 46,
     "fields": {
       "user": 46,
@@ -782,7 +782,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 47,
     "fields": {
       "user": 47,
@@ -799,7 +799,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 48,
     "fields": {
       "user": 48,
@@ -816,7 +816,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 49,
     "fields": {
       "user": 49,
@@ -833,7 +833,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 50,
     "fields": {
       "user": 50,
@@ -850,7 +850,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 51,
     "fields": {
       "user": 51,
@@ -867,7 +867,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 52,
     "fields": {
       "user": 52,
@@ -884,7 +884,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 53,
     "fields": {
       "user": 53,
@@ -901,7 +901,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 54,
     "fields": {
       "user": 54,
@@ -918,7 +918,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 55,
     "fields": {
       "user": 55,
@@ -935,7 +935,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 56,
     "fields": {
       "user": 56,
@@ -952,7 +952,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 57,
     "fields": {
       "user": 57,
@@ -969,7 +969,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 58,
     "fields": {
       "user": 58,
@@ -986,7 +986,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 59,
     "fields": {
       "user": 59,
@@ -1003,7 +1003,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 60,
     "fields": {
       "user": 60,
@@ -1020,7 +1020,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 61,
     "fields": {
       "user": 61,
@@ -1037,7 +1037,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 62,
     "fields": {
       "user": 62,
@@ -1054,7 +1054,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 63,
     "fields": {
       "user": 63,
@@ -1071,7 +1071,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 64,
     "fields": {
       "user": 64,
@@ -1088,7 +1088,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 65,
     "fields": {
       "user": 65,
@@ -1105,7 +1105,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 66,
     "fields": {
       "user": 66,
@@ -1122,7 +1122,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 67,
     "fields": {
       "user": 67,
@@ -1139,7 +1139,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 68,
     "fields": {
       "user": 68,
@@ -1156,7 +1156,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 69,
     "fields": {
       "user": 69,
@@ -1173,7 +1173,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 70,
     "fields": {
       "user": 70,
@@ -1190,7 +1190,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 71,
     "fields": {
       "user": 71,
@@ -1207,7 +1207,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 72,
     "fields": {
       "user": 72,
@@ -1224,7 +1224,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 73,
     "fields": {
       "user": 73,
@@ -1241,7 +1241,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 74,
     "fields": {
       "user": 74,
@@ -1258,7 +1258,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 75,
     "fields": {
       "user": 75,
@@ -1275,7 +1275,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 76,
     "fields": {
       "user": 76,
@@ -1292,7 +1292,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 77,
     "fields": {
       "user": 77,
@@ -1309,7 +1309,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 78,
     "fields": {
       "user": 78,
@@ -1326,7 +1326,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 79,
     "fields": {
       "user": 79,
@@ -1343,7 +1343,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 80,
     "fields": {
       "user": 80,
@@ -1360,7 +1360,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 81,
     "fields": {
       "user": 81,
@@ -1377,7 +1377,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 82,
     "fields": {
       "user": 82,
@@ -1394,7 +1394,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 83,
     "fields": {
       "user": 83,
@@ -1411,7 +1411,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 84,
     "fields": {
       "user": 84,
@@ -1428,7 +1428,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 85,
     "fields": {
       "user": 85,
@@ -1445,7 +1445,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 86,
     "fields": {
       "user": 86,
@@ -1462,7 +1462,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 87,
     "fields": {
       "user": 87,
@@ -1479,7 +1479,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 88,
     "fields": {
       "user": 88,
@@ -1496,7 +1496,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 89,
     "fields": {
       "user": 89,
@@ -1513,7 +1513,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 90,
     "fields": {
       "user": 90,
@@ -1530,7 +1530,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 91,
     "fields": {
       "user": 91,
@@ -1547,7 +1547,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 92,
     "fields": {
       "user": 92,
@@ -1564,7 +1564,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 93,
     "fields": {
       "user": 93,
@@ -1581,7 +1581,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 94,
     "fields": {
       "user": 94,
@@ -1598,7 +1598,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 95,
     "fields": {
       "user": 95,
@@ -1615,7 +1615,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 96,
     "fields": {
       "user": 96,
@@ -1632,7 +1632,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 97,
     "fields": {
       "user": 97,
@@ -1649,7 +1649,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 98,
     "fields": {
       "user": 98,
@@ -1666,7 +1666,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 99,
     "fields": {
       "user": 99,
@@ -1683,7 +1683,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 100,
     "fields": {
       "user": 100,
@@ -1700,7 +1700,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 101,
     "fields": {
       "user": 101,
@@ -1717,7 +1717,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 102,
     "fields": {
       "user": 102,
@@ -1734,7 +1734,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 103,
     "fields": {
       "user": 103,
@@ -1751,7 +1751,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 104,
     "fields": {
       "user": 104,
@@ -1768,7 +1768,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 105,
     "fields": {
       "user": 105,
@@ -1785,7 +1785,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 106,
     "fields": {
       "user": 106,
@@ -1802,7 +1802,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 107,
     "fields": {
       "user": 107,
@@ -1819,7 +1819,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 108,
     "fields": {
       "user": 108,
@@ -1836,7 +1836,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 109,
     "fields": {
       "user": 109,
@@ -1853,7 +1853,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 110,
     "fields": {
       "user": 110,
@@ -1870,7 +1870,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 111,
     "fields": {
       "user": 111,
@@ -1887,7 +1887,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 112,
     "fields": {
       "user": 112,
@@ -1904,7 +1904,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 113,
     "fields": {
       "user": 113,
@@ -1921,7 +1921,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 114,
     "fields": {
       "user": 114,
@@ -1938,7 +1938,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 115,
     "fields": {
       "user": 115,
@@ -1955,7 +1955,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 116,
     "fields": {
       "user": 116,
@@ -1972,7 +1972,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 117,
     "fields": {
       "user": 117,
@@ -1989,7 +1989,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 118,
     "fields": {
       "user": 118,
@@ -2006,7 +2006,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 119,
     "fields": {
       "user": 119,
@@ -2023,7 +2023,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 120,
     "fields": {
       "user": 120,
@@ -2040,7 +2040,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 121,
     "fields": {
       "user": 121,
@@ -2057,7 +2057,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 122,
     "fields": {
       "user": 122,
@@ -2074,7 +2074,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 123,
     "fields": {
       "user": 123,
@@ -2091,7 +2091,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 124,
     "fields": {
       "user": 124,
@@ -2108,7 +2108,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 125,
     "fields": {
       "user": 125,
@@ -2125,7 +2125,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 126,
     "fields": {
       "user": 126,
@@ -2142,7 +2142,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 127,
     "fields": {
       "user": 127,
@@ -2159,7 +2159,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 128,
     "fields": {
       "user": 128,
@@ -2176,7 +2176,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 129,
     "fields": {
       "user": 129,
@@ -2193,7 +2193,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 130,
     "fields": {
       "user": 130,
@@ -2210,7 +2210,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 131,
     "fields": {
       "user": 131,
@@ -2227,7 +2227,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 132,
     "fields": {
       "user": 132,
@@ -2244,7 +2244,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 133,
     "fields": {
       "user": 133,
@@ -2261,7 +2261,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 134,
     "fields": {
       "user": 134,
@@ -2278,7 +2278,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 135,
     "fields": {
       "user": 135,
@@ -2295,7 +2295,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 136,
     "fields": {
       "user": 136,
@@ -2312,7 +2312,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 137,
     "fields": {
       "user": 137,
@@ -2329,7 +2329,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 138,
     "fields": {
       "user": 138,
@@ -2346,7 +2346,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 139,
     "fields": {
       "user": 139,
@@ -2363,7 +2363,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 140,
     "fields": {
       "user": 140,
@@ -2380,7 +2380,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 141,
     "fields": {
       "user": 141,
@@ -2397,7 +2397,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 142,
     "fields": {
       "user": 142,
@@ -2414,7 +2414,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 143,
     "fields": {
       "user": 143,
@@ -2431,7 +2431,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 144,
     "fields": {
       "user": 144,
@@ -2448,7 +2448,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 145,
     "fields": {
       "user": 145,
@@ -2465,7 +2465,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 146,
     "fields": {
       "user": 146,
@@ -2482,7 +2482,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 147,
     "fields": {
       "user": 147,
@@ -2499,7 +2499,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 148,
     "fields": {
       "user": 148,
@@ -2516,7 +2516,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 149,
     "fields": {
       "user": 149,
@@ -2533,7 +2533,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 150,
     "fields": {
       "user": 150,
@@ -2550,7 +2550,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 151,
     "fields": {
       "user": 151,
@@ -2567,7 +2567,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 152,
     "fields": {
       "user": 152,
@@ -2584,7 +2584,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 153,
     "fields": {
       "user": 153,
@@ -2601,7 +2601,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 154,
     "fields": {
       "user": 154,
@@ -2618,7 +2618,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 155,
     "fields": {
       "user": 155,
@@ -2635,7 +2635,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 156,
     "fields": {
       "user": 156,
@@ -2652,7 +2652,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 157,
     "fields": {
       "user": 157,
@@ -2669,7 +2669,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 158,
     "fields": {
       "user": 158,
@@ -2686,7 +2686,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 159,
     "fields": {
       "user": 159,
@@ -2703,7 +2703,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 160,
     "fields": {
       "user": 160,
@@ -2720,7 +2720,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 161,
     "fields": {
       "user": 161,
@@ -2737,7 +2737,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 162,
     "fields": {
       "user": 162,
@@ -2754,7 +2754,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 163,
     "fields": {
       "user": 163,
@@ -2771,7 +2771,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 164,
     "fields": {
       "user": 164,
@@ -2788,7 +2788,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 165,
     "fields": {
       "user": 165,
@@ -2805,7 +2805,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 166,
     "fields": {
       "user": 166,
@@ -2822,7 +2822,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 167,
     "fields": {
       "user": 167,
@@ -2839,7 +2839,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 168,
     "fields": {
       "user": 168,
@@ -2856,7 +2856,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 169,
     "fields": {
       "user": 169,
@@ -2873,7 +2873,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 170,
     "fields": {
       "user": 170,
@@ -2890,7 +2890,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 171,
     "fields": {
       "user": 171,
@@ -2907,7 +2907,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 172,
     "fields": {
       "user": 172,
@@ -2924,7 +2924,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 173,
     "fields": {
       "user": 173,
@@ -2941,7 +2941,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 174,
     "fields": {
       "user": 174,
@@ -2958,7 +2958,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 175,
     "fields": {
       "user": 175,
@@ -2975,7 +2975,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 176,
     "fields": {
       "user": 176,
@@ -2992,7 +2992,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 177,
     "fields": {
       "user": 177,
@@ -3009,7 +3009,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 178,
     "fields": {
       "user": 178,
@@ -3026,7 +3026,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 179,
     "fields": {
       "user": 179,
@@ -3043,7 +3043,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 180,
     "fields": {
       "user": 180,
@@ -3060,7 +3060,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 181,
     "fields": {
       "user": 181,
@@ -3077,7 +3077,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 182,
     "fields": {
       "user": 182,
@@ -3094,7 +3094,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 183,
     "fields": {
       "user": 183,
@@ -3111,7 +3111,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 184,
     "fields": {
       "user": 184,
@@ -3128,7 +3128,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 185,
     "fields": {
       "user": 185,
@@ -3145,7 +3145,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 186,
     "fields": {
       "user": 186,
@@ -3162,7 +3162,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 187,
     "fields": {
       "user": 187,
@@ -3179,7 +3179,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 188,
     "fields": {
       "user": 188,
@@ -3196,7 +3196,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 189,
     "fields": {
       "user": 189,
@@ -3213,7 +3213,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 190,
     "fields": {
       "user": 190,
@@ -3230,7 +3230,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 191,
     "fields": {
       "user": 191,
@@ -3247,7 +3247,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 192,
     "fields": {
       "user": 192,
@@ -3264,7 +3264,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 193,
     "fields": {
       "user": 193,
@@ -3281,7 +3281,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 194,
     "fields": {
       "user": 194,
@@ -3298,7 +3298,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 195,
     "fields": {
       "user": 195,
@@ -3315,7 +3315,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 196,
     "fields": {
       "user": 196,
@@ -3332,7 +3332,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 197,
     "fields": {
       "user": 197,
@@ -3349,7 +3349,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 198,
     "fields": {
       "user": 198,
@@ -3366,7 +3366,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 199,
     "fields": {
       "user": 199,
@@ -3383,7 +3383,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 200,
     "fields": {
       "user": 200,
@@ -3400,7 +3400,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 201,
     "fields": {
       "user": 201,
@@ -3417,7 +3417,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 202,
     "fields": {
       "user": 202,
@@ -3434,7 +3434,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 203,
     "fields": {
       "user": 203,
@@ -3451,7 +3451,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 204,
     "fields": {
       "user": 204,
@@ -3468,7 +3468,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 205,
     "fields": {
       "user": 205,
@@ -3485,7 +3485,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 206,
     "fields": {
       "user": 206,
@@ -3502,7 +3502,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 207,
     "fields": {
       "user": 207,
@@ -3519,7 +3519,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 208,
     "fields": {
       "user": 208,
@@ -3536,7 +3536,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 209,
     "fields": {
       "user": 209,
@@ -3553,7 +3553,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 210,
     "fields": {
       "user": 210,
@@ -3570,7 +3570,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 211,
     "fields": {
       "user": 211,
@@ -3587,7 +3587,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 212,
     "fields": {
       "user": 212,
@@ -3604,7 +3604,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 213,
     "fields": {
       "user": 213,
@@ -3621,7 +3621,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 214,
     "fields": {
       "user": 214,
@@ -3638,7 +3638,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 215,
     "fields": {
       "user": 215,
@@ -3655,7 +3655,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 216,
     "fields": {
       "user": 216,
@@ -3672,7 +3672,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 217,
     "fields": {
       "user": 217,
@@ -3689,7 +3689,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 218,
     "fields": {
       "user": 218,
@@ -3706,7 +3706,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 219,
     "fields": {
       "user": 219,
@@ -3723,7 +3723,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 220,
     "fields": {
       "user": 220,
@@ -3740,7 +3740,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 221,
     "fields": {
       "user": 221,
@@ -3757,7 +3757,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 222,
     "fields": {
       "user": 222,
@@ -3774,7 +3774,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 223,
     "fields": {
       "user": 223,
@@ -3791,7 +3791,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 224,
     "fields": {
       "user": 224,
@@ -3808,7 +3808,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 225,
     "fields": {
       "user": 225,
@@ -3825,7 +3825,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 226,
     "fields": {
       "user": 226,
@@ -3842,7 +3842,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 227,
     "fields": {
       "user": 227,
@@ -3859,7 +3859,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 228,
     "fields": {
       "user": 228,
@@ -3876,7 +3876,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 229,
     "fields": {
       "user": 229,
@@ -3893,7 +3893,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 230,
     "fields": {
       "user": 230,
@@ -3910,7 +3910,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 231,
     "fields": {
       "user": 231,
@@ -3927,7 +3927,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 232,
     "fields": {
       "user": 232,
@@ -3944,7 +3944,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 233,
     "fields": {
       "user": 233,
@@ -3961,7 +3961,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 234,
     "fields": {
       "user": 234,
@@ -3978,7 +3978,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 235,
     "fields": {
       "user": 235,
@@ -3995,7 +3995,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 236,
     "fields": {
       "user": 236,
@@ -4012,7 +4012,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 237,
     "fields": {
       "user": 237,
@@ -4029,7 +4029,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 238,
     "fields": {
       "user": 238,
@@ -4046,7 +4046,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 239,
     "fields": {
       "user": 239,
@@ -4063,7 +4063,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 240,
     "fields": {
       "user": 240,
@@ -4080,7 +4080,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 241,
     "fields": {
       "user": 241,
@@ -4097,7 +4097,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 242,
     "fields": {
       "user": 242,
@@ -4114,7 +4114,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 243,
     "fields": {
       "user": 243,
@@ -4131,7 +4131,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 244,
     "fields": {
       "user": 244,
@@ -4148,7 +4148,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 245,
     "fields": {
       "user": 245,
@@ -4165,7 +4165,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 246,
     "fields": {
       "user": 246,
@@ -4182,7 +4182,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 247,
     "fields": {
       "user": 247,
@@ -4199,7 +4199,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 248,
     "fields": {
       "user": 248,
@@ -4216,7 +4216,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 249,
     "fields": {
       "user": 249,
@@ -4233,7 +4233,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 250,
     "fields": {
       "user": 250,
@@ -4250,7 +4250,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 251,
     "fields": {
       "user": 251,
@@ -4267,7 +4267,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 252,
     "fields": {
       "user": 252,
@@ -4284,7 +4284,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 253,
     "fields": {
       "user": 253,
@@ -4301,7 +4301,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 254,
     "fields": {
       "user": 254,
@@ -4318,7 +4318,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 255,
     "fields": {
       "user": 255,
@@ -4335,7 +4335,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 256,
     "fields": {
       "user": 256,
@@ -4352,7 +4352,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 257,
     "fields": {
       "user": 257,
@@ -4369,7 +4369,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 258,
     "fields": {
       "user": 258,
@@ -4386,7 +4386,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 259,
     "fields": {
       "user": 259,
@@ -4403,7 +4403,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 260,
     "fields": {
       "user": 260,
@@ -4420,7 +4420,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 261,
     "fields": {
       "user": 261,
@@ -4437,7 +4437,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 262,
     "fields": {
       "user": 262,
@@ -4454,7 +4454,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 263,
     "fields": {
       "user": 263,
@@ -4471,7 +4471,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 264,
     "fields": {
       "user": 264,
@@ -4488,7 +4488,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 265,
     "fields": {
       "user": 265,
@@ -4505,7 +4505,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 266,
     "fields": {
       "user": 266,
@@ -4522,7 +4522,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 267,
     "fields": {
       "user": 267,
@@ -4539,7 +4539,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 268,
     "fields": {
       "user": 268,
@@ -4556,7 +4556,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 269,
     "fields": {
       "user": 269,
@@ -4573,7 +4573,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 270,
     "fields": {
       "user": 270,
@@ -4590,7 +4590,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 271,
     "fields": {
       "user": 271,
@@ -4607,7 +4607,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 272,
     "fields": {
       "user": 272,
@@ -4624,7 +4624,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 273,
     "fields": {
       "user": 273,
@@ -4641,7 +4641,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 274,
     "fields": {
       "user": 274,
@@ -4658,7 +4658,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 275,
     "fields": {
       "user": 275,
@@ -4675,7 +4675,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 276,
     "fields": {
       "user": 276,
@@ -4692,7 +4692,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 277,
     "fields": {
       "user": 277,
@@ -4709,7 +4709,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 278,
     "fields": {
       "user": 278,
@@ -4726,7 +4726,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 279,
     "fields": {
       "user": 279,
@@ -4743,7 +4743,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 280,
     "fields": {
       "user": 280,
@@ -4760,7 +4760,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 281,
     "fields": {
       "user": 281,
@@ -4777,7 +4777,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 282,
     "fields": {
       "user": 282,
@@ -4794,7 +4794,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 283,
     "fields": {
       "user": 283,
@@ -4811,7 +4811,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 284,
     "fields": {
       "user": 284,
@@ -4828,7 +4828,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 285,
     "fields": {
       "user": 285,
@@ -4845,7 +4845,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 286,
     "fields": {
       "user": 286,
@@ -4862,7 +4862,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 287,
     "fields": {
       "user": 287,
@@ -4879,7 +4879,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 288,
     "fields": {
       "user": 288,
@@ -4896,7 +4896,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 289,
     "fields": {
       "user": 289,
@@ -4913,7 +4913,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 290,
     "fields": {
       "user": 290,
@@ -4930,7 +4930,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 291,
     "fields": {
       "user": 291,
@@ -4947,7 +4947,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 292,
     "fields": {
       "user": 292,
@@ -4964,7 +4964,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 293,
     "fields": {
       "user": 293,
@@ -4981,7 +4981,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 294,
     "fields": {
       "user": 294,
@@ -4998,7 +4998,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 295,
     "fields": {
       "user": 295,
@@ -5015,7 +5015,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 296,
     "fields": {
       "user": 296,
@@ -5032,7 +5032,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 297,
     "fields": {
       "user": 297,
@@ -5049,7 +5049,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 298,
     "fields": {
       "user": 298,
@@ -5066,7 +5066,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 299,
     "fields": {
       "user": 299,
@@ -5083,7 +5083,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 300,
     "fields": {
       "user": 300,
@@ -5100,7 +5100,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 301,
     "fields": {
       "user": 301,
@@ -5117,7 +5117,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 302,
     "fields": {
       "user": 302,
@@ -5134,7 +5134,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 303,
     "fields": {
       "user": 303,
@@ -5151,7 +5151,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 304,
     "fields": {
       "user": 304,
@@ -5168,7 +5168,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 305,
     "fields": {
       "user": 305,
@@ -5185,7 +5185,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 306,
     "fields": {
       "user": 306,
@@ -5202,7 +5202,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 307,
     "fields": {
       "user": 307,
@@ -5219,7 +5219,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 308,
     "fields": {
       "user": 308,
@@ -5236,7 +5236,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 309,
     "fields": {
       "user": 309,
@@ -5253,7 +5253,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 310,
     "fields": {
       "user": 310,
@@ -5270,7 +5270,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 311,
     "fields": {
       "user": 311,
@@ -5287,7 +5287,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 312,
     "fields": {
       "user": 312,
@@ -5304,7 +5304,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 313,
     "fields": {
       "user": 313,
@@ -5321,7 +5321,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 314,
     "fields": {
       "user": 314,
@@ -5338,7 +5338,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 315,
     "fields": {
       "user": 315,
@@ -5355,7 +5355,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 316,
     "fields": {
       "user": 316,
@@ -5372,7 +5372,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 317,
     "fields": {
       "user": 317,
@@ -5389,7 +5389,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 318,
     "fields": {
       "user": 318,
@@ -5406,7 +5406,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 319,
     "fields": {
       "user": 319,
@@ -5423,7 +5423,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 320,
     "fields": {
       "user": 320,
@@ -5440,7 +5440,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 321,
     "fields": {
       "user": 321,
@@ -5457,7 +5457,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 322,
     "fields": {
       "user": 322,
@@ -5474,7 +5474,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 323,
     "fields": {
       "user": 323,
@@ -5491,7 +5491,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 324,
     "fields": {
       "user": 324,
@@ -5508,7 +5508,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 325,
     "fields": {
       "user": 325,
@@ -5525,7 +5525,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 326,
     "fields": {
       "user": 326,
@@ -5542,7 +5542,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 327,
     "fields": {
       "user": 327,
@@ -5559,7 +5559,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 328,
     "fields": {
       "user": 328,
@@ -5576,7 +5576,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 329,
     "fields": {
       "user": 329,
@@ -5593,7 +5593,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 330,
     "fields": {
       "user": 330,
@@ -5610,7 +5610,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 331,
     "fields": {
       "user": 331,
@@ -5627,7 +5627,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 332,
     "fields": {
       "user": 332,
@@ -5644,7 +5644,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 333,
     "fields": {
       "user": 333,
@@ -5661,7 +5661,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 334,
     "fields": {
       "user": 334,
@@ -5678,7 +5678,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 335,
     "fields": {
       "user": 335,
@@ -5695,7 +5695,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 336,
     "fields": {
       "user": 336,
@@ -5712,7 +5712,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 337,
     "fields": {
       "user": 337,
@@ -5729,7 +5729,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 338,
     "fields": {
       "user": 338,
@@ -5746,7 +5746,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 339,
     "fields": {
       "user": 339,
@@ -5763,7 +5763,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 340,
     "fields": {
       "user": 340,
@@ -5780,7 +5780,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 341,
     "fields": {
       "user": 341,
@@ -5797,7 +5797,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 342,
     "fields": {
       "user": 342,
@@ -5814,7 +5814,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 343,
     "fields": {
       "user": 343,
@@ -5831,7 +5831,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 344,
     "fields": {
       "user": 344,
@@ -5848,7 +5848,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 345,
     "fields": {
       "user": 345,
@@ -5865,7 +5865,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 346,
     "fields": {
       "user": 346,
@@ -5882,7 +5882,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 347,
     "fields": {
       "user": 347,
@@ -5899,7 +5899,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 348,
     "fields": {
       "user": 348,
@@ -5916,7 +5916,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 349,
     "fields": {
       "user": 349,
@@ -5933,7 +5933,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 350,
     "fields": {
       "user": 350,
@@ -5950,7 +5950,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 351,
     "fields": {
       "user": 351,
@@ -5967,7 +5967,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 352,
     "fields": {
       "user": 352,
@@ -5984,7 +5984,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 353,
     "fields": {
       "user": 353,
@@ -6001,7 +6001,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 354,
     "fields": {
       "user": 354,
@@ -6018,7 +6018,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 355,
     "fields": {
       "user": 355,
@@ -6035,7 +6035,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 356,
     "fields": {
       "user": 356,
@@ -6052,7 +6052,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 357,
     "fields": {
       "user": 357,
@@ -6069,7 +6069,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 358,
     "fields": {
       "user": 358,
@@ -6086,7 +6086,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 359,
     "fields": {
       "user": 359,
@@ -6103,7 +6103,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 360,
     "fields": {
       "user": 360,
@@ -6120,7 +6120,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 361,
     "fields": {
       "user": 361,
@@ -6137,7 +6137,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 362,
     "fields": {
       "user": 362,
@@ -6154,7 +6154,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 363,
     "fields": {
       "user": 363,
@@ -6171,7 +6171,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 364,
     "fields": {
       "user": 364,
@@ -6188,7 +6188,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 365,
     "fields": {
       "user": 365,
@@ -6205,7 +6205,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 366,
     "fields": {
       "user": 366,
@@ -6222,7 +6222,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 367,
     "fields": {
       "user": 367,
@@ -6239,7 +6239,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 368,
     "fields": {
       "user": 368,
@@ -6256,7 +6256,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 369,
     "fields": {
       "user": 369,
@@ -6273,7 +6273,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 370,
     "fields": {
       "user": 370,
@@ -6290,7 +6290,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 371,
     "fields": {
       "user": 371,
@@ -6307,7 +6307,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 372,
     "fields": {
       "user": 372,
@@ -6324,7 +6324,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 373,
     "fields": {
       "user": 373,
@@ -6341,7 +6341,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 374,
     "fields": {
       "user": 374,
@@ -6358,7 +6358,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 375,
     "fields": {
       "user": 375,
@@ -6375,7 +6375,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 376,
     "fields": {
       "user": 376,
@@ -6392,7 +6392,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 377,
     "fields": {
       "user": 377,
@@ -6409,7 +6409,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 378,
     "fields": {
       "user": 378,
@@ -6426,7 +6426,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 379,
     "fields": {
       "user": 379,
@@ -6443,7 +6443,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 380,
     "fields": {
       "user": 380,
@@ -6460,7 +6460,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 381,
     "fields": {
       "user": 381,
@@ -6477,7 +6477,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 382,
     "fields": {
       "user": 382,
@@ -6494,7 +6494,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 383,
     "fields": {
       "user": 383,
@@ -6511,7 +6511,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 384,
     "fields": {
       "user": 384,
@@ -6528,7 +6528,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 385,
     "fields": {
       "user": 385,
@@ -6545,7 +6545,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 386,
     "fields": {
       "user": 386,
@@ -6562,7 +6562,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 387,
     "fields": {
       "user": 387,
@@ -6579,7 +6579,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 388,
     "fields": {
       "user": 388,
@@ -6596,7 +6596,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 389,
     "fields": {
       "user": 389,
@@ -6613,7 +6613,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 390,
     "fields": {
       "user": 390,
@@ -6630,7 +6630,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 391,
     "fields": {
       "user": 391,
@@ -6647,7 +6647,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 392,
     "fields": {
       "user": 392,
@@ -6664,7 +6664,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 393,
     "fields": {
       "user": 393,
@@ -6681,7 +6681,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 394,
     "fields": {
       "user": 394,
@@ -6698,7 +6698,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 395,
     "fields": {
       "user": 395,
@@ -6715,7 +6715,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 396,
     "fields": {
       "user": 396,
@@ -6732,7 +6732,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 397,
     "fields": {
       "user": 397,
@@ -6749,7 +6749,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 398,
     "fields": {
       "user": 398,
@@ -6766,7 +6766,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 399,
     "fields": {
       "user": 399,
@@ -6783,7 +6783,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 400,
     "fields": {
       "user": 400,
@@ -6800,7 +6800,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 401,
     "fields": {
       "user": 401,
@@ -6817,7 +6817,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 402,
     "fields": {
       "user": 402,
@@ -6834,7 +6834,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 403,
     "fields": {
       "user": 403,
@@ -6851,7 +6851,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 404,
     "fields": {
       "user": 404,
@@ -6868,7 +6868,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 405,
     "fields": {
       "user": 405,
@@ -6885,7 +6885,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 406,
     "fields": {
       "user": 406,
@@ -6902,7 +6902,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 407,
     "fields": {
       "user": 407,
@@ -6919,7 +6919,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 408,
     "fields": {
       "user": 408,
@@ -6936,7 +6936,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 409,
     "fields": {
       "user": 409,
@@ -6953,7 +6953,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 410,
     "fields": {
       "user": 410,
@@ -6970,7 +6970,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 411,
     "fields": {
       "user": 411,
@@ -6987,7 +6987,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 412,
     "fields": {
       "user": 412,
@@ -7004,7 +7004,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 413,
     "fields": {
       "user": 413,
@@ -7021,7 +7021,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 414,
     "fields": {
       "user": 414,
@@ -7038,7 +7038,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 415,
     "fields": {
       "user": 415,
@@ -7055,7 +7055,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 416,
     "fields": {
       "user": 416,
@@ -7072,7 +7072,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 417,
     "fields": {
       "user": 417,
@@ -7089,7 +7089,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 418,
     "fields": {
       "user": 418,
@@ -7106,7 +7106,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 419,
     "fields": {
       "user": 419,
@@ -7123,7 +7123,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 420,
     "fields": {
       "user": 420,
@@ -7140,7 +7140,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 421,
     "fields": {
       "user": 421,
@@ -7157,7 +7157,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 422,
     "fields": {
       "user": 422,
@@ -7174,7 +7174,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 423,
     "fields": {
       "user": 423,
@@ -7191,7 +7191,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 424,
     "fields": {
       "user": 424,
@@ -7208,7 +7208,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 425,
     "fields": {
       "user": 425,
@@ -7225,7 +7225,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 426,
     "fields": {
       "user": 426,
@@ -7242,7 +7242,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 427,
     "fields": {
       "user": 427,
@@ -7259,7 +7259,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 428,
     "fields": {
       "user": 428,
@@ -7276,7 +7276,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 429,
     "fields": {
       "user": 429,
@@ -7293,7 +7293,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 430,
     "fields": {
       "user": 430,
@@ -7310,7 +7310,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 431,
     "fields": {
       "user": 431,
@@ -7327,7 +7327,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 432,
     "fields": {
       "user": 432,
@@ -7344,7 +7344,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 433,
     "fields": {
       "user": 433,
@@ -7361,7 +7361,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 434,
     "fields": {
       "user": 434,
@@ -7378,7 +7378,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 435,
     "fields": {
       "user": 435,
@@ -7395,7 +7395,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 436,
     "fields": {
       "user": 436,
@@ -7412,7 +7412,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 437,
     "fields": {
       "user": 437,
@@ -7429,7 +7429,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 438,
     "fields": {
       "user": 438,
@@ -7446,7 +7446,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 439,
     "fields": {
       "user": 439,
@@ -7463,7 +7463,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 440,
     "fields": {
       "user": 440,
@@ -7480,7 +7480,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 441,
     "fields": {
       "user": 441,
@@ -7497,7 +7497,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 442,
     "fields": {
       "user": 442,
@@ -7514,7 +7514,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 443,
     "fields": {
       "user": 443,
@@ -7531,7 +7531,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 444,
     "fields": {
       "user": 444,
@@ -7548,7 +7548,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 445,
     "fields": {
       "user": 445,
@@ -7565,7 +7565,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 446,
     "fields": {
       "user": 446,
@@ -7582,7 +7582,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 447,
     "fields": {
       "user": 447,
@@ -7599,7 +7599,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 448,
     "fields": {
       "user": 448,
@@ -7616,7 +7616,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 449,
     "fields": {
       "user": 449,
@@ -7633,7 +7633,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 450,
     "fields": {
       "user": 450,
@@ -7650,7 +7650,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 451,
     "fields": {
       "user": 451,
@@ -7667,7 +7667,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 452,
     "fields": {
       "user": 452,
@@ -7684,7 +7684,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 453,
     "fields": {
       "user": 453,
@@ -7701,7 +7701,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 454,
     "fields": {
       "user": 454,
@@ -7718,7 +7718,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 455,
     "fields": {
       "user": 455,
@@ -7735,7 +7735,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 456,
     "fields": {
       "user": 456,
@@ -7752,7 +7752,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 457,
     "fields": {
       "user": 457,
@@ -7769,7 +7769,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 458,
     "fields": {
       "user": 458,
@@ -7786,7 +7786,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 459,
     "fields": {
       "user": 459,
@@ -7803,7 +7803,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 460,
     "fields": {
       "user": 460,
@@ -7820,7 +7820,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 461,
     "fields": {
       "user": 461,
@@ -7837,7 +7837,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 462,
     "fields": {
       "user": 462,
@@ -7854,7 +7854,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 463,
     "fields": {
       "user": 463,
@@ -7871,7 +7871,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 464,
     "fields": {
       "user": 464,
@@ -7888,7 +7888,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 465,
     "fields": {
       "user": 465,
@@ -7905,7 +7905,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 466,
     "fields": {
       "user": 466,
@@ -7922,7 +7922,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 467,
     "fields": {
       "user": 467,
@@ -7939,7 +7939,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 468,
     "fields": {
       "user": 468,
@@ -7956,7 +7956,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 469,
     "fields": {
       "user": 469,
@@ -7973,7 +7973,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 470,
     "fields": {
       "user": 470,
@@ -7990,7 +7990,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 471,
     "fields": {
       "user": 471,
@@ -8007,7 +8007,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 472,
     "fields": {
       "user": 472,
@@ -8024,7 +8024,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 473,
     "fields": {
       "user": 473,
@@ -8041,7 +8041,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 474,
     "fields": {
       "user": 474,
@@ -8058,7 +8058,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 475,
     "fields": {
       "user": 475,
@@ -8075,7 +8075,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 476,
     "fields": {
       "user": 476,
@@ -8092,7 +8092,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 477,
     "fields": {
       "user": 477,
@@ -8109,7 +8109,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 478,
     "fields": {
       "user": 478,
@@ -8126,7 +8126,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 479,
     "fields": {
       "user": 479,
@@ -8143,7 +8143,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 480,
     "fields": {
       "user": 480,
@@ -8160,7 +8160,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 481,
     "fields": {
       "user": 481,
@@ -8177,7 +8177,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 482,
     "fields": {
       "user": 482,
@@ -8194,7 +8194,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 483,
     "fields": {
       "user": 483,
@@ -8211,7 +8211,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 484,
     "fields": {
       "user": 484,
@@ -8228,7 +8228,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 485,
     "fields": {
       "user": 485,
@@ -8245,7 +8245,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 486,
     "fields": {
       "user": 486,
@@ -8262,7 +8262,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 487,
     "fields": {
       "user": 487,
@@ -8279,7 +8279,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 488,
     "fields": {
       "user": 488,
@@ -8296,7 +8296,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 489,
     "fields": {
       "user": 489,
@@ -8313,7 +8313,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 490,
     "fields": {
       "user": 490,
@@ -8330,7 +8330,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 491,
     "fields": {
       "user": 491,
@@ -8347,7 +8347,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 492,
     "fields": {
       "user": 492,
@@ -8364,7 +8364,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 493,
     "fields": {
       "user": 493,
@@ -8381,7 +8381,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 494,
     "fields": {
       "user": 494,
@@ -8398,7 +8398,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 495,
     "fields": {
       "user": 495,
@@ -8415,7 +8415,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 496,
     "fields": {
       "user": 496,
@@ -8432,7 +8432,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 497,
     "fields": {
       "user": 497,
@@ -8449,7 +8449,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 498,
     "fields": {
       "user": 498,
@@ -8466,7 +8466,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 499,
     "fields": {
       "user": 499,
@@ -8483,7 +8483,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 500,
     "fields": {
       "user": 500,
@@ -8500,7 +8500,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 501,
     "fields": {
       "user": 501,
@@ -8517,7 +8517,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 502,
     "fields": {
       "user": 502,
@@ -8534,7 +8534,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 503,
     "fields": {
       "user": 503,
@@ -8551,7 +8551,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 504,
     "fields": {
       "user": 504,
@@ -8568,7 +8568,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 505,
     "fields": {
       "user": 505,
@@ -8585,7 +8585,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 506,
     "fields": {
       "user": 506,
@@ -8602,7 +8602,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 507,
     "fields": {
       "user": 507,
@@ -8619,7 +8619,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 508,
     "fields": {
       "user": 508,
@@ -8636,7 +8636,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 509,
     "fields": {
       "user": 509,
@@ -8653,7 +8653,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 510,
     "fields": {
       "user": 510,
@@ -8670,7 +8670,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 511,
     "fields": {
       "user": 511,
@@ -8687,7 +8687,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 512,
     "fields": {
       "user": 512,
@@ -8704,7 +8704,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 513,
     "fields": {
       "user": 513,
@@ -8721,7 +8721,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 514,
     "fields": {
       "user": 514,
@@ -8738,7 +8738,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 515,
     "fields": {
       "user": 515,
@@ -8755,7 +8755,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 516,
     "fields": {
       "user": 516,
@@ -8772,7 +8772,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 517,
     "fields": {
       "user": 517,
@@ -8789,7 +8789,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 518,
     "fields": {
       "user": 518,
@@ -8806,7 +8806,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 519,
     "fields": {
       "user": 519,
@@ -8823,7 +8823,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 520,
     "fields": {
       "user": 520,
@@ -8840,7 +8840,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 521,
     "fields": {
       "user": 521,
@@ -8857,7 +8857,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 522,
     "fields": {
       "user": 522,
@@ -8874,7 +8874,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 523,
     "fields": {
       "user": 523,
@@ -8891,7 +8891,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 524,
     "fields": {
       "user": 524,
@@ -8908,7 +8908,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 525,
     "fields": {
       "user": 525,
@@ -8925,7 +8925,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 526,
     "fields": {
       "user": 526,
@@ -8942,7 +8942,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 527,
     "fields": {
       "user": 527,
@@ -8959,7 +8959,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 528,
     "fields": {
       "user": 528,
@@ -8976,7 +8976,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 529,
     "fields": {
       "user": 529,
@@ -8993,7 +8993,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 530,
     "fields": {
       "user": 530,
@@ -9010,7 +9010,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 531,
     "fields": {
       "user": 531,
@@ -9027,7 +9027,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 532,
     "fields": {
       "user": 532,
@@ -9044,7 +9044,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 533,
     "fields": {
       "user": 533,
@@ -9061,7 +9061,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 534,
     "fields": {
       "user": 534,
@@ -9078,7 +9078,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 535,
     "fields": {
       "user": 535,
@@ -9095,7 +9095,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 536,
     "fields": {
       "user": 536,
@@ -9112,7 +9112,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 537,
     "fields": {
       "user": 537,
@@ -9129,7 +9129,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 538,
     "fields": {
       "user": 538,
@@ -9146,7 +9146,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 539,
     "fields": {
       "user": 539,
@@ -9163,7 +9163,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 540,
     "fields": {
       "user": 540,
@@ -9180,7 +9180,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 541,
     "fields": {
       "user": 541,
@@ -9197,7 +9197,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 542,
     "fields": {
       "user": 542,
@@ -9214,7 +9214,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 543,
     "fields": {
       "user": 543,
@@ -9231,7 +9231,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 544,
     "fields": {
       "user": 544,
@@ -9248,7 +9248,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 545,
     "fields": {
       "user": 545,
@@ -9265,7 +9265,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 546,
     "fields": {
       "user": 546,
@@ -9282,7 +9282,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 547,
     "fields": {
       "user": 547,
@@ -9299,7 +9299,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 548,
     "fields": {
       "user": 548,
@@ -9316,7 +9316,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 549,
     "fields": {
       "user": 549,
@@ -9333,7 +9333,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 550,
     "fields": {
       "user": 550,
@@ -9350,7 +9350,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 551,
     "fields": {
       "user": 551,
@@ -9367,7 +9367,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 552,
     "fields": {
       "user": 552,
@@ -9384,7 +9384,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 553,
     "fields": {
       "user": 553,
@@ -9401,7 +9401,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 554,
     "fields": {
       "user": 554,
@@ -9418,7 +9418,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 555,
     "fields": {
       "user": 555,
@@ -9435,7 +9435,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 556,
     "fields": {
       "user": 556,
@@ -9452,7 +9452,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 557,
     "fields": {
       "user": 557,
@@ -9469,7 +9469,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 558,
     "fields": {
       "user": 558,
@@ -9486,7 +9486,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 559,
     "fields": {
       "user": 559,
@@ -9503,7 +9503,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 560,
     "fields": {
       "user": 560,
@@ -9520,7 +9520,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 561,
     "fields": {
       "user": 561,
@@ -9537,7 +9537,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 562,
     "fields": {
       "user": 562,
@@ -9554,7 +9554,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 563,
     "fields": {
       "user": 563,
@@ -9571,7 +9571,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 564,
     "fields": {
       "user": 564,
@@ -9588,7 +9588,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 565,
     "fields": {
       "user": 565,
@@ -9605,7 +9605,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 566,
     "fields": {
       "user": 566,
@@ -9622,7 +9622,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 567,
     "fields": {
       "user": 567,
@@ -9639,7 +9639,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 568,
     "fields": {
       "user": 568,
@@ -9656,7 +9656,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 569,
     "fields": {
       "user": 569,
@@ -9673,7 +9673,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 570,
     "fields": {
       "user": 570,
@@ -9690,7 +9690,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 571,
     "fields": {
       "user": 571,
@@ -9707,7 +9707,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 572,
     "fields": {
       "user": 572,
@@ -9724,7 +9724,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 573,
     "fields": {
       "user": 573,
@@ -9741,7 +9741,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 574,
     "fields": {
       "user": 574,
@@ -9758,7 +9758,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 575,
     "fields": {
       "user": 575,
@@ -9775,7 +9775,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 576,
     "fields": {
       "user": 576,
@@ -9792,7 +9792,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 577,
     "fields": {
       "user": 577,
@@ -9809,7 +9809,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 578,
     "fields": {
       "user": 578,
@@ -9826,7 +9826,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 579,
     "fields": {
       "user": 579,
@@ -9843,7 +9843,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 580,
     "fields": {
       "user": 580,
@@ -9860,7 +9860,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 581,
     "fields": {
       "user": 581,
@@ -9877,7 +9877,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 582,
     "fields": {
       "user": 582,
@@ -9894,7 +9894,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 583,
     "fields": {
       "user": 583,
@@ -9911,7 +9911,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 584,
     "fields": {
       "user": 584,
@@ -9928,7 +9928,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 585,
     "fields": {
       "user": 585,
@@ -9945,7 +9945,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 586,
     "fields": {
       "user": 586,
@@ -9962,7 +9962,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 587,
     "fields": {
       "user": 587,
@@ -9979,7 +9979,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 588,
     "fields": {
       "user": 588,
@@ -9996,7 +9996,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 589,
     "fields": {
       "user": 589,
@@ -10013,7 +10013,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 590,
     "fields": {
       "user": 590,
@@ -10030,7 +10030,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 591,
     "fields": {
       "user": 591,
@@ -10047,7 +10047,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 592,
     "fields": {
       "user": 592,
@@ -10064,7 +10064,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 593,
     "fields": {
       "user": 593,
@@ -10081,7 +10081,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 594,
     "fields": {
       "user": 594,
@@ -10098,7 +10098,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 595,
     "fields": {
       "user": 595,
@@ -10115,7 +10115,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 596,
     "fields": {
       "user": 596,
@@ -10132,7 +10132,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 597,
     "fields": {
       "user": 597,
@@ -10149,7 +10149,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 598,
     "fields": {
       "user": 598,
@@ -10166,7 +10166,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 599,
     "fields": {
       "user": 599,
@@ -10183,7 +10183,7 @@
     }
   },
   {
-    "model": "restaurants.store",
+    "model": "stores.store",
     "pk": 600,
     "fields": {
       "user": 600,

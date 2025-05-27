@@ -12,26 +12,26 @@ from django.core.files.base import ContentFile
 import urllib.parse
 import logging
 
-from restaurants.models import Meal
+from stores.models import product
 
 logger = logging.getLogger(__name__)
 
 
 @csrf_exempt
-def upload_proof_of_payment_restaurant(request, order_id):
+def upload_proof_of_payment_store(request, order_id):
     if request.method == "POST":
         try:
             order = Order.objects.get(id=order_id)
             proof_of_payment_file = request.FILES["proof_of_payment"]
-            order.proof_of_payment_restaurant.save(
+            order.proof_of_payment_store.save(
                 proof_of_payment_file.name, proof_of_payment_file
             )
-            order.payment_status_restaurant = Order.PAID
+            order.payment_status_store = Order.PAID
             order.save()
             return JsonResponse(
                 {
                     "status": "success",
-                    "message": "Proof of payment to restaurant uploaded successfully",
+                    "message": "Proof of payment to store uploaded successfully",
                 }
             )
         except Exception as e:
@@ -72,8 +72,8 @@ def mark_as_paid(request, type, order_id):
     if request.method == "POST":
         try:
             order = Order.objects.get(id=order_id)
-            if type == "restaurant":
-                order.payment_status_restaurant = Order.PAID
+            if type == "store":
+                order.payment_status_store = Order.PAID
             elif type == "driver":
                 order.payment_status_driver = Order.PAID
             order.save()
@@ -109,12 +109,12 @@ def get_orders(request):
         {
             "id": order.id,
             "customer": order.customer.user.get_full_name(),
-            "restaurant": order.restaurant.name,
+            "store": order.store.name,
             "status": order.get_status_display(),
             "total": order.total,
             "created_at": order.created_at,
             "invoice_pdf": order.invoice_pdf.url if order.invoice_pdf else None,
-            "payment_status_restaurant": order.payment_status_restaurant,
+            "payment_status_store": order.payment_status_store,
             "payment_status_driver": order.payment_status_driver,
             "original_price": order.original_price,
             "driver_commission": order.calculate_driver_commission(),

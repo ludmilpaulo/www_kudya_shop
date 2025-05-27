@@ -6,18 +6,18 @@ from curtomers.views import (
     customer_driver_location,
     customer_get_detais,
     customer_get_latest_order,
-    customer_get_meals,
+    customer_get_products,
     customer_get_order_history,
-    customer_get_restaurants,
+    customer_get_stores,
     customer_update_profile,
     update_profile,
 )
 
 
 urlpatterns = [
-    path("customer/meals/<int:restaurant_id>/", customer_get_meals),
+    path("customer/products/<int:store_id>/", customer_get_products),
     path("customer/order/add/", customer_add_order),
-    path("customer/restaurants/", customer_get_restaurants),
+    path("customer/stores/", customer_get_stores),
     path("signup/", CustomerSignupView.as_view()),
     path("customer/order/latest/", customer_get_latest_order),
     path("customer/driver/location/", customer_driver_location),

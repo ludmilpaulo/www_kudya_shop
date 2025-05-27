@@ -1,20 +1,20 @@
 [
   {
-    "model": "restaurants.size",
+    "model": "stores.size",
     "pk": 1,
     "fields": {
       "name": "S"
     }
   },
   {
-    "model": "restaurants.size",
+    "model": "stores.size",
     "pk": 2,
     "fields": {
       "name": "M"
     }
   },
   {
-    "model": "restaurants.size",
+    "model": "stores.size",
     "pk": 3,
     "fields": {
       "name": "L"

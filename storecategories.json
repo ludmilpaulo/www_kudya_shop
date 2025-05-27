@@ -1,6 +1,6 @@
 [
   {
-    "model": "restaurants.storecategory",
+    "model": "stores.storecategory",
     "pk": 1,
     "fields": {
       "name": "Category 1",
@@ -9,7 +9,7 @@
     }
   },
   {
-    "model": "restaurants.storecategory",
+    "model": "stores.storecategory",
     "pk": 2,
     "fields": {
       "name": "Category 2",
@@ -18,7 +18,7 @@
     }
   },
   {
-    "model": "restaurants.storecategory",
+    "model": "stores.storecategory",
     "pk": 3,
     "fields": {
       "name": "Category 3",
@@ -27,7 +27,7 @@
     }
   },
   {
-    "model": "restaurants.storecategory",
+    "model": "stores.storecategory",
     "pk": 4,
     "fields": {
       "name": "Category 4",
@@ -36,7 +36,7 @@
     }
   },
   {
-    "model": "restaurants.storecategory",
+    "model": "stores.storecategory",
     "pk": 5,
     "fields": {
       "name": "Category 5",
@@ -45,7 +45,7 @@
     }
   },
   {
-    "model": "restaurants.storecategory",
+    "model": "stores.storecategory",
     "pk": 6,
     "fields": {
       "name": "Category 6",
@@ -54,7 +54,7 @@
     }
   },
   {
-    "model": "restaurants.storecategory",
+    "model": "stores.storecategory",
     "pk": 7,
     "fields": {
       "name": "Category 7",
@@ -63,7 +63,7 @@
     }
   },
   {
-    "model": "restaurants.storecategory",
+    "model": "stores.storecategory",
     "pk": 8,
     "fields": {
       "name": "Category 8",
@@ -72,7 +72,7 @@
     }
   },
   {
-    "model": "restaurants.storecategory",
+    "model": "stores.storecategory",
     "pk": 9,
     "fields": {
       "name": "Category 9",
@@ -81,7 +81,7 @@
     }
   },
   {
-    "model": "restaurants.storecategory",
+    "model": "stores.storecategory",
     "pk": 10,
     "fields": {
       "name": "Category 10",

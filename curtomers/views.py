@@ -17,8 +17,8 @@ from rest_framework.parsers import *
 
 from django.contrib.auth import get_user_model
 
-from restaurants.models import Meal, Restaurant
-from restaurants.serializers import MealSerializer, RestaurantSerializer
+from stores.models import Product, Store
+from stores.serializers import ProductSerializer, StoreSerializer
 
 User = get_user_model()
 
@@ -54,24 +54,24 @@ def customer_update_profile(request, format=None):
     return JsonResponse({"status": "Os Seus Dados enviados com sucesso"})
 
 
-def customer_get_restaurants(request):
-    restaurants = RestaurantSerializer(
-        Restaurant.objects.all().order_by("-id"),
+def customer_get_stores(request):
+    stores = StoreSerializer(
+        store.objects.all().order_by("-id"),
         many=True,
         context={"request": request},
     ).data
 
-    return JsonResponse({"restaurants": restaurants})
+    return JsonResponse({"stores": stores})
 
 
-def customer_get_meals(request, restaurant_id):
-    meals = MealSerializer(
-        Meal.objects.filter(restaurant_id=restaurant_id).order_by("-id"),
+def customer_get_products(request, store_id):
+    products = ProductSerializer(
+        Product.objects.filter(store_id=store_id).order_by("-id"),
         many=True,
         context={"request": request},
     ).data
 
-    return JsonResponse({"meals": meals})
+    return JsonResponse({"products": products})
 
 
 #######################################################################################3
@@ -119,27 +119,27 @@ def customer_add_order(request):
     order_details = data["order_details"]
 
     order_total = 0
-    for meal in order_details:
-        order_total += Meal.objects.get(id=meal["meal_id"]).price * meal["quantity"]
+    for product in order_details:
+        order_total += product.objects.get(id=product["product_id"]).price * product["quantity"]
 
     if len(order_details) > 0:
 
         # Step 2 - Create an Order
         order = Order.objects.create(
             customer=customer,
-            restaurant_id=data["restaurant_id"],
+            store_id=data["store_id"],
             total=order_total,
             status=Order.COOKING,
             address=data["address"],
         )
 
         # Step 3 - Create Order details
-        for meal in order_details:
+        for product in order_details:
             OrderDetails.objects.create(
                 order=order,
-                meal_id=meal["meal_id"],
-                quantity=meal["quantity"],
-                sub_total=Meal.objects.get(id=meal["meal_id"]).price * meal["quantity"],
+                product_id=product["product_id"],
+                quantity=product["quantity"],
+                sub_total=product.objects.get(id=product["product_id"]).price * product["quantity"],
             )
         # serializer = OrderSerializer(order, many=False)
         return JsonResponse({"status": "success"})
@@ -188,7 +188,7 @@ def customer_driver_location(request):
             order_locations.append({
                 'order_id': order.id,
                 'driver_location': None,
-                'restaurant': order.restaurant.name,
+                'store': order.store.name,
                 'secret_pin': order.secret_pin
             })
 

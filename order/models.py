@@ -36,7 +36,7 @@ class Coupon(models.Model):
 class Order(models.Model):
     DRIVER_COMMISSION_PERCENTAGE_DEFAULT = 5  # Example default percentage
 
-    COOKING = 1
+    PROCESSING = 1
     READY = 2
     ONTHEWAY = 3
     DELIVERED = 4
@@ -44,7 +44,7 @@ class Order(models.Model):
     VERIFIED = 6
 
     STATUS_CHOICES = (
-        (COOKING, "Cozinhando"),
+        (PROCESSING, "PROCESSANDO"),
         (READY, "Pedido Pronto"),
         (ONTHEWAY, "A caminho"),
         (DELIVERED, "Entregue"),
@@ -63,8 +63,8 @@ class Order(models.Model):
     customer = models.ForeignKey(
         Customer, on_delete=models.CASCADE, verbose_name="cliente"
     )
-    restaurant = models.ForeignKey(
-        "restaurants.Restaurant", on_delete=models.CASCADE, verbose_name="restaurante"
+    shop = models.ForeignKey(
+        "stores.Store", on_delete=models.CASCADE, verbose_name="store"
     )
     driver = models.ForeignKey(
         Driver,
@@ -97,11 +97,11 @@ class Order(models.Model):
     driver_commission_percentage = models.DecimalField(
         max_digits=5, decimal_places=2, default=DRIVER_COMMISSION_PERCENTAGE_DEFAULT
     )
-    proof_of_payment_restaurant = models.FileField(
-        upload_to="proof_of_payment/restaurant/",
+    proof_of_payment_store = models.FileField(
+        upload_to="proof_of_payment/store/",
         null=True,
         blank=True,
-        verbose_name="Prova de Pagamento ao Restaurante",
+        verbose_name="Prova de Pagamento ao Shop",
     )
     proof_of_payment_driver = models.FileField(
         upload_to="proof_of_payment/driver/",
@@ -109,11 +109,11 @@ class Order(models.Model):
         blank=True,
         verbose_name="Prova de Pagamento ao Motorista",
     )
-    payment_status_restaurant = models.CharField(
+    payment_status_store = models.CharField(
         max_length=10,
         choices=PAYMENT_STATUS_CHOICES,
         default=UNPAID,
-        verbose_name="Status de Pagamento ao Restaurante",
+        verbose_name="Status de Pagamento ao Store",
     )
     payment_status_driver = models.CharField(
         max_length=10,
@@ -197,7 +197,7 @@ class Order(models.Model):
     def send_status_update_email(self):
         logger.info(f"Sending status update email for order {self.id}")
         customer_email = self.customer.user.email
-        restaurant_email = self.restaurant.user.email
+        store_email = self.store.user.email
         context = {
             "customer_name": self.customer.user.get_full_name(),
             "order_status": self.get_status_display(),
@@ -219,7 +219,7 @@ class Order(models.Model):
             subject,
             message,
             settings.DEFAULT_FROM_EMAIL,
-            [customer_email, restaurant_email],
+            [customer_email, store_email],
         )
         email.attach(f"order_{self.id}.pdf", pdf_content, "application/pdf")
         email.content_subtype = "html"
@@ -234,8 +234,8 @@ class OrderDetails(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Pedido",
     )
-    meal = models.ForeignKey(
-        "restaurants.Meal", on_delete=models.CASCADE, verbose_name="Refeição"
+    product = models.ForeignKey(
+        "stores.Product", on_delete=models.CASCADE, verbose_name="Refeição"
     )
     quantity = models.IntegerField(verbose_name="Quantidade")
     sub_total = models.DecimalField(max_digits=10, decimal_places=2)
