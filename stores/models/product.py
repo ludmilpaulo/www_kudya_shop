@@ -60,6 +60,11 @@ class Size(models.Model):
 
     def __str__(self):
         return self.name
+class Color(models.Model):
+    name = models.CharField(max_length=10, unique=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
@@ -83,6 +88,7 @@ class Product(models.Model):
         ProductCategory, on_delete=models.CASCADE, related_name="products"
     )
     sizes = models.ManyToManyField(Size, blank=True)
+    colors = models.ManyToManyField(Color, blank=True)
     stock = models.PositiveIntegerField(default=0)
     on_sale = models.BooleanField(default=False)
     percentage = models.DecimalField(
