@@ -91,6 +91,7 @@ class StoreSerializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
+
     category = serializers.SerializerMethodField()
     sizes = serializers.SerializerMethodField()
 
@@ -101,9 +102,19 @@ class ProductSerializer(serializers.ModelSerializer):
 
     def get_image_url(self, obj):
         request = self.context.get("request")
-        if request and obj.image:
-            return request.build_absolute_uri(obj.image.url)
-        return None
+        # Get all related images (ManyToMany)
+        images = obj.images.all()
+        if not images:
+            return []
+        image_urls = []
+        for image in images:
+            if image.image and hasattr(image.image, 'url'):
+                if request:
+                    image_urls.append(request.build_absolute_uri(image.image.url))
+                else:
+                    image_urls.append(image.image.url)
+        return image_urls
+
     
     def get_sizes(self, obj):
         return [size.name for size in obj.sizes.all()]

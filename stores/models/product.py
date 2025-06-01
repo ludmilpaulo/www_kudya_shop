@@ -3,23 +3,23 @@ from django.core.mail import send_mail
 from django.contrib.auth import get_user_model
 from django_ckeditor_5.fields import CKEditor5Field
 from io import BytesIO
-from PIL import Image
+from PIL import Image as PilImage  # <--- Change here
+
 from django.core.files.base import ContentFile
 
 
 User = get_user_model()
 
+
+
 def resize_image(image_field, size=(800, 800)):
-    img = Image.open(image_field)
-    img.convert('RGB')  # Convert image to RGB (to ensure JPG compatibility)
-    img.thumbnail(size, Image.LANCZOS)
-
-    # Save resized image to memory
+    img = PilImage.open(image_field)   # <--- And here
+    img = img.convert('RGB')
+    img.thumbnail(size, PilImage.LANCZOS)
     img_io = BytesIO()
-    img.save(img_io, format='JPEG', quality=85)  # adjust quality as needed
-
-    # Return new Django-compatible image
+    img.save(img_io, format='JPEG', quality=85)
     return ContentFile(img_io.getvalue(), image_field.name)
+
 
 
 
