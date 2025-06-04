@@ -9,7 +9,7 @@ from rest_framework import status
 import urllib.parse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.authtoken.models import Token
-from curtomers.models import Customer
+from customers.models import Customer
 from order.models import Order, OrderDetails
 from stores.models import Product, Store
 from stores.serializers import StoreSerializer

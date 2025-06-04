@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth import get_user_model
 
-from curtomers.models import Customer
+from customers.models import Customer
 from .models import Driver
 
 User = get_user_model()

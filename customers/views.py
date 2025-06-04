@@ -3,8 +3,8 @@ from rest_framework.response import Response
 
 
 from contas.serializers import CustomerSignupSerializer, UserSerializer
-from curtomers.models import Customer
-from curtomers.serializers import CustomerSerializer
+from customers.models import Customer
+from customers.serializers import CustomerSerializer
 from order.models import Order, OrderDetails
 from order.serializers import OrderSerializer
 from rest_framework.decorators import *
@@ -37,26 +37,29 @@ def customer_update_profile(request, format=None):
     data = request.data
     access = Token.objects.get(key=data["access_token"]).user
 
-    customer = Customer.objects.get(user=access)
+    # Try to get or create the Customer object
+    customer, created = Customer.objects.get_or_create(user=access)
 
-    # Set location string => database
-    customer.avatar = request.FILES.get("avatar")
-    # driver.avatar = data['avatar']
-    customer.phone = data["phone"]
-    customer.address = data["address"]
+    # Handle avatar if uploaded
+    if "avatar" in request.FILES:
+        customer.avatar = request.FILES["avatar"]
+
+    customer.phone = data.get("phone", customer.phone)
+    customer.address = data.get("address", customer.address)
+    customer.location = data.get("location", customer.location)
     customer.save()
 
-    customer_user = User.objects.get(username=access)
-    customer_user.first_name = data["first_name"]
-    customer_user.last_name = data["last_name"]
-    customer_user.save()
+    # Update User's first/last name if given
+    access.first_name = data.get("first_name", access.first_name)
+    access.last_name = data.get("last_name", access.last_name)
+    access.save()
 
     return JsonResponse({"status": "Os Seus Dados enviados com sucesso"})
 
 
 def customer_get_stores(request):
     stores = StoreSerializer(
-        store.objects.all().order_by("-id"),
+        Store.objects.all().order_by("-id"),
         many=True,
         context={"request": request},
     ).data
@@ -80,6 +83,7 @@ def customer_get_products(request, store_id):
 @api_view(["GET"])
 def customer_get_detais(request):
     user_id = request.query_params.get("user_id")
+    print(f"Received user_id: {user_id}")
     if not user_id:
         return JsonResponse({"error": "user_id is required"}, status=400)
 

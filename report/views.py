@@ -3,8 +3,8 @@ from django.contrib.auth import get_user_model
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from datetime import datetime, timedelta
-from curtomers.models import Customer
-from curtomers.serializers import CustomerSerializer
+from customers.models import Customer
+from customers.serializers import CustomerSerializer
 from drivers.models import Driver
 from drivers.serializers import DriverSerializer
 from order.models import Order

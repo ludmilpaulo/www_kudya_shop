@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from curtomers.models import Customer
+from customers.models import Customer
 from drivers.models import Driver
 from order.models import Order, OrderDetails
 from stores.models import product, store

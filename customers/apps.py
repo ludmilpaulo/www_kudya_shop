@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CurtomersConfig(AppConfig):
+class customersConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "curtomers"
+    name = "customers"

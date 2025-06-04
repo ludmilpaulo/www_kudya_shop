@@ -1,7 +1,7 @@
 import threading
 from django.db import models
 from django.utils import timezone
-from curtomers.models import Customer
+from customers.models import Customer
 from drivers.models import Driver
 
 from django.core.mail import EmailMessage
@@ -63,7 +63,7 @@ class Order(models.Model):
     customer = models.ForeignKey(
         Customer, on_delete=models.CASCADE, verbose_name="cliente"
     )
-    shop = models.ForeignKey(
+    store = models.ForeignKey(
         "stores.Store", on_delete=models.CASCADE, verbose_name="store"
     )
     driver = models.ForeignKey(
@@ -83,9 +83,6 @@ class Order(models.Model):
     location =  models.CharField(max_length=500, verbose_name="localizacao", blank=True, null=True)
     status = models.IntegerField(choices=STATUS_CHOICES, verbose_name="stado")
     payment_method = models.CharField(max_length=50, verbose_name="método de pagamento")
-    chat = models.OneToOneField(
-        "info.ChatMessage", on_delete=models.CASCADE, null=True, blank=True, related_name="order_chat"
-    )
     created_at = models.DateTimeField(default=timezone.now, verbose_name="criado em")
     picked_at = models.DateTimeField(blank=True, null=True, verbose_name="pegar em")
     invoice_pdf = models.FileField(

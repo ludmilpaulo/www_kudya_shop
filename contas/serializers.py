@@ -1,4 +1,4 @@
-from curtomers.models import Customer
+from customers.models import Customer
 from drivers.models import Driver
 from rest_framework import serializers
 from django.contrib.auth import get_user_model

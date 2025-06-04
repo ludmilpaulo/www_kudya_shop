@@ -9,6 +9,7 @@ from django.template.loader import render_to_string
 import logging
 from order.models import Order
 from order.utils import generate_invoice
+from stores.models.restaurant import OpeningHour
 
 logger = logging.getLogger(__name__)
 
@@ -121,7 +122,7 @@ class Store(models.Model):
 
     def save(self, *args, **kwargs):
         new_store = self.pk is None
-        super(store, self).save(*args, **kwargs)
+        super(Store, self).save(*args, **kwargs)
         if new_store:
             self.send_signup_email()
 

@@ -1,6 +1,7 @@
 from django.urls import path
 
-from curtomers.views import (
+from customers.all_products import AllProductsList
+from customers.views import (
     CustomerSignupView,
     customer_add_order,
     customer_driver_location,
@@ -25,4 +26,5 @@ urlpatterns = [
     path("customer/profile/update/", customer_update_profile),
     path("customer/profile/", customer_get_detais),
     path("profile/update/", update_profile, name="update_profile"),
+    path("products/all/", AllProductsList.as_view(), name="all-products"),
 ]
