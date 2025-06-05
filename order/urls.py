@@ -6,11 +6,13 @@ from order.admin_order import (
     upload_proof_of_payment_driver,
     upload_proof_of_payment_store,
 )
+from order.multiple_orders import customer_add_multiple_orders
 from order.order_view import check_user_coupon, customer_add_order
 from .views import generate_store_invoices, store_details
 
 urlpatterns = [
     path("orders/add/", customer_add_order, name="customer_add_order"),
+    path("orders/add-multiple/", customer_add_multiple_orders),
     path(
         "store/stores/<int:store_id>/",
         store_details,

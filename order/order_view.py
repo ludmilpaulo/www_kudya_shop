@@ -12,8 +12,7 @@ from decimal import Decimal
 import urllib.parse
 import logging
 
-from stores.models import product
-
+from stores.models.product import Product
 logger = logging.getLogger(__name__)
 
 @csrf_exempt
@@ -95,12 +94,12 @@ def customer_add_order(request):
     original_total = 0
     for item in order_details:
         try:
-            product_obj = product.objects.get(id=item["product_id"])
+            product_obj = Product.objects.get(id=item["product_id"])
             product_price_with_markup = product_obj.price_with_markup
             order_total += product_price_with_markup * item["quantity"]
             original_total += product_obj.price * item["quantity"]
             print(f"STEP 9: Found product {product_obj}, subtotal={product_price_with_markup * item['quantity']}")
-        except product.DoesNotExist:
+        except Product.DoesNotExist:
             print(f"STEP 9: Product with ID {item['product_id']} not found")
             return Response(
                 {
@@ -158,7 +157,7 @@ def customer_add_order(request):
     # Create Order details
     for item in order_details:
         try:
-            product_obj = product.objects.get(id=item["product_id"])
+            product_obj = Product.objects.get(id=item["product_id"])
             product_price_with_markup = product_obj.price_with_markup
             OrderDetails.objects.create(
                 order=order,

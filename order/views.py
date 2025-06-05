@@ -53,5 +53,5 @@ def generate_store_invoices(request):
 @api_view(["GET"])
 def store_details(request, store_id):
     store = get_object_or_404(store, pk=store_id)
-    serializer = storeSerializer(store, context={"request": request})
+    serializer = StoreSerializer(store, context={"request": request})
     return Response(serializer.data, status=status.HTTP_200_OK)
