@@ -89,12 +89,15 @@ class StoreSerializer(serializers.ModelSerializer):
         )
 
 
+
+
 class ProductSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
-
+    images = serializers.SerializerMethodField()
+    image = serializers.SerializerMethodField()
     category = serializers.SerializerMethodField()
     sizes = serializers.SerializerMethodField()
-
+    colors = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
@@ -102,7 +105,6 @@ class ProductSerializer(serializers.ModelSerializer):
 
     def get_image_url(self, obj):
         request = self.context.get("request")
-        # Get all related images (ManyToMany)
         images = obj.images.all()
         if not images:
             return []
@@ -115,16 +117,26 @@ class ProductSerializer(serializers.ModelSerializer):
                     image_urls.append(image.image.url)
         return image_urls
 
-    
+    def get_images(self, obj):
+        # Return the same as get_image_url
+        return self.get_image_url(obj)
+
+    def get_image(self, obj):
+        # Return the same as get_image_url
+        return self.get_image_url(obj)
+
     def get_sizes(self, obj):
         return [size.name for size in obj.sizes.all()]
 
+    def get_colors(self, obj):
+        return [color.name for color in obj.colors.all()]
 
     def get_category(self, obj):
         return obj.category.name if obj.category else None
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
+        # Price with markup instead of raw price
         representation["price"] = instance.price_with_markup
         return representation
 

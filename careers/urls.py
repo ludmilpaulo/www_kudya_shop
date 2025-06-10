@@ -14,3 +14,4 @@ router.register(r'job-applications', JobApplicationViewSet)
 urlpatterns = [
     path('', include(router.urls)),
 ]
+    

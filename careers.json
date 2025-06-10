@@ -1,0 +1,162 @@
+[
+  {
+    "model": "careers.career",
+    "pk": 1,
+    "fields": {
+      "title": "Desenvolvedor(a) Full-Stack / CTO (Equity-Based)",
+      "location": "Remoto (Angola)",
+      "description": "<p>Procuramos um(a) cofundador(a) técnico(a) em Angola para liderar o desenvolvimento do nosso MVP. Papel baseado em equity, perfeito para quem quer construir algo do zero no seu país.</p>",
+      "requirements": "• Experiência em Django, React, Next.js\n• Capacidade de atuar no front e backend\n• Perfil empreendedor/startup\n• Disponível para trabalhar por equity\n• Paixão por resolver problemas locais"
+    }
+  },
+  {
+    "model": "careers.career",
+    "pk": 2,
+    "fields": {
+      "title": "Desenvolvedor(a) Full-Stack / CTO (Equity-Based)",
+      "location": "Remoto (Moçambique)",
+      "description": "<p>Procuramos um(a) cofundador(a) técnico(a) em Moçambique para liderar o desenvolvimento do nosso MVP. Função baseada em equity, para quem quer impactar o mercado local.</p>",
+      "requirements": "• Experiência em Django, React, Next.js\n• Capacidade de atuar em frontend e backend\n• Mentalidade de startup\n• Disponível para trabalhar por equity\n• Foco em soluções para Moçambique"
+    }
+  },
+  {
+    "model": "careers.career",
+    "pk": 3,
+    "fields": {
+      "title": "Desenvolvedor(a) Full-Stack / CTO (Equity-Based)",
+      "location": "Remoto (Cabo Verde)",
+      "description": "<p>Estamos à procura de um(a) CTO/Desenvolvedor(a) em Cabo Verde para desenvolver e lançar a plataforma. Trabalho por equity; ideal para quem busca construir um negócio digital inovador.</p>",
+      "requirements": "• Experiência em Django, React, Next.js\n• Conhecimento de APIs\n• Autonomia e visão de produto\n• Disponível para trabalhar por equity\n• Comprometimento com resultados"
+    }
+  },
+  {
+    "model": "careers.career",
+    "pk": 4,
+    "fields": {
+      "title": "Full-Stack Developer / CTO (Equity-Based)",
+      "location": "Remote (South Africa)",
+      "description": "<p>Looking for a technical co-founder in South Africa to build and launch our MVP. Equity-based; ideal for someone passionate about launching new products.</p>",
+      "requirements": "• Strong Django, React, Next.js skills\n• Full-stack capability\n• Startup mentality\n• Willing to work for equity\n• Entrepreneurial drive"
+    }
+  },
+  {
+    "model": "careers.career",
+    "pk": 5,
+    "fields": {
+      "title": "Marketing & Social Media",
+      "location": "Remoto (Angola)",
+      "description": "<p>Ajude-nos a crescer em Angola! Vai criar conteúdos, gerir redes sociais e engajar a comunidade digital.</p>",
+      "requirements": "• Experiência em social media\n• Criatividade para campanhas de baixo custo\n• Proatividade\n• Comunicação clara em português"
+    }
+  },
+  {
+    "model": "careers.career",
+    "pk": 6,
+    "fields": {
+      "title": "Marketing & Social Media",
+      "location": "Remoto (Moçambique)",
+      "description": "<p>Ajude-nos a crescer em Moçambique! Crie conteúdos digitais, faça gestão de redes sociais e conecte com o público local.</p>",
+      "requirements": "• Experiência em redes sociais\n• Comunicação em português\n• Proatividade\n• Conhecimento do mercado digital de Moçambique"
+    }
+  },
+  {
+    "model": "careers.career",
+    "pk": 7,
+    "fields": {
+      "title": "Marketing & Social Media",
+      "location": "Remoto (Cabo Verde)",
+      "description": "<p>Seja responsável pelo nosso marketing digital em Cabo Verde. Gestão de campanhas, criação de conteúdos e presença nas redes.</p>",
+      "requirements": "• Conhecimento em social media\n• Iniciativa e criatividade\n• Português fluente\n• Foco em resultados"
+    }
+  },
+  {
+    "model": "careers.career",
+    "pk": 8,
+    "fields": {
+      "title": "Marketing & Social Media",
+      "location": "Remote (South Africa)",
+      "description": "<p>Help us grow in South Africa! You will create content, manage our digital presence, and connect with a diverse audience.</p>",
+      "requirements": "• Digital marketing & social media skills\n• Creative and self-driven\n• English fluency\n• Ability to drive engagement"
+    }
+  },
+  {
+    "model": "careers.career",
+    "pk": 9,
+    "fields": {
+      "title": "Operações & Atendimento ao Cliente",
+      "location": "Remoto (Angola)",
+      "description": "<p>Responsável pelo suporte aos utilizadores, gestão de dúvidas e organização das operações em Angola.</p>",
+      "requirements": "• Organização e boa comunicação\n• Atendimento ao cliente em português\n• Autonomia e proatividade\n• Internet estável"
+    }
+  },
+  {
+    "model": "careers.career",
+    "pk": 10,
+    "fields": {
+      "title": "Operações & Atendimento ao Cliente",
+      "location": "Remoto (Moçambique)",
+      "description": "<p>Atue no suporte ao cliente, organização das operações e contato diário com utilizadores moçambicanos.</p>",
+      "requirements": "• Experiência com atendimento ao cliente\n• Português fluente\n• Organização\n• Proatividade"
+    }
+  },
+  {
+    "model": "careers.career",
+    "pk": 11,
+    "fields": {
+      "title": "Operações & Atendimento ao Cliente",
+      "location": "Remoto (Cabo Verde)",
+      "description": "<p>Atenda nossos clientes e organize a operação digital da plataforma em Cabo Verde. Trabalho remoto e flexível.</p>",
+      "requirements": "• Bom relacionamento interpessoal\n• Comunicação clara em português\n• Disponibilidade para atuar em home office\n• Proatividade"
+    }
+  },
+  {
+    "model": "careers.career",
+    "pk": 12,
+    "fields": {
+      "title": "Operations & Customer Success",
+      "location": "Remote (South Africa)",
+      "description": "<p>Support users, answer questions, and coordinate smooth operations for our South African platform users.</p>",
+      "requirements": "• Strong organization & communication skills\n• English fluency\n• Customer service focus\n• Able to work remotely"
+    }
+  },
+  {
+    "model": "careers.career",
+    "pk": 13,
+    "fields": {
+      "title": "Business Development & Partnerships",
+      "location": "Remoto (Angola)",
+      "description": "<p>Capte parcerias, novos clientes e oportunidades de negócios para impulsionar nosso crescimento em Angola.</p>",
+      "requirements": "• Perfil comercial\n• Experiência com prospecção\n• Comunicação em português\n• Proatividade"
+    }
+  },
+  {
+    "model": "careers.career",
+    "pk": 14,
+    "fields": {
+      "title": "Business Development & Partnerships",
+      "location": "Remoto (Moçambique)",
+      "description": "<p>Desenvolva parcerias, encontre clientes e novas oportunidades para a plataforma em Moçambique.</p>",
+      "requirements": "• Espírito empreendedor\n• Comunicação em português\n• Experiência comercial\n• Autonomia"
+    }
+  },
+  {
+    "model": "careers.career",
+    "pk": 15,
+    "fields": {
+      "title": "Business Development & Partnerships",
+      "location": "Remoto (Cabo Verde)",
+      "description": "<p>Procure oportunidades de negócio e ajude-nos a crescer em Cabo Verde. Trabalho remoto, comissão ou equity.</p>",
+      "requirements": "• Negociação e comunicação\n• Espírito de dono\n• Português fluente\n• Pró-atividade"
+    }
+  },
+  {
+    "model": "careers.career",
+    "pk": 16,
+    "fields": {
+      "title": "Business Development & Partnerships",
+      "location": "Remote (South Africa)",
+      "description": "<p>Find new business partners and help us onboard clients across South Africa. Remote, commission/equity based.</p>",
+      "requirements": "• Excellent communication\n• English fluency\n• Entrepreneurial drive\n• Experience in business development"
+    }
+  }
+]
