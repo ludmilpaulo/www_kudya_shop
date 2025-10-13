@@ -14,6 +14,7 @@ urlpatterns = [
     path("careers/", include("careers.urls")),
     path("report/", include("report.urls")),
     path("store/", include("stores.urls")),
+    path("restaurant/", include("stores.urls")),  # Alias for store endpoints to support legacy frontend apps
     path("manager/", include("management.urls")),
     path("api/backup/", views.backup_database, name="backup_database"),
     path("api/delete/", views.delete_database, name="delete_database"),

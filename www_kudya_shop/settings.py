@@ -16,17 +16,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-76vdd*oh$e-t_lyxs#5jdx@hus^9vxro%@j)69plvh&8$n1zn5'
-# Get environment variable
-
-#ENV = os.getenv('DJANGO_ENV', 'development')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-76vdd*oh$e-t_lyxs#5jdx@hus^9vxro%@j)69plvh&8$n1zn5')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '*').split(',')
 
-FRONTEND_URL = 'https://www.sdkudya.com'
+FRONTEND_URL = os.getenv('FRONTEND_URL', 'https://www.sdkudya.com')
 
 # Application definition
 
@@ -172,16 +169,16 @@ CORS_ALLOWED_ORIGINS = [
 
 
 
-SERVER_EMAIL = 'support@maindodigital.com' # this is for to send 500 mail to admins
+SERVER_EMAIL = os.getenv('SERVER_EMAIL', 'support@maindodigital.com')  # this is for to send 500 mail to admins
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtpout.secureserver.net'
-EMAIL_HOST_USER='support@maindodigital.com'
-EMAIL_HOST_PASSWORD='Maitland@2024'
-DEFAULT_FROM_EMAIL = 'support@maindodigital.com'
-EMAIL_PORT=465
-EMAIL_USE_SSL=True
-EMAIL_USE_TLS=False
+EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtpout.secureserver.net')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'support@maindodigital.com')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', 'Maitland@2024')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'support@maindodigital.com')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', '465'))
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', 'True') == 'True'
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'False') == 'True'
 
 SITE_ID = 1 # ne
 
