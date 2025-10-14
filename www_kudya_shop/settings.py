@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'careers',
     'management',
     'services',  # New service booking app
+    'currency',  # Currency conversion app
     'django_ckeditor_5',
 
     'rest_framework',
