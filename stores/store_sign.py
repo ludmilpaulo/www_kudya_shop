@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from .serializers import StoreSerializer
 from django.contrib.auth import get_user_model
+from .models import StoreCategory
 
 User = get_user_model()
 
@@ -19,6 +20,7 @@ def fornecedor_sign_up(request, format=None):
         username = request.data.get("username")
         email = request.data.get("email")
         password = request.data.get("password")
+        category_id = request.data.get("category_id")  # New field for category selection
 
         if not username or not password:
             return Response(
@@ -49,6 +51,15 @@ def fornecedor_sign_up(request, format=None):
 
         if serializer.is_valid():
             serializer.validated_data["user"] = new_user
+            
+            # Add category if provided
+            if category_id:
+                try:
+                    category = StoreCategory.objects.get(id=category_id)
+                    serializer.validated_data["category"] = category
+                except StoreCategory.DoesNotExist:
+                    pass
+            
             store = serializer.save()
 
             if logo:
