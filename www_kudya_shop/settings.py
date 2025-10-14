@@ -44,10 +44,12 @@ INSTALLED_APPS = [
     'info',
     'careers',
     'management',
+    'services',  # New service booking app
     'django_ckeditor_5',
 
     'rest_framework',
     'rest_framework.authtoken',
+    'django_filters',
 ]
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -62,6 +64,11 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
         'rest_framework.parsers.FormParser',
         'rest_framework.parsers.MultiPartParser',
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+        'rest_framework.filters.OrderingFilter',
     ],
 }
 

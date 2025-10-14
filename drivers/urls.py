@@ -1,5 +1,6 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth import views as auth_views
+from rest_framework.routers import DefaultRouter
 
 from drivers.revenue_views import driver_get_revenue
 from drivers.views import (
@@ -19,9 +20,22 @@ from drivers.views import (
     test_reject_order_view,
     verify_order,
 )
+from drivers.delivery_views import (
+    DriverViewSet,
+    DeliveryRequestViewSet,
+    DriverRatingViewSet,
+    auto_assign_driver,
+    delivery_stats
+)
 
+# REST API Router
+router = DefaultRouter()
+router.register(r'api/drivers', DriverViewSet, basename='api-driver')
+router.register(r'api/deliveries', DeliveryRequestViewSet, basename='api-delivery')
+router.register(r'api/ratings', DriverRatingViewSet, basename='api-rating')
 
 urlpatterns = [
+    # Legacy endpoints
     path("signup/driver/", DriverSignupView.as_view()),
     path("orders/ready/", driver_get_ready_orders),
     path("order/pick/", driver_pick_order),
@@ -42,6 +56,11 @@ urlpatterns = [
     path("ongoing-order/", get_ongoing_order),
     path("verify-order/", verify_order, name="verify-order"),
     path('verified-order/', get_verified_order, name='get_verified_order'),
+    
+    # New REST API endpoints
+    path('', include(router.urls)),
+    path('api/auto-assign/', auto_assign_driver, name='auto-assign-driver'),
+    path('api/stats/', delivery_stats, name='delivery-stats'),
 ]
 
 
