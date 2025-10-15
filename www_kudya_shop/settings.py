@@ -23,7 +23,7 @@ DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '*').split(',')
 
-FRONTEND_URL = os.getenv('FRONTEND_URL', 'https://www.sdkudya.com')
+FRONTEND_URL = os.getenv('FRONTEND_URL', 'https://www.kudya.shop')
 
 # Application definition
 
