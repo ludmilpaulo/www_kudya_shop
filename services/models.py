@@ -301,7 +301,8 @@ class Booking(models.Model):
         
         # Calculate platform fee and provider earnings
         if not self.platform_fee:
-            self.platform_fee = self.price * 0.15  # 15% platform fee
+            from decimal import Decimal
+            self.platform_fee = self.price * Decimal("0.15")  # 15% platform fee
             self.provider_earnings = self.price - self.platform_fee
         
         super().save(*args, **kwargs)

@@ -47,25 +47,47 @@ class Command(BaseCommand):
 
         if options.get('clear'):
             self.stdout.write("Clearing existing seed data...")
+            def safe_delete(qs, label=""):
+                try:
+                    count = qs.count()
+                    if count:
+                        qs.delete()
+                        self.stdout.write(f"  Cleared {label}: {count}")
+                except Exception as e:
+                    self.stdout.write(self.style.WARNING(f"  {label} clear: {e}"))
+
             try:
-                from order.models import OrderDetails, Order, Coupon
-                from properties.models import Property, PropertyImage
-                from services.models import Booking, Service, ServiceCategory
-                from careers.models import Career, JobApplication
-                OrderDetails.objects.filter(order__customer__user__username__startswith="seed_").delete()
-                Order.objects.filter(customer__user__username__startswith="seed_").delete()
-                PropertyImage.objects.filter(property__owner__username__startswith="seed_").delete()
-                Property.objects.filter(owner__username__startswith="seed_").delete()
-                Booking.objects.filter(customer__user__username__startswith="seed_").delete()
-                Service.objects.filter(parceiro__name__startswith="[Seed]").delete()
-                JobApplication.objects.filter(career__title__startswith="[Seed]").delete()
-                Career.objects.filter(title__startswith="[Seed]").delete()
+                from order.models import OrderDetails, Order
+                safe_delete(OrderDetails.objects.filter(order__customer__user__username__startswith="seed_"), "OrderDetails")
+                safe_delete(Order.objects.filter(customer__user__username__startswith="seed_"), "Orders")
             except Exception as e:
-                self.stdout.write(f"  Clear partial: {e}")
-            Product.objects.filter(store__name__startswith="[Seed]").delete()
-            Store.objects.filter(name__startswith="[Seed]").delete()
-            AboutUs.objects.filter(title__startswith="[Seed]").delete()
-            User.objects.filter(username__startswith="seed_").delete()
+                self.stdout.write(self.style.WARNING(f"  Orders clear: {e}"))
+
+            try:
+                from properties.models import Property, PropertyImage
+                safe_delete(PropertyImage.objects.filter(property__owner__username__startswith="seed_"), "PropertyImages")
+                safe_delete(Property.objects.filter(owner__username__startswith="seed_"), "Properties")
+            except Exception as e:
+                self.stdout.write(self.style.WARNING(f"  Properties clear: {e}"))
+
+            try:
+                from services.models import Booking, Service
+                safe_delete(Booking.objects.filter(customer__user__username__startswith="seed_"), "Bookings")
+                safe_delete(Service.objects.filter(parceiro__name__startswith="[Seed]"), "Services")
+            except Exception as e:
+                self.stdout.write(self.style.WARNING(f"  Services clear: {e}"))
+
+            try:
+                from careers.models import Career, JobApplication
+                safe_delete(JobApplication.objects.filter(career__title__startswith="[Seed]"), "JobApplications")
+                safe_delete(Career.objects.filter(title__startswith="[Seed]"), "Careers")
+            except Exception as e:
+                self.stdout.write(self.style.WARNING(f"  Careers clear: {e}"))
+
+            safe_delete(Product.objects.filter(store__name__startswith="[Seed]"), "Products")
+            safe_delete(Store.objects.filter(name__startswith="[Seed]"), "Stores")
+            safe_delete(AboutUs.objects.filter(title__startswith="[Seed]"), "AboutUs")
+            safe_delete(User.objects.filter(username__startswith="seed_"), "Users")
 
         self.stdout.write("Seeding data...")
 
@@ -109,7 +131,7 @@ class Command(BaseCommand):
             ("BRL", Decimal("0.006")),
         ]
         for curr, rate in rates_data:
-            ExchangeRate.objects.update_or_create(
+            obj, _ = ExchangeRate.objects.update_or_create(
                 base_currency="AOA", target_currency=curr, date=today,
                 defaults={"rate": rate}
             )
