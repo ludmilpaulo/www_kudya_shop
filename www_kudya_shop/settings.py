@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'management',
     'services',  # New service booking app
     'currency',  # Currency conversion app
+    'properties',  # Property listings (rent daily/monthly, buy) - Airbnb-style
     'django_ckeditor_5',
 
     'rest_framework',

@@ -17,7 +17,8 @@ urlpatterns = [
     path("restaurant/", include("stores.urls")),  # Alias for store endpoints to support legacy frontend apps
     path("manager/", include("management.urls")),
     path("services/", include("services.urls")),  # New services API
-    path("currency/", include("currency.urls")),  # Currency conversion API
+    path("currency/", include("currency.urls")),
+    path("properties/", include("properties.urls")),  # Currency conversion API
     path("api/backup/", views.backup_database, name="backup_database"),
     path("api/delete/", views.delete_database, name="delete_database"),
     path("api/load/", views.load_database, name="load_database"),

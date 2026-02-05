@@ -49,6 +49,8 @@ urlpatterns = [
         StoreCategoryList.as_view(),
         name="store-category-list",
     ),
+    path("restaurant-categories/", StoreCategoryList.as_view(), name="restaurant-category-list"),
+    path("meal-categories/", ProductCategoryList.as_view(), name="meal-category-list"),
     path("stores/<int:user_id>/", store_detail, name="store-detail"),
     path(
         "stores/<int:store_pk>/opening_hours/",
