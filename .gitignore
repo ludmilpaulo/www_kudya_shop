@@ -14,3 +14,6 @@ __pycache__/
 
 # Optional: Ignore VSCode settings
 .vscode/
+
+# Optional: Ignore workspace files
+*.code-workspace
