@@ -52,14 +52,23 @@ class Command(BaseCommand):
                 from properties.models import Property, PropertyImage
                 from services.models import Booking, Service, ServiceCategory
                 from careers.models import Career, JobApplication
+                from drivers.models import DeliveryRequest, DriverRating
+                from stores.models.product import Wishlist, Review
+                from info.models import Carousel
+                # Delete in correct order (FK dependencies)
+                DriverRating.objects.filter(driver__user__username__startswith="seed_").delete()
+                DeliveryRequest.objects.filter(order__customer__user__username__startswith="seed_").delete()
                 OrderDetails.objects.filter(order__customer__user__username__startswith="seed_").delete()
                 Order.objects.filter(customer__user__username__startswith="seed_").delete()
+                Wishlist.objects.filter(user__username__startswith="seed_").delete()
+                Review.objects.filter(user__username__startswith="seed_").delete()
                 PropertyImage.objects.filter(property__owner__username__startswith="seed_").delete()
                 Property.objects.filter(owner__username__startswith="seed_").delete()
                 Booking.objects.filter(customer__user__username__startswith="seed_").delete()
                 Service.objects.filter(parceiro__name__startswith="[Seed]").delete()
                 JobApplication.objects.filter(career__title__startswith="[Seed]").delete()
                 Career.objects.filter(title__startswith="[Seed]").delete()
+                Carousel.objects.filter(title__startswith="[Seed]").delete()
             except Exception as e:
                 self.stdout.write(f"  Clear partial: {e}")
             Product.objects.filter(store__name__startswith="[Seed]").delete()
@@ -130,6 +139,22 @@ class Command(BaseCommand):
         )
         self.stdout.write("  - About Us created")
 
+        # 5b. Admin user
+        admin_user, admin_created = User.objects.get_or_create(
+            username="seed_admin",
+            defaults={
+                "email": "admin@kudya.shop",
+                "first_name": "Admin",
+                "last_name": "Kudya",
+                "is_staff": True,
+                "is_superuser": True,
+            }
+        )
+        if admin_created:
+            admin_user.set_password("seedpass123")
+            admin_user.save()
+            self.stdout.write("  - Admin user created (seed_admin / seedpass123)")
+
         # 6. Store + Products (requires User)
         user, created = User.objects.get_or_create(
             username="seed_store_owner",
@@ -175,24 +200,33 @@ class Command(BaseCommand):
                 self.stdout.write("  - Store and opening hours created")
 
                 # Products
-                prod_cat = ProductCategory.objects.filter(name="Refeições").first()
-                if prod_cat:
+                prod_cat_ref = ProductCategory.objects.filter(name="Refeições").first()
+                prod_cat_beb = ProductCategory.objects.filter(name="Bebidas").first()
+                prod_cat_snack = ProductCategory.objects.filter(name="Snacks").first()
+                if prod_cat_ref:
                     products_data = [
-                        ("Frango Grelhado", 2500, "Frango grelhado com arroz e salada"),
-                        ("Mufete", 1800, "Peixe grelhado com funje e banana"),
-                        ("Calulu", 2200, "Carne seca com quiabo e óleo de palma"),
-                        ("Sumo de Manga", 500, "Sumo natural de manga"),
+                        ("Frango Grelhado", 2500, "Frango grelhado com arroz e salada", prod_cat_ref),
+                        ("Mufete", 1800, "Peixe grelhado com funje e banana", prod_cat_ref),
+                        ("Calulu", 2200, "Carne seca com quiabo e óleo de palma", prod_cat_ref),
+                        ("Moamba de Galinha", 2400, "Galinha em molho de dendém com arroz", prod_cat_ref),
+                        ("Cacuso", 2000, "Peixe com legumes e pirão", prod_cat_ref),
+                        ("Sumo de Manga", 500, "Sumo natural de manga", prod_cat_beb or prod_cat_ref),
+                        ("Cerveja Cuca", 600, "Cerveja nacional", prod_cat_beb or prod_cat_ref),
+                        ("Água Mineral", 250, "Água 500ml", prod_cat_beb or prod_cat_ref),
+                        ("Cachupa", 1500, "Pequeno-almoço tradicional", prod_cat_snack or prod_cat_ref),
                     ]
-                    for pname, price, desc in products_data:
-                        Product.objects.create(
+                    for pname, price, desc, cat in products_data:
+                        Product.objects.get_or_create(
                             name=pname,
                             store=store,
-                            category=prod_cat,
-                            price=Decimal(str(price)),
-                            description=f"<p>{desc}</p>",
-                            stock=50,
+                            defaults={
+                                "category": cat,
+                                "price": Decimal(str(price)),
+                                "description": f"<p>{desc}</p>",
+                                "stock": 50,
+                            }
                         )
-                    self.stdout.write("  - Products created")
+                    self.stdout.write("  - Restaurant products created")
 
         # 7. Properties (rent daily, rent monthly, buy) - Airbnb-style
         try:
@@ -237,75 +271,100 @@ class Command(BaseCommand):
         except Exception as e:
             self.stdout.write(self.style.WARNING(f"  Properties: {e}"))
 
-        # 8. Customer + Driver users
-        cust_user, cust_created = User.objects.get_or_create(
-            username="seed_customer",
-            defaults={"email": "customer@kudya.shop", "first_name": "Seed", "last_name": "Customer", "is_customer": True}
-        )
-        if cust_created:
-            cust_user.set_password("seedpass123")
-            cust_user.save()
-
+        # 8. Customer + Driver users (multiple of each)
+        customers_data = [
+            ("seed_customer", "customer@kudya.shop", "Maria", "Santos", "+244 900 333 444", "Av. 4 de Fevereiro, Luanda"),
+            ("seed_customer2", "ana@kudya.shop", "Ana", "Costa", "+244 901 111 222", "Maianga, Luanda"),
+            ("seed_customer3", "carlos@kudya.shop", "Carlos", "Ferreira", "+244 902 222 333", "Centro, Luanda"),
+        ]
         try:
             from customers.models import Customer
-            Customer.objects.get_or_create(
-                user=cust_user,
-                defaults={"phone": "+244 900 333 444", "address": "Luanda, Angola"}
-            )
-            self.stdout.write("  - Customer created")
+            for uname, email, fname, lname, phone, addr in customers_data:
+                u, created = User.objects.get_or_create(
+                    username=uname,
+                    defaults={"email": email, "first_name": fname, "last_name": lname, "is_customer": True}
+                )
+                if created:
+                    u.set_password("seedpass123")
+                    u.save()
+                Customer.objects.get_or_create(user=u, defaults={"phone": phone, "address": addr})
+            self.stdout.write(f"  - {len(customers_data)} customers created")
         except Exception as e:
             self.stdout.write(self.style.WARNING(f"  Customer: {e}"))
 
-        drv_user, drv_created = User.objects.get_or_create(
-            username="seed_driver",
-            defaults={"email": "driver@kudya.shop", "first_name": "Seed", "last_name": "Driver", "is_driver": True}
-        )
-        if drv_created:
-            drv_user.set_password("seedpass123")
-            drv_user.save()
-
+        drivers_data = [
+            ("seed_driver", "driver@kudya.shop", "João", "Mendes", "motorcycle", "LD-00-00-AA", "+244 900 555 666"),
+            ("seed_driver2", "manuel@kudya.shop", "Manuel", "Rodrigues", "car", "LD-11-11-BB", "+244 901 666 777"),
+        ]
         try:
             from drivers.models import Driver
-            Driver.objects.get_or_create(
-                user=drv_user,
-                defaults={
-                    "phone": "+244 900 555 666",
-                    "vehicle_type": "motorcycle",
-                    "plate": "LD-00-00-AA",
-                    "is_online": True,
-                    "is_available": True,
-                }
-            )
-            self.stdout.write("  - Driver created")
+            for uname, email, fname, lname, vtype, plate, phone in drivers_data:
+                u, created = User.objects.get_or_create(
+                    username=uname,
+                    defaults={"email": email, "first_name": fname, "last_name": lname, "is_driver": True}
+                )
+                if created:
+                    u.set_password("seedpass123")
+                    u.save()
+                Driver.objects.get_or_create(
+                    user=u,
+                    defaults={
+                        "phone": phone,
+                        "vehicle_type": vtype,
+                        "plate": plate,
+                        "is_online": True,
+                        "is_available": True,
+                        "is_verified": True,
+                    }
+                )
+            self.stdout.write(f"  - {len(drivers_data)} drivers created")
         except Exception as e:
             self.stdout.write(self.style.WARNING(f"  Driver: {e}"))
 
-        # 9. Orders (real orders like a customer would place)
+        # 9. Orders (multiple orders, various statuses)
         try:
             from order.models import Order, OrderDetails
             from customers.models import Customer
-            cust = Customer.objects.filter(user__username="seed_customer").first()
-            seed_store = Store.objects.filter(name__startswith="[Seed]").first()
-            prod = Product.objects.filter(store=seed_store).first() if seed_store else None
+            from drivers.models import Driver
+            seed_stores = list(Store.objects.filter(name__startswith="[Seed]"))
+            seed_customers = list(Customer.objects.filter(user__username__startswith="seed_").filter(user__is_customer=True))
+            seed_drivers = list(Driver.objects.filter(user__username__startswith="seed_"))
 
-            if cust and seed_store and prod:
-                order, o_created = Order.objects.get_or_create(
-                    customer=cust,
-                    store=seed_store,
-                    delivery_notes="[Seed] Test order",
-                    defaults={
-                        "address": "Av. 4 de Fevereiro, Luanda",
-                        "total": Decimal("3500"),
-                        "delivery_fee": Decimal("500"),
-                        "discount_amount": Decimal("0"),
-                        "original_price": Decimal("3000"),
-                        "status": Order.PROCESSING,
-                        "payment_method": "cash",
-                    }
-                )
-                if o_created:
-                    OrderDetails.objects.create(order=order, product=prod, quantity=1, sub_total=prod.price)
-                    self.stdout.write("  - Order created")
+            orders_created = 0
+            for i, cust in enumerate(seed_customers[:3]):
+                for store in seed_stores[:2]:  # Restaurant + grocery
+                    prods = list(Product.objects.filter(store=store)[:2])
+                    if not prods:
+                        continue
+                    prod = prods[0]
+                    qty = 1 + (i % 2)
+                    sub = prod.price * qty
+                    addr = cust.address or "Luanda"
+                    delivery_fee = Decimal("500")
+                    total_pre = sub
+                    statuses = [Order.PROCESSING, Order.READY, Order.ONTHEWAY, Order.DELIVERED]
+                    status = statuses[i % len(statuses)]
+                    drv = seed_drivers[i % len(seed_drivers)] if seed_drivers and status in (Order.ONTHEWAY, Order.DELIVERED) else None
+                    order, o_created = Order.objects.get_or_create(
+                        customer=cust,
+                        store=store,
+                        address=addr,
+                        delivery_notes=f"[Seed] Order from {cust.user.get_full_name()}",
+                        defaults={
+                            "total": total_pre,
+                            "delivery_fee": delivery_fee,
+                            "discount_amount": Decimal("0"),
+                            "original_price": total_pre,
+                            "status": status,
+                            "payment_method": "cash" if i % 2 == 0 else "card",
+                            "driver": drv,
+                        }
+                    )
+                    if o_created:
+                        OrderDetails.objects.get_or_create(order=order, product=prod, defaults={"quantity": qty, "sub_total": sub})
+                        orders_created += 1
+            if orders_created:
+                self.stdout.write(f"  - {orders_created} orders created")
         except Exception as e:
             self.stdout.write(self.style.WARNING(f"  Order: {e}"))
 
@@ -416,14 +475,14 @@ class Command(BaseCommand):
             pharm_type = StoreType.objects.filter(name="Pharmacy").first()
 
             if grocery_cat and grocery_type:
-                u2, _ = User.objects.get_or_create(
+                u2, u2_created = User.objects.get_or_create(
                     username="seed_grocery_owner",
                     defaults={"email": "grocery@kudya.shop", "first_name": "Grocery", "last_name": "Owner"}
                 )
-                if _:
+                if u2_created:
                     u2.set_password("seedpass123")
                     u2.save()
-                Store.objects.get_or_create(
+                grocery_store, gs_created = Store.objects.get_or_create(
                     user=u2,
                     defaults={
                         "name": "[Seed] Supermercado Central",
@@ -435,17 +494,34 @@ class Command(BaseCommand):
                         "is_approved": True,
                     }
                 )
-                self.stdout.write("  - Grocery store created")
+                if gs_created:
+                    for day in range(1, 6):
+                        OpeningHour.objects.get_or_create(store=grocery_store, day=day, defaults={"from_hour": "07:00 AM", "to_hour": "21:00 PM", "is_closed": False})
+                prod_cat_sn = ProductCategory.objects.filter(name="Snacks").first()
+                prod_cat_hi = ProductCategory.objects.filter(name="Higiene").first()
+                if grocery_store and (prod_cat_sn or prod_cat_hi):
+                    grocery_products = [
+                        ("Arroz Nacional 5kg", 3500, "Arroz de qualidade", prod_cat_sn),
+                        ("Feijão Manteiga 1kg", 1200, "Feijão para feijoada", prod_cat_sn),
+                        ("Óleo de Palma 1L", 800, "Óleo vegetal", prod_cat_sn),
+                        ("Azeite 500ml", 2500, "Azeite extra virgem", prod_cat_sn),
+                        ("Leite Fresco 1L", 600, "Leite UHT", prod_cat_sn),
+                        ("Pão de Forma", 450, "Pão de sanduíche", prod_cat_sn),
+                    ]
+                    for pname, price, desc, cat in grocery_products:
+                        if cat:
+                            Product.objects.get_or_create(name=pname, store=grocery_store, defaults={"category": cat, "price": Decimal(price), "description": f"<p>{desc}</p>", "stock": 100})
+                self.stdout.write("  - Grocery store + products created")
 
             if pharm_cat and pharm_type:
-                u3, _ = User.objects.get_or_create(
+                u3, u3_created = User.objects.get_or_create(
                     username="seed_pharmacy_owner",
                     defaults={"email": "pharmacy@kudya.shop", "first_name": "Pharmacy", "last_name": "Owner"}
                 )
-                if _:
+                if u3_created:
                     u3.set_password("seedpass123")
                     u3.save()
-                Store.objects.get_or_create(
+                pharm_store, ps_created = Store.objects.get_or_create(
                     user=u3,
                     defaults={
                         "name": "[Seed] Farmácia Popular",
@@ -457,8 +533,88 @@ class Command(BaseCommand):
                         "is_approved": True,
                     }
                 )
-                self.stdout.write("  - Pharmacy store created")
+                if ps_created:
+                    for day in range(1, 7):
+                        OpeningHour.objects.get_or_create(store=pharm_store, day=day, defaults={"from_hour": "08:00 AM", "to_hour": "20:00 PM", "is_closed": False})
+                prod_cat_hi = ProductCategory.objects.filter(name="Higiene").first()
+                prod_cat_sn = ProductCategory.objects.filter(name="Snacks").first()
+                if pharm_store and (prod_cat_hi or prod_cat_sn):
+                    pharm_products = [
+                        ("Paracetamol 500mg", 350, "Analgésico e antipirético", prod_cat_hi),
+                        ("Ibuprofeno 400mg", 450, "Anti-inflamatório", prod_cat_hi),
+                        ("Soro Fisiológico", 250, "Limpagem nasal e ocular", prod_cat_hi),
+                        ("Vitamina C 1000mg", 1200, "Suplemento vitamínico", prod_cat_hi),
+                        ("Protetor Solar FPS 50", 3500, "Proteção solar", prod_cat_hi),
+                        ("Máscaras Descartáveis (10un)", 800, "Máscaras de proteção", prod_cat_hi),
+                    ]
+                    for pname, price, desc, cat in pharm_products:
+                        if cat:
+                            Product.objects.get_or_create(name=pname, store=pharm_store, defaults={"category": cat, "price": Decimal(price), "description": f"<p>{desc}</p>", "stock": 80})
+                self.stdout.write("  - Pharmacy store + products created")
         except Exception as e:
             self.stdout.write(self.style.WARNING(f"  Extra stores: {e}"))
+
+        # 14. Reviews & Wishlist
+        try:
+            from stores.models.product import Review, Wishlist
+            seed_users = list(User.objects.filter(username__startswith="seed_customer"))
+            seed_prods = list(Product.objects.filter(store__name__startswith="[Seed]"))[:8]
+            for u in seed_users[:2]:
+                for p in seed_prods[:3]:
+                    Review.objects.get_or_create(
+                        user=u,
+                        product=p,
+                        defaults={"rating": 4 + (abs(hash(str(u.pk) + str(p.pk))) % 2), "comment": f"Ótimo produto, recomendo! - {u.get_full_name()}"}
+                    )
+                for p in seed_prods[3:6]:
+                    Wishlist.objects.get_or_create(user=u, product=p)
+            self.stdout.write("  - Reviews & Wishlist created")
+        except Exception as e:
+            self.stdout.write(self.style.WARNING(f"  Reviews/Wishlist: {e}"))
+
+        # 15. Coupons for customers
+        try:
+            from order.models import Coupon
+            for u in User.objects.filter(username__in=["seed_customer", "seed_customer2"]):
+                Coupon.objects.get_or_create(
+                    user=u,
+                    defaults={"code": f"SEED_{u.username.upper()}", "discount_percentage": Decimal("5"), "order_count": 0}
+                )
+            self.stdout.write("  - Coupons created")
+        except Exception as e:
+            self.stdout.write(self.style.WARNING(f"  Coupons: {e}"))
+
+        # 16. Carousel for homepage
+        try:
+            from info.models import Carousel, Image as CarouselImage
+            car, created = Carousel.objects.get_or_create(
+                title="[Seed] Kudya - Marketplace",
+                defaults={"sub_title": "Food, Groceries & More"}
+            )
+            if created or not car.image.exists():
+                img = CarouselImage.objects.create(image=ContentFile(MINIMAL_PNG, name="carousel1.png"))
+                car.image.add(img)
+            self.stdout.write("  - Carousel created")
+        except Exception as e:
+            self.stdout.write(self.style.WARNING(f"  Carousel: {e}"))
+
+        # 17. More careers & job applications
+        try:
+            from careers.models import Career, JobApplication
+            careers_data = [
+                ("[Seed] Full-Stack Developer", "Luanda", "<p>Develop web and mobile apps.</p>", "Django, React, React Native"),
+                ("[Seed] Marketing Manager", "Luanda", "<p>Lead marketing campaigns.</p>", "3+ years experience"),
+                ("[Seed] Customer Support", "Remote", "<p>Help customers via chat and phone.</p>", "Portuguese & English"),
+            ]
+            for title, loc, desc, req in careers_data:
+                c, _ = Career.objects.get_or_create(title=title, defaults={"location": loc, "description": desc, "requirements": req})
+                for name, email in [("Ana Souza", "ana.s@test.com"), ("Pedro Lima", "pedro@test.com")]:
+                    JobApplication.objects.get_or_create(
+                        career=c, full_name=name, email=email,
+                        defaults={"cover_letter": f"Candidatura de {name}", "status": "submitted", "resume": ContentFile(b"CV content", name="cv.txt")}
+                    )
+            self.stdout.write("  - More careers & applications created")
+        except Exception as e:
+            self.stdout.write(self.style.WARNING(f"  Careers: {e}"))
 
         self.stdout.write(self.style.SUCCESS("Seed completed successfully."))
