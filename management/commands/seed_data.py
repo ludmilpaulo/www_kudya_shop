@@ -5,6 +5,7 @@ customers, drivers, orders, services, careers, info, currency, etc.
 Run as real user: python manage.py seed_data
 """
 import os
+import random
 from io import BytesIO
 from decimal import Decimal
 from datetime import timedelta, datetime, time
@@ -109,7 +110,7 @@ class Command(BaseCommand):
             ProductCategory.objects.get_or_create(name=name[1], defaults={"icon": "th-large"})
         self.stdout.write("  - Product categories created")
 
-        # 4. Exchange Rates
+        # 4. Exchange Rates (today; date has auto_now_add so only one day is seeded)
         today = timezone.now().date()
         rates_data = [
             ("USD", Decimal("0.0012")),
@@ -188,7 +189,7 @@ class Command(BaseCommand):
                 }
             )
             if store_created:
-                # Opening hours (Mon-Fri 8am-10pm)
+                # Opening hours: Mon–Fri 8–22h, Sat 9–15h, Sun closed (day-to-day realistic)
                 for day in range(1, 6):
                     OpeningHour.objects.get_or_create(
                         store=store, day=day,
@@ -197,23 +198,36 @@ class Command(BaseCommand):
                             "is_closed": False,
                         }
                     )
+                OpeningHour.objects.get_or_create(
+                    store=store, day=6,
+                    defaults={"from_hour": "09:00 AM", "to_hour": "03:00 PM", "is_closed": False}
+                )
+                OpeningHour.objects.get_or_create(
+                    store=store, day=7,
+                    defaults={"from_hour": "", "to_hour": "", "is_closed": True}
+                )
                 self.stdout.write("  - Store and opening hours created")
 
-                # Products
+                # Products (realistic day-to-day: pratos do dia, bebidas, pequeno-almoço)
                 prod_cat_ref = ProductCategory.objects.filter(name="Refeições").first()
                 prod_cat_beb = ProductCategory.objects.filter(name="Bebidas").first()
                 prod_cat_snack = ProductCategory.objects.filter(name="Snacks").first()
                 if prod_cat_ref:
                     products_data = [
-                        ("Frango Grelhado", 2500, "Frango grelhado com arroz e salada", prod_cat_ref),
-                        ("Mufete", 1800, "Peixe grelhado com funje e banana", prod_cat_ref),
-                        ("Calulu", 2200, "Carne seca com quiabo e óleo de palma", prod_cat_ref),
-                        ("Moamba de Galinha", 2400, "Galinha em molho de dendém com arroz", prod_cat_ref),
-                        ("Cacuso", 2000, "Peixe com legumes e pirão", prod_cat_ref),
-                        ("Sumo de Manga", 500, "Sumo natural de manga", prod_cat_beb or prod_cat_ref),
-                        ("Cerveja Cuca", 600, "Cerveja nacional", prod_cat_beb or prod_cat_ref),
-                        ("Água Mineral", 250, "Água 500ml", prod_cat_beb or prod_cat_ref),
-                        ("Cachupa", 1500, "Pequeno-almoço tradicional", prod_cat_snack or prod_cat_ref),
+                        ("Frango Grelhado", 2500, "Frango grelhado com arroz branco, salada e molho. Prato do dia às terças.", prod_cat_ref),
+                        ("Mufete", 1800, "Peixe grelhado com funje, banana e molho de tomate. Tradicional angolano.", prod_cat_ref),
+                        ("Calulu", 2200, "Carne seca com quiabo, óleo de palma e batata-doce. Prato do dia às quartas.", prod_cat_ref),
+                        ("Moamba de Galinha", 2400, "Galinha em molho de dendém com arroz. Servido com pirão.", prod_cat_ref),
+                        ("Cacuso", 2000, "Peixe com legumes e pirão. Pequeno-almoço e almoço.", prod_cat_ref),
+                        ("Carne de Porco à Braz", 2100, "Porco guisado com batata palha e ovo. Prato do dia às quintas.", prod_cat_ref),
+                        ("Feijão com Óleo e Arroz", 1200, "Feijão vermelho com óleo de palma, arroz e couve. Económico.", prod_cat_ref),
+                        ("Sumo de Manga", 500, "Sumo natural de manga. Fresco diário.", prod_cat_beb or prod_cat_ref),
+                        ("Sumo de Maracujá", 550, "Sumo natural de maracujá.", prod_cat_beb or prod_cat_ref),
+                        ("Cerveja Cuca", 600, "Cerveja nacional 33cl. Bem fresca.", prod_cat_beb or prod_cat_ref),
+                        ("Água Mineral 500ml", 250, "Água mineral 500ml. Sem gás.", prod_cat_beb or prod_cat_ref),
+                        ("Café", 200, "Bica ou carioca. Servido quente.", prod_cat_beb or prod_cat_ref),
+                        ("Cachupa", 1500, "Pequeno-almoço tradicional: feijão, milho, ovos e linguiça.", prod_cat_snack or prod_cat_ref),
+                        ("Pão com Manteiga e Ovo", 800, "Pão quente com manteiga e ovo estrelado. Pequeno-almoço.", prod_cat_snack or prod_cat_ref),
                     ]
                     for pname, price, desc, cat in products_data:
                         Product.objects.get_or_create(
@@ -363,8 +377,39 @@ class Command(BaseCommand):
                     if o_created:
                         OrderDetails.objects.get_or_create(order=order, product=prod, defaults={"quantity": qty, "sub_total": sub})
                         orders_created += 1
+
+            # Day-to-day orders: last 14 days, 2–5 orders per day with realistic times
+            for day_ago in range(14):
+                for _ in range(random.randint(2, 5)):
+                    cust = random.choice(seed_customers)
+                    store = random.choice(seed_stores)
+                    prods = list(Product.objects.filter(store=store)[:5])
+                    if not prods:
+                        continue
+                    prod = random.choice(prods)
+                    qty = random.randint(1, 3)
+                    sub = prod.price * qty
+                    hour = random.randint(2, 14)
+                    minute = random.randint(0, 59)
+                    created_at = timezone.now() - timedelta(days=day_ago, hours=hour, minutes=minute)
+                    order = Order.objects.create(
+                        customer=cust,
+                        store=store,
+                        address=cust.address or "Luanda",
+                        delivery_notes=f"Pedido {created_at.strftime('%d/%m %H:%M')}",
+                        total=sub,
+                        delivery_fee=Decimal("500"),
+                        discount_amount=Decimal("0"),
+                        original_price=sub,
+                        status=Order.DELIVERED,
+                        payment_method=random.choice(["cash", "card"]),
+                        driver=random.choice(seed_drivers) if seed_drivers else None,
+                        created_at=created_at,
+                    )
+                    OrderDetails.objects.create(order=order, product=prod, quantity=qty, sub_total=sub)
+                    orders_created += 1
             if orders_created:
-                self.stdout.write(f"  - {orders_created} orders created")
+                self.stdout.write(f"  - {orders_created} orders created (incl. day-to-day)")
         except Exception as e:
             self.stdout.write(self.style.WARNING(f"  Order: {e}"))
 
@@ -411,7 +456,34 @@ class Command(BaseCommand):
                         "payment_status": "paid",
                     }
                 )
-                self.stdout.write("  - Services & Booking created")
+                # Past bookings (completed) - last 10 days, 1–2 per day
+                for day_ago in range(1, 11):
+                    for _ in range(random.randint(0, 2)):
+                        past_date = timezone.now().date() - timedelta(days=day_ago)
+                        Booking.objects.create(
+                            service=svc,
+                            customer=cust,
+                            booking_date=past_date,
+                            booking_time=datetime.strptime(f"{random.randint(9, 17)}:00", "%H:%M").time(),
+                            duration_minutes=60,
+                            price=Decimal("5000"),
+                            status="completed",
+                            payment_status="paid",
+                        )
+                # Future bookings - next 14 days
+                for day_ahead in [1, 2, 3, 5, 7, 10, 14]:
+                    future_date = timezone.now().date() + timedelta(days=day_ahead)
+                    Booking.objects.create(
+                        service=svc,
+                        customer=cust,
+                        booking_date=future_date,
+                        booking_time=datetime.strptime(f"{random.randint(9, 16)}:00", "%H:%M").time(),
+                        duration_minutes=60,
+                        price=Decimal("5000"),
+                        status="confirmed" if day_ahead <= 3 else "pending",
+                        payment_status="paid" if day_ahead <= 2 else "pending",
+                    )
+                self.stdout.write("  - Services & Bookings created (past + future day-to-day)")
         except Exception as e:
             self.stdout.write(self.style.WARNING(f"  Services: {e}"))
 
@@ -463,7 +535,24 @@ class Command(BaseCommand):
                     "message": "This is a test message.",
                 }
             )
-            self.stdout.write("  - Why_Choose_Us, Team, Contact created")
+            # Day-to-day contact submissions (past 14 days)
+            for day_ago, (subj, em, msg) in enumerate([
+                ("[Seed] Dúvida sobre entrega", "cliente1@test.com", "Quando chega o pedido?"),
+                ("[Seed] Reclamação", "cliente2@test.com", "Produto veio com defeito."),
+                ("[Seed] Parceria", "empresa@test.com", "Gostaríamos de falar de parceria."),
+                ("[Seed] Sugestão", "user@test.com", "Sugiro mais opções de pagamento."),
+                ("[Seed] Elogio", "maria@test.com", "Atendimento rápido, obrigada!"),
+            ], start=1):
+                Contact.objects.get_or_create(
+                    subject=subj,
+                    email=em,
+                    defaults={
+                        "phone": "+244 900 000 000",
+                        "message": msg,
+                        "timestamp": timezone.now() - timedelta(days=day_ago, hours=random.randint(0, 12)),
+                    }
+                )
+            self.stdout.write("  - Why_Choose_Us, Team, Contact created (day-to-day contacts)")
         except Exception as e:
             self.stdout.write(self.style.WARNING(f"  Info extras: {e}"))
 
@@ -568,7 +657,11 @@ class Command(BaseCommand):
                     )
                 for p in seed_prods[3:6]:
                     Wishlist.objects.get_or_create(user=u, product=p)
-            self.stdout.write("  - Reviews & Wishlist created")
+            # Set review created_at to past 3–21 days (day-to-day spread)
+            for r in Review.objects.filter(user__username__startswith="seed_"):
+                r.created_at = timezone.now() - timedelta(days=random.randint(3, 21), hours=random.randint(0, 23))
+                r.save(update_fields=["created_at"])
+            self.stdout.write("  - Reviews & Wishlist created (reviews with past dates)")
         except Exception as e:
             self.stdout.write(self.style.WARNING(f"  Reviews/Wishlist: {e}"))
 

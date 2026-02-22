@@ -23,7 +23,19 @@ DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '*').split(',')
 
+# Primary frontend URL (used for password reset, signing links, etc.)
 FRONTEND_URL = os.getenv('FRONTEND_URL', 'https://www.kudya.shop')
+
+# All frontend URLs (all must be allowed for CORS so any deployment can use this API)
+FRONTEND_URLS = [
+    'https://www.kudya.shop',
+    'https://www.kudya.online',
+    'https://sd-kudya.vercel.app',
+]
+# Allow env to append (e.g. FRONTEND_URL_EXTRA=https://staging.kudya.shop)
+_extra = os.getenv('FRONTEND_URL_EXTRA', '').strip()
+if _extra:
+    FRONTEND_URLS = list(FRONTEND_URLS) + [_extra]
 
 # Application definition
 
@@ -165,13 +177,21 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "static_cdn", "media_root")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CORS_ORIGIN_ALLOW_ALL = True
+# Allow all origins in dev; set to False in production and rely on CORS_ALLOWED_ORIGINS
+CORS_ORIGIN_ALLOW_ALL = os.getenv('CORS_ORIGIN_ALLOW_ALL', 'True') == 'True'
 
+# All connected frontend URLs (used when CORS_ORIGIN_ALLOW_ALL is False)
 CORS_ALLOWED_ORIGINS = [
-    'http://*',
-    'https://*',
     FRONTEND_URL,
+    *FRONTEND_URLS,
 ]
+# Deduplicate and add localhost for local dev
+CORS_ALLOWED_ORIGINS = list(dict.fromkeys(CORS_ALLOWED_ORIGINS + [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+]))
 
 
 
