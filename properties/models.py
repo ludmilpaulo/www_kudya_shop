@@ -48,11 +48,37 @@ class Property(models.Model):
     bathrooms = models.PositiveIntegerField(default=0)
     area_sqm = models.PositiveIntegerField(null=True, blank=True, help_text='Area in square meters')
 
-    amenities = models.JSONField(default=list, blank=True)  # e.g. ["wifi", "parking", "pool"]
-
+    amenities = models.JSONField(default=list, blank=True)
+    suburb = models.CharField(max_length=100, blank=True, db_index=True)
+    country = models.ForeignKey(
+        'services.Country',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='properties',
+    )
+    deposit = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+    monthly_rent = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+    furnished = models.BooleanField(default=False)
+    parking = models.BooleanField(default=False)
+    pet_policy = models.CharField(max_length=200, blank=True)
+    available_date = models.DateField(null=True, blank=True)
+    lease_term = models.CharField(max_length=100, blank=True)
+    land_size_sqm = models.PositiveIntegerField(null=True, blank=True)
+    building_size_sqm = models.PositiveIntegerField(null=True, blank=True)
+    approval_status = models.CharField(
+        max_length=20,
+        choices=[
+            ('pending', 'Pending'),
+            ('approved', 'Approved'),
+            ('rejected', 'Rejected'),
+            ('suspended', 'Suspended'),
+        ],
+        default='pending',
+        db_index=True,
+    )
     is_available = models.BooleanField(default=True, db_index=True)
     is_approved = models.BooleanField(default=False, db_index=True)
-
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -62,3 +88,32 @@ class Property(models.Model):
 
     def __str__(self):
         return f"{self.title} ({self.get_listing_type_display()})"
+
+
+class PropertyEnquiry(models.Model):
+    ENQUIRY_TYPES = [
+        ('general', 'General Enquiry'),
+        ('viewing', 'Viewing Request'),
+        ('offer', 'Offer Interest'),
+        ('rental_application', 'Rental Application'),
+    ]
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('responded', 'Responded'),
+        ('scheduled', 'Viewing Scheduled'),
+        ('approved', 'Approved'),
+        ('rejected', 'Rejected'),
+        ('closed', 'Closed'),
+    ]
+
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='property_enquiries')
+    property_listing = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='enquiries')
+    enquiry_type = models.CharField(max_length=30, choices=ENQUIRY_TYPES, default='general')
+    message = models.TextField()
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending', db_index=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name_plural = 'Property Enquiries'

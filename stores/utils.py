@@ -3,7 +3,6 @@ from django.core.mail import send_mail, EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.files.base import ContentFile
-from weasyprint import HTML
 
 logger = logging.getLogger(__name__)
 
@@ -19,6 +18,11 @@ def send_notification(mail_subject, message, to_email):
 
 
 def generate_invoice(context):
+    try:
+        from weasyprint import HTML
+    except (ImportError, OSError) as e:
+        logger.warning("WeasyPrint unavailable: %s", e)
+        return None
     html_string = render_to_string("invoice_template.html", context)
     html = HTML(string=html_string)
     pdf = html.write_pdf()

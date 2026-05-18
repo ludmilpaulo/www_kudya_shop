@@ -4,6 +4,7 @@ db.sqlite3
 # Ignore Python env and secrets
 .env
 .venv/
+venv/
 
 # Ignore Django static output
 static_cdn/

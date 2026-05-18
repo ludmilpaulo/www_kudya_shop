@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from datetime import timedelta
 from dotenv import load_dotenv
 import pymysql
 
@@ -40,6 +41,7 @@ if _extra:
 # Application definition
 
 INSTALLED_APPS = [
+    # 'daphne',  # enable for production: daphne www_kudya_shop.asgi:application
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,9 +61,25 @@ INSTALLED_APPS = [
     'services',  # New service booking app
     'currency',  # Currency conversion app
     'properties',  # Property listings (rent daily/monthly, buy) - Airbnb-style
+    'kudya_platform',  # Translations, cities, home modules
+    'documents',  # Verification docs and legacy signing utilities
+    'doctors',  # Healthcare & appointments
+    'accommodation',  # Short-term accommodation booking
+    'wallets',  # Wallet & transactions
+    'commissions',  # Commission rules
+    'payments',  # Payment providers & payments
+    'rides',  # Ride-hailing
+    'deliveries',  # Package / courier delivery
+    'rentals',  # Car rental
+    'pricing',  # Pricing engine
+    'support',  # Support tickets
+    # 'realtime',  # WebSockets (requires channels)
+    'channels',
     'django_ckeditor_5',
 
     'rest_framework',
+    'drf_spectacular',
+    'rest_framework_simplejwt.token_blacklist',
     'rest_framework.authtoken',
     'django_filters',
 ]
@@ -70,10 +88,12 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.BasicAuthentication'
+        'rest_framework.authentication.BasicAuthentication',
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.JSONParser',
         'rest_framework.parsers.FormParser',
@@ -84,6 +104,14 @@ REST_FRAMEWORK = {
         'rest_framework.filters.SearchFilter',
         'rest_framework.filters.OrderingFilter',
     ],
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
 AUTH_USER_MODEL="contas.User"
@@ -118,6 +146,21 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'www_kudya_shop.wsgi.application'
+ASGI_APPLICATION = 'www_kudya_shop.asgi.application'
+
+# Channels — use Redis in production, in-memory for local dev
+REDIS_URL = os.getenv('REDIS_URL', '')
+if REDIS_URL:
+    CHANNEL_LAYERS = {
+        'default': {
+            'BACKEND': 'channels_redis.core.RedisChannelLayer',
+            'CONFIG': {'hosts': [REDIS_URL]},
+        },
+    }
+else:
+    CHANNEL_LAYERS = {
+        'default': {'BACKEND': 'channels.layers.InMemoryChannelLayer'},
+    }
 
 
 
@@ -203,7 +246,7 @@ SERVER_EMAIL = os.getenv('SERVER_EMAIL', 'support@maindodigital.com')  # this is
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtpout.secureserver.net')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'support@maindodigital.com')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', 'Maitland@2024')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'support@maindodigital.com')
 EMAIL_PORT = int(os.getenv('EMAIL_PORT', '465'))
 EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', 'True') == 'True'
@@ -299,4 +342,11 @@ CKEDITOR_5_CONFIGS = {
             'reversed': 'true',
         }
     }
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Kudya Super App API',
+    'DESCRIPTION': 'Global marketplace and mobility platform API',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
 }

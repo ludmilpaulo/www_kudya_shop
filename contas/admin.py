@@ -7,7 +7,20 @@ from .models import User
 class UserAdmin(BaseUserAdmin):
     fieldsets = (
         (None, {"fields": ("username", "password")}),
-        (_("Personal info"), {"fields": ("first_name", "last_name", "email")}),
+        (
+            _("Personal info"),
+            {
+                "fields": (
+                    "first_name",
+                    "last_name",
+                    "email",
+                    "phone",
+                    "preferred_language",
+                    "country",
+                    "city",
+                )
+            },
+        ),
         (
             _("Permissions"),
             {
@@ -19,6 +32,8 @@ class UserAdmin(BaseUserAdmin):
                     "user_permissions",
                     "is_customer",
                     "is_driver",
+                    "role",
+                    "is_verified",
                 )
             },
         ),
@@ -32,7 +47,20 @@ class UserAdmin(BaseUserAdmin):
                 "fields": ("username", "password1", "password2"),
             },
         ),
-        (_("Personal info"), {"fields": ("first_name", "last_name", "email")}),
+        (
+            _("Personal info"),
+            {
+                "fields": (
+                    "first_name",
+                    "last_name",
+                    "email",
+                    "phone",
+                    "preferred_language",
+                    "country",
+                    "city",
+                )
+            },
+        ),
         (
             _("Permissions"),
             {
@@ -44,6 +72,8 @@ class UserAdmin(BaseUserAdmin):
                     "user_permissions",
                     "is_customer",
                     "is_driver",
+                    "role",
+                    "is_verified",
                 )
             },
         ),
@@ -53,9 +83,13 @@ class UserAdmin(BaseUserAdmin):
         "email",
         "first_name",
         "last_name",
+        "role",
+        "country",
+        "city",
         "is_staff",
         "is_customer",
         "is_driver",
+        "is_verified",
     )
     search_fields = ("username", "first_name", "last_name", "email")
     ordering = ("username",)

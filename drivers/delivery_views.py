@@ -119,7 +119,31 @@ class DriverViewSet(viewsets.ModelViewSet):
         if active_delivery:
             location.delivery_request = active_delivery
             location.save()
-        
+
+        try:
+            from realtime.broadcast import broadcast_driver
+            broadcast_driver(driver.id, {
+                'type': 'location',
+                'driver_id': driver.id,
+                'latitude': str(latitude),
+                'longitude': str(longitude),
+            })
+            from rides.models import Ride
+            active_ride = Ride.objects.filter(
+                driver=driver,
+                status__in=['accepted', 'arrived', 'in_progress'],
+            ).first()
+            if active_ride:
+                from realtime.broadcast import broadcast_ride
+                broadcast_ride(active_ride.id, {
+                    'type': 'driver_location',
+                    'latitude': str(latitude),
+                    'longitude': str(longitude),
+                    'driver_id': driver.id,
+                })
+        except Exception:
+            pass
+
         return Response({
             'status': 'location updated',
             'latitude': latitude,

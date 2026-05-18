@@ -264,6 +264,17 @@ class BookingViewSet(viewsets.ModelViewSet):
         
         # Send confirmation email
         booking.send_confirmation_email()
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(
+            BookingSerializer(serializer.instance, context=self.get_serializer_context()).data,
+            status=status.HTTP_201_CREATED,
+            headers=headers,
+        )
     
     @action(detail=True, methods=['post'])
     def confirm(self, request, pk=None):
@@ -329,6 +340,27 @@ class BookingViewSet(viewsets.ModelViewSet):
             {'error': 'Booking cannot be completed'},
             status=status.HTTP_400_BAD_REQUEST
         )
+
+    @action(detail=True, methods=['post'])
+    def start(self, request, pk=None):
+        """Mark a confirmed booking as in progress (provider action)."""
+        booking = self.get_object()
+
+        if not hasattr(request.user, 'store') or booking.service.parceiro != request.user.store:
+            return Response(
+                {'error': 'Only the assigned provider can start this booking'},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
+        if booking.status != 'confirmed':
+            return Response(
+                {'error': 'Booking cannot be started'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        booking.status = 'in_progress'
+        booking.save(update_fields=['status', 'updated_at'])
+        return Response({'status': 'booking started'})
     
     @action(detail=False, methods=['get'])
     def upcoming(self, request):

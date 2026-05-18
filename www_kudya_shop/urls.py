@@ -9,6 +9,7 @@ urlpatterns = [
     path("conta/", include("contas.urls")),
     path("customer/", include("customers.urls")),
     path("driver/", include("drivers.urls")),
+    path("drivers/", include("drivers.urls")),  # Alias for mobile clients
     path("info/", include("info.urls")),
     path("order/", include("order.urls")),
     path("careers/", include("careers.urls")),
@@ -18,7 +19,9 @@ urlpatterns = [
     path("manager/", include("management.urls")),
     path("services/", include("services.urls")),  # New services API
     path("currency/", include("currency.urls")),
-    path("properties/", include("properties.urls")),  # Currency conversion API
+    path("properties/", include("properties.urls")),
+    path("api/", include("www_kudya_shop.api_urls")),  # Kudya Super App unified API
+    path("payments/", include("payments.urls")),
     path("api/backup/", views.backup_database, name="backup_database"),
     path("api/delete/", views.delete_database, name="delete_database"),
     path("api/load/", views.load_database, name="load_database"),

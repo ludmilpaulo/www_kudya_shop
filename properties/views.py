@@ -6,8 +6,8 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
-from .models import Property, PropertyImage
-from .serializers import PropertySerializer, PropertyCreateSerializer
+from .models import Property, PropertyImage, PropertyEnquiry
+from .serializers import PropertySerializer, PropertyCreateSerializer, PropertyEnquirySerializer
 
 
 class PropertySearchView(generics.ListAPIView):
@@ -108,3 +108,48 @@ def property_types(request):
     return Response([
         {'value': t[0], 'label': t[1]} for t in Property.PROPERTY_TYPE_CHOICES
     ])
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def create_enquiry(request, pk):
+    """POST /api/properties/{id}/enquiry/"""
+    try:
+        prop = Property.objects.get(pk=pk, is_available=True)
+    except Property.DoesNotExist:
+        return Response({'detail': 'Not found.'}, status=status.HTTP_404_NOT_FOUND)
+    data = request.data.copy()
+    data['property_listing'] = prop.id
+    serializer = PropertyEnquirySerializer(data=data, context={'request': request})
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def list_enquiries(request):
+    user = request.user
+    if user.is_staff:
+        qs = PropertyEnquiry.objects.all()
+    else:
+        from django.db import models as db_models
+        qs = PropertyEnquiry.objects.filter(
+            db_models.Q(customer=user) | db_models.Q(property_listing__owner=user)
+        )
+    return Response(PropertyEnquirySerializer(qs.order_by('-created_at'), many=True).data)
+
+
+@api_view(['PATCH'])
+@permission_classes([IsAuthenticated])
+def update_enquiry_status(request, pk):
+    try:
+        enquiry = PropertyEnquiry.objects.get(pk=pk)
+    except PropertyEnquiry.DoesNotExist:
+        return Response({'detail': 'Not found.'}, status=status.HTTP_404_NOT_FOUND)
+    if enquiry.property_listing.owner != request.user and not request.user.is_staff:
+        return Response({'detail': 'Not authorized.'}, status=status.HTTP_403_FORBIDDEN)
+    enquiry.status = request.data.get('status', enquiry.status)
+    enquiry.save(update_fields=['status', 'updated_at'])
+    return Response(PropertyEnquirySerializer(enquiry).data)

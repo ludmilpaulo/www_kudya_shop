@@ -1,0 +1,3 @@
+<p>Hello {{ customer.user.get_full_name|default:customer.user.username }},</p>
+<p>Your Kudya booking for <strong>{{ service.title }}</strong> is confirmed.</p>
+<p>Booking reference: {{ booking.booking_number }}</p>

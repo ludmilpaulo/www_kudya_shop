@@ -17,6 +17,8 @@ class Country(models.Model):
     """Country model for multi-region support"""
     name = models.CharField(max_length=100, unique=True)
     code = models.CharField(max_length=3, unique=True)  # ISO country code
+    currency = models.CharField(max_length=3, default='ZAR')
+    timezone = models.CharField(max_length=50, default='Africa/Johannesburg')
     flag_icon = models.CharField(max_length=10, blank=True)  # emoji or icon
     is_active = models.BooleanField(default=True)
 

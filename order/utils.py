@@ -1,5 +1,4 @@
 from django.template.loader import render_to_string, get_template
-from weasyprint import HTML
 import tempfile
 from django.core.files.base import ContentFile
 from io import BytesIO
@@ -26,6 +25,11 @@ def generate_invoice(order):
         "order_total": order.total,
     }
     html_string = render_to_string("email_templates/order_invoice.html", context)
+    try:
+        from weasyprint import HTML
+    except (ImportError, OSError) as e:
+        logger.warning("WeasyPrint unavailable, skipping PDF invoice: %s", e)
+        return None
     with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_pdf:
         HTML(string=html_string).write_pdf(temp_pdf.name)
         temp_pdf.seek(0)

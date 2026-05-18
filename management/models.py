@@ -2,7 +2,6 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from django.template.loader import render_to_string
-from weasyprint import HTML, CSS
 from datetime import timedelta, datetime
 import random
 import string
