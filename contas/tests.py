@@ -1,5 +1,9 @@
 from django.contrib.auth import get_user_model
+from rest_framework.authtoken.models import Token
 from rest_framework.test import APITestCase
+from rest_framework_simplejwt.tokens import RefreshToken
+
+from contas.auth_helpers import user_from_access_token
 
 
 User = get_user_model()
@@ -47,3 +51,31 @@ class AuthApiTests(APITestCase):
         )
         self.assertEqual(refresh.status_code, 200)
         self.assertIn('access', refresh.data)
+        self.assertEqual(refresh.data['token'], refresh.data['access'])
+
+    def test_user_from_access_token_accepts_jwt_and_legacy_token(self):
+        user = User.objects.create_user(
+            username='driver@example.com',
+            email='driver@example.com',
+            password='pass12345',
+        )
+        legacy = Token.objects.get(user=user)
+        jwt_access = str(RefreshToken.for_user(user).access_token)
+
+        self.assertEqual(user_from_access_token(legacy.key).pk, user.pk)
+        self.assertEqual(user_from_access_token(jwt_access).pk, user.pk)
+
+    def test_login_returns_api_token_alias(self):
+        User.objects.create_user(
+            username='shop@example.com',
+            email='shop@example.com',
+            password='pass12345',
+        )
+        login = self.client.post(
+            '/api/auth/login/',
+            {'username': 'shop@example.com', 'password': 'pass12345'},
+            format='json',
+        )
+        self.assertEqual(login.status_code, 200)
+        self.assertIn('api_token', login.data)
+        self.assertTrue(login.data['api_token'])

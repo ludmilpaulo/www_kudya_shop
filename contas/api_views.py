@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.serializers import TokenRefreshSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError
+from rest_framework.authtoken.models import Token
 
 User = get_user_model()
 
@@ -29,11 +30,13 @@ def _user_payload(user):
 
 def _auth_payload(user, refresh):
     access = str(refresh.access_token)
-    # Keep legacy aliases while clients migrate from token auth to JWT.
+    # Legacy partner/driver endpoints read access_token from JSON body.
+    legacy_token, _ = Token.objects.get_or_create(user=user)
     return {
         'access': access,
         'refresh': str(refresh),
         'token': access,
+        'api_token': legacy_token.key,
         'auth_scheme': 'Bearer',
         'user': _user_payload(user),
         'user_id': user.id,
@@ -76,7 +79,10 @@ def login(request):
     password = request.data.get('password', '')
     user = authenticate(username=username, password=password)
     if not user:
-        return Response({'detail': 'Invalid credentials.'}, status=status.HTTP_401_UNAUTHORIZED)
+        return Response(
+            {'detail': 'Invalid credentials.', 'message': 'Falha ao entrar. Verifique usuário e senha.'},
+            status=status.HTTP_401_UNAUTHORIZED,
+        )
     refresh = RefreshToken.for_user(user)
     return Response(_auth_payload(user, refresh))
 
@@ -97,8 +103,17 @@ def logout(request):
 @permission_classes([AllowAny])
 def refresh_token(request):
     serializer = TokenRefreshSerializer(data=request.data)
-    serializer.is_valid(raise_exception=True)
-    return Response(serializer.validated_data)
+    try:
+        serializer.is_valid(raise_exception=True)
+    except TokenError:
+        return Response({'detail': 'Invalid refresh token.'}, status=status.HTTP_401_UNAUTHORIZED)
+    data = serializer.validated_data
+    access = data.get('access', '')
+    return Response({
+        **data,
+        'token': access,
+        'auth_scheme': 'Bearer',
+    })
 
 
 @api_view(['GET', 'PATCH'])

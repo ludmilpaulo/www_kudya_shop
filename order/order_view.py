@@ -6,7 +6,7 @@ from order.models import Coupon, Order, OrderDetails
 from order.utils import generate_invoice
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework.authtoken.models import Token
+from contas.auth_helpers import AccessTokenError, user_from_access_token
 from django.core.files.base import ContentFile
 from decimal import Decimal
 import urllib.parse
@@ -23,9 +23,9 @@ def customer_add_order(request):
     data = request.data
     print("STEP 2: Received data:", data)
     try:
-        access = Token.objects.get(key=data["access_token"]).user
+        access = user_from_access_token(data["access_token"])
         print("STEP 3: User authenticated:", access)
-    except Token.DoesNotExist:
+    except AccessTokenError:
         print("STEP 3: Invalid access token")
         return Response({"status": "failed", "error": "Invalid access token."})
 
@@ -233,8 +233,8 @@ def customer_add_order(request):
 def check_user_coupon(request):
     data = request.data
     try:
-        access = Token.objects.get(key=data["access_token"]).user
-    except Token.DoesNotExist:
+        access = user_from_access_token(data["access_token"])
+    except AccessTokenError:
         return Response({"status": "failed", "error": "Token de acesso inválido."})
 
     # Get profile

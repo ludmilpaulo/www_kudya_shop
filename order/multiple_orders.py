@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework.authtoken.models import Token
+from contas.auth_helpers import AccessTokenError, user_from_access_token
 from customers.models import Customer
 from order.models import Order, OrderDetails
 from order.utils import generate_invoice
@@ -13,8 +13,8 @@ from django.core.files.base import ContentFile
 def customer_add_multiple_orders(request):
     data = request.data
     try:
-        access = Token.objects.get(key=data["access_token"]).user
-    except Token.DoesNotExist:
+        access = user_from_access_token(data["access_token"])
+    except AccessTokenError:
         return Response({"status": "failed", "error": "Invalid access token."})
 
     try:

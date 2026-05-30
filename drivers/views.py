@@ -11,6 +11,8 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.decorators import *
 from rest_framework.authtoken.models import Token
+from rest_framework.authtoken.models import Token
+from contas.auth_helpers import user_from_access_token
 
 
 # from django.contrib.auth.models import User
@@ -22,7 +24,6 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-AccessToken = Token
 
 
 class DriverSignupView(generics.GenericAPIView):
@@ -64,7 +65,7 @@ def driver_get_ready_orders(request):
 def driver_pick_order(request):
     data = request.data
     print(data)
-    access = Token.objects.get(key=data["access_token"]).user
+    access = user_from_access_token(data["access_token"])
     driver = Driver.objects.get(user=access)
 
     if Order.objects.filter(driver=driver).exclude(status=Order.DELIVERED):
@@ -89,7 +90,7 @@ def driver_pick_order(request):
 def driver_get_latest_order(request):
     # Get token
     data = request.data
-    access = Token.objects.get(key=data["access_token"]).user
+    access = user_from_access_token(data["access_token"])
 
     # Get profile
 
@@ -108,7 +109,7 @@ def driver_get_latest_order(request):
 def driver_complete_order(request):
     # Get token
     data = request.data
-    access = Token.objects.get(key=data["access_token"]).user
+    access = user_from_access_token(data["access_token"])
 
     driver = Driver.objects.get(user=access)
 
@@ -129,7 +130,7 @@ def driver_complete_order(request):
 @api_view(["POST"])
 def driver_update_location(request):
     data = request.data
-    access = Token.objects.get(key=data["access_token"]).user
+    access = user_from_access_token(data["access_token"])
 
     driver = Driver.objects.get(user=access)
 
@@ -144,7 +145,7 @@ def driver_update_location(request):
 @api_view(["POST"])
 def driver_get_order_history(request):
     data = request.data
-    access = Token.objects.get(key=data["access_token"]).user
+    access = user_from_access_token(data["access_token"])
 
     driver = Driver.objects.get(user=access)
 
@@ -172,7 +173,7 @@ def driver_get_detais(request):
 @parser_classes([JSONParser, MultiPartParser, FormParser, FileUploadParser])
 def driver_update_profile(request, format=None):
     data = request.data
-    access = Token.objects.get(key=data["access_token"]).user
+    access = user_from_access_token(data["access_token"])
 
     driver = Driver.objects.get(user=access)
 
@@ -195,7 +196,7 @@ def driver_update_profile(request, format=None):
 def driver_get_profile(request):
     # Get token
     data = request.data
-    access = Token.objects.get(key=data["access_token"]).user
+    access = user_from_access_token(data["access_token"])
 
     # Get profile
 
@@ -236,7 +237,7 @@ def reject_order(request):
             print(f"Step 3: Order ID: {order_id}, Access Token: {access_token}")
 
             # Authenticate the token
-            access = Token.objects.get(key=access_token).user
+            access = user_from_access_token(access_token)
             print("Step 4: Token authenticated, user:", access)
 
             # Get the driver
@@ -268,7 +269,7 @@ def reject_order(request):
 @api_view(["POST"])
 def get_ongoing_order(request):
     data = request.data
-    access = Token.objects.get(key=data["access_token"]).user
+    access = user_from_access_token(data["access_token"])
     driver = Driver.objects.get(user=access)
 
     try:
@@ -320,7 +321,7 @@ def get_ongoing_order(request):
 def verify_order(request):
     data = request.data
     print(data)
-    access = Token.objects.get(key=data["access_token"]).user
+    access = user_from_access_token(data["access_token"])
     driver = Driver.objects.get(user=access)
 
     try:
@@ -346,7 +347,7 @@ def verify_order(request):
 def get_verified_order(request):
     data = request.data
     try:
-        access = Token.objects.get(key=data["access_token"]).user
+        access = user_from_access_token(data["access_token"])
         driver = Driver.objects.get(user=access)
         
         # Fetch the first verified order for the driver

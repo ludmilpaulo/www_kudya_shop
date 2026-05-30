@@ -80,6 +80,36 @@ class User(AbstractUser):
         return self.username
 
 
+class SocialAccount(models.Model):
+    PROVIDERS = [
+        ('google', 'Google'),
+        ('facebook', 'Facebook'),
+        ('instagram', 'Instagram'),
+        ('tiktok', 'TikTok'),
+    ]
+
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='social_accounts',
+    )
+    provider = models.CharField(max_length=20, choices=PROVIDERS, db_index=True)
+    provider_user_id = models.CharField(max_length=255, db_index=True)
+    email = models.EmailField(blank=True)
+    extra_data = models.JSONField(default=dict, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = [('provider', 'provider_user_id')]
+        indexes = [
+            models.Index(fields=['provider', 'provider_user_id']),
+        ]
+
+    def __str__(self):
+        return f'{self.provider}:{self.provider_user_id}'
+
+
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:

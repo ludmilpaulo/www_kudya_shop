@@ -9,6 +9,7 @@ from order.models import Order, OrderDetails
 from order.serializers import OrderSerializer
 from rest_framework.decorators import *
 from rest_framework.authtoken.models import Token
+from contas.auth_helpers import user_from_access_token
 
 
 from rest_framework import status, generics, permissions, viewsets
@@ -35,7 +36,7 @@ AccessToken = Token
 @parser_classes([JSONParser, MultiPartParser, FormParser, FileUploadParser])
 def customer_update_profile(request, format=None):
     data = request.data
-    access = Token.objects.get(key=data["access_token"]).user
+    access = user_from_access_token(data["access_token"])
 
     # Try to get or create the Customer object
     customer, created = Customer.objects.get_or_create(user=access)
@@ -100,7 +101,7 @@ def customer_get_detais(request):
 @api_view(["POST"])
 def customer_add_order(request):
     data = request.data
-    access = Token.objects.get(key=data["access_token"]).user
+    access = user_from_access_token(data["access_token"])
 
     # Get profile
 
@@ -157,7 +158,7 @@ def customer_add_order(request):
 @api_view(["POST"])
 def customer_get_latest_order(request):
     data = request.data
-    access = Token.objects.get(key=data["access_token"]).user
+    access = user_from_access_token(data["access_token"])
 
     # Get profile
     customer = Customer.objects.get(user=access)
@@ -171,7 +172,7 @@ def customer_get_latest_order(request):
 @api_view(["POST"])
 def customer_driver_location(request):
     data = request.data
-    access = Token.objects.get(key=data["access_token"]).user
+    access = user_from_access_token(data["access_token"])
 
     # Get profile
     customer = Customer.objects.get(user=access)
@@ -204,7 +205,7 @@ def customer_driver_location(request):
 @api_view(["POST"])
 def customer_get_order_history(request):
     data = request.data
-    access = Token.objects.get(key=data["access_token"]).user
+    access = user_from_access_token(data["access_token"])
 
     # Get profile
 

@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework.authtoken.models import Token
+from contas.auth_helpers import user_from_access_token
 
 from drivers.models import Driver
 from order.models import Order
@@ -11,7 +11,7 @@ from order.models import Order
 @api_view(["POST"])
 def driver_commission_revenue(request):
     data = request.data
-    access = Token.objects.get(key=data["access_token"]).user
+    access = user_from_access_token(data["access_token"])
 
     driver = Driver.objects.get(user=access)
 

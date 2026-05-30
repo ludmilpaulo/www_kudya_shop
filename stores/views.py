@@ -8,6 +8,7 @@ from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.decorators import *
 from rest_framework.authtoken.models import Token
+from contas.auth_helpers import user_from_access_token
 from rest_framework.permissions import AllowAny
 from rest_framework.generics import ListAPIView
 
@@ -76,7 +77,7 @@ class ProdutoListView(ListAPIView):
 def store_get_products(request):
     data = request.data
     # Retrieve the user associated with the access token
-    access = Token.objects.get(key=data["access_token"]).user
+    access = user_from_access_token(data["access_token"])
 
     # Retrieve the store associated with the user
     store = access.store
@@ -124,7 +125,7 @@ def fornecedor_add_product(request, format=None):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        access = Token.objects.get(key=access_token).user
+        access = user_from_access_token(access_token)
         print("User associated with token:", access)
 
         # Retrieve the store associated with the user

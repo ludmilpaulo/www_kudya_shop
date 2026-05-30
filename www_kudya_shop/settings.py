@@ -116,6 +116,14 @@ SIMPLE_JWT = {
 
 AUTH_USER_MODEL="contas.User"
 
+# Social login (mobile OAuth) — set in .env for production
+GOOGLE_OAUTH_CLIENT_IDS = os.getenv('GOOGLE_OAUTH_CLIENT_IDS', '')
+FACEBOOK_APP_ID = os.getenv('FACEBOOK_APP_ID', '')
+FACEBOOK_APP_SECRET = os.getenv('FACEBOOK_APP_SECRET', '')
+TIKTOK_CLIENT_KEY = os.getenv('TIKTOK_CLIENT_KEY', '')
+INSTAGRAM_APP_ID = os.getenv('INSTAGRAM_APP_ID', '')
+INSTAGRAM_APP_SECRET = os.getenv('INSTAGRAM_APP_SECRET', '')
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
